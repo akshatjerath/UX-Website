@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SAVVY | Akshat Jerath</title>
+  <meta name="description" content="SAVVY: a Mumbai dine-out deal comparison app for iOS and Android, by Akshat Jerath.">
+  <meta name="color-scheme" content="dark light">
+  <link rel="preload" href="assets/fonts/bodoni-moda-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/instrument-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+    try { var t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+    document.documentElement.classList.add("js");
+  </script>
+  <link rel="stylesheet" href="styles.css">
+  <script src="main.js" defer></script>
+</head>
+<body id="top">
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="progress" aria-hidden="true"></div>
+
+  <header class="nav">
+    <div class="wrap">
+      <a class="wordmark" href="index.html">Akshat Jerath</a>
+      <nav class="nav-links" id="site-nav" aria-label="Primary">
+        <a href="index.html#work" aria-current="page">Work</a>
+        <a href="index.html#about">About</a>
+        <a class="menu-cta" href="index.html#contact">Get in touch</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-btn theme-toggle" type="button" aria-label="Switch theme"><span class="ic i-sun"></span><span class="ic i-moon"></span></button>
+        <a class="btn btn-primary" data-magnetic href="index.html#contact">Get in touch</a>
+        <button class="icon-btn menu-btn" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><span class="ic i-list"></span><span class="ic i-x"></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" data-zoomable>
+    <div class="wrap cs-head">
+      <a class="back" href="index.html#work"><span class="ic i-arrow-left"></span> All work</a>
+      <h1 class="display h-xl">SAVVY</h1>
+      <p class="lede">A dine-out deal comparison app for Mumbai. It turns coins, cashback and card offers into what you actually pay, then hands you to the cheapest app.</p>
+      <a class="link-arrow" style="margin-top:16px" href="https://hush-chrome-20023112.figma.site" target="_blank" rel="noopener">Full case study <span class="ic i-arrow-up-right"></span></a>
+
+      <div style="margin-top:40px">
+        <div class="tabs" role="tablist" aria-label="Platform">
+          <span class="pill" aria-hidden="true"></span>
+          <button type="button" role="tab" id="tab-ios" aria-controls="panel-ios" aria-selected="true" data-hash="ios">iOS</button>
+          <button type="button" role="tab" id="tab-android" aria-controls="panel-android" aria-selected="false" tabindex="-1" data-hash="android">Android</button>
+        </div>
+      </div>
+
+      <!-- iOS -->
+      <div class="panel" id="panel-ios" role="tabpanel" aria-labelledby="tab-ios">
+        <div class="hero-device">
+          <figure class="media phone" data-reveal data-file="assets/img/savvy-ios-hero.jpg" data-label="iOS hero screen" data-alt="Main iOS screen"></figure>
+          <div data-reveal style="--d:120ms">
+            <h2 class="display h-lg" style="margin-bottom:20px">Designed for iPhone</h2>
+            <p class="body ph">Explain how the interface follows iOS conventions and where it deliberately differs.</p>
+          </div>
+        </div>
+        <div class="rail" tabindex="0" role="region" aria-label="iOS screens">
+          <div class="phone-card"><figure class="media phone" data-file="assets/img/savvy-ios-1.jpg" data-label="iOS screen 1" data-alt="iOS screen 1"></figure></div>
+          <div class="phone-card"><figure class="media phone" data-file="assets/img/savvy-ios-2.jpg" data-label="iOS screen 2" data-alt="iOS screen 2"></figure></div>
+          <div class="phone-card"><figure class="media phone" data-file="assets/img/savvy-ios-3.jpg" data-label="iOS screen 3" data-alt="iOS screen 3"></figure></div>
+          <div class="phone-card"><figure class="media phone" data-file="assets/img/savvy-ios-4.jpg" data-label="iOS screen 4" data-alt="iOS screen 4"></figure></div>
+          <div class="phone-card"><figure class="media phone" data-file="assets/img/savvy-ios-5.jpg" data-label="iOS screen 5" data-alt="iOS screen 5"></figure></div>
+          <div class="phone-card"><figure class="media phone" data-file="assets/img/savvy-ios-6.jpg" data-label="iOS screen 6" data-alt="iOS screen 6"></figure></div>
+        </div>
+      </div>
+
+      <!-- Android -->
+      <div class="panel" id="panel-android" role="tabpanel" aria-labelledby="tab-android" hidden>
+        <div class="hero-device">
+          <figure class="media phone" data-file="assets/img/savvy-android-hero.jpg" data-label="Android hero screen" data-alt="Main Android screen"></figure>
+          <div>
+            <h2 class="display h-lg" style="margin-bottom:20px">Designed for Android</h2>
+            <p class="body ph">Explain how the interface follows Material conventions and where it deliberately differs.</p>
+          </div>
+        </div>
+        <div class="rail" tabindex="0" role="region" aria-label="Android screens">
+          <div class="phone-card"><figure class="media phone" data-file="assets/img/savvy-android-1.jpg" data-label="Android screen 1" data-alt="Android screen 1"></figure></div>
+          <div class="phone-card"><figure class="media phone" data-file="assets/img/savvy-android-2.jpg" data-label="Android screen 2" data-alt="Android screen 2"></figure></div>
+          <div class="phone-card"><figure class="media phone" data-file="assets/img/savvy-android-3.jpg" data-label="Android screen 3" data-alt="Android screen 3"></figure></div>
+          <div class="phone-card"><figure class="media phone" data-file="assets/img/savvy-android-4.jpg" data-label="Android screen 4" data-alt="Android screen 4"></figure></div>
+          <div class="phone-card"><figure class="media phone" data-file="assets/img/savvy-android-5.jpg" data-label="Android screen 5" data-alt="Android screen 5"></figure></div>
+          <div class="phone-card"><figure class="media phone" data-file="assets/img/savvy-android-6.jpg" data-label="Android screen 6" data-alt="Android screen 6"></figure></div>
+        </div>
+      </div>
+    </div>
+
+    <section class="section" style="padding-top:clamp(32px,5vw,64px)">
+      <div class="wrap">
+        <h2 class="display h-lg" data-reveal>Design system</h2>
+        <p class="body ph" data-reveal style="margin-top:20px">Colours, type and spacing you used, with the reason for each choice.</p>
+        <div class="tokens">
+          <div class="swatch" data-reveal><figure class="media" data-file="assets/img/savvy-token-1.png" data-label="Primary"></figure><span class="ph">[Name and hex]</span></div>
+          <div class="swatch" data-reveal style="--d:60ms"><figure class="media" data-file="assets/img/savvy-token-2.png" data-label="Secondary"></figure><span class="ph">[Name and hex]</span></div>
+          <div class="swatch" data-reveal style="--d:120ms"><figure class="media" data-file="assets/img/savvy-token-3.png" data-label="Surface"></figure><span class="ph">[Name and hex]</span></div>
+          <div class="swatch" data-reveal style="--d:180ms"><figure class="media" data-file="assets/img/savvy-token-4.png" data-label="Text"></figure><span class="ph">[Name and hex]</span></div>
+          <div class="swatch" data-reveal style="--d:240ms"><figure class="media" data-file="assets/img/savvy-token-5.png" data-label="Accent"></figure><span class="ph">[Name and hex]</span></div>
+        </div>
+        <figure class="media" data-reveal style="--ar:21/9; margin-top:32px" data-file="assets/img/savvy-type-specimen.jpg" data-label="Type specimen and components" data-alt="Typography and component sheet"></figure>
+      </div>
+    </section>
+
+    <div class="next">
+      <div class="wrap">
+        <a href="greggs.html">
+          <span>
+            <span class="meta" style="display:block;margin-bottom:12px">Next project</span>
+            <span class="display h-xl" style="display:block">Greggs</span>
+          </span>
+          <span class="ic i-arrow-right" style="width:2.5rem;height:2.5rem"></span>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <span>&copy; 2026 Akshat Jerath</span>
+      <a href="#top">Back to top</a>
+    </div>
+  </footer>
+</body>
+</html>
