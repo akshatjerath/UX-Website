@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your Name | UX and UI Designer</title>
+  <meta name="description" content="Portfolio of a UX and UI designer: case studies, app interfaces and critical design projects.">
+  <meta name="color-scheme" content="dark light">
+  <link rel="preload" href="assets/fonts/bodoni-moda-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/instrument-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+    try { var t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+    document.documentElement.classList.add("js");
+  </script>
+  <link rel="stylesheet" href="styles.css">
+  <script src="main.js" defer></script>
+</head>
+<body id="top">
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="progress" aria-hidden="true"></div>
+
+  <header class="nav">
+    <div class="wrap">
+      <a class="wordmark" href="index.html">Your Name</a>
+      <nav class="nav-links" id="site-nav" aria-label="Primary">
+        <a href="index.html#work">Work</a>
+        <a href="index.html#critical">Critical design</a>
+        <a href="index.html#about">About</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-btn theme-toggle" type="button" aria-label="Switch theme"><span class="ic i-sun"></span><span class="ic i-moon"></span></button>
+        <a class="btn btn-primary" data-magnetic href="#contact">Get in touch</a>
+        <button class="icon-btn menu-btn" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu"><span class="ic i-plus"></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero: asymmetric split, layered visuals that drift with the pointer -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <h1 class="display h-xl">
+            <span class="ln" style="--i:0"><span>Calm interfaces for</span></span>
+            <span class="ln" style="--i:1"><span>complicated problems.</span></span>
+          </h1>
+          <p class="lede">UX and UI designer. Case studies, app interfaces and critical design projects, rooted in research.</p>
+          <div class="btn-row">
+            <a class="btn btn-primary" data-magnetic href="#work">View work <span class="ic i-arrow-up-right"></span></a>
+            <a class="btn btn-ghost" data-magnetic href="#contact">Get in touch</a>
+          </div>
+        </div>
+
+        <div class="stage" aria-hidden="false">
+          <div class="layer layer-a">
+            <figure class="media" data-reveal style="--ar:4/3; --d:200ms" data-file="assets/img/hero-main.jpg" data-label="Hero image: your best project, wide" data-alt="Featured project screens"></figure>
+          </div>
+          <div class="layer layer-b">
+            <figure class="media phone" data-reveal style="--d:380ms" data-file="assets/img/hero-phone.jpg" data-label="Phone screen" data-alt="Mobile screen from a project"></figure>
+          </div>
+          <div class="layer layer-c">
+            <figure class="media" data-reveal style="--ar:1/1; --d:520ms" data-file="assets/motion/hero-loop.mp4" data-label="Motion loop (mp4 or webm)"></figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Work: index list, the preview follows the cursor on desktop -->
+    <section class="section" id="work">
+      <div class="wrap">
+        <div class="section-head" data-reveal>
+          <h2 class="display h-lg">Selected work</h2>
+        </div>
+        <div class="work-list">
+          <a class="work-row" data-reveal href="case-study.html" data-file="assets/img/work-1.jpg" data-label="Case study cover">
+            <span class="yr">2026</span>
+            <span class="ttl-wrap"><span class="ttl">Your UX Case Study</span><span class="kind">UX case study</span></span>
+            <span class="go"><span class="ic i-arrow-up-right"></span></span>
+            <figure class="media work-thumb" style="--ar:16/10" data-file="assets/img/work-1.jpg" data-label="Case study cover" data-alt="Cover image of the UX case study"></figure>
+          </a>
+          <a class="work-row" data-reveal style="--d:80ms" href="ui-presentation.html" data-file="assets/img/work-2.jpg" data-label="App presentation cover">
+            <span class="yr">2026</span>
+            <span class="ttl-wrap"><span class="ttl">Your App Presentation</span><span class="kind">iOS and Android presentation</span></span>
+            <span class="go"><span class="ic i-arrow-up-right"></span></span>
+            <figure class="media work-thumb" style="--ar:16/10" data-file="assets/img/work-2.jpg" data-label="App presentation cover" data-alt="Cover image of the app presentation"></figure>
+          </a>
+          <a class="work-row" data-reveal style="--d:160ms" href="critical-design.html" data-file="assets/img/work-3.jpg" data-label="Critical design cover">
+            <span class="yr">2025</span>
+            <span class="ttl-wrap"><span class="ttl">Your Critical Design Project</span><span class="kind">Critical design</span></span>
+            <span class="go"><span class="ic i-arrow-up-right"></span></span>
+            <figure class="media work-thumb" style="--ar:16/10" data-file="assets/img/work-3.jpg" data-label="Critical design cover" data-alt="Cover image of the critical design project"></figure>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process: sticky heading, accordion -->
+    <section class="section" id="process" style="padding-top:0">
+      <div class="wrap split">
+        <div class="sticky" data-reveal>
+          <h2 class="display h-lg">How I work</h2>
+          <p class="body" style="margin-top:20px">Every project follows the same loop, and each step leaves something you can look at.</p>
+        </div>
+        <div class="acc" data-reveal style="--d:120ms">
+          <details name="process" open>
+            <summary>Research <span class="ic i-plus"></span></summary>
+            <p class="acc-body">Interviews, surveys and observation to understand what people do today and why.</p>
+          </details>
+          <details name="process">
+            <summary>Define <span class="ic i-plus"></span></summary>
+            <p class="acc-body">Turning findings into a clear problem, a persona and a goal that can be checked.</p>
+          </details>
+          <details name="process">
+            <summary>Ideate <span class="ic i-plus"></span></summary>
+            <p class="acc-body">Sketching flows and structures, then choosing the strongest direction.</p>
+          </details>
+          <details name="process">
+            <summary>Prototype <span class="ic i-plus"></span></summary>
+            <p class="acc-body">Building clickable screens in Figma to test ideas before committing to them.</p>
+          </details>
+          <details name="process">
+            <summary>Test <span class="ic i-plus"></span></summary>
+            <p class="acc-body">Putting the prototype in front of real users, then fixing what they struggle with.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Critical design: statement band -->
+    <section class="section band" id="critical">
+      <div class="wrap">
+        <p class="eyebrow" data-reveal>Critical design</p>
+        <h2 class="display h-xl" data-reveal style="max-width:18ch">Some designs should ask questions before they give answers.</h2>
+        <div class="band-grid">
+          <figure class="media" data-reveal style="--ar:16/9" data-file="assets/motion/critical-loop.mp4" data-label="Motion or image: the artefact in use"></figure>
+          <div data-reveal style="--d:140ms">
+            <figure class="media" style="--ar:4/5; margin-bottom:28px" data-file="assets/img/critical-1.jpg" data-label="Portrait detail of the artefact" data-alt="Detail of the critical design artefact"></figure>
+            <p class="body">Critical design uses speculative objects and scenarios to question assumptions about technology, behaviour and everyday life.</p>
+            <a class="link-arrow" href="critical-design.html">Read the project <span class="ic i-arrow-right"></span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills and tools -->
+    <section class="section" id="skills">
+      <div class="wrap">
+        <div class="section-head" data-reveal>
+          <h2 class="display h-lg">Skills and tools</h2>
+        </div>
+        <div class="skills-grid">
+          <div data-reveal>
+            <h3>Research</h3>
+            <ul>
+              <li>User interviews</li>
+              <li>Surveys and analysis</li>
+              <li>Affinity mapping</li>
+              <li>Journey mapping</li>
+              <li>Usability testing</li>
+            </ul>
+          </div>
+          <div data-reveal style="--d:100ms">
+            <h3>Design</h3>
+            <ul>
+              <li>Wireframing</li>
+              <li>UI design</li>
+              <li>Design systems</li>
+              <li>Prototyping</li>
+              <li>Presentation design</li>
+            </ul>
+          </div>
+          <div class="tools" data-reveal style="--d:160ms">
+            <h3 class="display h-md" style="font-weight:500">Tools</h3>
+            <!-- Edit this list to match the tools you actually use. -->
+            <div class="chips">
+              <span class="chip">Figma</span>
+              <span class="chip">FigJam</span>
+              <span class="chip">Photoshop</span>
+              <span class="chip">Illustrator</span>
+              <span class="chip">Framer</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="section" id="about" style="padding-top:0">
+      <div class="wrap about-grid">
+        <figure class="media" data-reveal style="--ar:4/5" data-file="assets/img/portrait.jpg" data-label="Your portrait" data-alt="Portrait of the designer"></figure>
+        <div data-reveal style="--d:120ms">
+          <p class="eyebrow">About</p>
+          <h2 class="display h-lg" style="margin-bottom:24px">A designer who starts with people.</h2>
+          <p class="body ph">Two or three sentences on who you are, what you studied and what you care about in design.</p>
+          <dl class="facts">
+            <div><dt>Based in</dt><dd class="ph">[City, country]</dd></div>
+            <div><dt>Education</dt><dd class="ph">[Course and college]</dd></div>
+            <div><dt>Open to</dt><dd class="ph">[Internships, full-time, freelance]</dd></div>
+            <div><dt>Resume</dt><dd><a class="link-arrow" href="#" style="margin-top:0">Download <span class="ic i-arrow-up-right"></span></a></dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section contact" id="contact">
+      <div class="wrap">
+        <h2 class="display h-xl" data-reveal>Have a project or role in mind?</h2>
+        <div data-reveal style="--d:120ms">
+          <a class="btn btn-primary" data-magnetic href="mailto:you@example.com">Get in touch <span class="ic i-arrow-up-right"></span></a>
+        </div>
+        <div class="socials" data-reveal style="--d:200ms">
+          <a href="#">LinkedIn <span class="ic i-arrow-up-right"></span></a>
+          <a href="#">Behance <span class="ic i-arrow-up-right"></span></a>
+          <a href="#">Dribbble <span class="ic i-arrow-up-right"></span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <span>&copy; 2026 Your Name</span>
+      <a href="#top">Back to top</a>
+    </div>
+  </footer>
+</body>
+</html>
