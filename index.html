@@ -36,72 +36,103 @@
   </header>
 
   <main id="main">
-    <!-- Hero: asymmetric split, layered visuals that drift with the pointer -->
-    <section class="hero">
-      <div class="wrap hero-grid">
-        <div>
-          <h1 class="display h-xl">
-            <span class="ln" style="--i:0"><span>Calm interfaces for</span></span>
-            <span class="ln" style="--i:1"><span>complicated problems.</span></span>
-          </h1>
-          <p class="lede">UX and UI designer studying Design Futures in Mumbai. App interfaces, case studies and speculative work, rooted in research.</p>
-          <div class="btn-row">
-            <a class="btn btn-primary" data-magnetic href="#work">View work <span class="ic i-arrow-up-right"></span></a>
-            <a class="btn btn-ghost" data-magnetic href="#contact">Get in touch</a>
+    <!-- Room: one illustrated studio. The stage stays pinned while Hello and Work scroll past it.
+         Art coordinates on the boards (--x --y --w --h) are fractions of the 2752x1536 room image. -->
+    <div class="room">
+      <section class="room-step hello" aria-labelledby="hello-title">
+        <div class="room-card">
+          <h1 class="display h-md" id="hello-title">Hello, I'm Akshat Jerath.</h1>
+          <p class="lede">UX and UI designer studying Design Futures in Mumbai.</p>
+        </div>
+      </section>
+
+      <section class="room-step work" id="work" aria-labelledby="work-title">
+        <div class="room-pin">
+          <div class="room-card">
+            <h2 class="display h-md" id="work-title">Work</h2>
+            <p class="body"><span class="copy-room">Four projects, pinned to the walls. Point at a board, or tab to one, and open it.</span><span class="copy-list">Four projects. Pick one to open it.</span></p>
+          </div>
+        </div>
+      </section>
+
+      <div class="room-stage">
+        <div class="room-box" aria-hidden="true">
+          <div class="l-city"></div>
+          <div class="l-room"><div class="room-glow"></div></div>
+          <div class="l-actor">
+            <img class="desk" src="assets/img/room/desk.webp" alt="" width="2816" height="1536" decoding="async">
+            <img class="pose pose-wave" src="assets/img/room/pose-wave.webp" alt="" width="2752" height="1536" fetchpriority="high">
+            <img class="pose pose-left-middle" src="assets/img/room/pose-left-middle.webp" alt="" width="2750" height="1536" loading="lazy" decoding="async">
+            <img class="pose pose-right-up" src="assets/img/room/pose-right-up.webp" alt="" width="2752" height="1536" loading="lazy" decoding="async">
+            <img class="pose pose-right-middle" src="assets/img/room/pose-right-middle.webp" alt="" width="2750" height="1536" loading="lazy" decoding="async">
           </div>
         </div>
 
-        <div class="stage" aria-hidden="false">
-          <div class="layer layer-a">
-            <figure class="media" data-reveal style="--ar:4/3; --d:200ms" data-file="assets/img/hero-main.jpg" data-label="Hero image: your best project, wide" data-alt="Featured project screens"></figure>
-          </div>
-          <div class="layer layer-b">
-            <figure class="media phone" data-reveal style="--d:380ms" data-file="assets/img/hero-phone.jpg" data-label="Phone screen" data-alt="Mobile screen from a project"></figure>
-          </div>
-          <div class="layer layer-c">
-            <figure class="media" data-reveal style="--ar:1/1; --d:520ms" data-file="assets/motion/hero-loop.mp4" data-label="Motion loop (mp4 or webm)"></figure>
-          </div>
-        </div>
+        <ul class="boards" aria-labelledby="work-title">
+          <!-- One <li> per project. --x --y --w --h place it on the art (fractions of the room image),
+               --rot tilts the poster. data-side is the side the hover card opens on. -->
+          <li style="--x:-0.012; --y:0.105; --w:0.134; --h:0.33; --rot:-3deg">
+            <a href="ankur.html" data-pose="left-middle" data-side="left" aria-labelledby="p-ankur-n" aria-describedby="p-ankur-k p-ankur-b">
+              <span class="poster" aria-hidden="true">
+                <span class="poster-face">Ankur</span>
+                <img class="poster-img" src="assets/img/room/poster-ankur.webp" alt="" width="600" height="800" decoding="async" onerror="this.remove()">
+              </span>
+              <span class="pin" aria-hidden="true"></span>
+              <span class="board-card">
+                <span class="board-name" id="p-ankur-n">Ankur <span class="ic i-arrow-up-right" aria-hidden="true"></span></span>
+                <span class="board-kind"><span class="board-year">2026</span><span id="p-ankur-k">Interaction design, mobile app</span></span>
+                <span class="board-blurb" id="p-ankur-b">A smart notebook for early-years teachers in India. The teacher observes, the AI suggests, the teacher decides.</span>
+              </span>
+            </a>
+          </li>
+          <li style="--x:0.132; --y:0.215; --w:0.08; --h:0.47; --rot:2.5deg">
+            <a href="savvy.html" data-pose="left-middle" data-side="left" aria-labelledby="p-savvy-n" aria-describedby="p-savvy-k p-savvy-b">
+              <span class="poster" aria-hidden="true">
+                <span class="poster-face">SAVVY</span>
+                <img class="poster-img" src="assets/img/room/poster-savvy.webp" alt="" width="600" height="800" decoding="async" onerror="this.remove()">
+              </span>
+              <span class="pin" aria-hidden="true"></span>
+              <span class="board-card">
+                <span class="board-name" id="p-savvy-n">SAVVY <span class="ic i-arrow-up-right" aria-hidden="true"></span></span>
+                <span class="board-kind"><span class="board-year">2026</span><span id="p-savvy-k">iOS and Android app</span></span>
+                <span class="board-blurb" id="p-savvy-b">Compares dine-out deals across Swiggy Dineout, District and EazyDiner, and shows what you'll actually pay, with coins and cover charges counted.</span>
+              </span>
+            </a>
+          </li>
+          <li style="--x:0.789; --y:0.215; --w:0.08; --h:0.47; --rot:-2deg">
+            <a href="greggs.html" data-pose="right-middle" data-side="below" aria-labelledby="p-greggs-n" aria-describedby="p-greggs-k p-greggs-b">
+              <span class="poster" aria-hidden="true">
+                <span class="poster-face">Greggs</span>
+                <img class="poster-img" src="assets/img/room/poster-greggs.webp" alt="" width="600" height="800" decoding="async" onerror="this.remove()">
+              </span>
+              <span class="pin" aria-hidden="true"></span>
+              <span class="board-card">
+                <span class="board-name" id="p-greggs-n">Greggs <span class="ic i-arrow-up-right" aria-hidden="true"></span></span>
+                <span class="board-kind"><span class="board-year ph">[Year]</span><span id="p-greggs-k">UX case study</span></span>
+                <span class="board-blurb ph" id="p-greggs-b">one or two lines on the project.</span>
+              </span>
+            </a>
+          </li>
+          <li style="--x:0.877; --y:0.098; --w:0.135; --h:0.34; --rot:3deg">
+            <a href="critical-design.html" data-pose="right-up" data-side="right" aria-labelledby="p-critical-n" aria-describedby="p-critical-k p-critical-b">
+              <span class="poster" aria-hidden="true">
+                <span class="poster-face">Critical Design</span>
+                <img class="poster-img" src="assets/img/room/poster-critical-design.webp" alt="" width="600" height="800" decoding="async" onerror="this.remove()">
+              </span>
+              <span class="pin" aria-hidden="true"></span>
+              <span class="board-card">
+                <span class="board-name" id="p-critical-n">Critical Design <span class="ic i-arrow-up-right" aria-hidden="true"></span></span>
+                <span class="board-kind"><span class="board-year">2026</span><span id="p-critical-k">Speculative design, team project</span></span>
+                <span class="board-blurb" id="p-critical-b">A speculative design project imagining a local food hub for Mumbai that grows produce in disused buildings.</span>
+              </span>
+            </a>
+          </li>
+        </ul>
       </div>
-    </section>
-
-    <!-- Work: index list, the preview follows the cursor on desktop -->
-    <section class="section" id="work">
-      <div class="wrap">
-        <div class="section-head" data-reveal>
-          <h2 class="display h-lg">Selected work</h2>
-        </div>
-        <div class="work-list">
-          <a class="work-row" data-reveal href="ankur.html">
-            <span class="yr">2026</span>
-            <span class="ttl-wrap"><span class="ttl">Ankur</span><span class="kind">Interaction design, mobile app</span></span>
-            <span class="go"><span class="ic i-arrow-up-right"></span></span>
-            <figure class="media work-thumb" style="--ar:16/10" data-file="assets/img/work-ankur.jpg" data-label="Ankur cover" data-alt="Cover image of Ankur"></figure>
-          </a>
-          <a class="work-row" data-reveal href="savvy.html">
-            <span class="yr">2026</span>
-            <span class="ttl-wrap"><span class="ttl">SAVVY</span><span class="kind">iOS and Android app</span></span>
-            <span class="go"><span class="ic i-arrow-up-right"></span></span>
-            <figure class="media work-thumb" style="--ar:16/10" data-file="assets/img/work-savvy.jpg" data-label="SAVVY cover" data-alt="Cover image of SAVVY"></figure>
-          </a>
-          <a class="work-row" data-reveal href="greggs.html">
-            <span class="yr">[Year]</span>
-            <span class="ttl-wrap"><span class="ttl">Greggs</span><span class="kind">UX case study</span></span>
-            <span class="go"><span class="ic i-arrow-up-right"></span></span>
-            <figure class="media work-thumb" style="--ar:16/10" data-file="assets/img/work-greggs.jpg" data-label="Greggs cover" data-alt="Cover image of Greggs"></figure>
-          </a>
-          <a class="work-row" data-reveal href="critical-design.html">
-            <span class="yr">2026</span>
-            <span class="ttl-wrap"><span class="ttl">Critical Design</span><span class="kind">Speculative design, team project</span></span>
-            <span class="go"><span class="ic i-arrow-up-right"></span></span>
-            <figure class="media work-thumb" style="--ar:16/10" data-file="assets/img/work-critical-design.jpg" data-label="Critical Design cover" data-alt="Cover image of Critical Design"></figure>
-          </a>
-        </div>
-      </div>
-    </section>
+    </div>
 
     <!-- Process: sticky heading, accordion -->
-    <section class="section" id="process" style="padding-top:0">
+    <section class="section" id="process">
       <div class="wrap split">
         <div class="sticky" data-reveal>
           <h2 class="display h-lg">How I work</h2>
