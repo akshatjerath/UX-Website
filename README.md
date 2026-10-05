@@ -1,6 +1,6 @@
 # UX Website
 
-A static portfolio site: UX case study, app presentation (iOS and Android) and critical design pages, plus a home page. No build step and no dependencies.
+Akshat Jerath's UX/UI portfolio: a home page plus one page per project (Ankur, SAVVY, Greggs, Critical Design). No build step and no dependencies.
 
 ## Run it
 
@@ -16,14 +16,21 @@ Upload this whole repository to any static host (Netlify, Vercel, GitHub Pages, 
 
 ## Fill it in
 
-Everything is placeholder content. Nothing on the pages is a claim about you.
+Most copy is still placeholder. Ankur and SAVVY each carry the intro you wrote. Anything marked `Replace:` or in [square brackets] is yours to write.
 
-1. **Text.** Search the HTML files for `Replace:` prompts (the `ph` class) and for `[square brackets]`. Replace them with your own words. Also replace `Your Name`, `you@example.com` and the `#` links (LinkedIn, Behance, Dribbble, resume, prototype).
-2. **Images.** Every picture is a slot. Drop a file with the exact name from the checklist below into `assets/img/` and the slot fills itself on reload. Until then the slot shows its label and filename.
+1. **Text.** Search the HTML for `Replace:` (the `ph` class) and for `[square brackets]`. Also swap `you@example.com` and the `#` links (LinkedIn, Behance, Dribbble, resume, and "Open prototype" on Ankur and Greggs). Greggs has no year yet.
+2. **Images.** Every picture is a slot. Drop a file with the exact name from the checklist below into `assets/img/` and the slot fills itself on reload. Until then, an empty slot shows its label and file name on your own computer and stays a blank box on the live site.
 3. **Motion.** Slots whose file ends in `.mp4` or `.webm` play as muted looping video. Put your motion files in `assets/motion/` using the names below, or change the `data-file` in the HTML to match your own file names. Under reduced-motion settings they show the first frame and do not autoplay.
 4. **Tools, skills and process.** The lists on the home page are generic. Edit them to match what you actually use and do.
 
 The browser console shows a 404 for every slot that has no file yet. That is expected and goes away as you add files.
+
+## Add another project
+
+1. Copy `greggs.html` for the case-study layout, or `savvy.html` for the iOS and Android layout, and name the copy after the project.
+2. In the copy, rename the image prefix (for example `greggs-` to `newproject-`) so no two pages share a file. Do the same for its motion file.
+3. In `index.html`, copy one `<a class="work-row">` block in the work list and edit its link, year, title, kind and thumbnail file. That is the only change the list needs. The spacing, the stagger and the hover preview pick it up on their own.
+4. Point the previous project's "Next project" link at the new page, and the new page's link at the project after it (or back to All work).
 
 ## What is in it
 
@@ -43,56 +50,77 @@ The browser console shows a 404 for every slot that has no file yet. That is exp
 | `assets/img/hero-main.jpg` | Hero image: your best project, wide |
 | `assets/img/hero-phone.jpg` | Phone screen |
 | `assets/img/portrait.jpg` | Your portrait |
-| `assets/img/work-1.jpg` | Case study cover |
-| `assets/img/work-2.jpg` | App presentation cover |
-| `assets/img/work-3.jpg` | Critical design cover |
+| `assets/img/work-ankur.jpg` | Ankur cover |
+| `assets/img/work-critical-design.jpg` | Critical Design cover |
+| `assets/img/work-greggs.jpg` | Greggs cover |
+| `assets/img/work-savvy.jpg` | SAVVY cover |
 | `assets/motion/critical-loop.mp4` | Motion or image: the artefact in use |
 | `assets/motion/hero-loop.mp4` | Motion loop (mp4 or webm) |
 
-### case-study.html
+### ankur.html
 
 | File to add | What goes there |
 | --- | --- |
-| `assets/img/cs-after.jpg` | After: the improved screen |
-| `assets/img/cs-before.jpg` | Before: the original screen |
-| `assets/img/cs-cover.jpg` | Cover: the final design, large |
-| `assets/img/cs-flow.jpg` | User flow or site map |
-| `assets/img/cs-journey.jpg` | Journey map |
-| `assets/img/cs-persona.jpg` | Persona |
-| `assets/img/cs-problem.jpg` | Problem: a diagram, photo or quote board |
-| `assets/img/cs-research-1.jpg` | Interview notes or affinity map |
-| `assets/img/cs-research-2.jpg` | Survey results or competitor audit |
-| `assets/img/cs-screen-1.jpg` | Key screen 1 |
-| `assets/img/cs-screen-2.jpg` | Key screen 2 |
-| `assets/img/cs-screen-3.jpg` | Key screen 3 |
-| `assets/img/cs-sketches.jpg` | Sketches |
-| `assets/img/cs-wireframes.jpg` | Wireframes |
-| `assets/motion/cs-prototype.mp4` | Screen recording of the prototype (mp4 or webm) |
+| `assets/img/ankur-after.jpg` | After: the improved screen |
+| `assets/img/ankur-before.jpg` | Before: the original screen |
+| `assets/img/ankur-cover.jpg` | Cover: the final design, large |
+| `assets/img/ankur-flow.jpg` | User flow or site map |
+| `assets/img/ankur-journey.jpg` | Journey map |
+| `assets/img/ankur-persona.jpg` | Persona |
+| `assets/img/ankur-problem.jpg` | Problem: a diagram, photo or quote board |
+| `assets/img/ankur-research-1.jpg` | Interview notes or affinity map |
+| `assets/img/ankur-research-2.jpg` | Survey results or competitor audit |
+| `assets/img/ankur-screen-1.jpg` | Key screen 1 |
+| `assets/img/ankur-screen-2.jpg` | Key screen 2 |
+| `assets/img/ankur-screen-3.jpg` | Key screen 3 |
+| `assets/img/ankur-sketches.jpg` | Sketches |
+| `assets/img/ankur-wireframes.jpg` | Wireframes |
+| `assets/motion/ankur-prototype.mp4` | Screen recording of the prototype (mp4 or webm) |
 
-### ui-presentation.html
+### savvy.html
 
 | File to add | What goes there |
 | --- | --- |
-| `assets/img/android-1.jpg` | Android screen 1 |
-| `assets/img/android-2.jpg` | Android screen 2 |
-| `assets/img/android-3.jpg` | Android screen 3 |
-| `assets/img/android-4.jpg` | Android screen 4 |
-| `assets/img/android-5.jpg` | Android screen 5 |
-| `assets/img/android-6.jpg` | Android screen 6 |
-| `assets/img/android-hero.jpg` | Android hero screen |
-| `assets/img/ios-1.jpg` | iOS screen 1 |
-| `assets/img/ios-2.jpg` | iOS screen 2 |
-| `assets/img/ios-3.jpg` | iOS screen 3 |
-| `assets/img/ios-4.jpg` | iOS screen 4 |
-| `assets/img/ios-5.jpg` | iOS screen 5 |
-| `assets/img/ios-6.jpg` | iOS screen 6 |
-| `assets/img/ios-hero.jpg` | iOS hero screen |
-| `assets/img/token-1.png` | Primary |
-| `assets/img/token-2.png` | Secondary |
-| `assets/img/token-3.png` | Surface |
-| `assets/img/token-4.png` | Text |
-| `assets/img/token-5.png` | Accent |
-| `assets/img/type-specimen.jpg` | Type specimen and components |
+| `assets/img/savvy-android-1.jpg` | Android screen 1 |
+| `assets/img/savvy-android-2.jpg` | Android screen 2 |
+| `assets/img/savvy-android-3.jpg` | Android screen 3 |
+| `assets/img/savvy-android-4.jpg` | Android screen 4 |
+| `assets/img/savvy-android-5.jpg` | Android screen 5 |
+| `assets/img/savvy-android-6.jpg` | Android screen 6 |
+| `assets/img/savvy-android-hero.jpg` | Android hero screen |
+| `assets/img/savvy-ios-1.jpg` | iOS screen 1 |
+| `assets/img/savvy-ios-2.jpg` | iOS screen 2 |
+| `assets/img/savvy-ios-3.jpg` | iOS screen 3 |
+| `assets/img/savvy-ios-4.jpg` | iOS screen 4 |
+| `assets/img/savvy-ios-5.jpg` | iOS screen 5 |
+| `assets/img/savvy-ios-6.jpg` | iOS screen 6 |
+| `assets/img/savvy-ios-hero.jpg` | iOS hero screen |
+| `assets/img/savvy-token-1.png` | Primary |
+| `assets/img/savvy-token-2.png` | Secondary |
+| `assets/img/savvy-token-3.png` | Surface |
+| `assets/img/savvy-token-4.png` | Text |
+| `assets/img/savvy-token-5.png` | Accent |
+| `assets/img/savvy-type-specimen.jpg` | Type specimen and components |
+
+### greggs.html
+
+| File to add | What goes there |
+| --- | --- |
+| `assets/img/greggs-after.jpg` | After: the improved screen |
+| `assets/img/greggs-before.jpg` | Before: the original screen |
+| `assets/img/greggs-cover.jpg` | Cover: the final design, large |
+| `assets/img/greggs-flow.jpg` | User flow or site map |
+| `assets/img/greggs-journey.jpg` | Journey map |
+| `assets/img/greggs-persona.jpg` | Persona |
+| `assets/img/greggs-problem.jpg` | Problem: a diagram, photo or quote board |
+| `assets/img/greggs-research-1.jpg` | Interview notes or affinity map |
+| `assets/img/greggs-research-2.jpg` | Survey results or competitor audit |
+| `assets/img/greggs-screen-1.jpg` | Key screen 1 |
+| `assets/img/greggs-screen-2.jpg` | Key screen 2 |
+| `assets/img/greggs-screen-3.jpg` | Key screen 3 |
+| `assets/img/greggs-sketches.jpg` | Sketches |
+| `assets/img/greggs-wireframes.jpg` | Wireframes |
+| `assets/motion/greggs-prototype.mp4` | Screen recording of the prototype (mp4 or webm) |
 
 ### critical-design.html
 
@@ -106,4 +134,3 @@ The browser console shows a 404 for every slot that has no file yet. That is exp
 | `assets/img/cd-scenario-2.jpg` | Scenario 2 image |
 | `assets/img/cd-scenario-3.jpg` | Scenario 3 image |
 | `assets/motion/cd-hero.mp4` | Hero: the artefact in use (mp4, webm or image) |
-

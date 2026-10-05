@@ -6,6 +6,8 @@
  */
 (() => {
   const root = document.documentElement;
+  // Local preview shows each empty image slot's label and file name.
+  if (location.protocol === "file:" || /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname)) root.classList.add("dev");
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const fine = matchMedia("(hover: hover) and (pointer: fine)").matches;
   const $ = (s, c = document) => c.querySelector(s);
@@ -150,8 +152,12 @@
     hero.addEventListener("pointerleave", () => { tx = 0; ty = 0; kick(); });
   }
 
-  /* ---------- Work list: preview follows the cursor ---------- */
+  /* ---------- Work list: stagger, plus a cursor preview on desktop ----------
+   * Each row is one self-contained block in index.html. The row's thumbnail
+   * (.work-thumb) is the only place its image is named, and the stagger delay
+   * is set here, so adding a project means adding one row and nothing else. */
   const list = $(".work-list");
+  if (list) $$(".work-row", list).forEach((row, i) => row.style.setProperty("--d", Math.min(i, 5) * 80 + "ms"));
   if (list && fine && !reduce && matchMedia("(min-width: 821px)").matches) {
     const prev = document.createElement("div");
     prev.className = "preview";
@@ -162,20 +168,32 @@
     document.body.append(prev);
 
     const rows = $$(".work-row", list);
-    const items = rows.map((row) => {
-      const m = document.createElement("figure");
-      m.className = "media";
-      m.dataset.file = row.dataset.file || "";
-      m.dataset.label = row.dataset.label || "Project image";
-      m.style.setProperty("--ar", "4 / 3");
-      box.append(m);
-      initMedia(m);
-      return m;
-    });
+    // Preview images are built on hover (the row and the next one), so a long list
+    // loads nothing up front. The preview only shows once its cover has loaded,
+    // so a missing image never leaves an empty box floating by the cursor.
+    const items = [];
+    let cur = -1, shown = false;
+    const sync = () => prev.classList.toggle("show", shown && cur >= 0 && !!items[cur] && items[cur].classList.contains("ok"));
+    const itemFor = (i) => {
+      if (i < 0 || i >= rows.length) return null;
+      if (!items[i]) {
+        const t = $(".work-thumb", rows[i]);
+        const m = document.createElement("figure");
+        m.className = "media";
+        m.dataset.file = t ? t.dataset.file || "" : "";
+        m.dataset.label = t ? t.dataset.label || "Project image" : "Project image";
+        m.style.setProperty("--ar", "4 / 3");
+        box.append(m);
+        initMedia(m);
+        new MutationObserver(sync).observe(m, { attributes: true, attributeFilter: ["class"] });
+        items[i] = m;
+      }
+      return items[i];
+    };
 
     // The preview sits in a clear zone to the right of the titles and follows
     // the cursor vertically, so it never covers the title being read.
-    let y = 0, cy = 0, zoneX = 0, raf = 0, shown = false;
+    let y = 0, cy = 0, zoneX = 0, raf = 0;
     const zone = () => {
       const r = list.getBoundingClientRect();
       const w = prev.offsetWidth;
@@ -195,18 +213,21 @@
     };
     rows.forEach((row, i) => {
       row.addEventListener("pointerenter", (e) => {
+        cur = i;
+        itemFor(i);
+        itemFor(i + 1);
         items.forEach((m, j) => m.classList.toggle("on", j === i));
         y = e.clientY;
         zone();
         if (!shown) cy = targetY();
         shown = true;
-        prev.classList.add("show");
+        sync();
         if (!raf) raf = requestAnimationFrame(loop);
       });
       row.addEventListener("pointermove", (e) => { y = e.clientY; });
       row.addEventListener("pointerleave", () => {
         shown = false;
-        prev.classList.remove("show");
+        sync();
       });
     });
   }

@@ -244,6 +244,7 @@ button {
 .i-moon { --i: url("assets/icons/moon.svg"); }
 .i-plus { --i: url("assets/icons/plus.svg"); }
 .i-x { --i: url("assets/icons/x.svg"); }
+.i-list { --i: url("assets/icons/list.svg"); }
 .i-play { --i: url("assets/icons/play.svg"); }
 
 /* ---------- Buttons ---------- */
@@ -379,6 +380,18 @@ button {
   align-items: center;
   gap: 10px;
 }
+/* Phones: the hero and contact section already offer "Get in touch". */
+@media (max-width: 480px) {
+  .nav-actions > .btn { display: none; }
+}
+/* The header button is hidden on phones, so contact moves into the menu there. */
+.nav-links .menu-cta {
+  display: none;
+  color: var(--accent);
+}
+@media (max-width: 480px) {
+  .nav-links .menu-cta { display: block; }
+}
 .icon-btn {
   width: 44px;
   height: 44px;
@@ -402,6 +415,13 @@ button {
 }
 .menu-btn {
   display: none;
+}
+.menu-btn .i-x,
+.menu-btn[aria-expanded="true"] .i-list {
+  display: none;
+}
+.menu-btn[aria-expanded="true"] .i-x {
+  display: inline-block;
 }
 /* Show the icon for the mode you would switch to. */
 .theme-toggle .i-sun { display: none; }
@@ -487,6 +507,15 @@ button {
   max-width: 28ch;
   overflow-wrap: anywhere;
 }
+/* Labels and file paths only show while previewing locally (html.dev, set in main.js).
+   On the live site an empty slot is a quiet blank box. */
+html:not(.dev) .media::before,
+html:not(.dev) .media::after {
+  display: none;
+}
+:where(html:not(.dev)) .media {
+  border-style: solid;
+}
 .media.ok {
   border: 0;
   padding: 0;
@@ -547,7 +576,7 @@ button {
 
 /* ---------- Hero ---------- */
 .hero {
-  min-height: calc(100dvh - var(--nav-h));
+  min-height: min(calc(100dvh - var(--nav-h)), 760px);
   display: grid;
   align-items: center;
   padding-block: clamp(32px, 6vw, 72px);
@@ -657,7 +686,7 @@ button {
   display: grid;
   gap: 8px;
   justify-items: start;
-  max-width: 52%;
+  max-width: 60%;
   transition: opacity 0.4s var(--ease);
 }
 .work-row .kind {
