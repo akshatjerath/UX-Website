@@ -432,16 +432,22 @@ button {
   :root:not([data-theme]) .theme-toggle .i-moon { display: none; }
 }
 
+/* Page does not scroll behind the open menu. */
+html.menu-open {
+  overflow: hidden;
+}
+
 @media (max-width: 760px) {
   .nav-links {
     position: fixed;
     inset: var(--nav-h) 0 auto 0;
+    height: calc(100dvh - var(--nav-h));
+    overflow-y: auto;
     z-index: 40;
     flex-direction: column;
     gap: 0;
     padding: 8px var(--gutter) 24px;
     background: var(--bg);
-    border-bottom: 1px solid var(--line);
     transform: translateY(-12px);
     opacity: 0;
     visibility: hidden;
@@ -576,10 +582,11 @@ html:not(.dev) .media::after {
 
 /* ---------- Hero ---------- */
 .hero {
-  min-height: min(calc(100dvh - var(--nav-h)), 760px);
-  display: grid;
-  align-items: center;
   padding-block: clamp(32px, 6vw, 72px);
+}
+/* Let the first row of work peek above the fold under the hero. */
+.hero + .section {
+  padding-top: clamp(40px, 6vw, 88px);
 }
 .hero-grid {
   display: grid;
@@ -642,9 +649,6 @@ html:not(.dev) .media::after {
 .layer-c .media { box-shadow: 0 24px 50px -24px rgb(0 0 0 / 0.5); }
 
 @media (max-width: 900px) {
-  .hero {
-    min-height: 0;
-  }
   .hero-grid {
     grid-template-columns: 1fr;
   }
