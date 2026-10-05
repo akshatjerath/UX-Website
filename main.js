@@ -50,11 +50,16 @@
     matchMedia("(min-width: 761px)").addEventListener("change", (e) => e.matches && setMenu(false));
   }
 
-  /* ---------- Media slots: load the file if it exists ---------- */
+  /* ---------- Media slots: load the files you have added ----------
+   * A browser can only find out whether a file exists by asking for it, and every miss
+   * is a 404 in the console. So a slot only asks for a file that is listed here.
+   * When you add a file to assets/img or assets/motion, add its path to this list too
+   * (for example "assets/img/ankur-cover.jpg"). Unlisted slots stay empty and request nothing. */
+  const AVAILABLE = [];
   const zoomable = (el) => el.closest("[data-zoomable]");
   function initMedia(el) {
     const file = el.dataset.file;
-    if (!file || el.dataset.ready) return;
+    if (!file || el.dataset.ready || !AVAILABLE.includes(file)) return;
     el.dataset.ready = "1";
     const isVideo = /\.(mp4|webm|mov)$/i.test(file);
     const node = document.createElement(isVideo ? "video" : "img");

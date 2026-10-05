@@ -51,6 +51,7 @@
   --city-img: url("assets/img/room/city-night.webp");
   --actor-filter: brightness(0.86) sepia(0.16) saturate(0.95);
   --glow: 1;
+  --ring: 0 0 0 2px #fff, 0 0 0 5px #11151b; /* focus and hover ring: light inner line, dark outer line */
 }
 
 @media (prefers-color-scheme: light) {
@@ -205,14 +206,6 @@ button {
 }
 .body + .body {
   margin-top: 1em;
-}
-.eyebrow {
-  font-size: 0.8125rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--accent);
-  font-weight: 600;
-  margin-bottom: 20px;
 }
 .meta {
   font-size: 0.875rem;
@@ -605,6 +598,9 @@ html:not(.dev) .media::after {
 .room {
   --s: max(520px, calc(100svh - var(--nav-h)));
   --ph: min(72svh, 560px);
+  --step: 1; /* screens of scrolling per section, see the Room story block below */
+  --fade: 0.25; /* screens of scrolling for a pose to fade in */
+  --run: calc(5 * var(--step)); /* scrolling while the stage stays pinned, after Hello */
   display: flex;
   flex-direction: column;
   overflow-x: clip;
@@ -667,11 +663,20 @@ html:not(.dev) .media::after {
   transform-origin: 50% 97%;
   transform: translateX(17%) scale(0.72);
 }
+/* The sitting pose draws its own chair, so it is scaled with the desk and not moved aside. */
+.l-actor .pose-chair {
+  transform-origin: 50% 95%;
+  transform: scale(0.58);
+}
+/* Poses are only used by the full room. Hidden here, so a phone never downloads them
+ * (lazy images with display: none are not fetched). The wave stays as the crop's character. */
 .pose {
+  display: none;
   opacity: 0;
   transition: opacity 150ms linear;
 }
 .pose-wave {
+  display: block;
   opacity: 1;
 }
 /* Lamp glow at night. */
@@ -691,63 +696,167 @@ html:not(.dev) .media::after {
   from { scale: 0.94; }
   to { scale: 1.06; }
 }
+/* A paper label on the wireframe board: that board is the "experience" board. */
+.board-tag {
+  position: absolute;
+  left: calc(var(--x) * 100%);
+  top: calc(var(--y) * 100%);
+  padding: 3px 9px;
+  background: var(--bg);
+  color: var(--text);
+  font-size: clamp(0.65rem, 0.85vw, 0.8rem);
+  font-weight: 600;
+  white-space: nowrap;
+  border-radius: 3px;
+  rotate: -2deg;
+  box-shadow: 0 4px 8px -4px rgb(0 0 0 / 0.5);
+}
 
+/* Sections of the story. Stacked blocks here; pinned cards in the full room. */
 .room-step {
   padding: 28px var(--gutter) 0;
 }
+.about {
+  padding-bottom: clamp(48px, 8vw, 96px);
+}
 .room-card h1,
 .room-card h2 {
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 .room-card .lede,
 .room-card .body {
   max-width: 40ch;
 }
-
-/* Projects as a plain list. On the full room these same links are the posters on the boards. */
-.boards {
-  order: 2;
-  padding: 24px var(--gutter) 0; /* the next section brings its own top padding */
+.room-card h3 {
+  margin: 20px 0 8px;
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 1.15rem;
 }
-.boards li {
-  border-bottom: 1px solid var(--line);
+.scroll-cue {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  font-size: 0.875rem;
+  color: var(--muted);
 }
-.boards li:first-child {
+.scroll-cue .ic {
+  rotate: 90deg;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .scroll-cue .ic {
+    animation: cue 1.8s ease-in-out infinite;
+  }
+}
+@keyframes cue {
+  50% { translate: 0 3px; }
+}
+.skill-cols {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 24px;
+}
+.skill-cols h3 {
+  margin-top: 4px;
+}
+.skill-tools {
+  grid-column: 1 / -1;
+}
+.skill-cols li {
+  padding-block: 1px;
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+.entries li {
+  padding-block: 10px;
   border-top: 1px solid var(--line);
+  font-size: 0.9375rem;
+  color: var(--muted);
+}
+.entries li:first-child {
+  border-top: 0;
+}
+.entries strong {
+  display: block;
+  font-weight: 600;
+  color: var(--text);
+}
+.card-facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px 24px;
+  margin-top: 16px;
+}
+.card-facts dt {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.card-facts dd {
+  font-size: 0.9375rem;
+}
+
+/* The boards are the quick glance, so only the full room shows them. The phone and portrait
+ * layout shows no boards: its Work step links to the deck, the one full list there. */
+.boards {
+  display: none;
 }
 /* Two lines of copy for the Work card: the room one talks about boards. */
 .copy-room {
   display: none;
 }
-.boards a {
-  display: grid;
-  grid-template-columns: 72px minmax(0, 1fr);
-  gap: 16px;
-  align-items: start;
-  padding-block: 20px;
+.see-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+  padding-bottom: 4px;
+  font-weight: 600;
+  border-bottom: 1px solid var(--accent);
 }
-/* Poster: the project's own image, or a plain coloured card with its name until the file exists. */
+.see-all .ic {
+  rotate: 90deg;
+}
+.see-all:hover {
+  color: var(--accent);
+}
+/* Poster: the project's own image, or a plain card in its own colour with its name and
+ * type until the image exists. All posters are the same size and weight. To use an image,
+ * uncomment the <img> inside the .poster in index.html (it paints over the card). */
 .poster {
   position: relative;
   display: block;
   aspect-ratio: 3 / 4;
   overflow: hidden;
   border-radius: 3px;
-  background: var(--accent);
-  color: var(--on-accent);
+  background: var(--pbg, var(--accent));
+  color: var(--pfg, var(--on-accent));
   box-shadow: 0 6px 12px -6px rgb(0 0 0 / 0.55);
 }
 .poster-face {
   position: absolute;
   inset: 0;
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
   padding: 6px;
+  text-align: center;
+}
+.poster-name {
   font-family: var(--serif);
   font-weight: 500;
   font-size: 0.8rem;
   line-height: 1.1;
-  text-align: center;
+  text-wrap: balance;
+}
+.poster-type {
+  display: none;
+  font-size: 0.62rem;
+  line-height: 1.2;
   text-wrap: balance;
 }
 .poster-img {
@@ -766,7 +875,7 @@ html:not(.dev) .media::after {
   gap: 0.4em;
   font-family: var(--serif);
   font-weight: 500;
-  font-size: clamp(1.5rem, 6vw, 2rem);
+  font-size: 1.25rem;
   letter-spacing: -0.01em;
   line-height: 1.1;
 }
@@ -775,10 +884,6 @@ html:not(.dev) .media::after {
   margin-top: 4px;
   font-size: 0.9375rem;
   color: var(--muted);
-}
-.board-year::after {
-  content: "\00b7";
-  margin-inline: 0.45em;
 }
 .board-blurb {
   display: block;
@@ -796,12 +901,104 @@ html:not(.dev) .media::after {
   }
 }
 
+/* The ring on posters and deck cards: a light inner line and a dark outer one, so it shows
+ * on terracotta, cork, teal and the page alike. Hover and keyboard focus look the same. */
+.deck-card a::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: calc(var(--r) + 4px);
+  box-shadow: var(--ring);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+.deck-card a:focus-visible {
+  outline: none;
+}
+.deck-card a:focus-visible::after {
+  opacity: 1;
+}
+@media (hover: hover) {
+  .deck-card a:hover::after {
+    opacity: 1;
+  }
+}
+
+/* All projects: a plain grid of cards. The stacked deck below is the enhancement. */
+.deck-list {
+  display: grid;
+  gap: 20px;
+}
+@media (min-width: 761px) {
+  .deck-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.deck-card a {
+  position: relative;
+  display: grid;
+  grid-template-columns: clamp(72px, 12vw, 168px) minmax(0, 1fr);
+  gap: 16px;
+  align-items: center;
+  height: 100%;
+  padding: clamp(14px, 2vw, 24px);
+  background: var(--bg-raise);
+  border-radius: var(--r);
+}
+.deck-card .poster {
+  align-self: start;
+}
+.deck-body {
+  display: grid;
+  gap: 6px;
+  justify-items: start;
+}
+.deck-year::after {
+  content: "\00b7";
+  margin-inline: 0.45em;
+}
+.deck-kind {
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+.deck-name {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+}
+.deck-blurb {
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--muted);
+  max-width: 52ch;
+}
+.deck-open {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+  padding-bottom: 3px;
+  font-weight: 600;
+  border-bottom: 1px solid var(--accent);
+}
+.deck-card a:focus-visible .deck-name {
+  color: var(--accent);
+}
+@media (hover: hover) {
+  .deck-card a:hover .deck-name {
+    color: var(--accent);
+  }
+}
+
 /* The full room: wide enough to show the side walls, and motion is welcome. */
 @media (min-width: 761px) and (min-aspect-ratio: 31 / 20) {
   .room {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: var(--s) calc(var(--s) * 1.5);
+    grid-template-rows: var(--s) repeat(5, calc(var(--s) * var(--step)));
     overflow-x: visible;
   }
   .room-stage {
@@ -826,14 +1023,24 @@ html:not(.dev) .media::after {
     height: calc(var(--W) / 1.7917);
     margin: 0;
     padding: 0;
-    order: 0;
+  }
+  .boards {
+    display: block;
+  }
+  .pose {
+    display: block;
   }
   .copy-room {
     display: inline;
   }
-  .copy-list {
+  .copy-list,
+  .see-all {
     display: none;
   }
+  .scroll-cue {
+    display: inline-flex;
+  }
+  /* Every section sits in its own row of the grid, in story order. */
   .room-step {
     grid-column: 1;
     position: relative;
@@ -841,14 +1048,12 @@ html:not(.dev) .media::after {
     padding: 0;
     pointer-events: none;
   }
-  .hello {
-    grid-row: 1;
-    display: flex;
-    align-items: flex-end;
-  }
-  .work {
-    grid-row: 2;
-  }
+  .hello { grid-row: 1; display: flex; align-items: flex-end; }
+  .work { grid-row: 2; }
+  .skills { grid-row: 3; }
+  .experience { grid-row: 4; }
+  .education { grid-row: 5; }
+  .about { grid-row: 6; padding-bottom: 0; }
   .room-pin {
     position: sticky;
     top: var(--nav-h);
@@ -860,10 +1065,41 @@ html:not(.dev) .media::after {
     pointer-events: auto;
     max-width: 22rem;
     margin: 0 0 clamp(16px, 2.5vw, 32px) clamp(16px, 3vw, 40px);
-    padding: 24px 28px;
+    padding: 20px 24px;
     background: var(--bg);
     border-radius: var(--r);
     box-shadow: 0 24px 48px -28px rgb(0 0 0 / 0.5);
+  }
+  .room-card-wide {
+    max-width: 34rem;
+  }
+  /* Skills: three columns, so the card stays short and leaves the posters showing. */
+  .skill-cols {
+    grid-template-columns: repeat(3, auto);
+  }
+  .skill-tools {
+    grid-column: auto;
+  }
+  .skill-tools .chips {
+    gap: 6px;
+  }
+  .skill-tools .chip {
+    padding: 4px 12px;
+    font-size: 0.8125rem;
+  }
+  /* About: the text beside the facts and contact, so the card stays short. */
+  .about-cols {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 24px;
+  }
+  .about-cols .card-facts {
+    grid-template-columns: 1fr;
+    gap: 4px;
+    margin-top: 0;
+  }
+  .about-cols h3 {
+    margin-top: 12px;
   }
 
   /* Each project is a poster pinned to its board. The li is placed on the art, but a
@@ -877,10 +1113,6 @@ html:not(.dev) .media::after {
     right: max(calc((1 - var(--x) - var(--w)) * 100%), var(--edge));
     top: calc(var(--y) * 100%);
     height: calc(var(--h) * 100%);
-    border: 0;
-  }
-  .boards li:first-child {
-    border: 0;
   }
   .boards li:is(:hover, :focus-within) {
     z-index: 2; /* an open card sits above the neighbouring boards */
@@ -888,7 +1120,7 @@ html:not(.dev) .media::after {
   .boards a {
     position: absolute;
     left: 50%;
-    top: 50%;
+    top: var(--py, 50%);
     display: block;
     width: 80%;
     aspect-ratio: 3 / 4;
@@ -901,17 +1133,28 @@ html:not(.dev) .media::after {
     position: absolute;
     inset: -4px;
     border-radius: 6px;
-    box-shadow: 0 0 0 3px var(--accent);
+    box-shadow: var(--ring);
     opacity: 0;
+    pointer-events: none;
     transition: opacity 0.2s;
   }
-  .poster {
+  .boards a:focus-visible {
+    outline: none;
+  }
+  .boards a:focus-visible::after {
+    opacity: 1;
+  }
+  .boards .poster {
     position: absolute;
     inset: 0;
     aspect-ratio: auto;
   }
-  .poster-face {
-    font-size: clamp(0.7rem, 0.9vw, 0.95rem);
+  .boards .poster-name {
+    font-size: clamp(0.8rem, 1vw, 1rem);
+  }
+  .boards .poster-type {
+    display: block;
+    font-size: clamp(0.6rem, 0.72vw, 0.72rem);
   }
   .pin {
     position: absolute;
@@ -964,27 +1207,26 @@ html:not(.dev) .media::after {
     transform-origin: 100% 0;
     translate: 0 -8px;
   }
-  .board-name {
-    font-size: 1.25rem;
-  }
   .board-blurb {
     font-size: 0.875rem;
     line-height: 1.45;
   }
 
   /* Focus shows the card and points the character everywhere. Hover does the same, but
-   * only where a real pointer exists, so a tap on a touch screen simply opens the page. */
+   * only where a real pointer exists, so a tap on a touch screen simply opens the page.
+   * These win over the story poses below (!important beats an animation), so pointing
+   * works in every section. */
   .boards a:focus-visible .board-card {
     opacity: 1;
     translate: 0 0;
   }
-  .room:has(.boards a:focus-visible) .pose-wave {
-    opacity: 0;
+  .room:has(.boards a:focus-visible) .pose {
+    opacity: 0 !important;
   }
-  .room:has([data-pose="left-middle"]:focus-visible) .pose-left-middle,
-  .room:has([data-pose="right-up"]:focus-visible) .pose-right-up,
-  .room:has([data-pose="right-middle"]:focus-visible) .pose-right-middle {
-    opacity: 1;
+  .room:has([data-pose="left-middle"]:focus-visible) .pose.pose-left-middle,
+  .room:has([data-pose="right-up"]:focus-visible) .pose.pose-right-up,
+  .room:has([data-pose="right-middle"]:focus-visible) .pose.pose-right-middle {
+    opacity: 1 !important;
   }
   @media (hover: hover) {
     .boards a:hover .board-card {
@@ -994,19 +1236,85 @@ html:not(.dev) .media::after {
     .boards a:hover::after {
       opacity: 1;
     }
-    .room:has(.boards a:hover) .pose-wave {
-      opacity: 0;
+    .room:has(.boards a:hover) .pose {
+      opacity: 0 !important;
     }
-    .room:has([data-pose="left-middle"]:hover) .pose-left-middle,
-    .room:has([data-pose="right-up"]:hover) .pose-right-up,
-    .room:has([data-pose="right-middle"]:hover) .pose-right-middle {
-      opacity: 1;
+    .room:has([data-pose="left-middle"]:hover) .pose.pose-left-middle,
+    .room:has([data-pose="right-up"]:hover) .pose.pose-right-up,
+    .room:has([data-pose="right-middle"]:hover) .pose.pose-right-middle {
+      opacity: 1 !important;
     }
   }
   @media (prefers-reduced-motion: reduce) {
     .boards a[data-side] .board-card {
       translate: none;
     }
+  }
+}
+
+/* ====== Room story ======
+ * Which pose goes with which section. Edit the numbers here; nothing else needs to change.
+ *   --n      the section's place in the story: 1 Work, 2 Skills, 3 Experience,
+ *            4 Education, 5 About and contact. (Hello is the starting wave.)
+ *   --step   how long each section stays, in screens of scrolling (set on .room).
+ *   --fade   how much scrolling it takes a pose to fade in, in screens (set on .room).
+ * A pose fades in just before its section is pinned, stays, and goes when the next section's
+ * pose is fully in. The wave leaves after Work. If you add a section, add a row to the
+ * grid (grid-template-rows above) and a pose with its own --n.
+ * Browsers without scroll-driven animation (Firefox for now) keep the wave throughout,
+ * and every card is still readable. Reduced motion: the poses switch with no fade. */
+@supports (animation-timeline: scroll()) {
+  @media (min-width: 761px) and (min-aspect-ratio: 31 / 20) {
+    .pose-wave { --n: 1; }
+    .pose-cross-hands { --n: 2; }
+    .pose-right-down { --n: 3; }
+    .pose-book-pen { --n: 4; }
+    .pose-chair { --n: 5; }
+
+    .pose-wave,
+    .pose-cross-hands,
+    .pose-right-down,
+    .pose-book-pen,
+    .pose-chair {
+      /* where the section is pinned, and where the next one is */
+      --at: calc(var(--s) * (1 + (var(--n) - 1) * var(--step)));
+      --next: calc(var(--at) + var(--s) * var(--step));
+      animation-timeline: scroll(root), scroll(root);
+      animation-timing-function: linear, linear;
+      animation-fill-mode: both, forwards;
+    }
+    /* fades in, then leaves when the next pose is in */
+    .pose-cross-hands,
+    .pose-right-down,
+    .pose-book-pen {
+      animation-name: pose-in, pose-out;
+      animation-range:
+        calc(var(--at) - var(--s) * var(--fade)) var(--at),
+        var(--next) calc(var(--next) + 2px);
+    }
+    /* the wave is already there; it only leaves */
+    .pose-wave {
+      animation-name: pose-out;
+      animation-range: var(--next) calc(var(--next) + 2px);
+    }
+    /* the last pose stays */
+    .pose-chair {
+      animation-name: pose-in;
+      animation-range: calc(var(--at) - var(--s) * var(--fade)) var(--at);
+    }
+  }
+}
+@keyframes pose-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes pose-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .room {
+    --fade: 0.001; /* poses switch without a fade */
   }
 }
 
@@ -1019,30 +1327,57 @@ html:not(.dev) .media::after {
     .boards {
       animation: room-push linear both;
       animation-timeline: scroll(root);
-      animation-range: 0 calc(var(--s) * 1.5);
+      animation-range: 0 calc(var(--s) * var(--run));
     }
     .l-city { --z: 1.03; --ty: -0.3%; }
     .l-room,
     .boards { --z: 1.055; --ty: -0.7%; }
     .l-actor { --z: 1.09; --ty: -1.2%; }
-    /* Posters arrive as the Work step does. Focus and hover always show them. */
-    .poster,
-    .pin {
-      animation: label-in linear both;
-      animation-timeline: scroll(root);
-      animation-range: calc(var(--s) * 0.45) calc(var(--s) * 0.85);
-    }
-    .boards a:is(:hover, :focus-visible) :is(.poster, .pin) {
-      opacity: 1 !important;
-    }
   }
 }
 @keyframes room-push {
   to { transform: translateY(var(--ty)) scale(var(--z)); }
 }
-@keyframes label-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+
+/* The deck. Cards stack as you scroll: each sticks a little lower than the one before and the
+ * next slides over it, while the covered one steps back. Plain CSS, no library. Without
+ * scroll-driven animation, with reduced motion, or on a phone, it stays the plain grid above. */
+@supports (animation-timeline: view()) {
+  @media (min-width: 761px) and (prefers-reduced-motion: no-preference) {
+    .deck-list {
+      --deck-h: 17rem; /* every card is this tall, so the timing below is known */
+      --deck-gap: 12rem; /* scroll distance between one card and the next */
+      --deck-peek: 22px; /* how much of a covered card still shows above the next */
+      display: block;
+      view-timeline: --deck block;
+    }
+    .deck-card {
+      position: sticky;
+      top: calc(var(--nav-h) + 28px + var(--i) * var(--deck-peek));
+      margin-bottom: var(--deck-gap);
+    }
+    .deck-card:last-child {
+      margin-bottom: 0;
+    }
+    .deck-card a {
+      height: auto;
+      min-height: var(--deck-h);
+      box-shadow: 0 -18px 36px -22px rgb(0 0 0 / 0.55);
+      transform-origin: 50% 0;
+      /* Card i steps back while card i + 1 slides over it. A pinned card cannot time
+       * itself, so every card reads the progress of the whole list instead. */
+      --from: calc(var(--i) * var(--deck-h) + (var(--i) + 1) * var(--deck-gap) - var(--nav-h) - 28px - var(--i) * var(--deck-peek) + 100vh);
+      animation: deck-back linear both;
+      animation-timeline: --deck;
+      animation-range: cover var(--from) cover calc(var(--from) + var(--deck-h) - var(--deck-peek));
+    }
+    .deck-card:last-child a {
+      animation: none;
+    }
+  }
+}
+@keyframes deck-back {
+  to { scale: 0.94; }
 }
 
 /* ---------- Section head ---------- */
@@ -1118,24 +1453,9 @@ html:not(.dev) .media::after {
   max-width: 56ch;
 }
 
-/* ---------- Statement band ---------- */
+/* ---------- Statement band (used by the Critical Design page) ---------- */
 .band {
   background: var(--bg-raise);
-}
-.band-grid {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: clamp(16px, 3vw, 40px);
-  margin-top: clamp(40px, 6vw, 80px);
-  align-items: end;
-}
-.band .link-arrow {
-  margin-top: 28px;
-}
-@media (max-width: 760px) {
-  .band-grid {
-    grid-template-columns: 1fr;
-  }
 }
 .link-arrow {
   display: inline-flex;
@@ -1151,95 +1471,27 @@ html:not(.dev) .media::after {
   color: var(--accent);
 }
 
-/* ---------- Skills ---------- */
-.skills-grid {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: clamp(32px, 6vw, 96px);
-}
-.skills-grid h3 {
-  font-family: var(--serif);
-  font-weight: 500;
-  font-size: 1.6rem;
-  margin-bottom: 16px;
-}
-.skills-grid li {
-  padding-block: 6px;
-  color: var(--muted);
-}
+/* ---------- Chips ---------- */
 .chips {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin-top: 16px;
+  margin-top: 8px;
 }
 .chip {
-  padding: 8px 18px;
+  padding: 6px 16px;
   border-radius: 999px;
   border: 1px solid var(--line);
   font-size: 0.9375rem;
   color: var(--muted);
-  transition: border-color 0.3s, color 0.3s, transform 0.4s var(--ease);
-}
-.chip:hover {
-  border-color: var(--accent);
-  color: var(--text);
-  transform: translateY(-2px);
-}
-.tools {
-  grid-column: 1 / -1;
-}
-@media (max-width: 760px) {
-  .skills-grid {
-    grid-template-columns: 1fr;
-  }
 }
 
-/* ---------- About ---------- */
-.about-grid {
-  display: grid;
-  grid-template-columns: 0.8fr 1.2fr;
-  gap: clamp(32px, 6vw, 96px);
-  align-items: center;
-}
-.facts {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px 32px;
-  margin-top: 40px;
-}
-.facts dt {
-  font-size: 0.8125rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 4px;
-}
-.facts dd {
-  font-size: 1.0625rem;
-}
-@media (max-width: 760px) {
-  .about-grid {
-    grid-template-columns: 1fr;
-  }
-  .about-grid .media {
-    max-width: 360px;
-  }
-}
-
-/* ---------- Contact / footer ---------- */
-.contact {
-  border-top: 1px solid var(--line);
-}
-.contact .display {
-  margin-bottom: 36px;
-  max-width: 14ch;
-}
+/* ---------- Social links and footer ---------- */
 .socials {
   display: flex;
   flex-wrap: wrap;
-  gap: 28px;
-  margin-top: 56px;
+  gap: 8px 28px;
+  margin-top: 12px;
 }
 .socials a {
   display: inline-flex;
@@ -1250,8 +1502,7 @@ html:not(.dev) .media::after {
 }
 .socials a:hover {
   color: var(--text);
-}
-.footer {
+}.footer {
   padding-block: 32px;
   border-top: 1px solid var(--line);
   font-size: 0.875rem;
@@ -1262,6 +1513,10 @@ html:not(.dev) .media::after {
   justify-content: space-between;
   gap: 16px;
   flex-wrap: wrap;
+}
+.footer a {
+  display: inline-block;
+  padding-block: 4px; /* at least 24px tall */
 }
 
 /* ---------- Case study layout ---------- */
