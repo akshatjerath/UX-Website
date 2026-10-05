@@ -37,10 +37,17 @@
     const setMenu = (open) => {
       links.classList.toggle("open", open);
       menuBtn.setAttribute("aria-expanded", String(open));
+      document.documentElement.classList.toggle("menu-open", open);
     };
     menuBtn.addEventListener("click", () => setMenu(!links.classList.contains("open")));
     links.addEventListener("click", (e) => e.target.closest("a") && setMenu(false));
-    document.addEventListener("keydown", (e) => e.key === "Escape" && setMenu(false));
+    document.addEventListener("keydown", (e) => {
+      if (e.key !== "Escape" || !links.classList.contains("open")) return;
+      setMenu(false);
+      menuBtn.focus();
+    });
+    /* Resizing past the phone breakpoint with the menu open must not leave the page locked. */
+    matchMedia("(min-width: 761px)").addEventListener("change", (e) => e.matches && setMenu(false));
   }
 
   /* ---------- Media slots: load the file if it exists ---------- */
