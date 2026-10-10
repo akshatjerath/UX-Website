@@ -423,7 +423,7 @@ function renderCase(p, i){
     `<div class="screens-wip"><span class="status-pill">Designing in Figma</span><p>The Greggs+ membership app and the order flow are being designed now. They will sit here, beside the strategy that shaped them.</p>${slot("Greggs+ app screens from Figma","Your new Figma file")}</div>
      <div class="gal">${p.gallery.map(([t,src]) => `<div><b>${esc(t)}</b><span>${esc(src)}</span></div>`).join("")}</div>`));
   const status = () => add("Where it stands","csN",blk("csN","Where it stands","Updated as the project moves",
-    `<ol class="status">${p.status.map(([t,done]) => done ? `<li><i>✓</i>${esc(t)}</li>` : `<li class="next"><i>→</i>${t ? esc(t) : `<span class="todo">Next step: what the team is doing now</span>`}</li>`).join("")}</ol>`));
+    `<ol class="status">${p.status.filter(([t]) => t || DRAFT).map(([t,done]) => done ? `<li><i>✓</i>${esc(t)}</li>` : `<li class="next"><i>→</i>${t ? esc(t) : `<span class="todo">Next step: what the team is doing now</span>`}</li>`).join("")}</ol>`));
   const eras = () => add("The futures timeline","csF",blk("csF","The futures timeline","Four eras we mapped",
     `<div class="eras">${p.eras.map(([a,b]) => `<div><b>${esc(a)}</b><span>${esc(b)}</span></div>`).join("")}</div>`));
   const context = () => add(p.ctxTitle, "csC", blk("csC", p.ctxTitle, p.ctxSub, CONTEXT[p.id]()));

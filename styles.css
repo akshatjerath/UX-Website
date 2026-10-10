@@ -539,7 +539,7 @@ body:not(.case) #case{display:none}
 .r-next:hover{border-color:var(--accent)}
 .r-next b{font:700 18px/1.1 var(--display)}
 .cs{min-width:0;padding-bottom:80px;display:grid;gap:clamp(14px,2vw,20px)}
-/* top: media + project file, like AJ's game-design pages */
+/* top: media + project file */
 .cs-top{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(240px,1fr);gap:clamp(14px,2vw,20px)}
 .cs-top .stage{aspect-ratio:auto;min-height:340px;height:100%}
 .spec{background:var(--surface);border:1px solid var(--hair);border-radius:var(--r);padding:20px;display:grid;gap:14px;align-content:start}
