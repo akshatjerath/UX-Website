@@ -1,65 +1,33 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Page not found | Akshat Jerath</title>
-  <meta name="robots" content="noindex">
-  <meta name="color-scheme" content="dark light">
-  <link rel="icon" href="data:,">
-  <script>
-    /* GitHub Pages shows this page at whatever address was mistyped, which can be several folders
-       deep, and a relative path like styles.css would then point at the wrong place. So, first of all,
-       point every relative path on this page at the site's root folder. On github.io the root is
-       the first part of the address (the repository name); anywhere else it is the top. Without
-       JavaScript the page still works for a one-level typo. This page has no #links on purpose:
-       with a base set, "#main" would leave the page. */
-    (function () {
-      var p = location.pathname.split("/");
-      var root = /\.github\.io$/.test(location.hostname) && p[1] ? "/" + p[1] + "/" : "/";
-      var b = document.createElement("base");
-      b.href = root;
-      document.head.appendChild(b);
-    })();
-  </script>
-  <script>
-    try { var t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
-    document.documentElement.classList.add("js");
-  </script>
-  <link rel="stylesheet" href="styles.css">
-  <script src="main.js" defer></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page not found | Akshat Jerath</title>
+<meta name="robots" content="noindex">
+<meta name="color-scheme" content="dark light">
+<script>
+  /* GitHub Pages shows this page at the mistyped address, which can be folders deep.
+     Point relative links at the site root: on github.io that is the repository folder. */
+  (function () {
+    var p = location.pathname.split("/");
+    var b = document.createElement("base");
+    b.href = /\.github\.io$/.test(location.hostname) && p[1] ? "/" + p[1] + "/" : "/";
+    document.head.appendChild(b);
+  })();
+</script>
+<style>
+  :root{--bg:#0C0E11;--ink:#EEF1F5;--muted:#9AA3AE;--accent:#25CA7F;--accent-ink:#04140B}
+  @media (prefers-color-scheme: light){:root{--bg:#F1F2F4;--ink:#11141A;--muted:#58606B;--accent:#0F7A48;--accent-ink:#fff}}
+  body{margin:0;min-height:100vh;display:grid;place-content:center;gap:16px;padding:24px;background:var(--bg);color:var(--ink);font:400 17px/1.5 system-ui,sans-serif;text-align:center}
+  h1{margin:0;font-size:clamp(48px,10vw,96px);line-height:.9;letter-spacing:-.03em;text-transform:uppercase}
+  p{margin:0;color:var(--muted)}
+  a{justify-self:center;padding:12px 18px;border-radius:999px;background:var(--accent);color:var(--accent-ink);text-decoration:none;font-weight:600}
+</style>
 </head>
 <body>
-  <header class="nav">
-    <div class="wrap">
-      <a class="wordmark" href="index.html">Akshat Jerath</a>
-      <nav class="nav-links" id="site-nav" aria-label="Primary">
-        <a href="index.html#work">Work</a>
-        <a href="index.html#about">About</a>
-        <a class="menu-cta" href="index.html#contact">Get in touch</a>
-      </nav>
-      <div class="nav-actions">
-        <button class="icon-btn theme-toggle" type="button" aria-label="Switch theme"><span class="ic i-sun"></span><span class="ic i-moon"></span></button>
-        <a class="btn btn-primary" data-magnetic href="index.html#contact">Get in touch</a>
-        <button class="icon-btn menu-btn" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><span class="ic i-list"></span><span class="ic i-x"></span></button>
-      </div>
-    </div>
-  </header>
-
-  <main id="main">
-    <section class="section" style="min-height: 60svh">
-      <div class="wrap">
-        <h1 class="display h-xl">Page not found.</h1>
-        <p class="lede" style="margin: 24px 0 32px">That address doesn't lead anywhere on this site. The home page has the work, and everything else starts there.</p>
-        <a class="btn btn-primary" href="index.html">Back to the home page <span class="ic i-arrow-right"></span></a>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="wrap">
-      <span>&copy; 2026 Akshat Jerath</span>
-    </div>
-  </footer>
+  <h1>Not found</h1>
+  <p>That page doesn't exist. The case studies are all on the home page.</p>
+  <a href="index.html">Back to the work</a>
 </body>
 </html>

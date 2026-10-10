@@ -1,2 +1,2 @@
-# Original room artwork. Only the .webp files are used by the site.
-assets/img/room/*.png
+# Editor and OS files
+.DS_Store

@@ -1,350 +1,94 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Akshat Jerath | UX and UI Designer</title>
-  <meta name="description" content="Akshat Jerath, UX and UI designer: app interfaces, case studies and speculative design.">
-  <meta name="color-scheme" content="dark light">
-  <link rel="icon" href="data:,">
-  <link rel="preload" href="assets/fonts/bodoni-moda-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="assets/fonts/instrument-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <script>
-    try { var t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
-    document.documentElement.classList.add("js");
-  </script>
-  <link rel="stylesheet" href="styles.css">
-  <script src="main.js" defer></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Akshat Jerath Portfolio</title>
+<meta name="description" content="Akshat Jerath (AJ), UX/UI designer. MDes Design Futures, ATLAS SkillTech University, Mumbai.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Ccircle cx=%2732%27 cy=%2732%27 r=%2730%27 fill=%27%230C0E11%27 stroke=%27%2325CA7F%27 stroke-width=%274%27/%3E%3Ctext x=%2732%27 y=%2741%27 font-family=%27Arial%27 font-weight=%27700%27 font-size=%2724%27 fill=%27%2325CA7F%27 text-anchor=%27middle%27%3EAJ%3C/text%3E%3C/svg%3E">
+<meta name="theme-color" content="#0C0E11">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Akshat Jerath, UX/UI designer">
+<meta property="og:description" content="Case studies: SAVVY, Ankur, Greggs 2050 and Critical Design. MDes Design Futures, ATLAS SkillTech University, Mumbai.">
+<meta property="og:image" content="https://akshatjerath.github.io/UX-Website/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,600..800&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@500&family=Inter:wght@400;600;900&family=IBM+Plex+Mono:wght@600&display=swap">
+<link rel="stylesheet" href="styles.css">
 </head>
-<body id="top">
-  <a class="skip" href="#main">Skip to content</a>
-  <div class="progress" aria-hidden="true"></div>
+<body>
+<a class="skip" href="#work">Skip to work</a>
 
-  <header class="nav">
-    <div class="wrap">
-      <a class="wordmark" href="index.html">Akshat Jerath</a>
-      <nav class="nav-links" id="site-nav" aria-label="Primary">
-        <a href="index.html#work">Work</a>
-        <a href="index.html#about">About</a>
-        <a class="menu-cta" href="#contact">Get in touch</a>
-      </nav>
-      <div class="nav-actions">
-        <button class="icon-btn theme-toggle" type="button" aria-label="Switch theme"><span class="ic i-sun"></span><span class="ic i-moon"></span></button>
-        <a class="btn btn-primary" data-magnetic href="#contact">Get in touch</a>
-        <button class="icon-btn menu-btn" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><span class="ic i-list"></span><span class="ic i-x"></span></button>
-      </div>
+<header class="island" id="island">
+  <a class="who" href="#top" aria-label="Akshat Jerath, home"><span class="av" aria-hidden="true">AJ</span><span class="nm">Akshat Jerath</span></a>
+  <span class="st" aria-hidden="true"><i></i><span class="stText">Open to UX/UI roles</span></span>
+  <nav aria-label="Main">
+    <a href="#work">Work</a><a href="#about">About</a><a class="cv" id="navCv" href="#" target="_blank" rel="noopener" hidden>CV</a><a href="#contact">Contact</a>
+  </nav>
+  <button type="button" class="theme" id="themeBtn" aria-label="Switch to day mode"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><g class="sun" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g><path class="moon" fill="currentColor" d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7z"/></svg></button>
+</header>
+
+<main id="home">
+  <section class="hero wrap ruled" id="top">
+    <div class="strip mono">
+      <span>Based in Mumbai, India</span>
+      <span>MDes Design Futures, ATLAS SkillTech</span>
+      <span>Faculty, École Intuit Lab</span>
+      <span class="open"><i></i><span class="stText">Open to UX/UI roles</span></span>
     </div>
-  </header>
-
-  <main id="main">
-    <!-- Room: one illustrated studio. The stage stays pinned while the sections scroll past it,
-         and the character changes pose for each one. Which pose goes with which section is set
-         in one commented block in styles.css ("Room story"). Art coordinates on the boards
-         (--x --y --w --h) are fractions of the 2752x1536 room image. -->
-    <div class="room">
-      <section class="room-step hello" aria-labelledby="hello-title">
-        <div class="room-card">
-          <h1 class="display h-md" id="hello-title">Hello, I'm Akshat Jerath.</h1>
-          <p class="lede">UX and UI designer studying Design Futures in Mumbai.</p>
-          <p class="scroll-cue" aria-hidden="true">Scroll to look around <span class="ic i-arrow-right"></span></p>
-        </div>
-      </section>
-
-      <section class="room-step work" id="work" aria-labelledby="work-title">
-        <div class="room-pin">
-          <div class="room-card">
-            <h2 class="display h-md" id="work-title">Work</h2>
-            <p class="body"><span class="copy-room">Four projects, pinned to the walls. Point at a board, or tab to one, and open it.</span><span class="copy-list">Four projects. The full list is below.</span></p>
-            <a class="see-all" href="#projects">See all projects <span class="ic i-arrow-right" aria-hidden="true"></span></a>
-          </div>
-        </div>
-      </section>
-
-      <div class="room-stage">
-        <div class="room-box" aria-hidden="true">
-          <div class="l-city"></div>
-          <div class="l-room">
-            <div class="room-glow"></div>
-            <!-- A label pinned to the lower-right wireframe board, which is the experience board. -->
-            <span class="board-tag" style="--x:0.9; --y:0.7">Experience</span>
-          </div>
-          <div class="l-actor">
-            <img class="desk" src="assets/img/room/desk.webp" alt="" width="2816" height="1536" decoding="async">
-            <!-- Poses in story order: later ones paint on top of earlier ones. -->
-            <img class="pose pose-wave" src="assets/img/room/pose-wave.webp" alt="" width="2752" height="1536" fetchpriority="high">
-            <img class="pose pose-cross-hands" src="assets/img/room/pose-cross-hands.webp" alt="" width="2752" height="1536" loading="lazy" decoding="async">
-            <img class="pose pose-right-down" src="assets/img/room/pose-right-down.webp" alt="" width="2752" height="1536" loading="lazy" decoding="async">
-            <img class="pose pose-book-pen" src="assets/img/room/pose-book-pen.webp" alt="" width="2752" height="1536" loading="lazy" decoding="async">
-            <img class="pose pose-chair" src="assets/img/room/pose-chair.webp" alt="" width="2752" height="1536" loading="lazy" decoding="async">
-            <!-- Poses for pointing at a board (hover or focus). -->
-            <img class="pose pose-left-middle" src="assets/img/room/pose-left-middle.webp" alt="" width="2750" height="1536" loading="lazy" decoding="async">
-            <img class="pose pose-right-up" src="assets/img/room/pose-right-up.webp" alt="" width="2752" height="1536" loading="lazy" decoding="async">
-            <img class="pose pose-right-middle" src="assets/img/room/pose-right-middle.webp" alt="" width="2750" height="1536" loading="lazy" decoding="async">
-          </div>
-        </div>
-
-        <ul class="boards" aria-labelledby="work-title">
-          <!-- One <li> per project, all equal. --x --y --w --h place it on the art (fractions of the room image),
-               --rot tilts the poster, --py (optional, default 50%) is how far down the board it is pinned, --pbg and --pfg are the poster's colour and text colour.
-               data-side is the side the hover card opens on.
-               When a poster image exists, uncomment the <img> inside its .poster. -->
-          <li style="--x:-0.012; --y:0.105; --w:0.134; --h:0.33; --rot:-3deg; --pbg:#c96f4f; --pfg:#1d0f09">
-            <a href="ankur.html" data-pose="left-middle" data-side="left" aria-labelledby="p-ankur-n" aria-describedby="p-ankur-k p-ankur-b">
-              <span class="poster" aria-hidden="true">
-                <span class="poster-face"><span class="poster-name">Ankur</span><span class="poster-type">Early-years teaching app</span></span>
-                <!-- <img class="poster-img" src="assets/img/room/poster-ankur.webp" alt="" width="600" height="800" decoding="async"> -->
-              </span>
-              <span class="pin" aria-hidden="true"></span>
-              <span class="board-card">
-                <span class="board-name" id="p-ankur-n">Ankur <span class="ic i-arrow-up-right" aria-hidden="true"></span></span>
-                <span class="board-kind"><span id="p-ankur-k">Interaction design, mobile app</span></span>
-                <span class="board-blurb" id="p-ankur-b">A smart notebook for early-years teachers in India. The teacher observes, the AI suggests, the teacher decides.</span>
-              </span>
-            </a>
-          </li>
-          <li style="--x:0.132; --y:0.215; --w:0.08; --h:0.47; --py:30%; --rot:2.5deg; --pbg:#2f6f73; --pfg:#f4f1ea">
-            <a href="savvy.html" data-pose="left-middle" data-side="left" aria-labelledby="p-savvy-n" aria-describedby="p-savvy-k p-savvy-b">
-              <span class="poster" aria-hidden="true">
-                <span class="poster-face"><span class="poster-name">SAVVY</span><span class="poster-type">Dine-out deal app</span></span>
-                <!-- <img class="poster-img" src="assets/img/room/poster-savvy.webp" alt="" width="600" height="800" decoding="async"> -->
-              </span>
-              <span class="pin" aria-hidden="true"></span>
-              <span class="board-card">
-                <span class="board-name" id="p-savvy-n">SAVVY <span class="ic i-arrow-up-right" aria-hidden="true"></span></span>
-                <span class="board-kind"><span id="p-savvy-k">iOS and Android app</span></span>
-                <span class="board-blurb" id="p-savvy-b">Compares dine-out deals across Swiggy Dineout, District and EazyDiner, and shows what you'll actually pay, with coins and cover charges counted.</span>
-              </span>
-            </a>
-          </li>
-          <li style="--x:0.789; --y:0.215; --w:0.08; --h:0.47; --py:30%; --rot:-2deg; --pbg:#d9a640; --pfg:#241c08">
-            <a href="greggs.html" data-pose="right-middle" data-side="below" aria-labelledby="p-greggs-n" aria-describedby="p-greggs-k p-greggs-b">
-              <span class="poster" aria-hidden="true">
-                <span class="poster-face"><span class="poster-name">Greggs</span><span class="poster-type">UX case study</span></span>
-                <!-- <img class="poster-img" src="assets/img/room/poster-greggs.webp" alt="" width="600" height="800" decoding="async"> -->
-              </span>
-              <span class="pin" aria-hidden="true"></span>
-              <span class="board-card">
-                <span class="board-name" id="p-greggs-n">Greggs <span class="ic i-arrow-up-right" aria-hidden="true"></span></span>
-                <span class="board-kind"><span id="p-greggs-k">UX case study</span></span>
-                <span class="board-blurb ph" id="p-greggs-b">one or two lines on the project.</span>
-              </span>
-            </a>
-          </li>
-          <li style="--x:0.877; --y:0.098; --w:0.135; --h:0.34; --rot:3deg; --pbg:#8fae92; --pfg:#14201a">
-            <a href="critical-design.html" data-pose="right-up" data-side="right" aria-labelledby="p-critical-n" aria-describedby="p-critical-k p-critical-b">
-              <span class="poster" aria-hidden="true">
-                <span class="poster-face"><span class="poster-name">Critical Design</span><span class="poster-type">Speculative design</span></span>
-                <!-- <img class="poster-img" src="assets/img/room/poster-critical-design.webp" alt="" width="600" height="800" decoding="async"> -->
-              </span>
-              <span class="pin" aria-hidden="true"></span>
-              <span class="board-card">
-                <span class="board-name" id="p-critical-n">Critical Design <span class="ic i-arrow-up-right" aria-hidden="true"></span></span>
-                <span class="board-kind"><span id="p-critical-k">Speculative design, team project</span></span>
-                <span class="board-blurb" id="p-critical-b">A speculative design project imagining a local food hub for Mumbai that grows produce in disused buildings.</span>
-              </span>
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <section class="room-step skills" id="skills" aria-labelledby="skills-title">
-        <div class="room-pin">
-          <div class="room-card room-card-wide">
-            <h2 class="display h-md" id="skills-title">Skills</h2>
-            <div class="skill-cols">
-              <div>
-                <h3>Research</h3>
-                <ul>
-                  <li>User interviews</li>
-                  <li>Surveys and analysis</li>
-                  <li>Affinity mapping</li>
-                  <li>Journey mapping</li>
-                  <li>Usability testing</li>
-                </ul>
-              </div>
-              <div>
-                <h3>Design</h3>
-                <ul>
-                  <li>Wireframing</li>
-                  <li>UI design</li>
-                  <li>Design systems</li>
-                  <li>Prototyping</li>
-                  <li>Presentation design</li>
-                </ul>
-              </div>
-              <div class="skill-tools">
-                <h3>Tools</h3>
-                <!-- Edit this list to match the tools you actually use. -->
-                <div class="chips">
-                  <span class="chip">Figma</span>
-                  <span class="chip">FigJam</span>
-                  <span class="chip">Photoshop</span>
-                  <span class="chip">Illustrator</span>
-                  <span class="chip">Framer</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="room-step experience" id="experience" aria-labelledby="experience-title">
-        <div class="room-pin">
-          <div class="room-card">
-            <h2 class="display h-md" id="experience-title">Work experience</h2>
-            <!-- UX and UI work only. Copy one <li> per role. -->
-            <ul class="entries">
-              <li class="ph">role, organisation, dates, one line</li>
-              <li class="ph">role, organisation, dates, one line</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section class="room-step education" id="education" aria-labelledby="education-title">
-        <div class="room-pin">
-          <div class="room-card">
-            <h2 class="display h-md" id="education-title">Education</h2>
-            <ul class="entries">
-              <li><strong>MDes Design Futures</strong>ATLAS SkillTech University, Mumbai (current)</li>
-              <li class="ph">earlier degree or course, college, years</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section class="room-step about" id="about" aria-labelledby="about-title">
-        <div class="room-pin" id="contact">
-          <div class="room-card room-card-wide">
-            <h2 class="display h-md" id="about-title">About</h2>
-            <div class="about-cols">
-            <p class="body ph">Two or three sentences on who you are, what you studied and what you care about in design.</p>
-            <div>
-            <dl class="card-facts">
-              <div><dt>Based in</dt><dd class="ph">[City, country]</dd></div>
-              <div><dt>Open to</dt><dd class="ph">[Internships, full-time, freelance]</dd></div>
-            </dl>
-            <h3>Get in touch</h3>
-            <!-- Replace the placeholder with a real address once you have one:
-                 <a class="link-arrow" href="mailto:you@yourdomain.com">you@yourdomain.com <span class="ic i-arrow-up-right"></span></a>
-                 Add each social link or resume only when it has a real URL, in a div after it:
-                 <div class="socials">
-                   <a href="https://..." >LinkedIn <span class="ic i-arrow-up-right"></span></a>
-                   <a href="assets/resume.pdf">Download resume <span class="ic i-arrow-up-right"></span></a>
-                 </div> -->
-            <p class="ph">your email</p>
-            </div>
-            </div>
-          </div>
-        </div>
-      </section>
+    <p class="hi">Hi, I'm <b>Akshat Jerath</b>. AJ for short.</p>
+    <p class="giant" role="heading" aria-level="1"><span>UX<em>/</em>UI</span><span>Designer</span></p>
+    <div class="lede">
+      <p>I design for the moment someone has to decide: what to pay for dinner, what to teach a child next. Research first, then the smallest change that makes the choice clear.</p>
+      <p class="hint">Pick a project below, or press <span class="key">1</span>–<span class="key">4</span></p>
     </div>
+  </section>
 
-    <!-- All projects: a deck of cards. Each one is a copy of a single <li>. -->
-    <section class="section deck" id="projects" aria-labelledby="projects-title">
-      <div class="wrap">
-        <div class="section-head">
-          <h2 class="display h-lg" id="projects-title">All projects</h2>
-        </div>
-        <ul class="deck-list">
-          <li class="deck-card" style="--i:0; --pbg:#c96f4f; --pfg:#1d0f09">
-            <a href="ankur.html" aria-labelledby="d-ankur-n" aria-describedby="d-ankur-b">
-              <span class="poster" aria-hidden="true">
-                <span class="poster-face"><span class="poster-name">Ankur</span><span class="poster-type">Early-years teaching app</span></span>
-                <!-- <img class="poster-img" src="assets/img/room/poster-ankur.webp" alt="" width="600" height="800" decoding="async"> -->
-              </span>
-              <span class="deck-body">
-                <span class="deck-kind"><span class="deck-year">2026</span>Interaction design, mobile app</span>
-                <span class="deck-name" id="d-ankur-n">Ankur</span>
-                <span class="deck-blurb" id="d-ankur-b">A smart notebook for early-years teachers in India. The teacher observes, the AI suggests, the teacher decides.</span>
-                <span class="deck-open">Open project <span class="ic i-arrow-up-right" aria-hidden="true"></span></span>
-              </span>
-            </a>
-          </li>
-          <li class="deck-card" style="--i:1; --pbg:#2f6f73; --pfg:#f4f1ea">
-            <a href="savvy.html" aria-labelledby="d-savvy-n" aria-describedby="d-savvy-b">
-              <span class="poster" aria-hidden="true">
-                <span class="poster-face"><span class="poster-name">SAVVY</span><span class="poster-type">Dine-out deal app</span></span>
-                <!-- <img class="poster-img" src="assets/img/room/poster-savvy.webp" alt="" width="600" height="800" decoding="async"> -->
-              </span>
-              <span class="deck-body">
-                <span class="deck-kind"><span class="deck-year">2026</span>iOS and Android app</span>
-                <span class="deck-name" id="d-savvy-n">SAVVY</span>
-                <span class="deck-blurb" id="d-savvy-b">Compares dine-out deals across Swiggy Dineout, District and EazyDiner, and shows what you'll actually pay, with coins and cover charges counted.</span>
-                <span class="deck-open">Open project <span class="ic i-arrow-up-right" aria-hidden="true"></span></span>
-              </span>
-            </a>
-          </li>
-          <li class="deck-card" style="--i:2; --pbg:#d9a640; --pfg:#241c08">
-            <a href="greggs.html" aria-labelledby="d-greggs-n" aria-describedby="d-greggs-b">
-              <span class="poster" aria-hidden="true">
-                <span class="poster-face"><span class="poster-name">Greggs</span><span class="poster-type">UX case study</span></span>
-                <!-- <img class="poster-img" src="assets/img/room/poster-greggs.webp" alt="" width="600" height="800" decoding="async"> -->
-              </span>
-              <span class="deck-body">
-                <span class="deck-kind"><span class="deck-year ph">[Year]</span>UX case study</span>
-                <span class="deck-name" id="d-greggs-n">Greggs</span>
-                <span class="deck-blurb ph" id="d-greggs-b">one or two lines on the project.</span>
-                <span class="deck-open">Open project <span class="ic i-arrow-up-right" aria-hidden="true"></span></span>
-              </span>
-            </a>
-          </li>
-          <li class="deck-card" style="--i:3; --pbg:#8fae92; --pfg:#14201a">
-            <a href="critical-design.html" aria-labelledby="d-critical-n" aria-describedby="d-critical-b">
-              <span class="poster" aria-hidden="true">
-                <span class="poster-face"><span class="poster-name">Critical Design</span><span class="poster-type">Speculative design</span></span>
-                <!-- <img class="poster-img" src="assets/img/room/poster-critical-design.webp" alt="" width="600" height="800" decoding="async"> -->
-              </span>
-              <span class="deck-body">
-                <span class="deck-kind"><span class="deck-year">2026</span>Speculative design, team project</span>
-                <span class="deck-name" id="d-critical-n">Critical Design</span>
-                <span class="deck-blurb" id="d-critical-b">A speculative design project imagining a local food hub for Mumbai that grows produce in disused buildings.</span>
-                <span class="deck-open">Open project <span class="ic i-arrow-up-right" aria-hidden="true"></span></span>
-              </span>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- Process: sticky heading, accordion -->
-    <section class="section" id="process">
-      <div class="wrap split">
-        <div class="sticky" data-reveal>
-          <h2 class="display h-lg">How I work</h2>
-          <p class="body" style="margin-top:20px">Every project follows the same loop, and each step leaves something you can look at.</p>
-        </div>
-        <div class="acc" data-reveal style="--d:120ms">
-          <details name="process" open>
-            <summary>Research <span class="ic i-plus"></span></summary>
-            <p class="acc-body">Interviews, surveys and observation to understand what people do today and why.</p>
-          </details>
-          <details name="process">
-            <summary>Define <span class="ic i-plus"></span></summary>
-            <p class="acc-body">Turning findings into a clear problem, a persona and a goal that can be checked.</p>
-          </details>
-          <details name="process">
-            <summary>Ideate <span class="ic i-plus"></span></summary>
-            <p class="acc-body">Sketching flows and structures, then choosing the strongest direction.</p>
-          </details>
-          <details name="process">
-            <summary>Prototype <span class="ic i-plus"></span></summary>
-            <p class="acc-body">Building clickable screens in Figma to test ideas before committing to them.</p>
-          </details>
-          <details name="process">
-            <summary>Test <span class="ic i-plus"></span></summary>
-            <p class="acc-body">Putting the prototype in front of real users, then fixing what they struggle with.</p>
-          </details>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="wrap">
-      <span>&copy; 2026 Akshat Jerath</span>
-      <a href="#top">Back to top</a>
+  <section class="work wrap" id="work">
+    <div class="sec-head">
+      <div><p class="mono dim">(Selected work)</p><h2>Four projects<br>from my MDes</h2></div>
+      <p class="side">Two products built on research, a brand strategy for 2050, and a speculative design project that's still running.</p>
     </div>
-  </footer>
+    <div class="tiles" id="tiles"></div>
+  </section>
+
+  <section class="about wrap" id="about">
+    <p class="mono dim">(About)</p>
+    <h2 style="font-size:clamp(34px,5vw,60px)">I teach design. I practise UX.</h2>
+    <div class="about-grid">
+      <div class="about-copy">
+        <p>I'm in the first year of an MDes in Design Futures at ATLAS SkillTech University in Mumbai, and I'm on the faculty at École Intuit Lab.</p>
+        <p>I like starting where people are already losing something: money at a restaurant table, a child slipping through a busy classroom. Then I research it properly and design the smallest thing that makes the decision clearer.</p>
+        <p>Teaching keeps me honest about it. Most of my week is running sessions, giving feedback and explaining why one option beats another.</p>
+      </div>
+      <ol class="journey" aria-label="Experience and education">
+        <li><b>MDes, Design Futures</b><span>ATLAS SkillTech University, Mumbai · first year</span></li>
+        <li><b>Faculty, École Intuit Lab</b><span>Feb 2026 to now</span></li>
+        <li><b>Faculty, K. R. Mangalam University</b><span>Before École Intuit Lab</span></li>
+        <li><b>Named inventor on three Indian patent applications</b><span>Product design · published Sep 2026</span><span class="todo" data-draft>What they are for, and the application numbers or a link</span></li>
+      </ol>
+    </div>
+    <div class="skills">
+      <div><p class="mono dim">Research</p><ul><li>Interviews</li><li>Surveys</li><li>Field audits</li><li>Competitor audits</li><li>Desk research</li></ul></div>
+      <div><p class="mono dim">Structure</p><ul><li>User flows</li><li>Task flows</li><li>Information architecture</li><li>OOUX</li><li>Card sorting</li></ul></div>
+      <div><p class="mono dim">Interface</p><ul><li>Wireframes</li><li>Hi-fi UI</li><li>Design systems</li><li>iOS and Android</li></ul></div>
+      <div><p class="mono dim">AI</p><ul><li>Human-in-the-loop flows</li><li>AI image, video and sound pipelines</li><li>AI prototyping</li></ul></div>
+      <div><p class="mono dim">Tools</p><ul><li>Figma</li><li>FigJam</li><li>Miro</li><li>Canva</li><li>Lovable</li></ul></div>
+    </div>
+  </section>
+
+  <section class="contact wrap" id="contact"></section>
+</main>
+
+<main id="case" aria-live="polite"></main>
+
+<footer><div class="wrap"><span>© 2026 Akshat Jerath</span><span class="mono">Mumbai, India</span></div></footer>
+
+<dialog class="lb" id="lb" aria-label="Image viewer">
+  <div class="lb-in"><div class="lb-bar"><span id="lbCap"></span><button type="button" id="lbClose">Close</button></div><div class="lb-scroll"><img id="lbImg" alt=""></div></div>
+</dialog>
+<script src="content.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
