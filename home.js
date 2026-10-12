@@ -1,6 +1,6 @@
 /* Home page code. Data (ME, P) comes from content.js; the phone menu from nav.js.
    The animated pieces are hand-written, vanilla versions of React Bits components (MIT + Commons Clause):
-   Tech Text (the name, on pointer only), Grid Motion (hero background),
+   the name (static), Grid Motion (hero background),
    Profile Card, Logo Loop, Folder Float and Star Border (CSS only, in home.css). */
 (() => {
   const RM = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -81,9 +81,7 @@
       if (cur.some((c, i) => Math.abs(c - tgt[i]) > .005)) raf = requestAnimationFrame(frame);
     };
     const kick = () => { if (!raf) raf = requestAnimationFrame(frame); };
-    svg.addEventListener("pointermove", e => { p = toSvg(e.clientX, e.clientY); kick(); });
-    svg.addEventListener("pointerleave", () => { p = null; kick(); });
-    const ready = () => layout(); // no auto loop any more: the outline only follows the pointer
+    const ready = () => layout(); // static name: no loop, no pointer effect
     (document.fonts ? document.fonts.ready : Promise.resolve()).then(ready);
     new ResizeObserver(layout).observe(svg.parentNode);
   });
@@ -172,10 +170,6 @@
   let sq = 0; const onScroll = () => { if (!sq) sq = requestAnimationFrame(() => { sq = 0; stackFx(); tlFx(); }); };
   addEventListener("scroll", onScroll, {passive: true}); addEventListener("resize", onScroll); onScroll();
 
-  /* ---------- Star Border: a light with a short tail runs round each button's edge ---------- */
-  if (!RM) document.querySelectorAll(".cta .star.solid").forEach(b => { // one lit button: "See the work"
-        b.insertAdjacentHTML("beforeend", Array.from({length: 7}, (_, k) => `<i class="sp" aria-hidden="true" style="--k:${k};--z:${8 - k}px;--o:${(1 - k / 7).toFixed(2)}"></i>`).join(""));
-  });
 
   /* ---------- Profile Card: tilts toward the pointer ---------- */
   document.querySelectorAll("[data-profile-card]").forEach(c => {

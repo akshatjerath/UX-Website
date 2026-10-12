@@ -1294,7 +1294,7 @@ body.csp.cdp{--w-bg:#2F3D2B;--w-ink:#E6EDD8;--w-muted:#B5C0A6;--w-accent:#E6EDD8
 .rg-tag{justify-self:start;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;background:#FDC72F;color:#0B2B45}
 .ring-world .rg-card{background:#0A4C7E}
 .ring-world /* the drum */
-.ring-3d .ring-stage{position:relative;perspective:1700px;overflow:hidden;margin-inline:calc(var(--gut) * -1);cursor:grab;touch-action:pan-y}
+.ring-3d .ring-stage{position:relative;perspective:1700px;overflow:hidden;margin-inline:calc(var(--gut) * -1)}
 .ring-3d .ring-track{position:absolute;inset:0;display:block;overflow:visible;padding:0;transform-style:preserve-3d;transition:transform .9s var(--ease)}
 .ring-3d .ring-item{position:absolute;left:50%;top:20px;width:300px;margin-left:-150px;backface-visibility:hidden;-webkit-backface-visibility:hidden}
 .ring-3d .ring-item:not(.front) .rg-cap{opacity:.8}

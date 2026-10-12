@@ -97,3 +97,6 @@ With "reduce motion" switched on, every visual shows its finished state straight
 | Greggs · rings | Pause, previous and next buttons removed at Akshat's request. They still turn only while on screen, hold while pointed at or focused, and phones and reduced motion get a still, swipeable row. |
 | Critical Design · scenario | Pinning removed; back to counting down once when it comes into view. |
 | SAVVY | Unchanged on purpose. |
+| Home · name (round 7b) | Fully static now: no loop, no pointer outline. |
+| "See the work" (round 7b) | Light removed; no button has a running light. |
+| Greggs · rings (round 7b) | No mouse, drag, keyboard or text-selection input; they only step on their own while on screen. |

@@ -1,7 +1,7 @@
 /* Greggs page only. [data-ring]: image cards on a 3D ring that turns on its own.
    "circular": cards on the outside of a drum (after React Bits' Circular Carousel).
    "concave": cards on the inside of the drum, so the sides lean towards you (after React Bits Pro's Concave Carousel).
-   It steps to the next card every 3.5 s while on screen and holds while you point at it or focus it (no buttons, by choice).
+   It steps to the next card every 3.5 s while on screen. Mouse, clicks and text selection don't move it (by choice).
    Phones, narrow windows and reduced motion get a plain swipeable row. Styles: case.css, "Greggs · rings". */
 (() => {
   const RM = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -37,14 +37,6 @@
     };
     const tick = () => { clearTimeout(timer); if (three && playing && !held && seen) timer = setTimeout(() => { turn(cur + 1, true); tick(); }, 3500); };
 
-    const hold = v => { held = v; tick(); };
-    root.addEventListener("pointerenter", () => hold(true)); root.addEventListener("pointerleave", () => hold(false));
-    root.addEventListener("focusin", () => hold(true)); root.addEventListener("focusout", () => hold(false));
-    root.addEventListener("keydown", e => { if (e.key === "ArrowRight"){ turn(cur + 1); tick(); } if (e.key === "ArrowLeft"){ turn(cur - 1); tick(); } });
-    // drag or swipe on the 3D ring
-    let x0 = null;
-    stage.addEventListener("pointerdown", e => { if (three) x0 = e.clientX; });
-    addEventListener("pointerup", e => { if (x0 === null) return; const dx = e.clientX - x0; x0 = null; if (Math.abs(dx) > 40){ turn(cur + (dx < 0 ? 1 : -1)); tick(); } });
     // only turn while it's on screen
     new IntersectionObserver(es => { seen = es[0].isIntersecting; tick(); }, {threshold: .35}).observe(root);
     wide.addEventListener("change", layout);

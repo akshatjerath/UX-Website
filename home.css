@@ -11,8 +11,8 @@
 .hero-h{display:block;font-weight:inherit}
 .hi{display:block;font:600 clamp(22px,2.6vw,44px)/1.1 var(--display);color:var(--muted);letter-spacing:-.01em}
 .role{display:block;font:800 clamp(46px,10.6vw,212px)/.92 var(--display);letter-spacing:-.045em;color:var(--accent)}
-.tt{display:block;width:100%;height:auto;overflow:visible;margin:.08em 0 .02em;touch-action:pan-y;cursor:crosshair}
-.tt text{font-family:var(--display);font-weight:800;fill:var(--ink);stroke:var(--accent);stroke-width:2.2;stroke-dasharray:7 5;stroke-linejoin:round;paint-order:stroke}
+.tt{display:block;width:100%;height:auto;overflow:visible;margin:.08em 0 .02em}
+.tt text{font-family:var(--display);font-weight:800;fill:var(--ink);stroke:none}
 .tt .sel rect.box{fill:none;stroke:var(--accent);stroke-width:1.5}
 .tt .sel rect.h{fill:var(--bg);stroke:var(--accent);stroke-width:1.5}
 .tt .sel text{font:500 13px var(--mono);fill:var(--accent);stroke:none;stroke-dasharray:none;letter-spacing:.04em}

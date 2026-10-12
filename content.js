@@ -17,7 +17,7 @@ const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 /* ===== YOUR DETAILS. Empty fields stay hidden. ===== */
 const ME = {
-  cv: "",        // your UX CV, e.g. "assets/Akshat_Jerath_CV.pdf". The CV buttons stay hidden until this is set.
+  cv: "assets/Akshat_Jerath_CV.pdf",   // your UX CV; empty hides every CV button
   email: "akshatjeratth@gmail.com",     // as listed on akshatjerath.com
   linkedin: "https://www.linkedin.com/in/akshat-jerath/",
   seeking: ""   // left empty on purpose: the home page no longer shows an "open to roles" line
