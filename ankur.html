@@ -1,12 +1,180 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
 <meta charset="utf-8">
-<title>Akshat Jerath Portfolio</title>
-<meta name="robots" content="noindex">
-<link rel="icon" href="data:,">
-<meta http-equiv="refresh" content="0; url=index.html#ankur">
-<link rel="canonical" href="index.html#ankur">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ankur, a UX case study by Akshat Jerath</title>
+<meta name="description" content="Ankur: a notebook for early-years teachers in India. The teacher notices, Ankur suggests one small next step, the teacher decides. Live at ankurs.online.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Ccircle cx=%2732%27 cy=%2732%27 r=%2730%27 fill=%27%230C0E11%27 stroke=%27%2325CA7F%27 stroke-width=%274%27/%3E%3Ctext x=%2732%27 y=%2741%27 font-family=%27Arial%27 font-weight=%27700%27 font-size=%2724%27 fill=%27%2325CA7F%27 text-anchor=%27middle%27%3EAJ%3C/text%3E%3C/svg%3E">
+<meta name="theme-color" content="#E3E0F6">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ankur: the teacher decides, the app scaffolds">
+<meta property="og:description" content="UX case study by Akshat Jerath. Research, structure and a live prototype for early-years teachers in India.">
+<meta name="twitter:card" content="summary">
+<link rel="preload" href="assets/fonts/bricolage-grotesque-latin-standard-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="base.css">
+<link rel="stylesheet" href="case.css">
 </head>
-<body><p>This page moved. <a href="index.html#ankur">Open the case study</a>.</p></body>
+<body class="csp ank">
+<a class="skip" href="#main">Skip to the case study</a>
+<header class="island" id="island">
+  <a class="who" href="index.html" aria-label="Akshat Jerath, home"><span class="av" aria-hidden="true">AJ</span><span class="nm">Akshat Jerath</span></a>
+  <nav aria-label="Main"><a href="index.html#work"><span aria-hidden="true">← </span>Work</a><a href="index.html#about">About</a><a href="index.html#contact">Contact</a></nav>
+</header>
+<main id="main">
+
+<section class="ank-hero" aria-labelledby="t-hero" data-nav="Context|Overview">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">UX case study, 2026</p>
+      <h1 id="t-hero">Teachers notice everything. Nothing turns it into a plan.</h1>
+      <p class="lede">Ankur is a notebook for teachers of children aged 3 to 8 in India. The teacher notices, Ankur suggests one small next step, and the teacher decides.</p>
+      <div class="cta-row"><a class="btn-ink" href="https://ankurs.online" target="_blank" rel="noopener">Open the live app</a></div>
+    </div>
+    <svg class="sprout" viewBox="0 0 300 320" aria-hidden="true">
+      <path pathLength="1" d="M150 300 C150 240 146 190 152 120"/>
+      <path class="leaf l1" d="M150 170 C110 170 80 140 74 100 C116 100 146 126 150 170Z"/>
+      <path class="leaf l2" d="M152 130 C160 86 196 60 240 62 C236 106 200 130 152 130Z"/>
+      <path class="soil" d="M60 302 H240"/>
+    </svg>
+  </div>
+  <div class="wrap facts-wrap">
+    <dl class="facts-line">
+      <div><dt>Role</dt><dd>Research, structure and live prototype</dd></div>
+      <div><dt>Course</dt><dd>Experiential Design</dd></div>
+      <div><dt>Tools</dt><dd>FigJam, Lovable</dd></div>
+      <div><dt>Live app</dt><dd><a href="https://ankurs.online" target="_blank" rel="noopener">ankurs.online</a></dd></div>
+      <div><dt>Status</dt><dd>Live. Not piloted in a classroom yet</dd></div>
+    </dl>
+    <p class="note" data-draft>Add: solo or team? Your long poster says “add teammates”. Put the answer in the Role line.</p>
+  </div>
+</section>
+
+<section aria-labelledby="t-prob" data-nav="Context|Problem">
+  <div class="wrap">
+    <div class="head split">
+      <div><p class="eyebrow">The problem</p><h2 id="t-prob">Children slip through a busy classroom.</h2></div>
+      <p class="sub">Notes sit in paper registers and get typed up twice. It's for pre-primary and Std 1 to 2 teachers and Anganwadi workers, including rural, low-internet areas.</p>
+    </div>
+    <div class="bars rv">
+      <div class="bar"><b>23.4%</b><p>of Grade 3 children read at a Grade 2 level.</p><div class="track2" aria-hidden="true"><div class="fill" style="--v:23.4%"></div></div><small>Source: ASER 2024</small></div>
+      <div class="bar"><b>About 19%</b><p>of a teacher's day goes to teaching.</p><div class="track2" aria-hidden="true"><div class="fill" style="--v:19%"></div></div><small>Source: desk research</small><p class="note" data-draft>Add: the exact source for 19%.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" aria-labelledby="t-proc" data-nav="Context|Process">
+  <div class="wrap">
+    <div class="head split">
+      <div><p class="eyebrow">Design process</p><h2 id="t-proc">Desk research to a live app.</h2></div>
+      <p class="sub">Six stages. Teachers haven't been interviewed yet, so every finding here comes from policy, published data and other tools.</p>
+    </div>
+    <div class="proc rv" data-stagger style="grid-template-columns:repeat(6,minmax(0,1fr))">
+      <div class="st"><span class="dot">01</span><b>Desk research</b><span>India's policy and six tools</span></div>
+      <div class="st"><span class="dot">02</span><b>Synthesis</b><span>SWOT, 5W1H, stakeholders</span></div>
+      <div class="st"><span class="dot">03</span><b>Structure</b><span>Card sort, MoSCoW, OOUX</span></div>
+      <div class="st"><span class="dot">04</span><b>Concept</b><span>A six-step loop</span></div>
+      <div class="st"><span class="dot">05</span><b>Course decks</b><span>A four-step loop</span></div>
+      <div class="st"><span class="dot">06</span><b>Live app</b><span>One target per child</span></div>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="t-loop" data-nav="The service|How it works">
+  <div class="wrap">
+    <div class="head split">
+      <div><p class="eyebrow">How it works</p><h2 id="t-loop">Six steps. The teacher decides.</h2></div>
+      <p class="sub">Four steps belong to the teacher. Ankur only drafts and tracks. Pick a step to read it.</p>
+    </div>
+  </div>
+  <div class="wrap lp rv" data-lp>
+    <div class="lp-ring">
+      <svg viewBox="0 0 600 600" aria-hidden="true"><circle cx="300" cy="300" r="220" fill="none" stroke="#D9D3C2" stroke-width="2" stroke-dasharray="4 8"/><path class="arc t" pathLength="1" d="M309.6 80.2 A220 220 0 0 1 485.5 181.8"/><path class="arc t" pathLength="1" d="M495.1 198.4 A220 220 0 0 1 495.1 401.6"/><path class="arc a" pathLength="1" d="M485.5 418.2 A220 220 0 0 1 309.6 519.8"/><path class="arc t" pathLength="1" d="M290.4 519.8 A220 220 0 0 1 114.5 418.2"/><path class="arc t" pathLength="1" d="M104.9 401.6 A220 220 0 0 1 104.9 198.4"/><path class="arc a" pathLength="1" d="M114.5 181.8 A220 220 0 0 1 290.4 80.2"/></svg>
+      <button type="button" data-step data-t="Notice" data-d="Tap what you saw: reading, writing, speaking, behaviour." data-who="Teacher" style="left:72.7%;top:10.7%" aria-pressed="false"><small>1</small>Notice</button><button type="button" data-step data-t="Add the work" data-d="A photo of what the child made." data-who="Teacher" style="left:95.3%;top:50%" aria-pressed="false"><small>2</small>Add the work</button><button type="button" data-step data-t="One small target" data-d="Drafted from India's NCF-FS competencies." data-who="Ankur drafts" style="left:72.7%;top:89.3%" aria-pressed="false"><small>3</small>One small target</button><button type="button" data-step data-t="Decide" data-d="Approve, edit, redo or skip. Nothing is automatic." data-who="Teacher" style="left:27.3%;top:89.3%" aria-pressed="false"><small>4</small>Decide</button><button type="button" data-step data-t="Print the activity" data-d="Low-cost play with stones, bottle caps and chalk." data-who="Teacher" style="left:4.7%;top:50%" aria-pressed="false"><small>5</small>Print the activity</button><button type="button" data-step data-t="Check and see growth" data-d="A month-end check. “Needs more time” is a normal answer." data-who="Ankur tracks" style="left:27.3%;top:10.7%" aria-pressed="false"><small>6</small>Check and see growth</button>
+      <div class="lp-c" aria-hidden="true"><span class="n">1</span><span><span class="who">Teacher</span></span></div>
+    </div>
+    <div class="lp-side" aria-live="polite">
+      <h3>Notice</h3>
+      <p class="desc">Tap what you saw: reading, writing, speaking, behaviour.</p>
+      <div class="legend"><span><i></i>Teacher</span><span><i class="a"></i>Ankur</span></div>
+      <blockquote>“You are the sensor; Ankur is the scaffold.”</blockquote>
+    </div>
+    <ol class="sr"><li>Notice: Tap what you saw: reading, writing, speaking, behaviour. (Teacher)</li><li>Add the work: A photo of what the child made. (Teacher)</li><li>One small target: Drafted from India's NCF-FS competencies. (Ankur drafts)</li><li>Decide: Approve, edit, redo or skip. Nothing is automatic. (Teacher)</li><li>Print the activity: Low-cost play with stones, bottle caps and chalk. (Teacher)</li><li>Check and see growth: A month-end check. “Needs more time” is a normal answer. (Ankur tracks)</li></ol>
+  </div>
+</section>
+
+<section aria-labelledby="t-mx" data-nav="Research|Flow, rivals, SWOT">
+  <div class="wrap">
+    <div class="head split">
+      <div><p class="eyebrow">Research and structure</p><h2 id="t-mx">The flow, the rivals, the risks.</h2></div>
+      <p class="sub">Six tools compared, and none covers all five things a teacher needs. Foreign tools have the right shape; Indian tools have the right curriculum. Switch between the views.</p>
+    </div>
+    <div data-research="ankur-task ankur-comp ankur-stake ankur-swot"></div>
+  </div>
+</section>
+
+<section aria-labelledby="t-dec" data-nav="Design|Decisions">
+  <div class="wrap">
+    <div class="head split">
+      <div><p class="eyebrow">Decisions</p><h2 id="t-dec">The AI suggests. The teacher has the last word.</h2></div>
+    </div>
+    <ol class="dec-list">
+      <li><b>Approve, edit, redo or skip.</b><span>A child is never labelled or scored.</span></li>
+      <li><b>Nicknames only, data kept on the device.</b><span>It lowers the bar for schools to trust it.</span></li>
+      <li><b>Test scores and leaderboards left out on purpose.</b><span>They would break the non-diagnostic rule.</span></li>
+      <li><b>Not another content or testing app.</b><span>DIKSHA and Jaadui Pitara are partners here.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="band" aria-labelledby="t-it" data-nav="Design|Iterations">
+  <div class="wrap">
+    <div class="head split">
+      <div><p class="eyebrow">Iterations</p><h2 id="t-it">From a six-step loop to one small target.</h2></div>
+      <p class="sub">Each version asked the teacher to do less and gave them one clear next step.</p>
+    </div>
+    <div class="vers">
+      <div><div class="pips" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div><h3>First concept</h3><p>A six-step loop for ages 3 to 6, with the AI simulated by hand.</p></div>
+      <div><div class="pips" aria-hidden="true"><i></i><i></i><i></i><i></i></div><h3>Course decks</h3><p>A four-step loop for ages 3 to 8. The AI drafts two to four targets.</p></div>
+      <div><div class="pips" aria-hidden="true"><i class="t"></i></div><h3>Live app</h3><p>One small target per child, the printable activity back as a core step, and work photos tracked over months.</p></div>
+    </div>
+    <p class="note" data-draft>Add: why you made each change.</p>
+  </div>
+</section>
+
+<section aria-labelledby="t-fin" data-nav="Design|Final design">
+  <div class="wrap">
+    <div class="head split">
+      <div><p class="eyebrow">Final design</p><h2 id="t-fin">Notice, target, print, check.</h2></div>
+      <p class="sub">The live app runs at ankurs.online, with a demo login on the sign-in page.</p>
+    </div>
+    <div class="slot2" data-draft><b>Add: screens of My class, Class at a glance and Progress, and a 10-second Rotato clip.</b> Record from the demo login only, so no real child names appear.</div>
+    <div class="cta-row"><a class="btn-ink" href="https://ankurs.online" target="_blank" rel="noopener">Open the live app</a></div>
+  </div>
+</section>
+
+<section style="padding-top:0" aria-labelledby="t-out" data-nav="Next|What’s next">
+  <div class="wrap">
+    <div class="head split">
+      <div><p class="eyebrow">What's next</p><h2 id="t-out">One number decides if it scales.</h2></div>
+      <p class="sub">Not tested in a classroom yet. The pilot has to show how often teachers approve the AI's drafts.</p>
+    </div>
+    <div class="gauge rv" role="img" aria-label="Target before scaling: teachers approve 70 to 80 percent of the AI's drafts. Not measured yet.">
+      <span class="band2"></span><span class="lbl">Target: 70 to 80% approved</span>
+      <span class="tick" style="left:0">0%</span><span class="tick" style="left:50%">50%</span><span class="tick" style="left:100%">100%</span>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0" aria-label="Next case study">
+  <div class="wrap"><a class="next" href="greggs.html"><span><span class="eyebrow">Next case study</span><span class="nm">Greggs 2050</span></span><span class="arr" aria-hidden="true">→</span></a></div>
+</section>
+</main>
+<footer><div class="wrap"><span>© 2026 Akshat Jerath</span><span>Mumbai, India</span></div></footer>
+<script src="content.js"></script>
+<script src="vendor/lenis.min.js"></script>
+<script src="case-widgets.js"></script>
+<script src="case.js"></script>
+<script src="nav.js"></script>
+</body>
 </html>

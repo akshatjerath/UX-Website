@@ -40,7 +40,7 @@ function stage(p, n){
 const teamTag = p => p.team ? `<span class="tag team">${esc(p.team)}</span>` : (DRAFT && p.teamTodo ? `<span class="tag todo">${esc(p.teamTodo)}</span>` : "");
 
 /* ----- work tiles: four equal tiles, 2x2 ----- */
-const tileHtml = (p,i) => `<a class="tile" href="#${p.id}" data-id="${p.id}">
+const tileHtml = (p,i) => `<a class="tile" href="${p.page || "#" + p.id}" data-id="${p.id}">
   ${stage(p, i+1)}
   <div class="tile-body">
     <div class="tags"><span class="tag">${esc(p.kindLabel)}</span>${p.tags.map(t => `<span class="tag">${esc(t)}</span>`).join("")}${teamTag(p)}</div>
@@ -477,6 +477,7 @@ function progress(){
 }
 function route(){
   const i = P.findIndex(p => "#" + p.id === location.hash);
+  if (i >= 0 && P[i].page) return location.replace(P[i].page);  // projects with their own page
   const inCase = document.body.classList.contains("case");
   if (i < 0){
     if (!inCase) return;

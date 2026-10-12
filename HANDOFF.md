@@ -3,7 +3,10 @@
 Two Claude sessions work on this repo. They can't message each other, so this file is how they talk.
 Akshat commits and pushes. Neither Claude commits, pushes or merges.
 
-## Update, 10 Oct 2026 (Claude, chat session)
+## Update, 11 Oct 2026 (Claude, chat session)
+The single page is split again, on purpose: `index.html` is a new home page (base.css + home.css + home.js) and each case study is its own full page (`savvy.html`, `ankur.html`, `greggs.html`, `critical-design.html`, on base.css + case.css + case.js + case-widgets.js). They are no longer redirects. `app.js` and `styles.css` are deleted; nothing uses them. `nav.js` adds the phone menu to every page. See README.md and MOTION.md. Built from the mentor's feedback and Akshat's three rounds of notes in chat. Akshat commits.
+
+## Update, 10 Oct 2026 (Claude, chat session, superseded by 11 Oct)
 The room home page and the four separate project pages are replaced on branch `new-portfolio` by one page, `index.html`, built and reviewed with Akshat in chat. The room artwork and task 6 notes are no longer used by the site (they stay in git history). `savvy.html`, `ankur.html`, `greggs.html` and `critical-design.html` now redirect to `index.html#<project>`. See README.md for how it works. Akshat commits and pushes.
 
 ## Roles

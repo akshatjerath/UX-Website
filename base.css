@@ -1,0 +1,124 @@
+/* Shared base for every page: tokens, type, island nav, phone menu, footer, image viewer.
+   The home page adds home.css; the case studies add case.css. */
+/* One typeface for the whole site: Bricolage Grotesque (OFL, self-hosted from Fontsource). Its optical-size axis makes it work for headings and body text alike. */
+@font-face{font-family:"Bricolage Grotesque";src:url(assets/fonts/bricolage-grotesque-latin-standard-normal.woff2) format("woff2");font-weight:200 800;font-stretch:75% 100%;font-display:swap}
+@font-face{font-family:"Bricolage Grotesque";src:url(assets/fonts/bricolage-grotesque-latin-ext-standard-normal.woff2) format("woff2");font-weight:200 800;font-stretch:75% 100%;font-display:swap;unicode-range:U+20A0-20C0} /* the rupee sign */
+:root{
+  --bg:#0C0E11; --surface:#14171C; --panel:#1A1E24; --ink:#EEF1F5; --muted:#9AA3AE; --line:#4A525D; --hair:#262B32;
+  --accent:#25CA7F; --accent-ink:#04140B; --accent-soft:#0F2A1D;
+  --band:#EEF1F5; --band-ink:#0C0E11;
+  --draft:#F2B451; --draft-soft:#2E2412; --bad:#FF7A6E; --rule:rgba(238,241,245,.07); --dec:#F2C94C; --dec-soft:#2B2511;
+  --savvy-bg:#131411; --ankur-bg:#E3E0F6; --greggs-bg:#00558F; --greggs-hi:#FDC72F; --cd-bg:#2F3D2B; --cd-hi:#E6EDD8;
+  --display:"Bricolage Grotesque","Arial Narrow",system-ui,sans-serif;
+  --body:var(--display);
+  --mono:var(--display); /* labels use the same family, with tabular figures */
+  --ease:cubic-bezier(.65,.05,.25,1); --ease-out:cubic-bezier(.22,1,.36,1);
+  --maxw:1280px; --gut:clamp(16px,4vw,48px); --r:22px;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){
+  --bg:#F1F2F4; --surface:#FFFFFF; --panel:#E7EAEE; --ink:#11141A; --muted:#58606B; --line:#8A929C; --hair:#D6DBE1;
+  --accent:#0F7A48; --accent-ink:#FFFFFF; --accent-soft:#D6F2E3; --band:#11141A; --band-ink:#F1F2F4;
+  --draft:#7A4A00; --draft-soft:#FBEFD8; --bad:#B23A34; --rule:rgba(17,20,26,.08); --dec:#9A7100; --dec-soft:#FFF3C4; color-scheme:light}}
+:root[data-theme="light"]{
+  --bg:#F1F2F4; --surface:#FFFFFF; --panel:#E7EAEE; --ink:#11141A; --muted:#58606B; --line:#8A929C; --hair:#D6DBE1;
+  --accent:#0F7A48; --accent-ink:#FFFFFF; --accent-soft:#D6F2E3; --band:#11141A; --band-ink:#F1F2F4;
+  --draft:#7A4A00; --draft-soft:#FBEFD8; --bad:#B23A34; --rule:rgba(17,20,26,.08); --dec:#9A7100; --dec-soft:#FFF3C4; color-scheme:light}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gut)}
+.mono{font:500 12px/1.4 var(--mono);letter-spacing:.05em;text-transform:uppercase}
+.dim{color:var(--muted)}
+.skip{position:absolute;left:-999px;top:8px;z-index:99;background:var(--ink);color:var(--bg);padding:8px 12px;border-radius:8px}
+.skip:focus{left:16px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.04;letter-spacing:-.02em;text-wrap:balance;margin:0}
+p{margin:0}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:999px;background:var(--accent);color:var(--accent-ink);text-decoration:none;font-weight:600;border:1px solid var(--accent);cursor:pointer;transition:transform .2s var(--ease-out)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn:active{transform:scale(.97)}
+.lnk{color:var(--accent);font-weight:600;text-decoration:none}
+.lnk:hover{text-decoration:underline}
+/* ===== island nav ===== */
+.island{position:fixed;z-index:50;left:50%;top:calc(env(safe-area-inset-top,0px) + 12px);transform:translateX(-50%);
+  display:flex;align-items:center;gap:6px;padding:6px;border-radius:999px;background:#05070A;color:#F2F3EF;
+  box-shadow:0 8px 30px rgba(0,0,0,.25),inset 0 0 0 1px rgba(255,255,255,.1);max-width:calc(100vw - 24px)}
+.island a{text-decoration:none}
+.island .who{display:flex;align-items:center;gap:8px;padding-right:6px}
+.island .av{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:#F2F3EF;color:#05070A;font:700 12px/1 var(--display)}
+.island .nm{font:600 14px/1 var(--body);white-space:nowrap;overflow:hidden;max-width:120px;transition:max-width .4s var(--ease),opacity .3s}
+.island .st{display:flex;align-items:center;gap:7px;font:500 11px/1 var(--mono);letter-spacing:.03em;color:#B9BDB6;white-space:nowrap;max-width:0;opacity:0;overflow:hidden;transition:max-width .4s var(--ease),opacity .3s}
+.island .st i,.open i{width:7px;height:7px;border-radius:50%;background:#5BE38A;box-shadow:0 0 0 3px rgba(91,227,138,.18);flex:none}
+.island:hover .st,.island:focus-within .st{max-width:220px;opacity:1}
+.island nav{display:flex;gap:2px}
+.island nav a{white-space:nowrap;font:500 14px/1 var(--body);padding:9px 12px;border-radius:999px;color:#D9DCD5;transition:background .2s,color .2s}
+.island nav a:hover{background:#20242A;color:#fff}
+.island nav a.cv{background:#F2F3EF;color:#05070A}
+.island.compact .nm{max-width:0;opacity:0}
+.island.compact .who{padding-right:0}
+.theme{width:36px;height:36px;border-radius:50%;border:0;background:#20242A;color:#F2F3EF;display:grid;place-items:center;cursor:pointer;flex:none;transition:transform .4s var(--ease-out)}
+.theme:hover{transform:rotate(-20deg)}
+.theme .moon{display:none}
+.theme[data-mode="dark"] .moon{display:inline}
+.theme[data-mode="dark"] .sun{display:none}
+footer{border-top:1px solid var(--hair);padding-block:24px;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+dialog.lb{border:0;padding:0;background:transparent;max-width:min(96vw,1400px);max-height:92vh;color:#fff}
+dialog.lb::backdrop{background:rgba(5,7,10,.88)}
+.lb-in{display:grid;gap:10px}
+.lb-scroll{overflow:auto;max-height:82vh;border-radius:12px;background:#fff}
+.lb-scroll img{max-width:none;height:auto;max-height:80vh;width:auto}
+.lb-bar{display:flex;justify-content:space-between;gap:12px;align-items:center}
+.lb-bar button{background:#fff;color:#111;border:0;border-radius:999px;padding:8px 14px;font-weight:600;cursor:pointer}
+/* ===== top nav: gooey pill (nav.js) (after React Bits' Gooey Nav, done with an SVG goo filter instead of WebGL) */
+.island nav{position:relative}
+.goo{position:absolute;inset:0;pointer-events:none;filter:url(#goo)}
+.goo i{position:absolute;top:0;left:0;height:100%;border-radius:999px;background:#F2F3EF;
+  transition:transform 420ms cubic-bezier(.65,.05,.25,1),width 420ms cubic-bezier(.65,.05,.25,1)}
+.goo i.d{width:14px;height:14px;top:50%;margin-top:-7px;transition:transform 520ms cubic-bezier(.34,1.56,.64,1)}
+.island nav a{position:relative;z-index:1}
+.island nav a.here{color:#05070A}
+.island nav a:hover{background:transparent}
+@media (prefers-reduced-motion:reduce){.goo i{transition:none}.goo i.d{display:none}}
+
+/* ===== staggered menu (nav.js): phones only ===== */
+.island,.smenu{--display:"Bricolage Grotesque","Arial Narrow",system-ui,sans-serif} /* same on every page, whatever a case study's own font */
+.sm-tog{display:none;align-items:center;gap:10px;height:36px;padding:0 14px 0 16px;border:0;border-radius:999px;background:#F2F3EF;color:#05070A;font:600 14px/1 var(--body);cursor:pointer}
+.sm-tw{display:block;height:1em;overflow:hidden}.sm-tw span{display:block;line-height:1;transition:transform .45s var(--ease)}
+.sm-on .sm-tw span{transform:translateY(-100%)}
+.sm-plus{position:relative;width:12px;height:12px;transition:transform .45s var(--ease)}
+.sm-plus::before,.sm-plus::after{content:"";position:absolute;left:0;top:5px;width:12px;height:2px;border-radius:2px;background:currentColor}
+.sm-plus::after{transform:rotate(90deg)}
+.sm-on .sm-plus{transform:rotate(225deg)}
+.island.sm-on{z-index:70}
+.smenu{position:fixed;inset:0;z-index:60;pointer-events:none;overflow:hidden}
+.smenu.open{pointer-events:auto}
+.sm-scrim{position:absolute;inset:0;background:rgba(5,7,10,.5);opacity:0;transition:opacity .4s}
+.smenu.open .sm-scrim{opacity:1}
+.sm-layer{position:absolute;top:0;right:0;height:100%;width:min(100%,440px);transform:translateX(102%);transition:transform .6s var(--ease)}
+.sm-layer.l1{background:var(--accent)}.sm-layer.l2{background:#1A1E24}
+.smenu.open .l1{transition-delay:0s}.smenu.open .l2{transition-delay:.08s}.smenu.open .sm-panel{transition-delay:.16s}
+.smenu:not(.open) .sm-panel{transition-delay:0s}.smenu:not(.open) .l2{transition-delay:.06s}.smenu:not(.open) .l1{transition-delay:.12s}
+.smenu.open .sm-layer{transform:none}
+.sm-panel{display:flex;flex-direction:column;justify-content:space-between;padding:96px 28px 32px;background:var(--bg);color:var(--ink);overflow-y:auto}
+.sm-panel ol{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.sm-it a{display:block;overflow:hidden;text-decoration:none;font:800 clamp(34px,10vw,48px)/1.08 var(--display);letter-spacing:-.03em}
+.sm-it span{display:flex;align-items:baseline;gap:12px;transform:translateY(110%) rotate(5deg);transform-origin:left bottom;transition:transform .6s var(--ease-out),color .2s}
+.sm-it small{font:500 12px/1 var(--mono);color:var(--accent);min-width:20px}
+.smenu.open .sm-it span{transform:none;transition-delay:calc(.3s + var(--i) * 60ms)}
+.sm-it a:hover span,.sm-it a[aria-current] span{color:var(--accent)}
+.sm-soc{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:baseline;margin-top:40px;opacity:0;transition:opacity .4s}
+.smenu.open .sm-soc{opacity:1;transition-delay:.7s}
+.sm-soc p{width:100%;font:500 12px/1 var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.sm-soc a{font-weight:600;text-decoration:none;color:var(--ink)}
+@media (max-width:720px){.island .nm,.island nav,.island .st{display:none}.sm-tog{display:inline-flex}}
+@media (prefers-reduced-motion:reduce){.sm-layer,.sm-it span,.sm-scrim,.sm-soc,.sm-tw span,.sm-plus{transition:none!important}}
+/* Lenis smooth scroll (vendor/lenis.min.js) */
+html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}.lenis.lenis-stopped{overflow:clip}.lenis [data-lenis-prevent]{overscroll-behavior:contain}

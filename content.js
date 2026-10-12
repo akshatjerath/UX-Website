@@ -1,7 +1,8 @@
 /* =====================================================================
    CONTENT. Everything you'd want to edit lives in this file:
    your details, media, the four projects, and the data behind every
-   diagram. The page code is in app.js and the styles in styles.css.
+   diagram. Page code: home.js (home), case.js and case-widgets.js (case
+   studies), nav.js (phone menu). Styles: base.css, home.css, case.css.
 
    Edit text between the quotes or backticks. Keep the commas.
    Tip: after editing, open index.html; if the page goes blank, a comma
@@ -16,10 +17,10 @@ const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 /* ===== YOUR DETAILS. Empty fields stay hidden. ===== */
 const ME = {
-  cv: "",        // CV link (PDF or Drive)
-  email: "",
-  linkedin: "",
-  seeking: "Open to UX/UI roles"   // e.g. "Open to UX/UI internships from May 2027"
+  cv: "",        // your UX CV, e.g. "assets/Akshat_Jerath_CV.pdf". The CV buttons stay hidden until this is set.
+  email: "akshatjeratth@gmail.com",     // as listed on akshatjerath.com
+  linkedin: "https://www.linkedin.com/in/akshat-jerath/",
+  seeking: ""   // left empty on purpose: the home page no longer shows an "open to roles" line
 };
 /* Media you make (Mockuuups, Rotato). Leave "" until the file is in img/. */
 const MEDIA = {
@@ -35,12 +36,12 @@ const fig = (src, alt, cap, w, h) => `<figure><button type="button" class="zooma
 
 /* ===== PROJECTS. Every fact comes from AJ's own files (see the working doc). ===== */
 const P = [
-{ id:"savvy", name:"SAVVY", stage:"savvy", year:"2026", type:"Coursework concept",
+{ id:"savvy", page:"savvy.html", name:"SAVVY", stage:"savvy", year:"2026", type:"Coursework concept",
   tags:["Consumer app","iOS + Android","Research-led"],
   one:"Shows what a meal will really cost across Swiggy Dineout, District and EazyDiner, then hands you to the cheapest app.",
   role:"End-to-end product and UX",
   outcome:"One answer to “where is it cheapest to eat tonight?”, across every dine-out app.",
-  meta:[["Role","End-to-end product and UX"],["Team",null,"Solo, or with Aastha?"],["Timeline",null,"Jul to Aug 2026? (from your file dates)"],["Platform","iOS and Android"],["Tools","Figma, FigJam, Miro, Google Forms, Excel"]],
+  meta:[["Role","End-to-end product and UX"],["Team","Solo"],["Timeline","Jun to Oct 2026"],["Platform","iOS and Android"],["Tools","Figma, FigJam, Miro, Google Forms, Excel"]],
   tldr:[["Problem","The same Mumbai restaurant runs different deals on Swiggy Dineout, District, EazyDiner and Zomato. The real price hides behind coins, card rules and cover charges."],
         ["What I did","13 interviews, two surveys and a 10-restaurant audit. Then an app that ranks options by the cash you pay tonight and hands you to the cheapest app."],
         ["Result","A prototype in night and day themes for iOS and Android. Not tested with users yet; that's the next step."]],
@@ -116,7 +117,7 @@ const P = [
      <p>After that: refine the unit economics, map the late-notification flows, and check India's rules on price transparency.</p>`},
    {label:"Reflection", h:"What I'd do differently", html: slot("Your reflection in 2 or 3 lines: what you learned and what you'd change","Not in your files yet")}
   ]},
-{ id:"ankur", name:"Ankur", stage:"ankur", year:"2026", type:"Coursework",
+{ id:"ankur", page:"ankur.html", name:"Ankur", stage:"ankur", year:"2026", type:"Coursework",
   tags:["EdTech","AI","Live app"],
   one:"A smart notebook for early-years teachers in India. The teacher notices, Ankur suggests one small next step, the teacher decides.",
   role:"Research, structure and live prototype",
@@ -152,7 +153,7 @@ const P = [
    {label:"Outcome", h:"One number decides if it scales.", html:`
      <p>Not tested in a classroom yet. The pilot is the honest next step, and the number that matters is how often teachers approve the AI's drafts. The aim is 70 to 80% before it scales.</p>`}
   ]},
-{ id:"greggs", name:"Greggs 2050", stage:"greggs", big:"Fresh. Fair. Forever.", year:"2026", type:"Coursework",
+{ id:"greggs", page:"greggs.html", name:"Greggs 2050", stage:"greggs", big:"Fresh. Fair. Forever.", year:"2026", type:"Coursework",
   tags:["Brand futures","AI pipeline"],
   one:"A 2050 strategy to keep Britain's favourite bakery fast, fresh and cheap, with a brand world made using AI.",
   role:"Strategy and AI-made brand world",
@@ -176,7 +177,7 @@ const P = [
      ${slot("Hero render and two or three key images","Canva: Greggs Go, page 1; Copy of Greggs Go, pages 14 and 20")}
      ${slot("One short film clip","Drive: Greggs Delivery Pod.mp4")}`}
   ]},
-{ id:"critical-design", name:"Critical Design", stage:"cd", big:"Grow below, keep above.", year:"2026", type:"Team project",
+{ id:"critical-design", page:"critical-design.html", name:"Critical Design", stage:"cd", big:"Grow below, keep above.", year:"2026", type:"Team project",
   tags:["Speculative","Food"],
   one:"A speculative food hub that grows produce and keeps it fresh inside empty city buildings.",
   role:"Team project",
@@ -199,7 +200,7 @@ const P = [
 /* ===== Project file (spec panel), statement, evidence and work order. All from AJ's files. ===== */
 const EXTRA = {
   savvy:{ team:null, teamTodo:"Solo or group?",
-    spec:[["Role","End-to-end product and UX"],["Team",null,"Solo, or with Aastha?"],["Timeline",null,"Jul to Aug 2026? (from your file dates)"],["Platform","iOS and Android, night and day themes"],["Methods","Interviews, surveys, field audit, competitor audit, user and task flows, site map, access rules"],["Tools","Figma, FigJam, Miro, Google Forms, Excel"],["Status","Concept. Not tested with users yet"]],
+    spec:[["Role","End-to-end product and UX"],["Team","Solo"],["Timeline","Jun to Oct 2026"],["Platform","iOS and Android, night and day themes"],["Methods","Interviews, surveys, field audit, competitor audit, user and task flows, site map, access rules"],["Tools","Figma, FigJam, Miro, Google Forms, Excel"],["Status","Concept. Not tested with users yet"]],
     statement:"Mumbai diners need one honest answer to what a meal will really cost, across every dine-out app.",
     stats:[
       {k:"donut", v:8, of:13, n:"8 of 13", label:"interviewees distrusted coins as a saving", src:"Interviews"},

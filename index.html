@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Akshat Jerath Portfolio</title>
-<meta name="description" content="Akshat Jerath (AJ), UX/UI designer. MDes Design Futures, ATLAS SkillTech University, Mumbai.">
+<title>Akshat Jerath, UX/UI designer</title>
+<meta name="description" content="Akshat Jerath, UX/UI designer. MDes Design Futures, ATLAS SkillTech University, Mumbai. Case studies: SAVVY, Ankur, Greggs 2050 and Critical Design.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Ccircle cx=%2732%27 cy=%2732%27 r=%2730%27 fill=%27%230C0E11%27 stroke=%27%2325CA7F%27 stroke-width=%274%27/%3E%3Ctext x=%2732%27 y=%2741%27 font-family=%27Arial%27 font-weight=%27700%27 font-size=%2724%27 fill=%27%2325CA7F%27 text-anchor=%27middle%27%3EAJ%3C/text%3E%3C/svg%3E">
 <meta name="theme-color" content="#0C0E11">
 <meta property="og:type" content="website">
@@ -12,83 +12,157 @@
 <meta property="og:description" content="Case studies: SAVVY, Ankur, Greggs 2050 and Critical Design. MDes Design Futures, ATLAS SkillTech University, Mumbai.">
 <meta property="og:image" content="https://akshatjerath.github.io/UX-Website/img/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,600..800&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@500&family=Inter:wght@400;600;900&family=IBM+Plex+Mono:wght@600&display=swap">
-<link rel="stylesheet" href="styles.css">
+<script>document.documentElement.classList.add("js");try{const t=localStorage.getItem("aj-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="preload" href="assets/fonts/bricolage-grotesque-latin-standard-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="base.css">
+<link rel="stylesheet" href="home.css">
 </head>
-<body>
+<body class="home">
 <a class="skip" href="#work">Skip to work</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="lg-figma" viewBox="0 0 256 384"><path fill="#0acf83" d="M64 384c35.328 0 64-28.672 64-64v-64H64c-35.328 0-64 28.672-64 64s28.672 64 64 64"/><path fill="#a259ff" d="M0 192c0-35.328 28.672-64 64-64h64v128H64c-35.328 0-64-28.672-64-64"/><path fill="#f24e1e" d="M0 64C0 28.672 28.672 0 64 0h64v128H64C28.672 128 0 99.328 0 64"/><path fill="#ff7262" d="M128 0h64c35.328 0 64 28.672 64 64s-28.672 64-64 64h-64z"/><path fill="#1abcfe" d="M256 192c0 35.328-28.672 64-64 64s-64-28.672-64-64s28.672-64 64-64s64 28.672 64 64"/></symbol>
+<symbol id="lg-miro" viewBox="0 0 256 256"><path fill="#fd3" d="M0 64C0 28.654 28.654 0 64 0h128c35.346 0 64 28.654 64 64v128c0 35.346-28.654 64-64 64H64c-35.346 0-64-28.654-64-64z"/><path d="M170.195 48.8h-23.239l19.366 34.026L123.717 48.8h-23.239l21.303 41.588L77.239 48.8H54l23.239 52.937L54 207.6h23.239l44.542-113.426L100.478 207.6h23.239l42.605-120.988L146.956 207.6h23.239L212.8 75.263z"/></symbol>
+<symbol id="lg-canva" viewBox="0 0 128 128"><g fill="#00c4cc"><path d="M59.39.152c-.484.051-1.995.23-3.328.387c-5.374.613-11.468 2.227-16.816 4.48C19.891 13.106 5.324 30.849 1.305 51.2C.359 56.04.129 58.418.129 64c0 7.195.715 12.16 2.61 18.434c6.195 20.53 22.323 36.632 42.906 42.851c6.195 1.871 11.187 2.586 18.355 2.586c7.195 0 12.16-.715 18.434-2.61c20.53-6.195 36.632-22.323 42.851-42.906c1.871-6.195 2.586-11.187 2.586-18.355c0-3.047-.152-6.527-.332-7.809c-2.074-14.796-8.168-27.238-18.328-37.402C99.07 8.703 86.68 2.586 72.19.512c-1.996-.282-11.238-.54-12.8-.36m-20.863 40.32c1.36.41 1.996.794 2.918 1.715c1.793 1.82 2.203 2.817 2.203 5.555c0 2.051-.078 2.434-.691 3.508c-1.18 1.996-3.918 3.84-5.812 3.89c-1.333.028-1.278-.562.18-2.097c1.945-2.023 2.226-2.79 2.226-5.813c-.024-2.917-.383-3.914-1.739-4.734c-1.128-.691-2.355-.64-4.148.203c-4.66 2.23-9.703 9.653-11.672 17.258c-2.613 10.137 2.02 18.25 9.649 16.867c2.226-.41 6.425-2.558 8.246-4.25c1.508-1.379 1.508-1.406 1.66-3.12c.336-3.587 2.867-7.169 6.25-8.833c1.558-.77 1.945-.844 4.043-.844c1.996 0 2.457.102 3.43.637c3.097 1.77 2.457 5.89-.895 5.89c-1.945 0-2.945-1-1.535-1.534c1.383-.512.867-2.434-.742-2.868c-1.895-.488-4.047.793-5.403 3.25c-1.64 2.97-1.715 6.504-.156 8.114c1.512 1.613 3.406.336 4.867-3.329c.766-1.867 1.867-2.867 3.149-2.867c1.125 0 1.332.692.843 2.793c-.718 3.25-.23 4.094 1.793 3.098c.664-.309 1.766-1.023 2.43-1.535l1.254-1l.848-4.43c.922-4.965 1.277-5.633 3.172-5.988c1.82-.336 2.23.562 1.562 3.402l-.36 1.59l1.333-1.36c3.148-3.226 7.015-4.812 8.347-3.48c.715.715.637 1.613-.386 4.785c-.485 1.512-1.153 3.895-1.457 5.25c-.461 2.047-.489 2.535-.23 2.868c.82.972 3.327-.028 5.554-2.204l1.305-1.277l.156-2.844c.152-3.277.457-4.453 1.328-5.504c.82-.972 2.305-1.687 3.098-1.484c.793.207.793.973.078 3.227c-1 3.097-.895 10.238.129 10.238c.41 0 2.507-2.2 3.84-4.043l.996-1.36l-.793-.816c-1.383-1.46-1.715-2.406-1.715-4.789c0-1.738.129-2.379.562-3.227c.719-1.328 1.844-2.3 3.176-2.687c1.406-.434 3.148.281 3.863 1.562c.719 1.305.54 4.223-.383 6.223l-.664 1.457h.895c1.23 0 1.715-.305 3.918-2.379c1.152-1.101 2.484-2.05 3.48-2.511c3.918-1.84 8.528-.895 9.293 1.921c.64 2.254-.765 3.84-3.226 3.66c-1.766-.128-2.098-.59-1.074-1.456c1.843-1.54 0-3.508-2.637-2.793c-1.434.386-3.047 1.996-3.89 3.867c-1.692 3.738-.794 8.14 1.636 8.14c.973 0 2.691-1.921 3.355-3.789c.793-2.152 2.457-3.507 3.711-3.02c.692.255.743.946.309 3.122c-.488 2.383-.563 4.61-.18 5.633c.153.382.614 1.101 1.051 1.586c.816.921.844 1.254.152 1.691c-.332.23-.77.129-1.843-.46c-1.485-.77-2.766-2.153-3.227-3.458l-.281-.766l-1.024.766c-.59.41-1.511.871-2.047 1.023c-2.125.563-4.738-.894-5.964-3.351c-.489-.95-.641-3.738-.282-4.813c.204-.59.204-.59-.617-.18c-.433.231-1.355.485-2.07.563c-1.18.13-1.36.258-2.535 1.742c-1.664 2.07-4.61 4.864-5.813 5.454c-2.558 1.277-3.402.918-4.07-1.72l-.461-1.765l-1.102.973c-1.406 1.23-4.222 2.715-5.836 3.074c-1.535.332-3.175-.156-3.84-1.18c-.995-1.535-.663-4.785.922-9.164c1.176-3.25.333-3.3-2.636-.203c-2.203 2.328-3.149 3.992-3.762 6.578c-.64 2.688-1.41 3.66-3.148 4.07c-1.051.231-1.54-.41-1.332-1.816l.152-1.129l-.973.668c-1.383.946-3.125 1.817-4.328 2.149s-2.789-.024-3.172-.692c-.691-1.175-.691-1.175-1.765-.332c-2.332 1.895-5.66 1.356-7.348-1.152l-.54-.793l-1.687 1.562c-4.867 4.454-10.957 6.45-15.464 5.067c-5.735-1.738-8.907-6.656-8.856-13.746c.024-7.117 3.172-14.617 8.473-20.172c2.996-3.125 5.812-4.969 8.68-5.66c2.07-.512 3.328-.485 5.296.129zm0 0"/><path d="M90.418 58.676c-.563.562-.356 2.816.36 4.25c.359.742.742 1.332.87 1.332c.102 0 .332-.59.512-1.309c.64-2.66-.512-5.504-1.742-4.273m0 0"/></g></symbol>
+<symbol id="lg-lovable" viewBox="0 0 24 24"><path clip-rule="evenodd" d="M7.082 0c3.91 0 7.081 3.179 7.081 7.1v2.7h2.357c3.91 0 7.082 3.178 7.082 7.1 0 3.923-3.17 7.1-7.082 7.1H0V7.1C0 3.18 3.17 0 7.082 0z" fill="url(#lovable-lobe-icons-lovable-_R_0_)" fill-rule="evenodd"></path><defs><radialGradient cx="0" cy="0" gradientTransform="matrix(-1 22.49999 -30.45394 -1.3535 14 3)" gradientUnits="userSpaceOnUse" id="lovable-lobe-icons-lovable-_R_0_" r="1"><stop offset=".25" stop-color="#FE7B02"></stop><stop offset=".433" stop-color="#FE4230"></stop><stop offset=".548" stop-color="#FE529A"></stop><stop offset=".654" stop-color="#DD67EE"></stop><stop offset=".95" stop-color="#4B73FF"></stop></radialGradient></defs></symbol>
+<symbol id="lg-gemini" viewBox="0 0 24 24"><path d="M20.616 10.835a14.147 14.147 0 01-4.45-3.001 14.111 14.111 0 01-3.678-6.452.503.503 0 00-.975 0 14.134 14.134 0 01-3.679 6.452 14.155 14.155 0 01-4.45 3.001c-.65.28-1.318.505-2.002.678a.502.502 0 000 .975c.684.172 1.35.397 2.002.677a14.147 14.147 0 014.45 3.001 14.112 14.112 0 013.679 6.453.502.502 0 00.975 0c.172-.685.397-1.351.677-2.003a14.145 14.145 0 013.001-4.45 14.113 14.113 0 016.453-3.678.503.503 0 000-.975 13.245 13.245 0 01-2.003-.678z" fill="#3186FF"></path><path d="M20.616 10.835a14.147 14.147 0 01-4.45-3.001 14.111 14.111 0 01-3.678-6.452.503.503 0 00-.975 0 14.134 14.134 0 01-3.679 6.452 14.155 14.155 0 01-4.45 3.001c-.65.28-1.318.505-2.002.678a.502.502 0 000 .975c.684.172 1.35.397 2.002.677a14.147 14.147 0 014.45 3.001 14.112 14.112 0 013.679 6.453.502.502 0 00.975 0c.172-.685.397-1.351.677-2.003a14.145 14.145 0 013.001-4.45 14.113 14.113 0 016.453-3.678.503.503 0 000-.975 13.245 13.245 0 01-2.003-.678z" fill="url(#gemini-lobe-icons-gemini-0-_R_0_)"></path><path d="M20.616 10.835a14.147 14.147 0 01-4.45-3.001 14.111 14.111 0 01-3.678-6.452.503.503 0 00-.975 0 14.134 14.134 0 01-3.679 6.452 14.155 14.155 0 01-4.45 3.001c-.65.28-1.318.505-2.002.678a.502.502 0 000 .975c.684.172 1.35.397 2.002.677a14.147 14.147 0 014.45 3.001 14.112 14.112 0 013.679 6.453.502.502 0 00.975 0c.172-.685.397-1.351.677-2.003a14.145 14.145 0 013.001-4.45 14.113 14.113 0 016.453-3.678.503.503 0 000-.975 13.245 13.245 0 01-2.003-.678z" fill="url(#gemini-lobe-icons-gemini-1-_R_0_)"></path><path d="M20.616 10.835a14.147 14.147 0 01-4.45-3.001 14.111 14.111 0 01-3.678-6.452.503.503 0 00-.975 0 14.134 14.134 0 01-3.679 6.452 14.155 14.155 0 01-4.45 3.001c-.65.28-1.318.505-2.002.678a.502.502 0 000 .975c.684.172 1.35.397 2.002.677a14.147 14.147 0 014.45 3.001 14.112 14.112 0 013.679 6.453.502.502 0 00.975 0c.172-.685.397-1.351.677-2.003a14.145 14.145 0 013.001-4.45 14.113 14.113 0 016.453-3.678.503.503 0 000-.975 13.245 13.245 0 01-2.003-.678z" fill="url(#gemini-lobe-icons-gemini-2-_R_0_)"></path><defs><linearGradient gradientUnits="userSpaceOnUse" id="gemini-lobe-icons-gemini-0-_R_0_" x1="7" x2="11" y1="15.5" y2="12"><stop stop-color="#08B962"></stop><stop offset="1" stop-color="#08B962" stop-opacity="0"></stop></linearGradient><linearGradient gradientUnits="userSpaceOnUse" id="gemini-lobe-icons-gemini-1-_R_0_" x1="8" x2="11.5" y1="5.5" y2="11"><stop stop-color="#F94543"></stop><stop offset="1" stop-color="#F94543" stop-opacity="0"></stop></linearGradient><linearGradient gradientUnits="userSpaceOnUse" id="gemini-lobe-icons-gemini-2-_R_0_" x1="3.5" x2="17.5" y1="13.5" y2="12"><stop stop-color="#FABC12"></stop><stop offset=".46" stop-color="#FABC12" stop-opacity="0"></stop></linearGradient></defs></symbol>
+<symbol id="lg-ideogram" viewBox="0 0 24 24"><path d="M17.768 1.482a6.4 6.4 0 012.988 3.78c.19.068.377.154.555.257.026.015.05.03.073.047.226.137.436.301.627.49a3.377 3.377 0 01-.105 4.875 3.376 3.376 0 01-.216 5.158l-.037.029.021.032c.39.602.585 1.324.534 2.065l-.009.11a3.377 3.377 0 01-4.658 2.777 3.377 3.377 0 01-5.846.971 4.052 4.052 0 01-1.635.397c-.04.005-.082.008-.125.008h-.897l-.068-.003c-1.116-.067-1.093-1.775.068-1.775h.804l.046-.004.047-.001a2.3 2.3 0 00.079-4.6.735.735 0 01-.08.005H2.808a.889.889 0 010-1.778h7.034l.046-.004.048-.001a2.3 2.3 0 00.509-4.544l-.141-.031a2.188 2.188 0 00-.299-.046.759.759 0 01-.07.003H2.808a.889.889 0 110-1.777h7.035l.046-.004.047-.001a2.3 2.3 0 00.087-4.6.972.972 0 01-.087.004h-.897L8.97 3.32c-1.116-.067-1.093-1.775.068-1.775h.8a.9.9 0 01.097-.005c.402 0 .79.058 1.157.166l.031-.02a6.399 6.399 0 016.645-.203zm-3.737 11.484l-.068.036-.083.051a4.08 4.08 0 01-1.404 2.153 4.07 4.07 0 011.537 3.189 4.06 4.06 0 01-.92 2.579 1.599 1.599 0 002.824-1.322l-.03-.124-.013-.079-.005-.056-.001-.042.001-.058.005-.053.013-.078.018-.072.022-.064.035-.079.005-.01a.869.869 0 01.158-.217l.055-.052.041-.032.05-.035.042-.026.055-.03.073-.03.056-.02.04-.011.078-.016.073-.009.045-.002h.048l.041.002.058.006.056.01.062.015.031.01.049.017.054.023.044.021.053.031.035.023c.06.042.114.09.163.147l.038.046.034.048a1.6 1.6 0 102.4-2.07 3.256 3.256 0 01-.473.007l-.057-.005-.026-.005h-.016a3.376 3.376 0 01-2.985-2.568l-.026-.116a1.6 1.6 0 00-2.285-1.133zm-4.416 4.595a.889.889 0 110 1.777H5.939a.889.889 0 010-1.777h3.676zm9.208-10.503a1.6 1.6 0 00-.797 1.3l-.002.085a.889.889 0 01-.83.887l-.059.002a.889.889 0 01-.887-.83l-.002-.059a1.6 1.6 0 00-2.528-1.301 4.089 4.089 0 01-1.255 1.674 4.083 4.083 0 011.451 2.308 3.374 3.374 0 014.125 2.532l.02.093a1.6 1.6 0 001.395 1.26l.124.01.042.002c.06 0 .12-.003.18-.01l.085-.011.062-.015a1.6 1.6 0 00-.245-3.163l-.079-.002a.887.887 0 01-.683-.32l-.034-.044a.884.884 0 01-.154-.702.889.889 0 01.807-.71l.064-.001a1.6 1.6 0 001.134-2.728 1.6 1.6 0 00-.786-.426l-.102-.019a.856.856 0 01-.076-.016 1.592 1.592 0 00-.97.204zm-9.199 4.08a.889.889 0 010 1.778H.89a.889.889 0 010-1.777h8.735zm-.01-6.432a.889.889 0 110 1.777H5.94a.889.889 0 110-1.777h3.676zm3.297-1.954l-.053.021a4.065 4.065 0 011.126 2.36 3.375 3.375 0 013.151 1.027 3.366 3.366 0 011.695-1 4.621 4.621 0 00-5.919-2.408z"></path></symbol>
+<symbol id="lg-suno" viewBox="0 0 24 24"><path fill="currentColor" d="M16.5 0C20.642 0 24 5.373 24 12h-9c0 6.627-3.358 12-7.5 12S0 18.627 0 12h9c0-6.627 3.358-12 7.5-12"/></symbol>
+<symbol id="lg-forms" viewBox="0 0 24 24"><path fill="#7248B9" d="M14.727 6h6l-6-6zm0 .727H14V0H4.91c-.905 0-1.637.732-1.637 1.636v20.728c0 .904.732 1.636 1.636 1.636h14.182c.904 0 1.636-.732 1.636-1.636V6.727zM7.91 17.318a.819.819 0 1 1 .001-1.638a.819.819 0 0 1 0 1.638zm0-3.273a.819.819 0 1 1 .001-1.637a.819.819 0 0 1 0 1.637zm0-3.272a.819.819 0 1 1 .001-1.638a.819.819 0 0 1 0 1.638zm9 6.409h-6.818v-1.364h6.818zm0-3.273h-6.818v-1.364h6.818zm0-3.273h-6.818V9.273h6.818z"/></symbol>
+<symbol id="lg-excel" viewBox="0 0 32 32"><defs><linearGradient id="excel-SVGSuUii0pt" x1="4.494" x2="13.832" y1="-2092.086" y2="-2075.914" gradientTransform="translate(0 2100)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#18884f"/><stop offset=".5" stop-color="#117e43"/><stop offset="1" stop-color="#0b6631"/></linearGradient></defs><path fill="#185c37" d="M19.581 15.35L8.512 13.4v14.409A1.19 1.19 0 0 0 9.705 29h19.1A1.19 1.19 0 0 0 30 27.809V22.5Z"/><path fill="#21a366" d="M19.581 3H9.705a1.19 1.19 0 0 0-1.193 1.191V9.5L19.581 16l5.861 1.95L30 16V9.5Z"/><path fill="#107c41" d="M8.512 9.5h11.069V16H8.512Z"/><path d="M16.434 8.2H8.512v16.25h7.922a1.2 1.2 0 0 0 1.194-1.191V9.391A1.2 1.2 0 0 0 16.434 8.2" opacity=".1"/><path d="M15.783 8.85H8.512V25.1h7.271a1.2 1.2 0 0 0 1.194-1.191V10.041a1.2 1.2 0 0 0-1.194-1.191" opacity=".2"/><path d="M15.783 8.85H8.512V23.8h7.271a1.2 1.2 0 0 0 1.194-1.191V10.041a1.2 1.2 0 0 0-1.194-1.191" opacity=".2"/><path d="M15.132 8.85h-6.62V23.8h6.62a1.2 1.2 0 0 0 1.194-1.191V10.041a1.2 1.2 0 0 0-1.194-1.191" opacity=".2"/><path fill="url(#excel-SVGSuUii0pt)" d="M3.194 8.85h11.938a1.193 1.193 0 0 1 1.194 1.191v11.918a1.193 1.193 0 0 1-1.194 1.191H3.194A1.19 1.19 0 0 1 2 21.959V10.041A1.19 1.19 0 0 1 3.194 8.85"/><path fill="#fff" d="m5.7 19.873l2.511-3.884l-2.3-3.862h1.847L9.013 14.6c.116.234.2.408.238.524h.017q.123-.281.26-.546l1.342-2.447h1.7l-2.359 3.84l2.419 3.905h-1.809l-1.45-2.711A2.4 2.4 0 0 1 9.2 16.8h-.024a1.7 1.7 0 0 1-.168.351l-1.493 2.722Z"/><path fill="#33c481" d="M28.806 3h-9.225v6.5H30V4.191A1.19 1.19 0 0 0 28.806 3"/><path fill="#107c41" d="M19.581 16H30v6.5H19.581Z"/></symbol>
+</svg>
 
 <header class="island" id="island">
   <a class="who" href="#top" aria-label="Akshat Jerath, home"><span class="av" aria-hidden="true">AJ</span><span class="nm">Akshat Jerath</span></a>
-  <span class="st" aria-hidden="true"><i></i><span class="stText">Open to UX/UI roles</span></span>
-  <nav aria-label="Main">
-    <a href="#work">Work</a><a href="#about">About</a><a class="cv" id="navCv" href="#" target="_blank" rel="noopener" hidden>CV</a><a href="#contact">Contact</a>
-  </nav>
+  <nav aria-label="Main"><a href="#work">Work</a><a href="#about">About</a><a class="cv" href="#" target="_blank" rel="noopener" data-me="cv" hidden>CV</a><a href="#contact">Contact</a></nav>
   <button type="button" class="theme" id="themeBtn" aria-label="Switch to day mode"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><g class="sun" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g><path class="moon" fill="currentColor" d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7z"/></svg></button>
 </header>
 
-<main id="home">
-  <section class="hero wrap ruled" id="top">
-    <div class="strip mono">
-      <span>Based in Mumbai, India</span>
-      <span>MDes Design Futures, ATLAS SkillTech</span>
-      <span>Faculty, École Intuit Lab</span>
-      <span class="open"><i></i><span class="stText">Open to UX/UI roles</span></span>
-    </div>
-    <p class="hi">Hi, I'm <b>Akshat Jerath</b>. AJ for short.</p>
-    <p class="giant" role="heading" aria-level="1"><span>UX<em>/</em>UI</span><span>Designer</span></p>
-    <div class="lede">
-      <p>I design for the moment someone has to decide: what to pay for dinner, what to teach a child next. Research first, then the smallest change that makes the choice clear.</p>
-      <p class="hint">Pick a project below, or press <span class="key">1</span>–<span class="key">4</span></p>
+<main>
+  <!-- HERO: name and role, over a drifting wall of project screens (after React Bits' Grid Motion) -->
+  <section class="hero" id="top">
+    <div class="gm" data-grid-motion aria-hidden="true"></div>
+    <div class="hero-in wrap">
+      <h1 class="hero-h">
+        <span class="hi">Hi, I'm</span>
+        <span class="sr">Akshat Jerath, UX/UI designer</span>
+        <svg class="tt" data-tech-text="Akshat Jerath" aria-hidden="true"></svg>
+        <span class="role" aria-hidden="true">UX/UI Designer</span>
+      </h1>
+      <p class="lede"><span class="sr">I design for the moment someone has to decide: what to pay for dinner, what to teach a child next.</span><span aria-hidden="true">I design for the moment someone has to decide <span class="ty" data-type='["what to pay for dinner.","what to teach a child next.","how a bakery stays cheap until 2050."]'>what to pay for dinner.</span></span></p>
+      <ul class="facts">
+        <li>Mumbai, India</li>
+        <li>MDes Design Futures, ATLAS SkillTech</li>
+        <li>Faculty, École Intuit Lab</li>
+      </ul>
+      <div class="cta"><a class="star solid" href="#work"><span>See the work</span></a><a class="star" href="#" target="_blank" rel="noopener" data-me="cv" hidden><span>Download CV</span></a></div>
     </div>
   </section>
 
-  <section class="work wrap" id="work">
-    <div class="sec-head">
-      <div><p class="mono dim">(Selected work)</p><h2>Four projects<br>from my MDes</h2></div>
-      <p class="side">Two products built on research, a brand strategy for 2050, and a speculative design project that's still running.</p>
+  <!-- WORK: four case studies as panels that stack as you scroll, each in its project's colours -->
+  <section class="work" id="work" aria-labelledby="t-work">
+    <h2 id="t-work" class="sr">Work</h2>
+    <div class="stack">
+      <article class="pj pj-savvy" style="--i:0"><a class="pj-in" href="savvy.html">
+        <div class="pj-text"><p class="pj-meta">App concept · 2026</p><h3>SAVVY</h3><p>Three dine-out apps, three different prices for the same dinner. SAVVY shows what you'll actually pay on each, then sends you to the cheapest.</p><span class="pj-go">Read the case study</span></div>
+        <div class="pj-vis" aria-hidden="true"><span class="ph p1"><img src="img/savvy-n-tonight.webp" alt="" loading="lazy" width="402" height="874"></span><span class="ph p2"><img src="img/savvy-n-answer.webp" alt="" loading="lazy" width="402" height="874"></span><span class="ph p3"><img src="img/savvy-n-kept.webp" alt="" loading="lazy" width="402" height="874"></span></div>
+      </a></article>
+      <article class="pj pj-ankur" style="--i:1"><a class="pj-in" href="ankur.html">
+        <div class="pj-text"><p class="pj-meta">Live web app · 2026</p><h3>Ankur</h3><p>A notebook for early-years teachers in India. The teacher notices something, Ankur suggests one small next step, and the teacher decides.</p><span class="pj-go">Read the case study</span></div>
+        <div class="pj-vis" aria-hidden="true"><span class="pj-word">Teachers notice everything.</span><svg class="pj-sprout" viewBox="0 0 300 320"><path d="M150 300 C150 240 146 190 152 120"/><path class="lf" d="M150 170 C110 170 80 140 74 100 C116 100 146 126 150 170Z"/><path class="lf" d="M152 130 C160 86 196 60 240 62 C236 106 200 130 152 130Z"/><path class="soil" d="M60 302 H240"/></svg></div>
+      </a></article>
+      <article class="pj pj-greggs" style="--i:2"><a class="pj-in" href="greggs.html">
+        <div class="pj-text"><p class="pj-meta">Brand strategy · 2026</p><h3>Greggs 2050</h3><p>How Britain's favourite bakery stays cheap until 2050, with a brand world I made with AI.</p><span class="pj-go">Read the case study</span></div>
+        <div class="pj-vis" aria-hidden="true"><span class="pj-word">Fresh. Fair. Forever.</span><img src="img/greggs-report-cover.webp" alt="" loading="lazy" width="783" height="1111"></div>
+      </a></article>
+      <article class="pj pj-cd" style="--i:3"><a class="pj-in" href="critical-design.html">
+        <div class="pj-text"><p class="pj-meta">Speculative design · ongoing</p><h3>Critical Design</h3><p>What if food barely had to travel? A hub that grows produce and keeps it fresh inside empty city buildings.</p><span class="pj-go">Read the case study</span></div>
+        <div class="pj-vis" aria-hidden="true"><span class="pj-word">Grow below, keep above.</span><svg class="pj-hub" viewBox="0 0 460 480"><rect x="40" y="40" width="380" height="400" rx="6"/><path class="fl" d="M40 120 H420 M40 200 H420 M40 280 H420 M40 360 H420"/><g class="crop"><path d="M90 340 v-34 M130 340 v-44 M170 340 v-30 M210 340 v-48 M250 340 v-36 M290 340 v-42 M330 340 v-32 M370 340 v-40"/><path d="M90 420 v-38 M130 420 v-28 M170 420 v-44 M210 420 v-32 M250 420 v-46 M290 420 v-30 M330 420 v-40 M370 420 v-34"/></g><g class="keep"><circle cx="100" cy="80" r="9"/><circle cx="135" cy="80" r="9"/><circle cx="170" cy="80" r="9"/><circle cx="205" cy="80" r="9"/><circle cx="240" cy="80" r="9"/><path d="M90 170 c-20 -8 -20 -46 8 -52 h22 c28 6 28 44 8 52z M180 170 c-20 -8 -20 -46 8 -52 h22 c28 6 28 44 8 52z"/></g><rect x="20" y="440" width="420" height="14" class="gr"/></svg></div>
+      </a></article>
     </div>
-    <div class="tiles" id="tiles"></div>
   </section>
 
-  <section class="about wrap" id="about">
-    <p class="mono dim">(About)</p>
-    <h2 style="font-size:clamp(34px,5vw,60px)">I teach design. I practise UX.</h2>
-    <div class="about-grid">
-      <div class="about-copy">
-        <p>I'm in the first year of an MDes in Design Futures at ATLAS SkillTech University in Mumbai, and I'm on the faculty at École Intuit Lab.</p>
-        <p>I like starting where people are already losing something: money at a restaurant table, a child slipping through a busy classroom. Then I research it properly and design the smallest thing that makes the decision clearer.</p>
-        <p>Teaching keeps me honest about it. Most of my week is running sessions, giving feedback and explaining why one option beats another.</p>
+  <!-- ABOUT: profile card and a short intro on the left (after React Bits' Profile Card); experience and education on the right -->
+  <section class="about wrap" id="about" aria-labelledby="t-about">
+    <div class="ab-grid">
+      <div class="ab-left">
+        <div class="pc-wrap">
+          <article class="pc" data-profile-card>
+            <div class="pc-in">
+              <img class="pc-photo" src="img/aj.webp" alt="Akshat Jerath, smiling, in a school corridor" width="480" height="640" loading="lazy">
+              <span class="pc-shine" aria-hidden="true"></span><span class="pc-glare" aria-hidden="true"></span>
+              <div class="pc-top"><b>Akshat Jerath</b><span>UX/UI Designer</span></div>
+              <div class="pc-bar"><div><b>Mumbai, India</b><span>MDes Design Futures</span></div><a href="#contact">Contact me</a></div>
+            </div>
+          </article>
+        </div>
+        <h2 id="t-about" class="ab-h">I teach design. I practise UX.</h2>
+        <p class="ab-p">I'm doing an MDes in Design Futures at ATLAS SkillTech in Mumbai, and I teach at École Intuit Lab.</p>
+        <p class="ab-p">I like starting where people already lose something, like money at a restaurant table or a child slipping through a busy class. Research first, then the smallest change that makes the choice clearer.</p>
       </div>
-      <ol class="journey" aria-label="Experience and education">
-        <li><b>MDes, Design Futures</b><span>ATLAS SkillTech University, Mumbai · first year</span></li>
-        <li><b>Faculty, École Intuit Lab</b><span>Feb 2026 to now</span></li>
-        <li><b>Faculty, K. R. Mangalam University</b><span>Before École Intuit Lab</span></li>
-        <li><b>Named inventor on three Indian patent applications</b><span>Product design · published Sep 2026</span><span class="todo" data-draft>What they are for, and the application numbers or a link</span></li>
-      </ol>
+      <div class="ab-right">
+        <h3 class="tl-h">Experience and education</h3>
+        <ol class="tl" data-timeline>
+          <li style="--i:0"><span class="tl-when">Feb 2026 to now</span><b>Faculty, École Intuit Lab</b><span class="tl-kind">Work</span><p>Teaching at the Delhi campus.</p></li>
+          <li style="--i:1"><span class="tl-when">2026 to now</span><b>MDes, Design Futures</b><span class="tl-kind">Study</span><p>ATLAS SkillTech University, Mumbai. First year. SAVVY, Ankur, Greggs 2050 and Critical Design all come from here.</p></li>
+          <li style="--i:2"><span class="tl-when">Sep 2026</span><b>Named inventor on three Indian patent applications</b><span class="tl-kind">Work</span><p>With K. R. Mangalam University: a joystick that resists drift, cushioning for head-worn devices, and a pillow sleeve that firms up with temperature. Published 18 Sep 2026.</p></li>
+          <li style="--i:3"><span class="tl-when">Before 2026</span><b>Faculty, K. R. Mangalam University</b><span class="tl-kind">Work</span><p class="todo" data-draft>Add: your dates here</p></li>
+          <li style="--i:4"><span class="tl-when">2020 to 2023</span><b>BSc (Hons), Staffordshire University</b><span class="tl-kind">Study</span><p>Computer Games Design.</p></li>
+        </ol>
+        <div class="tl-cv"><a class="star" href="#" target="_blank" rel="noopener" data-me="cv" hidden><span>Download my CV</span></a><a class="lnk" href="#" target="_blank" rel="noopener" data-me="linkedin">Full history on LinkedIn</a><span class="todo" data-draft>Add your UX CV as ME.cv in content.js and the CV button appears here.</span></div>
+      </div>
     </div>
-    <div class="skills">
-      <div><p class="mono dim">Research</p><ul><li>Interviews</li><li>Surveys</li><li>Field audits</li><li>Competitor audits</li><li>Desk research</li></ul></div>
-      <div><p class="mono dim">Structure</p><ul><li>User flows</li><li>Task flows</li><li>Information architecture</li><li>OOUX</li><li>Card sorting</li></ul></div>
-      <div><p class="mono dim">Interface</p><ul><li>Wireframes</li><li>Hi-fi UI</li><li>Design systems</li><li>iOS and Android</li></ul></div>
-      <div><p class="mono dim">AI</p><ul><li>Human-in-the-loop flows</li><li>AI image, video and sound pipelines</li><li>AI prototyping</li></ul></div>
-      <div><p class="mono dim">Tools</p><ul><li>Figma</li><li>FigJam</li><li>Miro</li><li>Canva</li><li>Lovable</li></ul></div>
+
+    <h3 class="sub-h">Tools I use</h3>
+    <div class="loop" data-logo-loop>
+      <ul class="loop-track">
+        <li><svg aria-hidden="true"><use href="#lg-figma"/></svg>Figma and FigJam</li>
+        <li><svg aria-hidden="true"><use href="#lg-miro"/></svg>Miro</li>
+        <li><svg aria-hidden="true"><use href="#lg-canva"/></svg>Canva</li>
+        <li><svg aria-hidden="true"><use href="#lg-lovable"/></svg>Lovable</li>
+        <li><span class="nl" aria-hidden="true"></span>Jitter</li>
+        <li><svg aria-hidden="true"><use href="#lg-gemini"/></svg>Gemini</li>
+        <li><svg aria-hidden="true"><use href="#lg-ideogram"/></svg>Ideogram</li>
+        <li><span class="nl" aria-hidden="true"></span>Google Flow</li>
+        <li><svg aria-hidden="true"><use href="#lg-suno"/></svg>Suno</li>
+        <li><svg aria-hidden="true"><use href="#lg-forms"/></svg>Google Forms</li>
+        <li><svg aria-hidden="true"><use href="#lg-excel"/></svg>Excel</li>
+      </ul>
+    </div>
+
+    <h3 class="sub-h">Skills</h3>
+    <div class="folders">
+      <div class="fold" style="--n:5"><button type="button" class="f-btn" aria-expanded="false"><span class="f-back" aria-hidden="true"></span><span class="f-paper" aria-hidden="true"></span><span class="f-front"><b>Research</b><small>5 skills</small></span></button>
+        <ul class="f-notes"><li style="--i:0">Interviews</li><li style="--i:1">Surveys</li><li style="--i:2">Field audits</li><li style="--i:3">Competitor audits</li><li style="--i:4">Desk research</li></ul></div>
+      <div class="fold" style="--n:5"><button type="button" class="f-btn" aria-expanded="false"><span class="f-back" aria-hidden="true"></span><span class="f-paper" aria-hidden="true"></span><span class="f-front"><b>Structure</b><small>5 skills</small></span></button>
+        <ul class="f-notes"><li style="--i:0">User flows</li><li style="--i:1">Task flows</li><li style="--i:2">Information architecture</li><li style="--i:3">OOUX</li><li style="--i:4">Card sorting</li></ul></div>
+      <div class="fold" style="--n:4"><button type="button" class="f-btn" aria-expanded="false"><span class="f-back" aria-hidden="true"></span><span class="f-paper" aria-hidden="true"></span><span class="f-front"><b>Interface</b><small>4 skills</small></span></button>
+        <ul class="f-notes"><li style="--i:0">Wireframes</li><li style="--i:1">Hi-fi UI</li><li style="--i:2">Design systems</li><li style="--i:3">iOS and Android</li></ul></div>
+      <div class="fold" style="--n:3"><button type="button" class="f-btn" aria-expanded="false"><span class="f-back" aria-hidden="true"></span><span class="f-paper" aria-hidden="true"></span><span class="f-front"><b>AI</b><small>3 skills</small></span></button>
+        <ul class="f-notes"><li style="--i:0">Human-in-the-loop flows</li><li style="--i:1">AI image, video and sound pipelines</li><li style="--i:2">AI prototyping</li></ul></div>
     </div>
   </section>
 
-  <section class="contact wrap" id="contact"></section>
+  <!-- CONTACT: buttons with a light running round the edge (after React Bits' Star Border) -->
+  <section class="contact wrap" id="contact" aria-labelledby="t-contact">
+    <h2 id="t-contact">Let's talk.</h2>
+    <p class="ct-sub">I'm in Mumbai. Email is the quickest way to reach me.</p>
+    <div class="ct-btns">
+      <a class="star solid" href="#" data-me="email"><span>Email me</span></a>
+      <a class="star" href="#" target="_blank" rel="noopener" data-me="linkedin"><span>LinkedIn</span></a>
+      <a class="star" href="#" target="_blank" rel="noopener" data-me="cv" hidden><span>Download CV</span></a>
+    </div>
+    <div class="ct-facts">
+      <div><span>Live</span><b>Ankur runs at <a class="lnk" href="https://ankurs.online" target="_blank" rel="noopener">ankurs.online</a></b></div>
+      <div><span>Next</span><b>Usability tests for SAVVY and a classroom pilot for Ankur</b></div>
+      <div><span>Also</span><b>Faculty at École Intuit Lab</b></div>
+    </div>
+  </section>
 </main>
 
-<main id="case" aria-live="polite"></main>
-
-<footer><div class="wrap"><span>© 2026 Akshat Jerath</span><span class="mono">Mumbai, India</span></div></footer>
-
-<dialog class="lb" id="lb" aria-label="Image viewer">
-  <div class="lb-in"><div class="lb-bar"><span id="lbCap"></span><button type="button" id="lbClose">Close</button></div><div class="lb-scroll"><img id="lbImg" alt=""></div></div>
-</dialog>
+<footer><div class="wrap"><span>© 2026 Akshat Jerath</span><span>Mumbai, India</span></div></footer>
 <script src="content.js"></script>
-<script src="app.js"></script>
+<script src="vendor/lenis.min.js"></script>
+<script src="home.js"></script>
+<script src="nav.js"></script>
 </body>
 </html>
