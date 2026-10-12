@@ -11,7 +11,7 @@ Akshat Jerath's UX/UI portfolio: a home page and one page per case study (SAVVY,
 | `home.css` / `home.js` | Home page styles and motion | Rarely |
 | `case.css` / `case.js` / `case-widgets.js` | Case-study styles, motion, side nav, prev/next, and the widgets built from `content.js` | Rarely |
 | `nav.js` | The top nav on every page: the gooey pill and the phone menu (its links are at the top of the file) | You add a page |
-| `greggs.js` | The Greggs report wheel and the 2050 menu carousel | Rarely |
+| `greggs.js` | The Greggs 2050 menu carousel | Rarely |
 | `MOTION.md` | What moves, how fast, and why | You change an animation |
 | `img/`, `assets/fonts/`, `vendor/` | Images and video; self-hosted fonts (OFL); Lenis smooth scroll (MIT) | You add or swap an image |
 
@@ -37,8 +37,7 @@ Anything still missing shows as a dashed "Add:" note on your own computer and in
 
 1. **Your CV.** Put your UX CV in `assets/` and set `ME.cv` at the top of `content.js` (for example `"assets/Akshat_Jerath_CV.pdf"`). The CV buttons stay hidden until then.
 2. **Email and LinkedIn** are in `ME` too (taken from akshatjerath.com). The phone menu has its own copy at the top of `nav.js`.
-3. **Ankur screens.** The Final design section of `ankur.html` still asks for screens of the live app (demo login only).
-4. **Phone screens** are WebP exports from Figma.
+3. **Phone screens** are WebP exports from Figma.
 
 ## What is in it
 

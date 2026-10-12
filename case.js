@@ -47,6 +47,44 @@
   });
 
 
+  // Critical Design · expiry clock (rules in MOTION.md). The clock sticks beside the timeline: its ring fills through each era,
+  // the year flips like a split-flap board and the line under it names who holds the timer. Scroll back and it runs backwards.
+  const flap = (el, text) => {
+    const old = el.textContent; if (old === text) return;
+    if (el.children.length !== text.length) el.innerHTML = [...text].map(ch => `<i>${ch}</i>`).join("");
+    [...text].forEach((ch, k) => { const c = el.children[k]; if (c.textContent !== ch || old === ""){ c.textContent = ch; if (!reduce){ c.classList.remove("f"); void c.offsetWidth; c.classList.add("f"); } } });
+  };
+  document.querySelectorAll("[data-flap]").forEach(el => { const t = el.textContent; el.textContent = ""; flap(el, t); });
+  const xc = document.querySelector("[data-xclock]");
+  if (xc){
+    const spine = document.querySelector(".xt-spine"), eras = [...spine.querySelectorAll(".xt-era")];
+    const yr = xc.querySelector("[data-flap]"), unit = xc.querySelector("[data-unit]"), holder = xc.querySelector("[data-holder]");
+    const WHO = {past: "Physics", present: "Distance", near: "The lab", seq: "The data"};
+    const ticks = xc.querySelector(".xt-ticks"); // one tick per near-future signal, 15 in all
+    ticks.innerHTML = Array.from({length: 15}, (_, i) => { const a = i / 15 * 2 * Math.PI - Math.PI / 2, c = Math.cos(a), s = Math.sin(a);
+      return `<line x1="${100 + c * 91}" y1="${100 + s * 91}" x2="${100 + c * 98}" y2="${100 + s * 98}" style="transition-delay:${Math.min(i, 5) * 80}ms"/>`; }).join("");
+    let queued = false;
+    const draw = () => {
+      queued = false;
+      const mid = innerHeight * .45, r = spine.getBoundingClientRect();
+      spine.style.setProperty("--p", reduce ? 1 : Math.max(0, Math.min(1, (mid - r.top) / r.height)));
+      let cur = eras[0], t = 0;
+      eras.forEach(e => { const b = e.getBoundingClientRect(); if (b.top <= mid){ cur = e; t = Math.max(0, Math.min(1, (mid - b.top) / b.height)); } });
+      const k = cur.dataset.era, from = +cur.dataset.from, to = +cur.dataset.to;
+      if (xc.dataset.era !== k){ xc.dataset.era = k; holder.textContent = WHO[k]; }
+      if (k === "seq"){ flap(yr, "D-" + String(Math.max(1, Math.round(30 - t * 29))).padStart(2, "0")); unit.textContent = "days left"; xc.style.setProperty("--fillp", 1 - t); }
+      else { flap(yr, String(Math.round(from + (to - from) * t))); unit.textContent = "year"; xc.style.setProperty("--fillp", t); }
+    };
+    addEventListener("scroll", () => { if (!queued){ queued = true; requestAnimationFrame(draw); } }, {passive: true});
+    addEventListener("resize", draw); draw();
+  }
+  // Scenario dial: once in view, the crate counts down from 30 days while its ring drains (CSS).
+  const xd = document.querySelector("[data-xs-days]");
+  if (xd){
+    const run = () => { if (reduce) return flap(xd, "D-01"); let d = 30; const iv = setInterval(() => { d--; flap(xd, "D-" + String(d).padStart(2, "0")); if (d <= 1) clearInterval(iv); }, 80); };
+    new IntersectionObserver((es, o) => { if (es[0].isIntersecting){ o.disconnect(); run(); } }, {threshold: .4}).observe(xd);
+  }
+
   // Smooth scrolling (Lenis). Off for anyone who asks for less motion.
   let lenis = null;
   if (!reduce && window.Lenis) window.lenis = lenis = new Lenis({autoRaf: true, anchors: {offset: -90}});

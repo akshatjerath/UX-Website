@@ -27,9 +27,9 @@
     <div>
       <p class="eyebrow">Speculative design, team project, 2026</p>
       <h1 id="t-hero">Grow below, keep above.</h1>
-      <p class="lede">What if empty city buildings grew our food and kept it fresh, right where we live? “The Hub” is our speculative answer.</p>
+      <p class="lede">What if empty city buildings grew our food and kept it fresh, right where we live? “The Hub” is our speculative answer. Then we pushed it to 2045 and asked who holds the timer on that freshness.</p>
     </div>
-    <svg class="hub2" viewBox="0 0 640 520" role="img" aria-label="A city building in cross-section. Crops grow on the three lower floors under lights. The two upper floors keep food with natural methods: drying racks, earthen pots and controlled air. An arrow leads out to the neighbourhood.">
+    <svg class="hub2" viewBox="0 0 640 520" role="img" aria-label="A city building in cross-section. Crops grow on the three lower floors under lights. The two upper floors keep food with natural methods: drying racks, earthen pots and controlled air. An arrow leads out to the neighbourhood, where an expiry timer on the produce starts counting down.">
       <rect x="40" y="60" width="380" height="400" rx="6" fill="#384834" stroke="#E6EDD8" stroke-width="3"/>
       <path d="M40 140 H420 M40 220 H420 M40 300 H420 M40 380 H420" stroke="#4A5A44" stroke-width="2"/>
       <g class="keep" style="animation-delay:1.5s"><path d="M70 92 H210 M70 112 H210" stroke="#E6EDD8" stroke-width="3" stroke-linecap="round"/>
@@ -43,6 +43,7 @@
       <rect x="20" y="460" width="420" height="14" fill="#7A5A3A"/>
       <path class="move" pathLength="1" d="M420 440 C470 440 480 470 600 470" fill="none" stroke="#E6EDD8" stroke-width="3" stroke-linecap="round"/>
       <path d="M592 462 L604 470 L592 478" fill="none" stroke="#E6EDD8" stroke-width="3" class="keep" style="animation-delay:3s"/>
+      <g class="xtag" aria-hidden="true"><circle cx="560" cy="410" r="26" fill="#2F3D2B" stroke="#4A5A44" stroke-width="5"/><circle class="xtag-ring" cx="560" cy="410" r="26" fill="none" stroke="#EE8E6E" stroke-width="5" pathLength="100" transform="rotate(-90 560 410)"/><text x="560" y="415" text-anchor="middle" class="xtag-t">D-7</text></g>
       <text x="440" y="110">Keep above</text><text x="440" y="132" class="t2">natural storage</text>
       <text x="440" y="330">Grow below</text><text x="440" y="352" class="t2">produce, under lights</text>
       <text x="470" y="500" class="t2">to the neighbourhood</text>
@@ -52,8 +53,8 @@
     <dl class="facts-line">
       <div><dt>Type</dt><dd>Team project</dd></div>
       <div><dt>Studio</dt><dd>Critical Design</dd></div>
-      <div><dt>Methods</dt><dd>Futures timeline, 100 ideas each, clustering</dd></div>
-      <div><dt>Format</dt><dd>Research poster and design brief</dd></div>
+      <div><dt>Methods</dt><dd>Futures timeline, waterfall, scenario, 100 ideas each</dd></div>
+      <div><dt>Format</dt><dd>Timeline poster, design brief, scenario</dd></div>
       <div><dt>Status</dt><dd>Speculative. Ongoing</dd></div>
     </dl>
     <p class="note" data-draft>Add: your teammates (Akhil and Sayee?) and exactly which parts were yours.</p>
@@ -67,25 +68,111 @@
   </div>
 </section>
 
-<section style="padding-top:0" aria-labelledby="t-ft" data-nav="Research|Futures timeline">
+<section class="xt" aria-labelledby="t-ft" data-nav="Research|Futures timeline">
   <div class="wrap">
     <div class="head split">
       <div><p class="eyebrow">Research</p><h2 id="t-ft">A futures timeline, 1920 to 2045.</h2></div>
-      <p class="sub">A futures timeline from the past, through today, to a waterfall of three pathways. The axis is broken between 1945 and 2024.</p>
+      <p class="sub">One line from the past to our scenario. The clock shows who decides how long food lasts in each era. The axis isn't to scale: each era gets the room its story needs.</p>
     </div>
-    <div class="ft-wrap"><div class="ft rv" role="img" aria-label="Timeline: Past 1920 to 1945, Present 2024 to 2026, Near future 2027 to 2031, then a waterfall from 2033 to 2045 splitting into analytical, natural and industrial pathways.">
-      <svg viewBox="0 0 1000 260" aria-hidden="true">
-        <path class="ln" pathLength="1" d="M20 130 H250"/><path class="ln" pathLength="1" d="M300 130 H460"/><path class="ln" pathLength="1" d="M480 130 H640"/>
-        <path class="ln br" pathLength="1" d="M660 130 C760 130 780 40 900 40"/><path class="ln br" pathLength="1" d="M660 130 H900"/><path class="ln br" pathLength="1" d="M660 130 C760 130 780 220 900 220"/>
-        <path d="M262 112 l12 36 M278 112 l12 36" stroke="#E6EDD8" stroke-width="2" opacity=".6"/>
-        <circle cx="20" cy="130" r="7" fill="#E6EDD8"/><circle cx="300" cy="130" r="7" fill="#E6EDD8"/><circle cx="480" cy="130" r="7" fill="#E6EDD8"/><circle cx="660" cy="130" r="9" fill="#9FC47A"/>
-      </svg>
-      <span class="lab" style="left:13.5%;top:62%"><b>Past</b>1920 – 1945</span>
-      <span class="lab" style="left:38%;top:62%"><b>Present</b>2024 – 2026</span>
-      <span class="lab" style="left:56%;top:62%"><b>Near future</b>2027 – 2031</span>
-      <span class="lab" style="left:66%;top:6%"><b>Waterfall</b>2033 – 2045</span>
-      <span class="lab r" style="left:91%;top:15%"><b>Analytical</b></span><span class="lab r" style="left:91%;top:50%"><b>Natural</b></span><span class="lab r" style="left:91%;top:85%"><b>Industrial</b></span>
-    </div></div>
+    <div class="xt-grid">
+      <div class="xt-clock" data-xclock data-era="past" aria-hidden="true">
+        <svg viewBox="0 0 200 200">
+          <circle class="xt-track" cx="100" cy="100" r="80"/>
+          <g class="xt-ticks"></g>
+          <circle class="xt-ring" cx="100" cy="100" r="80" pathLength="100"/>
+        </svg>
+        <div class="xt-face"><span class="flap" data-flap>1920</span><small data-unit>year</small></div>
+        <p class="xt-holder">Timer held by<b data-holder>Physics</b></p>
+      </div>
+
+      <ol class="xt-spine">
+        <li class="xt-era" data-era="past" data-from="1920" data-to="1945">
+          <div class="xt-head"><h3>The past</h3><span>1920 – 1945</span></div>
+          <p class="xt-say">Science learns to buy food time with physics: freeze it, heat it, dry it, add what's missing. Anyone with the machine can use the method.</p>
+          <ul class="xt-past">
+            <li><small>1924 – 1941</small><b>Fortification</b>Iodized salt, vitamin-D milk, enriched flour.</li>
+            <li><small>1928 – 1932</small><b>Vitamin isolation</b>Vitamin C isolated, so you know what to add.</li>
+            <li><small>1930</small><b>Flash freezing</b>Birdseye's quick-freeze keeps the texture.</li>
+            <li><small>1930s</small><b>Pasteurization</b>High heat, short time, safe milk.</li>
+            <li><small>1930s</small><b>Cold chain</b>Mechanical refrigeration and refrigerated transport.</li>
+            <li><small>1940s</small><b>Dehydration</b>Powdered milk and egg ship light to the front.</li>
+          </ul>
+        </li>
+
+        <li class="xt-era" data-era="present" data-from="2024" data-to="2026">
+          <div class="xt-head"><h3>The present</h3><span>2024 – 2026</span></div>
+          <p class="xt-say">India grows enough but loses it on the road. Here distance is the timer: every kilometre between farm and plate eats shelf-life.</p>
+          <div class="xt-brief">
+            <p class="xt-topic"><small>Our brief</small>Reusing buildings to grow and naturally keep food fresh</p>
+            <p><small>Insight</small>Most loss comes from distance. Grow and keep food in the same local building and the distance disappears.</p>
+            <p><small>Opportunity</small>Empty city buildings become food hubs that grow regional produce and keep it fresh with drying, cool earthen storage and controlled air.</p>
+          </div>
+        </li>
+
+        <li class="xt-era" data-era="near" data-from="2027" data-to="2031">
+          <div class="xt-head"><h3>Near future</h3><span>2027 – 2031</span></div>
+          <p class="xt-say">Fifteen things already in motion land in these five years. Freshness stops being only about cold. The lab starts writing it into the seed and the coating.</p>
+          <div class="xt-years">
+            <div class="xt-yr"><b>2027</b><ul>
+              <li class="t">Vertical farms go bust<small>14 firms by 2025; Plenty raised ~$1B</small></li>
+              <li>Edible coatings leave the lab<small>aimed at losses of up to 50%</small></li>
+              <li>Solar cold rooms reach the farm gate<small>off-grid, no batteries</small></li></ul></div>
+            <div class="xt-yr"><b>2028</b><ul>
+              <li>Fortified rice on every welfare plate<small>₹17,082 cr, funded to Dec 2028</small></li>
+              <li>CRISPR tomato stays sellable longer<small>28 – 36 days</small></li>
+              <li class="t">Drone spraying meets reality<small>500 of 15,000 drones in year one</small></li></ul></div>
+            <div class="xt-yr"><b>2029</b><ul>
+              <li>Gene-edited rice reaches fields<small>Kamala: +19% yield</small></li>
+              <li>The 2022 gene-edit rule pays off<small>40+ crops in the pipeline</small></li>
+              <li class="t">Millets boom on the shelf, not the farm<small>bajra still ~₹1,700 a quintal</small></li></ul></div>
+            <div class="xt-yr"><b>2030</b><ul>
+              <li>Biofortified staples scale<small>1.5 – 3× the nutrients</small></li>
+              <li>Climate-resilient seed becomes the default<small>94% of 2024's new varieties</small></li>
+              <li class="t">The gene-edit trust verdict<small>GM-Free India vs ICAR</small></li></ul></div>
+            <div class="xt-yr"><b>2031</b><ul>
+              <li>Cold storage hits ~440 lakh tonnes<small>~33,000 reefer trucks, ~62,000 needed</small></li>
+              <li class="t">Released doesn't mean grown or eaten<small>the adoption gap stays open</small></li>
+              <li class="t">Does the loss number fall?<small>wheat loss 5.96% → 4.17% so far</small></li></ul></div>
+          </div>
+          <p class="xt-key"><span>Signal</span><span class="t">Tension: where the progress story breaks</span></p>
+        </li>
+
+        <li class="xt-era" data-era="seq" data-from="2033" data-to="2043">
+          <div class="xt-head"><h3>The selected sequence</h3><span>2033 – 2043</span></div>
+          <p class="xt-say">Five points picked from our waterfall, each adding to the world before it. Freshness turns into a number someone else can read and set.</p>
+          <ol class="xt-seq">
+            <li><b>2033</b><div><small>Analytical</small>Edible coatings become a labelled shelf-life standard, crop by crop.</div></li>
+            <li><b>2035</b><div><small>Industrial</small>Cold-chain build-out becomes a political flagship, still short of need.</div></li>
+            <li><b>2037</b><div><small>Natural</small>Warming shortens natural shelf-life faster than coatings extend it.</div></li>
+            <li><b>2039</b><div><small>Analytical</small>A digital twin of the cold chain forecasts loss before it happens.</div></li>
+            <li><b>2043</b><div><small>Analytical</small>Room-temperature preservation ends the need for constant cold.</div></li>
+          </ol>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="band xs" aria-labelledby="t-xs" data-nav="Research|Scenario">
+  <div class="wrap">
+    <div class="head split">
+      <div><p class="eyebrow">Scenario, 2045</p><h2 id="t-xs">The era of adaptive freshness.</h2></div>
+      <p class="sub">An algorithmic food system where AI breeding and digital-twin sensors manage produce down to the cell. Every harvest carries a software expiry clock that sets its market value in real time.</p>
+    </div>
+    <div class="xs-grid rv">
+      <div class="xs-dial" aria-hidden="true">
+        <svg viewBox="0 0 240 240">
+          <circle cx="120" cy="120" r="100" class="xs-track"/>
+          <circle cx="120" cy="120" r="100" class="xs-ring" pathLength="100"/>
+        </svg>
+        <div class="xs-face"><span class="flap" data-xs-days>D-30</span><small>days left on this crate</small></div>
+      </div>
+      <div class="xs-hand">
+        <p class="xs-row was"><small>Who set the timer</small><b>The farmer</b></p>
+        <p class="xs-row now"><small>Who sets it in 2045</small><b>The seed company</b></p>
+        <blockquote class="xs-q">“We can't control the time limit of the expiry clock. It will be controlled by the companies making the seeds.”<cite>From our SWOT, weakness</cite></blockquote>
+      </div>
+    </div>
   </div>
 </section>
 

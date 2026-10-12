@@ -32,8 +32,9 @@ Every animation plays **once**, when the visual scrolls into view (`.rv` → `.i
 | Greggs · strategy | Two pillars rise, then the sausage-roll price line draws flat from 2026 to 2050 | The price is held up by structure, not discount |
 | Greggs · Pret | The £20 → £30 → £10 line draws | A lesson in what not to do (from the R&D report) |
 | Greggs · AI | Dozens of lines converge on one spec, then fan out to 60+ assets | One locked spec kept the AI output consistent |
-| Critical Design · hero | Crops grow floor by floor, storage appears above, then an arrow leads out to the neighbourhood | Grow below, keep above |
-| Critical Design · timeline | The line draws from 1920, then splits into three pathways after 2033 | The futures "waterfall" |
+| Critical Design · hero | Crops grow floor by floor, storage appears above, an arrow leads out to the neighbourhood, then an expiry timer on the produce starts draining | Grow below, keep above, and the scenario's question in one picture |
+| Critical Design · timeline | Tied to the scroll. One spine fills from 1920 to 2043. A clock sticks beside it: its ring fills through each era, the year flips like a split-flap board, and the line under it names who holds the timer (physics, distance, the lab, the data). The 15 near-future signals appear as 15 ticks on the ring. In the selected sequence it becomes a countdown, D-30 to D-01. Scroll back and it runs backwards. Phones get it as a slim sticky bar. | Who decides how long food lasts, era by era |
+| Critical Design · scenario | Once in view, a crate counts down from D-30 to D-01 while its ring drains (about 2.4 s, the one long move on the page, on purpose) | The expiry clock is set by someone else |
 | Critical Design · ideation | 100 → 10 → 1, left to right | How the brief was chosen |
 
 ## Reduced motion
@@ -61,9 +62,16 @@ With "reduce motion" switched on, every visual shows its finished state straight
 | Home · name | One letter at a time turns into a dashed outline inside a selection box, then the next, in a loop. Pointing at the name takes over; the loop resumes when you leave. Pauses off screen. | After React Bits' Tech Text, in `home.js` |
 | Home · line under the name | Types an ending, waits, deletes it, types the next. | After Text Type, `home.js` |
 | Home · project panels | Each project is a full-height panel that sticks; the next one slides over it while the one underneath shrinks back 6% and dims. | `home.js` (scroll), `home.css` |
-| Home · timeline | The line draws down as you scroll; each entry's dot pops when the line reaches it. | `home.js` |
+| Home · timeline | The line draws down as you scroll; each entry's dot pops and its title brightens when the line reaches it. Entries waiting below stay readable (muted, not faded). | `home.js` |
 | Buttons (See the work, Email, LinkedIn, CV) | A light with a short tail runs round the edge. | After Star Border; CSS `offset-path`, sparks added by `home.js` |
 | Top nav, every page | The pill flows to the link you point at; drops burst on click. On the home page it rests on the section you're reading. | After Gooey Nav, `nav.js` |
 | SAVVY · title | Each letter's outline draws in, one after another, then the fill wipes across. Plays on load and when you point at it. | After Stroke Text, `case.js` |
 | Greggs · the report | Scrolling turns a wheel of chapter names; the matching page swaps in beside it. Phones and reduced motion get the chapters stacked. | After Option Wheel, `greggs.js` |
 | Greggs · 2050 menu | Concept cards recede into depth; arrows, dots, drag or arrow keys move them. | After Depth Carousel, `greggs.js` |
+
+## Round 5 (12 Oct 2026)
+
+| Piece | Behaviour | Source |
+|---|---|---|
+| Critical Design · expiry clock | Sticky clock beside the futures timeline (see the table above). Replaces the three-branch waterfall: the course asks for only the selected sequence on the final timeline. | Year digits after React Bits' Split Flap Text; ring after Swishy's countdown-with-circular-progress template; `case.js` ("expiry clock"), `case.css` |
+| Critical Design · scenario dial | D-30 to D-01 countdown with a draining ring, then "The farmer" struck through and "The seed company" under it | Same split-flap digits, `case.js` |
