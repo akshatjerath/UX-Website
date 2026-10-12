@@ -1,6 +1,6 @@
 /* Home page code. Data (ME, P) comes from content.js; the phone menu from nav.js.
    The animated pieces are hand-written, vanilla versions of React Bits components (MIT + Commons Clause):
-   Tech Text (the name), Text Type (the line under it), Grid Motion (hero background),
+   Tech Text (the name, on pointer only), Grid Motion (hero background),
    Profile Card, Logo Loop, Folder Float and Star Border (CSS only, in home.css). */
 (() => {
   const RM = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -83,40 +83,18 @@
     const kick = () => { if (!raf) raf = requestAnimationFrame(frame); };
     svg.addEventListener("pointermove", e => { p = toSvg(e.clientX, e.clientY); kick(); });
     svg.addEventListener("pointerleave", () => { p = null; kick(); });
-    const ready = () => { layout(); if (RM) return;
-      let on = true, timer = 0;
-      const step = () => {
-        if (on && !p) { do { auto = (auto + 1) % spans.length; } while (!spans[auto].textContent.trim()); kick(); }
-        timer = setTimeout(step, 720);
-      };
-      new IntersectionObserver(es => { on = es[0].isIntersecting; }).observe(svg);
-      timer = setTimeout(step, 600);
-    };
+    const ready = () => layout(); // no auto loop any more: the outline only follows the pointer
     (document.fonts ? document.fonts.ready : Promise.resolve()).then(ready);
     new ResizeObserver(layout).observe(svg.parentNode);
   });
 
-  /* ---------- Text Type: the end of the line types, waits, deletes and types the next ---------- */
-  document.querySelectorAll("[data-type]").forEach(el => {
-    const list = JSON.parse(el.dataset.type);
-    if (RM) return;
-    let w = 0, n = list[0].length, del = true;
-    const tick = () => {
-      const s = list[w];
-      if (del) { n--; if (n <= 0) { del = false; w = (w + 1) % list.length; } }
-      else { n++; if (n >= list[w].length) { del = true; el.textContent = list[w]; return setTimeout(tick, 2200); } }
-      el.textContent = list[w].slice(0, Math.max(0, n)) || "​";
-      setTimeout(tick, del ? 28 : 55 + Math.random() * 40);
-    };
-    setTimeout(tick, 3200);
-  });
 
   /* ---------- Grid Motion: tilted rows of project screens drift sideways; a soft spotlight follows the pointer ---------- */
   document.querySelectorAll("[data-grid-motion]").forEach(el => {
     const W = (c, t) => ({w: t, c});
-    const ITEMS = ["savvy-n-answer", W("sv", "SAVVY"), "savvy-n-tonight", W("ank", "Ankur"), "savvy-d-answer", "greggs-report-cover", W("grg", "Fresh. Fair. Forever."), "savvy-n-kept",
-      "savvy-n-checking", W("cd", "Grow below, keep above."), "savvy-and-n-answer", "savvy-d-home", W("ank", "One small target"), "savvy-n-bill", "savvy-d-savings", W("grg", "Greggs 2050"),
-      "savvy-n-booktime", W("cd", "The Hub"), "savvy-and-n-tonight", "savvy-n-lock", W("sv", "You keep ₹550"), "savvy-n-island"];
+    const ITEMS = ["savvy-n-answer", "g50-sausage-roll-720", "savvy-n-tonight", "ankur-live-observe", W("sv", "SAVVY"), "g50-flagship-720", "savvy-n-kept", W("cd", "Who holds the clock?"),
+      "greggs-merch-real", "savvy-n-checking", "ankur-live-target", W("cd", "Grow below, keep above."), "g50-packaging-720", "savvy-and-n-answer", "ankur-live-class", "savvy-d-answer",
+      "g50-drone-720", "savvy-n-bill", W("ank", "Ankur"), "greggs-report-cover", "savvy-n-lock", "ankur-live-aid", W("sv", "You keep ₹550"), "g50-store-shrunk-720"];
     const tile = (x, k) => typeof x === "string" ? `<div class="gm-t"><img src="img/${x}.webp" alt="" loading="lazy" decoding="async"></div>` : `<div class="gm-t w ${x.c}">${x.w}</div>`;
     const ROWS = 4, ANG = -12, GAP = 16, SPEED = 22;
     let rows = [], off = [], period = 0, raf = 0, last = 0, vis = true, ptr = {x: 0, y: 0}, par = {x: 0, y: 0};
@@ -157,22 +135,46 @@
     inner.style.setProperty("--b", (1 - k * .35).toFixed(3));
   });
 
-  /* ---------- timeline: the line draws down as you scroll and each entry lights up when it's reached ---------- */
+  /* ---------- timeline: a snake road, oldest first. Left to right, then back, two stops a row (after SAVVY's iteration road).
+     The line draws as you scroll and each stop lights up when the line reaches it. Narrow screens keep a straight line down. ---------- */
   const tl = document.querySelector("[data-timeline]"), tli = tl ? [...tl.children] : [];
+  let snake = false, tlLen = 1, tlDraw = null;
+  const tlLayout = () => {
+    if (!tl) return;
+    snake = tl.clientWidth >= 520;
+    tl.classList.toggle("snake", snake);
+    tl.querySelector(".tl-svg")?.remove();
+    if (!snake) return;
+    tl.insertAdjacentHTML("afterbegin", '<svg class="tl-svg" aria-hidden="true"><path class="tl-base"/><path class="tl-draw"/></svg>');
+    const svg = tl.firstChild, box = tl.getBoundingClientRect();
+    svg.setAttribute("width", box.width); svg.setAttribute("height", box.height);
+    const pts = tli.map(li => { const r = li.querySelector(".tl-dot").getBoundingClientRect(); return [r.left - box.left + r.width / 2, r.top - box.top + r.height / 2]; });
+    let d = `M${pts[0][0]} ${pts[0][1]}`;
+    for (let k = 1; k < pts.length; k++){
+      const [x0, y0] = pts[k - 1], [x1, y1] = pts[k];
+      if (Math.abs(y1 - y0) < 4){ d += ` L${x1} ${y1}`; continue; }
+      const right = x0 > box.width / 2, xr = right ? box.width + 14 : -14, R = Math.min(36, (y1 - y0) / 2), sg = right ? 1 : -1; // U-turn just outside the grid
+      d += ` L${xr - sg * R} ${y0} Q${xr} ${y0} ${xr} ${y0 + R} L${xr} ${y1 - R} Q${xr} ${y1} ${xr - sg * R} ${y1} L${x1} ${y1}`;
+    }
+    svg.querySelector(".tl-base").setAttribute("d", d);
+    tlDraw = svg.querySelector(".tl-draw"); tlDraw.setAttribute("d", d);
+    tlLen = tlDraw.getTotalLength(); tlDraw.style.strokeDasharray = tlLen;
+    tlFx();
+  };
   const tlFx = () => {
     if (!tl) return;
     const r = tl.getBoundingClientRect(), mark = innerHeight * .7;
     const k = RM ? 1 : clamp((mark - r.top) / r.height, 0, 1);
-    tl.style.setProperty("--tp", k.toFixed(4));
-    tli.forEach(li => li.classList.toggle("on", RM || li.getBoundingClientRect().top + 10 < mark));
+    if (snake && tlDraw){ tlDraw.style.strokeDashoffset = tlLen * (1 - k); tli.forEach((li, i) => li.classList.toggle("on", RM || k >= i / tli.length)); }
+    else { tl.style.setProperty("--tp", k.toFixed(4)); tli.forEach(li => li.classList.toggle("on", RM || li.getBoundingClientRect().top + 10 < mark)); }
   };
+  if (tl){ tli.forEach(li => li.insertAdjacentHTML("afterbegin", '<span class="tl-dot" aria-hidden="true"></span>')); new ResizeObserver(tlLayout).observe(tl); }
   let sq = 0; const onScroll = () => { if (!sq) sq = requestAnimationFrame(() => { sq = 0; stackFx(); tlFx(); }); };
   addEventListener("scroll", onScroll, {passive: true}); addEventListener("resize", onScroll); onScroll();
 
   /* ---------- Star Border: a light with a short tail runs round each button's edge ---------- */
-  if (!RM) document.querySelectorAll(".star").forEach((b, n) => {
-    b.style.setProperty("--d", (-n * 1.1) + "s");
-    b.insertAdjacentHTML("beforeend", Array.from({length: 7}, (_, k) => `<i class="sp" aria-hidden="true" style="--k:${k};--z:${8 - k}px;--o:${(1 - k / 7).toFixed(2)}"></i>`).join(""));
+  if (!RM) document.querySelectorAll(".cta .star.solid").forEach(b => { // one lit button: "See the work"
+        b.insertAdjacentHTML("beforeend", Array.from({length: 7}, (_, k) => `<i class="sp" aria-hidden="true" style="--k:${k};--z:${8 - k}px;--o:${(1 - k / 7).toFixed(2)}"></i>`).join(""));
   });
 
   /* ---------- Profile Card: tilts toward the pointer ---------- */

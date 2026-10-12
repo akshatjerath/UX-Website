@@ -67,7 +67,7 @@ With "reduce motion" switched on, every visual shows its finished state straight
 | Top nav, every page | The pill flows to the link you point at; drops burst on click. On the home page it rests on the section you're reading. | After Gooey Nav, `nav.js` |
 | SAVVY · title | Each letter's outline draws in, one after another, then the fill wipes across. Plays on load and when you point at it. | After Stroke Text, `case.js` |
 | Greggs · the report | Scrolling turns a wheel of chapter names; the matching page swaps in beside it. Phones and reduced motion get the chapters stacked. | After Option Wheel, `greggs.js` |
-| Greggs · 2050 menu | Concept cards recede into depth; arrows, dots, drag or arrow keys move them. | After Depth Carousel, `greggs.js` |
+| Greggs · 2050 menu | Replaced in round 6 by the concave ring (below). | |
 
 ## Round 5 (12 Oct 2026)
 
@@ -75,3 +75,25 @@ With "reduce motion" switched on, every visual shows its finished state straight
 |---|---|---|
 | Critical Design · expiry clock | Sticky clock beside the futures timeline (see the table above). Replaces the three-branch waterfall: the course asks for only the selected sequence on the final timeline. | Year digits after React Bits' Split Flap Text; ring after Swishy's countdown-with-circular-progress template; `case.js` ("expiry clock"), `case.css` |
 | Critical Design · scenario dial | D-30 to D-01 countdown with a draining ring, then "The farmer" struck through and "The seed company" under it | Same split-flap digits, `case.js` |
+
+## Round 6 (13 Oct 2026)
+
+| Piece | Behaviour | Source |
+|---|---|---|
+| Greggs · 2050 menu | Cards on the inside of a drum, so the sides lean towards you. Steps to the next card every 3.5 s, only while on screen; holds while you point at it or focus it; a pause button stops it for good (WCAG 2.2.2). Arrows, drag and arrow keys also move it. Captions sit under each image. Phones, narrow windows and reduced motion get a plain swipeable row. | After React Bits Pro's Concave Carousel, `greggs.js` |
+| Greggs · brand world | The six stills on the outside of a drum, same rules as the menu. The film stays above it. | After React Bits' Circular Carousel, `greggs.js` |
+| Home · timeline | Now a snake road, oldest first: two stops a row, left to right then back. The line draws as you scroll and each stop lights up when it's reached. Narrow screens keep the straight line. | After SAVVY's iteration road, `home.js` |
+| Buttons | Every star-border light now runs in step (no per-button offset). | `home.js` |
+| Critical Design · scenario | On wide screens the section pins; the crate counts down D-30 to D-01 as you scroll through it, then a line strikes through "The farmer". Phones and reduced motion: unchanged (counts once in view, or shows D-01). | `case.js` ("Scenario dial") |
+| Case-study corners | The first and last case study now lead home instead of looping. | `case.js` |
+
+## Round 7 (13 Oct 2026): calmer
+
+| Piece | Change |
+|---|---|
+| Home · name | The outline no longer loops on its own; it only follows the pointer. |
+| Home · line under the name | Typing removed; the line is static. |
+| Buttons | Only "See the work" keeps the running light. |
+| Greggs · rings | Pause, previous and next buttons removed at Akshat's request. They still turn only while on screen, hold while pointed at or focused, and phones and reduced motion get a still, swipeable row. |
+| Critical Design · scenario | Pinning removed; back to counting down once when it comes into view. |
+| SAVVY | Unchanged on purpose. |

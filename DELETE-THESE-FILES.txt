@@ -1,0 +1,13 @@
+Delete these files from the repo (they are no longer used):
+app.js
+assets/fonts/OFL-fraunces.txt
+assets/fonts/OFL-hanken.txt
+assets/fonts/OFL-jetbrains.txt
+assets/fonts/bodoni-moda-latin-wght-normal.woff2
+assets/fonts/fraunces-latin-opsz-normal.woff2
+assets/fonts/hanken-grotesk-latin-wght-normal.woff2
+assets/fonts/instrument-sans-latin-wght-normal.woff2
+assets/fonts/jetbrains-mono-latin-wght-normal.woff2
+main.js
+menu.js
+styles.css

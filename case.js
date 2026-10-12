@@ -228,7 +228,7 @@
   const ORDER = [["savvy.html", "SAVVY"], ["ankur.html", "Ankur"], ["greggs.html", "Greggs 2050"], ["critical-design.html", "Critical Design"]];
   const here = ORDER.findIndex(([f]) => location.pathname.endsWith("/" + f) || location.pathname.endsWith(f));
   if (here >= 0){
-    const prev = ORDER[(here + ORDER.length - 1) % ORDER.length], next = ORDER[(here + 1) % ORDER.length];
+    const HOME = ["index.html", "Home"], prev = ORDER[here - 1] || HOME, next = ORDER[here + 1] || HOME; // the ends lead home, no wrap-around
     document.body.insertAdjacentHTML("beforeend", `<nav class="pn" aria-label="Other projects">
       <a class="pn-a prev" href="${prev[0]}"><span aria-hidden="true">←</span><span><small>Previous</small>${prev[1]}</span></a>
       <span class="pn-count" aria-hidden="true">${String(here + 1).padStart(2, "0")} / 04</span>

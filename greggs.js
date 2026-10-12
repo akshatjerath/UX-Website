@@ -1,39 +1,55 @@
-/* Greggs page only. [data-depth]: the 2050 menu as cards that recede into depth,
-   hand-written after the React Bits Depth Carousel (MIT + Commons Clause). Styles: case.css, "Greggs · the 2050 menu". */
+/* Greggs page only. [data-ring]: image cards on a 3D ring that turns on its own.
+   "circular": cards on the outside of a drum (after React Bits' Circular Carousel).
+   "concave": cards on the inside of the drum, so the sides lean towards you (after React Bits Pro's Concave Carousel).
+   It steps to the next card every 3.5 s while on screen and holds while you point at it or focus it (no buttons, by choice).
+   Phones, narrow windows and reduced motion get a plain swipeable row. Styles: case.css, "Greggs · rings". */
 (() => {
   const RM = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+  const wide = matchMedia("(min-width: 721px)");
 
-  /* ---------- the 2050 menu, in depth ---------- */
-  document.querySelectorAll("[data-depth]").forEach(root => {
-    const cards = [...root.querySelectorAll(".dc-card")], n = cards.length;
-    root.setAttribute("role", "region"); root.setAttribute("aria-roledescription", "carousel"); root.setAttribute("aria-label", "The 2050 menu"); root.tabIndex = 0;
-    root.insertAdjacentHTML("beforeend", `<button type="button" class="dc-arrow prev" aria-label="Previous concept">←</button><button type="button" class="dc-arrow next" aria-label="Next concept">→</button><div class="dc-dots">${cards.map((_, i) => `<button type="button" aria-label="Concept ${i + 1}"></button>`).join("")}</div><p class="sr" aria-live="polite"></p>`);
-    const dots = [...root.querySelectorAll(".dc-dots button")], live = root.querySelector("p.sr");
-    let cur = 0;
-    const show = i => {
-      cur = (i + n) % n;
-      cards.forEach((c, k) => {
-        let d = ((k - cur) % n + n) % n; if (d > n / 2) d -= n;
-        const back = Math.max(0, d), shown = Math.abs(d) <= 3;
-        c.style.transform = `translate(-50%,-50%) translateX(${d * 96}px) translateZ(${-d * 210}px) rotateY(${clamp(d, 0, 1) * 20}deg)`;
-        c.style.opacity = !shown ? 0 : d < 0 ? Math.max(0, 1 + d) : 1;
-        c.style.filter = `brightness(${Math.max(.3, 1 - back * .2)}) blur(${Math.min(5, back * 1.6)}px)`;
-        c.style.zIndex = 100 - Math.round(d * 5);
-        c.style.pointerEvents = d === 0 ? "auto" : "none";
-        c.setAttribute("aria-hidden", String(d !== 0));
-      });
-      dots.forEach((b, k) => b.classList.toggle("on", k === cur));
-      live.textContent = `${cur + 1} of ${n}: ${cards[cur].querySelector("h3").textContent}`;
+  document.querySelectorAll("[data-ring]").forEach(root => {
+    const inside = root.dataset.ring === "concave", items = [...root.children], n = items.length, step = 360 / n;
+    root.setAttribute("role", "region"); root.setAttribute("aria-roledescription", "carousel");
+    root.innerHTML = '<div class="ring-stage"><div class="ring-track"></div></div>';
+    const stage = root.firstChild, track = stage.firstChild;
+    items.forEach(it => { it.classList.add("ring-item"); track.appendChild(it); });
+    root.insertAdjacentHTML("beforeend", '<p class="sr" aria-live="polite"></p>');
+    const live = root.querySelector("p.sr");
+    let cur = 0, playing = !RM, held = false, seen = false, timer = 0, three = false, R = 0;
+
+    const layout = () => {
+      three = wide.matches && !RM;
+      root.classList.toggle("ring-3d", three);
+      if (!three){ track.style.transform = ""; items.forEach(it => it.style.transform = ""); return; }
+      const w = items[0].offsetWidth;
+      R = Math.round(w / (2 * Math.tan(Math.PI / n)) + 36);
+      items.forEach((it, i) => it.style.transform = `rotateY(${i * step}deg) translateZ(${inside ? -R : R}px)`);
+      stage.style.height = Math.max(...items.map(it => it.offsetHeight)) + 40 + "px";
+      turn(cur, true);
     };
-    root.querySelector(".prev").onclick = () => show(cur - 1);
-    root.querySelector(".next").onclick = () => show(cur + 1);
-    dots.forEach((b, k) => b.onclick = () => show(k));
-    root.addEventListener("keydown", e => { if (e.key === "ArrowRight") show(cur + 1); if (e.key === "ArrowLeft") show(cur - 1); });
+    const turn = (i, quiet) => {
+      cur = i;
+      const k = ((cur % n) + n) % n;
+      if (three) track.style.transform = `translateZ(${inside ? R * .55 : -R}px) rotateY(${-cur * step}deg)`;
+      else if (!quiet) items[k].scrollIntoView({behavior: RM ? "auto" : "smooth", block: "nearest", inline: "center"});
+      items.forEach((it, j) => it.classList.toggle("front", j === k));
+      if (!quiet) live.textContent = `${k + 1} of ${n}: ${(items[k].querySelector("h3,b") || {}).textContent || ""}`;
+    };
+    const tick = () => { clearTimeout(timer); if (three && playing && !held && seen) timer = setTimeout(() => { turn(cur + 1, true); tick(); }, 3500); };
+
+    const hold = v => { held = v; tick(); };
+    root.addEventListener("pointerenter", () => hold(true)); root.addEventListener("pointerleave", () => hold(false));
+    root.addEventListener("focusin", () => hold(true)); root.addEventListener("focusout", () => hold(false));
+    root.addEventListener("keydown", e => { if (e.key === "ArrowRight"){ turn(cur + 1); tick(); } if (e.key === "ArrowLeft"){ turn(cur - 1); tick(); } });
+    // drag or swipe on the 3D ring
     let x0 = null;
-    root.addEventListener("pointerdown", e => { if (!e.target.closest("button")) x0 = e.clientX; });
-    addEventListener("pointerup", e => { if (x0 === null) return; const dx = e.clientX - x0; x0 = null; if (Math.abs(dx) > 40) show(cur + (dx < 0 ? 1 : -1)); });
-    if (RM) root.classList.add("still");
-    show(0);
+    stage.addEventListener("pointerdown", e => { if (three) x0 = e.clientX; });
+    addEventListener("pointerup", e => { if (x0 === null) return; const dx = e.clientX - x0; x0 = null; if (Math.abs(dx) > 40){ turn(cur + (dx < 0 ? 1 : -1)); tick(); } });
+    // only turn while it's on screen
+    new IntersectionObserver(es => { seen = es[0].isIntersecting; tick(); }, {threshold: .35}).observe(root);
+    wide.addEventListener("change", layout);
+    addEventListener("resize", () => { if (three) layout(); });
+    track.tabIndex = 0; // the row scrolls on phones, so it takes keyboard focus
+    layout();
   });
 })();
