@@ -8,6 +8,7 @@
   // Draft notes show only off the live site, or with ?draft in the URL (same rule as content.js).
   const draft = !/github\.io$|akshatjerath\.com$/.test(location.hostname) || /[?&]draft\b/.test(location.search);
   if (!draft) document.querySelectorAll("[data-draft]").forEach(e => e.remove());
+  else document.documentElement.classList.add("draft");
 
   // People-icon charts: <div class="dots" data-on="8"> draws 13 people, 8 lit.
   document.querySelectorAll(".dots").forEach(el => {
@@ -67,9 +68,9 @@
     const draw = () => {
       queued = false;
       const mid = innerHeight * .45, r = spine.getBoundingClientRect();
-      spine.style.setProperty("--p", reduce ? 1 : Math.max(0, Math.min(1, (mid - r.top) / r.height)));
-      let cur = eras[0], t = 0;
+      let cur = eras[0], t = 0; // all rect reads happen before the first style write: avoids forced reflow
       eras.forEach(e => { const b = e.getBoundingClientRect(); if (b.top <= mid){ cur = e; t = Math.max(0, Math.min(1, (mid - b.top) / b.height)); } });
+      spine.style.setProperty("--p", reduce ? 1 : Math.max(0, Math.min(1, (mid - r.top) / r.height)));
       const k = cur.dataset.era, from = +cur.dataset.from, to = +cur.dataset.to;
       if (xc.dataset.era !== k){ xc.dataset.era = k; holder.textContent = WHO[k]; }
       if (k === "seq"){ flap(yr, "D-" + String(Math.max(1, Math.round(30 - t * 29))).padStart(2, "0")); unit.textContent = "days left"; xc.style.setProperty("--fillp", 1 - t); }
