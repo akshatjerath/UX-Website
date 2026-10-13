@@ -30,7 +30,7 @@
     items.forEach(e => io.observe(e));
   }
 
-  // Ankur loop: the ring draws itself once (CSS); visitors pick any step to read it.
+  // Ankur loop: steps 1 to 6 by themselves, every 3 s while on screen, and the text beside the ring follows. No clicks. Reduced motion: step 1 only.
   document.querySelectorAll("[data-lp]").forEach(lp => {
     const ring = lp.querySelector(".lp-ring"), arcs = lp.querySelectorAll(".arc"), btns = [...lp.querySelectorAll("[data-step]")];
     const n = lp.querySelector(".lp-c .n"), who = lp.querySelector(".lp-c .who"), title = lp.querySelector(".lp-side h3"), desc = lp.querySelector(".lp-side .desc");
@@ -38,21 +38,14 @@
       const b = btns[i];
       ring.classList.add("focus");
       arcs.forEach((a, k) => a.classList.toggle("on", k === i));
-      btns.forEach((x, k) => x.setAttribute("aria-pressed", String(k === i)));
+      btns.forEach((x, k) => x.classList.toggle("on", k === i));
       n.textContent = i + 1; title.textContent = b.dataset.t; desc.textContent = b.dataset.d;
       who.textContent = b.dataset.who; who.classList.toggle("a", b.dataset.who.startsWith("Ankur"));
     };
-    btns.forEach((b, i) => b.addEventListener("click", () => pick(i)));
-    // No auto-tour (it would run past 5 s): the ring draws once in CSS, then step 1 is selected and the visitor explores.
     pick(0); ring.classList.remove("focus");
-    // Steps on every 3 s while on screen. Hover, focus or a tap stops it; none at all with reduced motion.
     if (!reduce){
-      let cur = 0, timer = 0, held = false, seen = false, done = false;
-      const tick = () => { clearTimeout(timer); if (seen && !held && !done) timer = setTimeout(() => { cur = (cur + 1) % btns.length; pick(cur); tick(); }, 3000); };
-      btns.forEach((b, i) => b.addEventListener("click", () => { cur = i; }));
-      lp.addEventListener("mouseenter", () => { held = true; tick(); }); lp.addEventListener("mouseleave", () => { held = false; tick(); });
-      lp.addEventListener("focusin", () => { held = true; tick(); }); lp.addEventListener("focusout", () => { held = false; tick(); });
-      lp.addEventListener("pointerdown", () => { done = true; tick(); });
+      let cur = 0, timer = 0, seen = false;
+      const tick = () => { clearTimeout(timer); if (seen) timer = setTimeout(() => { cur = (cur + 1) % btns.length; pick(cur); tick(); }, 3000); };
       new IntersectionObserver(es => { seen = es[0].isIntersecting; tick(); }, {threshold: .4}).observe(lp);
     }
   });
