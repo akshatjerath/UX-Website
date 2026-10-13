@@ -1312,13 +1312,3 @@ body.csp.cdp{--w-bg:#2F3D2B;--w-ink:#E6EDD8;--w-muted:#B5C0A6;--w-accent:#E6EDD8
 .web img{display:block;width:100%;height:auto;border-radius:0 0 16px 16px;margin-top:-14px;box-shadow:0 30px 60px -36px rgba(30,45,37,.45)}
 .web figcaption{font-size:14px;color:var(--w-muted)}.web figcaption b{display:block;font:700 17px/1.2 var(--display);color:var(--w-ink);margin-bottom:2px}
 @media (max-width:720px){.webs{grid-template-columns:minmax(0,1fr)}.web:nth-child(even){margin-top:0}}
-
-/* Process artefacts (sketches, card sort, lo-fi): same gallery as .cd-docs, but captions inherit the section's colours so it works on dark and band sections */
-.docs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(20px,3vw,40px);align-items:start;margin-top:clamp(24px,4vw,48px)}
-.docs figure{margin:0;display:grid;gap:12px}
-.docs .wide{grid-column:1/-1}
-.docs img{display:block;width:100%;height:auto;border-radius:16px;transition:transform var(--t2) var(--ease-out)}
-.docs a:hover img{transform:translateY(-4px)}
-.docs figcaption{font-size:15px;opacity:.78}.docs figcaption b{display:block;font:700 19px/1.2 var(--display);opacity:1}
-@media (max-width:560px){.docs{grid-template-columns:minmax(0,1fr)}}
-@media (prefers-reduced-motion:reduce){.docs a:hover img{transform:none}}

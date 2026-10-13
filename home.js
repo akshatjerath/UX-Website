@@ -14,7 +14,6 @@
     a.href = k === "email" ? "mailto:" + v : v; a.hidden = false;
   });
   if (!DRAFT) document.querySelectorAll("[data-draft]").forEach(e => e.remove());
-  else document.documentElement.classList.add("draft");
 
   /* ---------- smooth scroll ---------- */
   if (!RM && window.Lenis) window.lenis = new Lenis({autoRaf: true, lerp: .085, anchors: {offset: -20}});
@@ -165,8 +164,7 @@
     const r = tl.getBoundingClientRect(), mark = innerHeight * .7;
     const k = RM ? 1 : clamp((mark - r.top) / r.height, 0, 1);
     if (snake && tlDraw){ tlDraw.style.strokeDashoffset = tlLen * (1 - k); tli.forEach((li, i) => li.classList.toggle("on", RM || k >= i / tli.length)); }
-    else { const on = tli.map(li => RM || li.getBoundingClientRect().top + 10 < mark); // read all before writing: avoids forced reflow
-      tl.style.setProperty("--tp", k.toFixed(4)); tli.forEach((li, i) => li.classList.toggle("on", on[i])); }
+    else { tl.style.setProperty("--tp", k.toFixed(4)); tli.forEach(li => li.classList.toggle("on", RM || li.getBoundingClientRect().top + 10 < mark)); }
   };
   if (tl){ tli.forEach(li => li.insertAdjacentHTML("afterbegin", '<span class="tl-dot" aria-hidden="true"></span>')); new ResizeObserver(tlLayout).observe(tl); }
   let sq = 0; const onScroll = () => { if (!sq) sq = requestAnimationFrame(() => { sq = 0; stackFx(); tlFx(); }); };
