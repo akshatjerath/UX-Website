@@ -1,15 +1,20 @@
 /* Shared base for every page: tokens, type, island nav, phone menu, footer, image viewer.
    The home page adds home.css; the case studies add case.css. */
+[data-draft]{display:none} .draft [data-draft]{display:revert} /* hidden by default so removing draft notes on the live site causes no layout shift */
 /* One typeface for the whole site: Bricolage Grotesque (OFL, self-hosted from Fontsource). Its optical-size axis makes it work for headings and body text alike. */
 @font-face{font-family:"Bricolage Grotesque";src:url(assets/fonts/bricolage-grotesque-latin-standard-normal.woff2) format("woff2");font-weight:200 800;font-stretch:75% 100%;font-display:swap}
 @font-face{font-family:"Bricolage Grotesque";src:url(assets/fonts/bricolage-grotesque-latin-ext-standard-normal.woff2) format("woff2");font-weight:200 800;font-stretch:75% 100%;font-display:swap;unicode-range:U+20A0-20C0} /* the rupee sign */
+/* Arial sized to match Bricolage while the webfont loads, so text does not reflow when it swaps in (cuts layout shift).
+   Numbers measured from the font files: body widths at 400, heading widths at 700. */
+@font-face{font-family:"Bricolage Fallback";src:local("Arial"),local("ArialMT");font-weight:100 599;size-adjust:106%;ascent-override:87.7%;descent-override:25.5%;line-gap-override:0%}
+@font-face{font-family:"Bricolage Fallback";src:local("Arial Bold"),local("Arial-BoldMT");font-weight:600 900;size-adjust:91.8%;ascent-override:101.3%;descent-override:29.4%;line-gap-override:0%}
 :root{
   --bg:#0C0E11; --surface:#14171C; --panel:#1A1E24; --ink:#EEF1F5; --muted:#9AA3AE; --line:#4A525D; --hair:#262B32;
   --accent:#25CA7F; --accent-ink:#04140B; --accent-soft:#0F2A1D;
   --band:#EEF1F5; --band-ink:#0C0E11;
   --draft:#F2B451; --draft-soft:#2E2412; --bad:#FF7A6E; --rule:rgba(238,241,245,.07); --dec:#F2C94C; --dec-soft:#2B2511;
   --savvy-bg:#131411; --ankur-bg:#E3E0F6; --greggs-bg:#00558F; --greggs-hi:#FDC72F; --cd-bg:#2F3D2B; --cd-hi:#E6EDD8;
-  --display:"Bricolage Grotesque","Arial Narrow",system-ui,sans-serif;
+  --display:"Bricolage Grotesque","Bricolage Fallback","Arial Narrow",system-ui,sans-serif;
   --body:var(--display);
   --mono:var(--display); /* labels use the same family, with tabular figures */
   --ease:cubic-bezier(.65,.05,.25,1); --ease-out:cubic-bezier(.22,1,.36,1);
