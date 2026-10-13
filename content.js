@@ -122,7 +122,7 @@ const P = [
   one:"A smart notebook for early-years teachers in India. The teacher notices, Ankur suggests one small next step, the teacher decides.",
   role:"Research, structure and live prototype",
   outcome:"A notebook for early-years teachers where the AI only suggests.",
-  meta:[["Role","Research, structure and live prototype"],["Team",null,"Solo or team? The long poster says “add teammates”"],["Course","Experiential Design"],["Tools","FigJam, Lovable"],["Live app","ankurs.online"]],
+  meta:[["Role","Research, structure and live prototype"],["Team","Solo"],["Course","Experiential Design"],["Tools","FigJam, Lovable"],["Live app","ankurs.online"]],
   tldr:[["Problem","Early-years teachers notice every child, but nothing turns those notes into a plan, and India's Holistic Progress Card has no software to run it."],
         ["What I did","Desk research on six tools and India's policy, then a notebook app where Ankur suggests one small target and the teacher decides."],
         ["Result","A live app at ankurs.online. A classroom pilot is next; nothing is tested with teachers yet."]],
@@ -209,7 +209,7 @@ const EXTRA = {
       {k:"bar", a:2000, b:1450, n:"₹550 kept", label:"on a ₹2,000 bill by paying ₹1,450 on EazyDiner. An example from the prototype", src:"Final screen"}],
     timeline:[["Research","13 interviews · 2 surveys · audit"],["Synthesis","3 diner types"],["Structure","flows · site map · access rules"],["v1 to v3","idea test · audit wireframes"],["v4 hi-fi","17 screens · critique"],["v5 to v6","system · Android M3"],["Final","night and day"]]},
   ankur:{ team:null, teamTodo:"Solo or group?",
-    spec:[["Role","Research, structure and live prototype"],["Team",null,"Solo or team? The long poster says “add teammates”"],["Course","Experiential Design"],["Platform","Teacher app, offline first"],["Methods","Desk research, competitor analysis, SWOT, 5W1H, card sorting, MoSCoW, OOUX"],["Tools","FigJam, Lovable"],["Status","Live at ankurs.online. Not piloted in a classroom yet"]],
+    spec:[["Role","Research, structure and live prototype"],["Team","Solo"],["Course","Experiential Design"],["Platform","Teacher app, offline first"],["Methods","Desk research, competitor analysis, SWOT, 5W1H, card sorting, MoSCoW, OOUX"],["Tools","FigJam, Lovable"],["Status","Live at ankurs.online. Not piloted in a classroom yet"]],
     links:[["ankurs.online","https://ankurs.online"]],
     statement:"Early-years teachers need their daily notes to turn into a plan, without software judging a child.",
     stats:[
