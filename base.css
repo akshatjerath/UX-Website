@@ -135,3 +135,6 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
 ::view-transition-old(root){animation:vt-out 250ms ease both}
 ::view-transition-new(root){animation:vt-in 250ms ease both}
 @media (prefers-reduced-motion:reduce){@view-transition{navigation:none}::view-transition-old(root),::view-transition-new(root){animation:none}}
+
+/* day / night: colours ease, nothing else */
+@media (prefers-reduced-motion:no-preference){body,.island,section{transition:background-color .25s ease,color .25s ease}}

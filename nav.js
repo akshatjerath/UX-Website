@@ -18,20 +18,15 @@
   newTab();
   new MutationObserver(queue).observe(document.body, {childList: true, subtree: true, attributes: true, attributeFilter: ["href"]});
 
-  const root = document.documentElement, RM = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const root = document.documentElement;
   /* day / night: follows the device until the visitor picks. Same button on every page. */
   const tBtn = document.getElementById("themeBtn"), lightMq = matchMedia("(prefers-color-scheme: light)");
   const mode = () => root.dataset.theme || (lightMq.matches ? "light" : "dark");
   const paint = () => { tBtn.dataset.mode = mode(); tBtn.setAttribute("aria-label", mode() === "dark" ? "Switch to day mode" : "Switch to night mode"); };
   lightMq.addEventListener?.("change", paint); paint();
   tBtn.onclick = () => {
-    const next = mode() === "dark" ? "light" : "dark";
-    const apply = () => { root.dataset.theme = next; paint(); try { localStorage.setItem("aj-theme", next); } catch (e) {} };
-    if (RM || !document.startViewTransition) return apply();
-    const r = tBtn.getBoundingClientRect(), x = r.left + r.width / 2, y = r.top + r.height / 2;
-    const end = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
-    document.startViewTransition(apply).ready.then(() => root.animate({clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${end}px at ${x}px ${y}px)`]},
-      {duration: 450, easing: "cubic-bezier(.65,.05,.25,1)", pseudoElement: "::view-transition-new(root)"}));
+    root.dataset.theme = mode() === "dark" ? "light" : "dark"; paint();
+    try { localStorage.setItem("aj-theme", root.dataset.theme); } catch (e) {}
   };
 
   const tnav = document.querySelector(".island nav");
