@@ -40,8 +40,9 @@
 </svg>
 
 <header class="island" id="island">
-  <a class="who" href="index.html" aria-label="Akshat Jerath, home"><span class="av" aria-hidden="true">AJ</span><span class="nm">Akshat Jerath</span></a>
-  <nav aria-label="Main"><a href="index.html#work"><span aria-hidden="true">← </span>Work</a><a href="index.html#about">About</a><a href="index.html#contact">Contact</a></nav>
+  <a class="who" href="index.html" aria-label="Akshat Jerath, home"><span class="av" aria-hidden="true">AJ</span></a>
+  <nav aria-label="Main"><a href="index.html#work"><span aria-hidden="true">← </span>Work</a><a href="index.html#about">About</a><a class="cv" href="assets/Akshat_Jerath_CV.pdf">CV</a><a href="index.html#contact">Contact</a></nav>
+  <button type="button" class="theme" id="themeBtn" aria-label="Switch to day mode"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><g class="sun" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g><path class="moon" fill="currentColor" d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7z"/></svg></button>
 </header>
 
 <main id="main">
@@ -50,15 +51,15 @@
 <section class="cs-hero" aria-labelledby="t-hero">
   <div class="wrap hero2">
     <div class="stage" data-tilt>
-      <div class="phone p1"><img src="img/savvy-n-tonight.webp" width="402" height="874" alt="SAVVY on iOS, night theme: the Tonight screen, starting from a restaurant near you"></div>
+      <div class="phone p1"><img src="img/savvy-n-tonight.webp" width="402" height="874" loading="lazy" alt="SAVVY on iOS, night theme: the Tonight screen, starting from a restaurant near you"></div>
       <div class="phone p2"><img src="img/savvy-n-answer.webp" width="402" height="874" alt="SAVVY answer screen: best price tonight ₹1,450 on EazyDiner with your HSBC card. You keep ₹550." fetchpriority="high"></div>
-      <div class="phone and p3"><img src="img/savvy-and-n-answer.webp" width="412" height="917" alt="The same answer screen on Android, in Material 3"></div>
+      <div class="phone and p3"><img src="img/savvy-and-n-answer.webp" width="412" height="917" loading="lazy" alt="The same answer screen on Android, in Material 3"></div>
       <div class="floor" aria-hidden="true"></div>
     </div>
     <div class="intro">
       <svg class="wordmark" data-stroke-text="SAVVY" aria-hidden="true"></svg>
       <h1 id="t-hero"><span class="sr">SAVVY: </span>What will dinner really cost? One honest answer, across every dine-out app.</h1>
-      <dl class="hero-meta"><div><dt>Case study</dt><dd>UI/UX, solo</dd></div><div><dt>When</dt><dd>Jun – Oct 2026</dd></div><div><dt>Platforms</dt><dd>iOS + Android</dd></div></dl>
+      <dl class="hero-meta"><div><dt>Case study</dt><dd>UI/UX, solo</dd></div><div><dt>When</dt><dd>Jun to Oct 2026</dd></div><div><dt>Platforms</dt><dd>iOS + Android</dd></div></dl>
     </div>
   </div>
 </section>
@@ -75,14 +76,14 @@
       </div>
       <div class="rv">
         <p class="dim">My part</p>
-        <p style="margin-top:6px">Everything, on my own: interviews, surveys, the restaurant audit, flows, structure, eight design versions, iOS and Android.</p>
+        <p style="margin-top:6px">Everything, on my own: interviews, surveys, the restaurant audit, flows, structure, nine design versions, iOS and Android.</p>
         <div class="tools"><span>Figma</span><span>FigJam</span><span>Miro</span><span>Google Forms</span><span>Excel</span><span>Jitter</span></div>
       </div>
     </div>
     <div class="facts rv">
       <div class="fact"><span>Role</span><b>End-to-end product and UX</b></div>
       <div class="fact"><span>Team</span><b>Solo</b></div>
-      <div class="fact"><span>Timeline</span><b>Jun – Oct 2026</b></div>
+      <div class="fact"><span>Timeline</span><b>Jun to Oct 2026</b></div>
       <div class="fact"><span>Platform</span><b>iOS and Android, night and day</b></div>
       <div class="fact status"><span>Status</span><b>Concept. Not tested with users yet</b></div>
     </div>
@@ -99,8 +100,8 @@
     </div>
     <div class="film-t">
       <span class="eyebrow">The moment it's for</span>
-      <h2 id="t-vid">The bill lands. Who pays least?</h2>
-      <p class="sub">Four friends, one bill, three apps that each promise a deal. SAVVY's whole job is the ten seconds after the bill arrives.</p>
+      <h2 id="t-vid">Who pays least when the bill lands?</h2>
+      <p class="sub">Four friends share one bill, and three apps each promise a deal. SAVVY has one job: the ten seconds after the bill arrives.</p>
       <p class="note">Concept film, made with AI. Sound is on the controls.</p>
     </div>
   </div>
@@ -111,7 +112,7 @@
   <div class="wrap concept">
     <div>
       <span class="eyebrow">The idea</span>
-      <h2 id="t-concept" class="big">One answer,<br>no list to read.</h2>
+      <h2 id="t-concept" class="big">A single answer<br>instead of a list.</h2>
       <p class="sub">Every app shouts a different discount. SAVVY does the maths: offers, coins, card rules, then one price.</p>
       <p class="note">Numbers on this page's screens are a prototype example: a ₹2,000 bill for two at Doolally Taproom.</p>
     </div>
@@ -128,7 +129,7 @@
 <!-- 4. PROBLEM / SOLUTION -->
 <section aria-labelledby="t-ps" data-nav="Intro|Problem">
   <div class="wrap">
-    <div class="head"><span class="eyebrow">Problem and solution</span><h2 id="t-ps">The discount you see<br>isn't the price you pay.</h2></div>
+    <div class="head"><span class="eyebrow">Problem and solution</span><h2 id="t-ps">The discount you see<br>hides the price you pay.</h2></div>
     <div class="ps">
       <figure class="berg rv">
         <svg class="berg-art" viewBox="0 0 400 480" aria-hidden="true">
@@ -163,7 +164,7 @@
 <section class="band" aria-labelledby="t-proc" data-nav="Research|Process">
   <div class="wrap">
     <div class="head split">
-      <div><span class="eyebrow">Design process</span><h2 id="t-proc">Five months,<br>eight versions.</h2></div>
+      <div><span class="eyebrow">Design process</span><h2 id="t-proc">Nine versions<br>over five months.</h2></div>
       <div>
         <p class="sub">Research first, then structure, then a lot of redesigning until the answer sat at the top.</p>
         <div class="role-chips"><span><svg width="16" height="16"><use href="#i-user"/></svg>User research</span><span><svg width="16" height="16"><use href="#i-store"/></svg>Field audit</span><span><svg width="16" height="16"><use href="#i-tag"/></svg>UX structure</span><span><svg width="16" height="16"><use href="#i-plate"/></svg>UI and system</span></div>
@@ -174,9 +175,9 @@
       <div class="st"><span class="dot">01</span><b>Research</b><span>13 interviews, 2 surveys, a 10-restaurant audit</span></div>
       <div class="st"><span class="dot">02</span><b>Synthesis</b><span>3 diner types</span></div>
       <div class="st"><span class="dot">03</span><b>Structure</b><span>Flows, site map, access rules</span></div>
-      <div class="st"><span class="dot">04</span><b>v1 to v3</b><span>Idea test, audit wireframes</span></div>
-      <div class="st"><span class="dot">05</span><b>v4 hi-fi</b><span>17 screens, then critique</span></div>
-      <div class="st"><span class="dot">06</span><b>v5 to v6</b><span>One system, Android in M3</span></div>
+      <div class="st"><span class="dot">04</span><b>v1 to v4</b><span>Lo-fi, idea test, audit wireframes</span></div>
+      <div class="st"><span class="dot">05</span><b>v5 hi-fi</b><span>17 screens, then critique</span></div>
+      <div class="st"><span class="dot">06</span><b>v6 to v7</b><span>One system, Android in M3</span></div>
       <div class="st"><span class="dot">07</span><b>Final</b><span>Night and day</span></div>
     </div>
   </div>
@@ -187,14 +188,14 @@
   <div class="wrap">
     <div class="head split">
       <div><span class="eyebrow">Research</span><h2 id="t-res">What I found.</h2></div>
-      <p class="sub">Small, qualitative and Mumbai-only. These are patterns to design from. They aren't market statistics.</p>
+      <p class="sub">Small, qualitative and Mumbai-only. These are patterns to design from. They aren't market statistics. I ran 13 interviews. Reactions were mixed, and the interviews showed how people really felt about offers and hidden charges, which the survey could not.</p>
     </div>
     <div class="rg">
       <div class="card dark c-people rv">
         <div class="k"><span data-count="8">8</span> <small>of 13</small></div>
-        <p>people I interviewed distrusted coins as a saving. “I find it very stupid and a scam.”</p>
+        <p>people I interviewed distrusted coins as a saving. &quot;I find it very stupid and a scam.&quot;</p>
         <div class="dots" data-on="8" aria-hidden="true"></div>
-        <span class="src">Semi-structured interviews · R01–R13</span>
+        <span class="src">Semi-structured interviews · R01 to R13</span>
       </div>
       <div class="card lime c-rest rv">
         <div class="k"><span data-count="10">10</span> <small>of 10</small></div>
@@ -232,7 +233,7 @@
       <div class="ins"><div class="heard"><small>Heard</small><b>Coins aren't cash.</b><q>I find it very stupid and a scam.</q></div><span class="n">1</span><div class="did"><small>So I</small><b>Rank by the cash you pay tonight.</b><p>Coins get their own amber line and never decide the order.</p></div></div>
       <div class="ins"><div class="heard"><small>Heard</small><b>The place comes first.</b><p class="dim" style="margin-top:8px">A craving, family, friends or a reel picks the restaurant. Deals come after.</p></div><span class="n">2</span><div class="did"><small>So I</small><b>Start from the restaurant.</b><p>Home is a restaurant search. Deals is a second tab.</p></div></div>
       <div class="ins"><div class="heard"><small>Heard</small><b>It falls apart at the bill.</b><q>If I have no option, I will pay the bill.</q></div><span class="n">3</span><div class="did"><small>So I</small><b>Put Book and Pay on one toggle.</b><p>At the table: one bill in, one answer out.</p></div></div>
-      <div class="ins"><div class="heard"><small>Heard</small><b>Cards don't fit everyone.</b><p class="dim" style="margin-top:8px">Several people pay by UPI, cash or a parent's card.</p></div><span class="n">4</span><div class="did"><small>So I</small><b>Let cards inform, never gate.</b><p>No card? The “No card” price is the answer.</p></div></div>
+      <div class="ins"><div class="heard"><small>Heard</small><b>Cards don't fit everyone.</b><p class="dim" style="margin-top:8px">Several people pay by UPI, cash or a parent's card.</p></div><span class="n">4</span><div class="did"><small>So I</small><b>Let cards inform, never gate.</b><p>No card? The &quot;No card&quot; price is the answer.</p></div></div>
     </div>
   </div>
 </section>
@@ -268,9 +269,19 @@
       <p class="sub">Rebuilt from my FigJam board. Switch between the user flow, the three task flows, the site map, the empathy maps and the access rules. Each one builds as you open it.</p>
     </div>
     <div class="research" data-research="savvy-user savvy-task1 savvy-task2 savvy-task3 savvy-map savvy-emp savvy-access"></div>
-    <div class="docs">
-      <figure class="wide"><a href="img/savvy-card-sort.webp" target="_blank" rel="noopener"><img src="img/savvy-card-sort.webp" width="1040" height="780" loading="lazy" alt="Sticky-note card sort for SAVVY: pink header notes for onboarding, user profile, deals, comparison, savings, booking, payment methods and checkout, each above a yellow note listing its features."></a><figcaption><b>Card sort</b>Eight groups on sticky notes: onboarding, user profile, deals, comparison, savings, booking, payment and checkout. This became the site map.</figcaption></figure>
+    <h3 class="cs-h">Card sort</h3>
+    <p class="cs-p">Eight groups of features, first sorted on sticky notes. This became the site map.</p>
+    <div class="cs">
+      <div class="cs-col"><h4>Onboarding</h4><ul><li>Personal information</li><li>Add or connect apps</li><li>Which cards to save</li><li>Location</li><li>Privacy</li><li>Permissions</li><li>Log in / sign up</li></ul></div>
+      <div class="cs-col"><h4>User profile</h4><ul><li>Saved credit cards</li><li>Membership</li><li>Favourites</li><li>Recent bookings</li><li>Monthly savings</li><li>Settings</li><li>Notification settings</li><li>Connected apps</li></ul></div>
+      <div class="cs-col"><h4>Deals</h4><ul><li>No bait offers</li><li>Nearby deals</li><li>Restaurant-specific deals</li><li>Members-only deals</li><li>Walk-in offers</li><li>Pre-booking deals</li><li>Weekend vs weekday deals</li><li>Card-specific deals</li></ul></div>
+      <div class="cs-col"><h4>Comparison</h4><ul><li>Side-by-side deal comparison</li><li>Best platform deal</li><li>Redirect to the chosen app</li><li>No hidden charges, only the final price</li><li>Book and pay in one place</li></ul></div>
+      <div class="cs-col"><h4>Savings</h4><ul><li>Instant discount</li><li>Cashback</li><li>App coins</li><li>Minimum bill amount</li><li>Cover charges</li><li>Hidden fees</li><li>Members-only coupon codes</li></ul></div>
+      <div class="cs-col"><h4>Booking</h4><ul><li>Time slots</li><li>Number of guests</li><li>Modify booking</li><li>Cancel booking</li><li>Current location</li><li>Pre-booking confirmation</li><li>Slot availability / sold out</li><li>Book through each app</li></ul></div>
+      <div class="cs-col"><h4>Payment</h4><ul><li>Members-only offers</li><li>Credit card offers</li><li>Debit card offers</li><li>UPI cashback</li><li>Cash</li><li>Wallet balance</li><li>Bank discounts</li><li>Scratch cards</li></ul></div>
+      <div class="cs-col"><h4>Checkout</h4><ul><li>Payment confirmation</li><li>Rating</li><li>Receipt</li><li>Savings summary</li><li>Cashback and reward tracking</li><li>Post-meal feedback</li><li>Suggestions</li><li>Booking confirmation</li></ul></div>
     </div>
+    <figure class="cs-orig"><a href="img/savvy-card-sort.webp" target="_blank" rel="noopener"><img src="img/savvy-card-sort.webp" width="1040" height="780" loading="lazy" alt="Sticky-note card sort for SAVVY: pink header notes for onboarding, user profile, deals, comparison, savings, booking, payment methods and checkout, each above a yellow note listing its features."></a><figcaption><b>Original sticky notes.</b>Open it full size.</figcaption></figure>
   </div>
 </section>
 
@@ -279,13 +290,13 @@
   <div class="wrap">
     <div class="head split">
       <div><span class="eyebrow">Trade-offs</span><h2 id="t-dk">What I tried first,<br>and why it lost.</h2></div>
-      <p class="sub">SAVVY can't book, can't pay, and the big apps have no reason to help a comparison tool. Those limits shaped every call below.</p>
+      <p class="sub">SAVVY can't book or pay for you, and the big apps have no reason to help a comparison tool. Those limits shaped every choice below.</p>
     </div>
     <div class="dk">
       <div class="pair rv"><div class="no"><small>✕ Dropped</small><b>Rank restaurants by biggest discount</b><p>It pushes people to the loudest offer, and people pick the place first anyway.</p></div><div class="yes"><small>✓ Kept</small><b>Start from the restaurant</b><p>Search a place, then see its real price on every app.</p></div></div>
-      <div class="pair rv"><div class="no"><small>✕ Dropped</small><b>Book and Pay as two tabs</b><p>The walk-in “pay” moment is where people lost money. A tab buries it.</p></div><div class="yes"><small>✓ Kept</small><b>One toggle on the restaurant</b><p>Paying at the table is one tap away.</p></div></div>
+      <div class="pair rv"><div class="no"><small>✕ Dropped</small><b>Book and Pay as two tabs</b><p>The walk-in &quot;pay&quot; moment is where people lost money. A tab buries it.</p></div><div class="yes"><small>✓ Kept</small><b>One toggle on the restaurant</b><p>Paying at the table is one tap away.</p></div></div>
       <div class="pair rv"><div class="no"><small>✕ Dropped</small><b>Blend coins into the price</b><p>It hides the thing people distrusted most.</p></div><div class="yes"><small>✓ Kept</small><b>Coins on their own amber line</b><p>Always visible, never used for ranking.</p></div></div>
-      <div class="pair rv"><div class="no"><small>✕ Dropped</small><b>Earn mainly from diners</b><p>The big apps won't help, so it needed a partner who gains from it.</p></div><div class="yes"><small>✓ Kept</small><b>Earn from restaurants</b><p>Bookings and a no-show tool, with “book a table” as a main feature.</p></div></div>
+      <div class="pair rv"><div class="no"><small>✕ Dropped</small><b>Earn mainly from diners</b><p>The big apps won't help, so it needed a partner who gains from it.</p></div><div class="yes"><small>✓ Kept</small><b>Earn from restaurants</b><p>Bookings and a no-show tool, with &quot;book a table&quot; as a main feature.</p></div></div>
     </div>
   </div>
 </section>
@@ -297,11 +308,11 @@
       <div><span class="eyebrow">Sketches and lo-fi</span><h2 id="t-paper">It started in a notebook.</h2></div>
       <p class="sub">Before Figma I drew every screen by hand, lettered A to G so I could talk through the flow. Then a rough grey pass in Figma to test the order. Open any page to read it full size.</p>
     </div>
-    <div class="docs">
-      <figure><a href="img/savvy-sketch-splash-login.webp" target="_blank" rel="noopener"><img src="img/savvy-sketch-splash-login.webp" width="1400" height="1054" loading="lazy" alt="Notebook sketch of two phone screens: a SAVVY splash screen and a log-in screen with number, OTP and quick log-in buttons."></a><figcaption><b>A and B: splash and log in</b>Logo, a two-second hold, then phone number and OTP with quick log-in.</figcaption></figure>
-      <figure><a href="img/savvy-sketch-signup-home.webp" target="_blank" rel="noopener"><img src="img/savvy-sketch-signup-home.webp" width="1400" height="1054" loading="lazy" alt="Notebook sketch: a sign-up screen with language choice and a grid of bank cards, and a home screen with a map, list and map toggle and a bottom tab bar."></a><figcaption><b>B2 and C: sign up and home</b>Sign up asks which bank cards you hold, so offers can be matched. Home is a map with nearby restaurants.</figcaption></figure>
-      <figure><a href="img/savvy-sketch-compare.webp" target="_blank" rel="noopener"><img src="img/savvy-sketch-compare.webp" width="1400" height="1054" loading="lazy" alt="Notebook sketch of three screens: prices from Eazy Diner, Zomato, District and Swiggy for one booking, a feedback question asking if the offer was applied, and an enter-amount screen with offers per app."></a><figcaption><b>E, F and G: compare, check, enter amount</b>The same table at four app prices, a "did you get the offer?" check after the meal, and a bill amount screen.</figcaption></figure>
-      <figure class="wide"><a href="img/savvy-lofi-figma.webp" target="_blank" rel="noopener"><img src="img/savvy-lofi-figma.webp" width="1133" height="493" loading="lazy" alt="Five grey low-fidelity phone screens in Figma: a restaurant list, a Book/Pay toggle, time slots for Swiggy, District, Eazy Diner and Zomato, and an enter-amount screen."></a><figcaption><b>First Figma pass</b>Grey boxes only: restaurant list, Book and Pay toggle, time slots per app, amount entry.</figcaption></figure>
+    <div class="marq" role="region" aria-label="Notebook sketches" tabindex="0">
+      <div class="marq-track">
+        <div class="marq-set"><figure><a href="img/savvy-sketch-splash-login.webp" target="_blank" rel="noopener"><img src="img/savvy-sketch-splash-login.webp" width="1165" height="815" loading="lazy" alt="Notebook sketch of two phone screens: a SAVVY splash screen and a log-in screen with number, OTP and quick log-in buttons."></a><figcaption><b>A and B: splash and log in.</b>Logo, a two-second hold, then phone number and OTP with quick log-in.</figcaption></figure><figure><a href="img/savvy-sketch-signup-home.webp" target="_blank" rel="noopener"><img src="img/savvy-sketch-signup-home.webp" width="1195" height="880" loading="lazy" alt="Notebook sketch: a sign-up screen with language choice and a grid of bank cards, and a home screen with a map, list and map toggle and a bottom tab bar."></a><figcaption><b>B2 and C: sign up and home.</b>Sign up asks which bank cards you hold, so offers can be matched. Home is a map with nearby restaurants.</figcaption></figure><figure><a href="img/savvy-sketch-compare.webp" target="_blank" rel="noopener"><img src="img/savvy-sketch-compare.webp" width="1040" height="670" loading="lazy" alt="Notebook sketch of three screens: prices from Eazy Diner, Zomato, District and Swiggy for one booking, a feedback question asking if the offer was applied, and an enter-amount screen with offers per app."></a><figcaption><b>E, F and G: compare, check, enter amount.</b>The same table at four app prices, a "did you get the offer?" check after the meal, and a bill amount screen.</figcaption></figure></div>
+        <div class="marq-set" aria-hidden="true"><figure><a tabindex="-1" href="img/savvy-sketch-splash-login.webp" target="_blank" rel="noopener"><img src="img/savvy-sketch-splash-login.webp" width="1165" height="815" loading="lazy" alt="Notebook sketch of two phone screens: a SAVVY splash screen and a log-in screen with number, OTP and quick log-in buttons."></a><figcaption><b>A and B: splash and log in.</b>Logo, a two-second hold, then phone number and OTP with quick log-in.</figcaption></figure><figure><a tabindex="-1" href="img/savvy-sketch-signup-home.webp" target="_blank" rel="noopener"><img src="img/savvy-sketch-signup-home.webp" width="1195" height="880" loading="lazy" alt="Notebook sketch: a sign-up screen with language choice and a grid of bank cards, and a home screen with a map, list and map toggle and a bottom tab bar."></a><figcaption><b>B2 and C: sign up and home.</b>Sign up asks which bank cards you hold, so offers can be matched. Home is a map with nearby restaurants.</figcaption></figure><figure><a tabindex="-1" href="img/savvy-sketch-compare.webp" target="_blank" rel="noopener"><img src="img/savvy-sketch-compare.webp" width="1040" height="670" loading="lazy" alt="Notebook sketch of three screens: prices from Eazy Diner, Zomato, District and Swiggy for one booking, a feedback question asking if the offer was applied, and an enter-amount screen with offers per app."></a><figcaption><b>E, F and G: compare, check, enter amount.</b>The same table at four app prices, a "did you get the offer?" check after the meal, and a bill amount screen.</figcaption></figure></div>
+      </div>
     </div>
   </div>
 </section>
@@ -310,13 +321,13 @@
 <section aria-labelledby="t-it" data-nav="Design|Iterations">
   <div class="wrap">
     <div class="head split">
-      <div><span class="eyebrow">Iterations</span><h2 id="t-it">Eight versions, from a list to read to one answer.</h2></div>
+      <div><span class="eyebrow">Iterations</span><h2 id="t-it">Nine versions, from a list to read to one answer.</h2></div>
       <p class="sub">The same moment in every version: comparing the apps. Follow the road. Click any screen to see it bigger.</p>
     </div>
     <div class="snake" data-snake></div>
     <h3 class="ds-h">The final design system</h3>
     <div data-system></div>
-    <p class="take">The answer moved to the top. The maths moved underneath it.</p>
+    <p class="take">I moved the answer to the top and put the maths underneath it.</p>
   </div>
 </section>
 
@@ -346,14 +357,14 @@
 <section aria-labelledby="t-ios" data-nav="Design|iOS">
   <div class="wrap">
     <div class="head split">
-      <div><span class="eyebrow">Final design · iOS, night</span><h2 id="t-ios">Pick the place, type the bill.</h2></div>
+      <div><span class="eyebrow">Final design · iOS, night</span><h2 id="t-ios">Choosing a place and typing the bill.</h2></div>
       <p class="sub">From tonight's places to one answer in four screens.</p>
     </div>
     <div class="quad4">
-      <figure><div class="phone"><img src="img/savvy-n-tonight.webp" width="402" height="874" alt="Tonight: Doolally Taproom, 0.8 km, on 3 apps. Last time you kept ₹400." loading="lazy"></div><figcaption><b>Tonight</b>Places near you first, and what you kept here last time.</figcaption></figure>
-      <figure><div class="phone"><img src="img/savvy-n-bookpay.webp" width="402" height="874" alt="Doolally Taproom: What are you doing? Book a table, or Pay the bill." loading="lazy"></div><figcaption><b>Book or pay</b>One question splits the two moments people lose money in.</figcaption></figure>
-      <figure><div class="phone"><img src="img/savvy-n-bill.webp" width="402" height="874" alt="What's the bill? ₹2,000, 2 people, HSBC card, Find my best price." loading="lazy"></div><figcaption><b>Type the bill once</b>People and your card on the same screen. No forms.</figcaption></figure>
-      <figure><div class="phone"><img src="img/savvy-n-checking.webp" width="402" height="874" alt="Checking 3 apps: Swiggy Dineout found 20% off, District found 15% off, EazyDiner checking your HSBC offer." loading="lazy"></div><figcaption><b>Checking 3 apps</b>The wait shows its work, one app at a time.</figcaption></figure>
+      <figure><div class="phone"><img src="img/savvy-n-tonight.webp" width="402" height="874" alt="Tonight: Doolally Taproom, 0.8 km, on 3 apps. Last time you kept ₹400." loading="lazy"></div><figcaption><b>Tonight.</b>Places near you first, and what you kept here last time.</figcaption></figure>
+      <figure><div class="phone"><img src="img/savvy-n-bookpay.webp" width="402" height="874" alt="Doolally Taproom: What are you doing? Book a table, or Pay the bill." loading="lazy"></div><figcaption><b>Book or pay.</b>One question splits the two moments people lose money in.</figcaption></figure>
+      <figure><div class="phone"><img src="img/savvy-n-bill.webp" width="402" height="874" alt="What's the bill? ₹2,000, 2 people, HSBC card, Find my best price." loading="lazy"></div><figcaption><b>Type the bill once.</b>People and your card on the same screen. No forms.</figcaption></figure>
+      <figure><div class="phone"><img src="img/savvy-n-checking.webp" width="402" height="874" alt="Checking 3 apps: Swiggy Dineout found 20% off, District found 15% off, EazyDiner checking your HSBC offer." loading="lazy"></div><figcaption><b>Checking 3 apps.</b>The wait shows its work, one app at a time.</figcaption></figure>
     </div>
   </div>
 </section>
@@ -368,14 +379,14 @@
 <section style="padding-top:0" aria-labelledby="t-after" data-nav="Design|After the tap">
   <div class="wrap">
     <div class="head split">
-      <div><span class="eyebrow">After the tap</span><h2 id="t-after">Hand off, then check.</h2></div>
+      <div><span class="eyebrow">After the tap</span><h2 id="t-after">Handing off, then checking the price.</h2></div>
       <p class="sub">The part most comparison tools skip: did the price you were promised actually hold?</p>
     </div>
     <div class="quad4">
-      <figure><div class="phone"><img src="img/savvy-n-island.webp" width="402" height="874" alt="Hand-off: your slip rides in the Dynamic Island while you pay in EazyDiner: enter bill ₹2,000, pay with HSBC, then check ₹1,450." loading="lazy"></div><figcaption><b>Hand-off</b>Your slip rides in the Dynamic Island while you pay in the partner app.</figcaption></figure>
+      <figure><div class="phone"><img src="img/savvy-n-island.webp" width="402" height="874" alt="Hand-off: your slip rides in the Dynamic Island while you pay in EazyDiner: enter bill ₹2,000, pay with HSBC, then check ₹1,450." loading="lazy"></div><figcaption><b>Hand-off.</b>Your slip rides in the Dynamic Island while you pay in the partner app.</figcaption></figure>
       <figure><div class="phone"><img src="img/savvy-n-lock.webp" width="402" height="874" alt="Lock screen: Did the deal hold at Doolally? Yes ₹1,450, or No, different." loading="lazy"></div><figcaption><b>Did it hold?</b>One tap after the meal. Offers that fail drop in rank for everyone.</figcaption></figure>
-      <figure><div class="phone"><img src="img/savvy-n-kept.webp" width="402" height="874" alt="Kept: ₹3,970 in September, every rupee verified, week by week, ₹1,030 to a free SAVVY+ week." loading="lazy"></div><figcaption><b>Kept</b>Only verified savings count, week by week.</figcaption></figure>
-      <figure><div class="phone"><img src="img/savvy-n-booktime.webp" width="402" height="874" alt="Booking ahead: When are you going? Each time shows its best deal. 8:00 is 30% off on EazyDiner." loading="lazy"></div><figcaption><b>Booking ahead</b>Every time slot shows its best deal before you pick it.</figcaption></figure>
+      <figure><div class="phone"><img src="img/savvy-n-kept.webp" width="402" height="874" alt="Kept: ₹3,970 in September, every rupee verified, week by week, ₹1,030 to a free SAVVY+ week." loading="lazy"></div><figcaption><b>Kept.</b>Only verified savings count, week by week.</figcaption></figure>
+      <figure><div class="phone"><img src="img/savvy-n-booktime.webp" width="402" height="874" alt="Booking ahead: When are you going? Each time shows its best deal. 8:00 is 30% off on EazyDiner." loading="lazy"></div><figcaption><b>Booking ahead.</b>Every time slot shows its best deal before you pick it.</figcaption></figure>
     </div>
   </div>
 </section>
@@ -383,13 +394,13 @@
 <section class="band" aria-labelledby="t-day" data-nav="Design|Day theme">
   <div class="wrap">
     <div class="head split">
-      <div><span class="eyebrow">Final design · iOS, day</span><h2 id="t-day">Same answer, in daylight.</h2></div>
-      <p class="sub">Teal replaces lime, a serif carries the price, and the order never changes: price, what you keep, then the maths.</p>
+      <div><span class="eyebrow">Final design · iOS, day</span><h2 id="t-day">The same answer in daylight.</h2></div>
+      <p class="sub">Teal replaces lime and a serif carries the price. The order stays the same: the price first, then what you keep, then the maths.</p>
     </div>
     <div class="trio2">
-      <figure><div class="phone"><img src="img/savvy-d-home.webp" width="402" height="874" alt="Day theme: Good evening Akshat, Tonight, Doolally Taproom." loading="lazy"></div><figcaption><b>Tonight</b></figcaption></figure>
-      <figure><div class="phone"><img src="img/savvy-d-answer.webp" width="402" height="874" alt="Day theme answer: ₹1,450 on EazyDiner with your HSBC card, you keep ₹550." loading="lazy"></div><figcaption><b>The answer</b></figcaption></figure>
-      <figure><div class="phone"><img src="img/savvy-d-savings.webp" width="402" height="874" alt="Day theme: Your savings, ₹3,970 saved in September, verified." loading="lazy"></div><figcaption><b>Your savings</b></figcaption></figure>
+      <figure><div class="phone"><img src="img/savvy-d-home.webp" width="402" height="874" alt="Day theme: Good evening Akshat, Tonight, Doolally Taproom." loading="lazy"></div><figcaption><b>Tonight.</b></figcaption></figure>
+      <figure><div class="phone"><img src="img/savvy-d-answer.webp" width="402" height="874" alt="Day theme answer: ₹1,450 on EazyDiner with your HSBC card, you keep ₹550." loading="lazy"></div><figcaption><b>The answer.</b></figcaption></figure>
+      <figure><div class="phone"><img src="img/savvy-d-savings.webp" width="402" height="874" alt="Day theme: Your savings, ₹3,970 saved in September, verified." loading="lazy"></div><figcaption><b>Your savings.</b></figcaption></figure>
     </div>
   </div>
 </section>
@@ -398,14 +409,14 @@
 <section aria-labelledby="t-and" data-nav="Design|Android">
   <div class="wrap">
     <div class="head split">
-      <div><span class="eyebrow">Final design · Android</span><h2 id="t-and">Same answer, Material 3.</h2></div>
-      <p class="sub">Android gets its own patterns: Material 3 components, a sticker for what you keep, and a Live Update chip instead of the Dynamic Island.</p>
+      <div><span class="eyebrow">Final design · Android</span><h2 id="t-and">The same answer in Material 3.</h2></div>
+      <p class="sub">Android gets its own patterns. I used Material 3 components and a sticker for what you keep, and a Live Update chip takes the place of the Dynamic Island.</p>
     </div>
     <div class="quad4">
-      <figure><div class="phone and"><img src="img/savvy-and-n-tonight.webp" width="412" height="917" alt="Android night: Tonight, Doolally Taproom, last time ₹400 kept." loading="lazy"></div><figcaption><b>Tonight</b>Search first, then tonight's places.</figcaption></figure>
-      <figure><div class="phone and"><img src="img/savvy-and-n-answer.webp" width="412" height="917" alt="Android night answer: ₹1,450 on EazyDiner, a You keep ₹550 sticker, cash you keep by app." loading="lazy"></div><figcaption><b>The answer</b>The price, then a sticker for what you keep.</figcaption></figure>
-      <figure><div class="phone and"><img src="img/savvy-and-n-handoff.webp" width="412" height="917" alt="Android hand-off: a Live Update notification, pay ₹1,450 on EazyDiner, copy ₹2,000, open EazyDiner." loading="lazy"></div><figcaption><b>Live Update</b>The slip stays in the status bar while you pay.</figcaption></figure>
-      <figure><div class="phone and"><img src="img/savvy-and-d-answer.webp" width="412" height="917" alt="Android day answer: ₹1,450 in a serif, teal You keep ₹550 sticker." loading="lazy"></div><figcaption><b>Day theme</b>The same order in daylight.</figcaption></figure>
+      <figure><div class="phone and"><img src="img/savvy-and-n-tonight.webp" width="412" height="917" alt="Android night: Tonight, Doolally Taproom, last time ₹400 kept." loading="lazy"></div><figcaption><b>Tonight.</b>Search first, then tonight's places.</figcaption></figure>
+      <figure><div class="phone and"><img src="img/savvy-and-n-answer.webp" width="412" height="917" alt="Android night answer: ₹1,450 on EazyDiner, a You keep ₹550 sticker, cash you keep by app." loading="lazy"></div><figcaption><b>The answer.</b>The price, then a sticker for what you keep.</figcaption></figure>
+      <figure><div class="phone and"><img src="img/savvy-and-n-handoff.webp" width="412" height="917" alt="Android hand-off: a Live Update notification, pay ₹1,450 on EazyDiner, copy ₹2,000, open EazyDiner." loading="lazy"></div><figcaption><b>Live Update.</b>The slip stays in the status bar while you pay.</figcaption></figure>
+      <figure><div class="phone and"><img src="img/savvy-and-d-answer.webp" width="412" height="917" alt="Android day answer: ₹1,450 in a serif, teal You keep ₹550 sticker." loading="lazy"></div><figcaption><b>Day theme.</b>The same order in daylight.</figcaption></figure>
     </div>
   </div>
 </section>
@@ -423,7 +434,7 @@
         <div class="phone tilt-r"><img src="img/savvy-n-sheet.webp" width="402" height="874" alt="How ₹1,450 is made: food bill ₹2,000, HSBC card 30% instant minus ₹600, cover charge plus ₹50. The fine print: minimum bill, a monthly cap, pay inside EazyDiner." loading="lazy"></div>
       </div>
       <div class="callouts">
-        <div class="callout"><b>Loading that explains itself</b><p>The ring counts the apps, each row ticks off, and the Dynamic Island shows “2 of 3”. Nothing is booked or paid.</p></div>
+        <div class="callout"><b>Loading that explains itself</b><p>The ring counts the apps, each row ticks off, and the Dynamic Island shows &quot;2 of 3&quot;. Nothing is booked or paid.</p></div>
         <div class="callout"><b>How ₹1,450 is made</b><p>Every line of the maths, including the cover charge most apps show late.</p></div>
         <div class="callout"><b>The fine print, in plain words</b><p>A minimum bill, a monthly cap with how much is left, and a warning that paying at the counter loses the discount.</p></div>
       </div>
@@ -435,7 +446,7 @@
 <section class="glow" style="padding-top:0" aria-labelledby="t-mo" data-nav="Design|Motion">
   <div class="wrap">
     <div class="head split">
-      <div><span class="eyebrow">Motion · made in Jitter</span><h2 id="t-mo">The answer arrives.</h2></div>
+      <div><span class="eyebrow">Motion · made in Jitter</span><h2 id="t-mo">Motion while you wait.</h2></div>
       <p class="sub">Motion shows the work SAVVY does while you wait. The clips loop while they're on screen; pause any of them.</p>
     </div>
     <div class="clips">
@@ -450,10 +461,10 @@
 <section class="band" aria-labelledby="t-ex" data-nav="Design|Experiment">
   <div class="wrap">
     <div class="head split">
-      <div><span class="eyebrow">An experiment</span><h2 id="t-ex">Swipe to discover.</h2></div>
+      <div><span class="eyebrow">An experiment</span><h2 id="t-ex">Swiping through restaurants.</h2></div>
       <p class="sub">Right to book, left to skip, up for the full profile. It stays out of the main flow until it's tested.</p>
     </div>
-    <div class="five"><figure><div class="phone"><img src="img/savvy-swipe.webp" width="402" height="874" alt="Discover: a restaurant card to swipe" loading="lazy"></div><figcaption><b>Discover</b>One place at a time, best price on the card.</figcaption></figure><figure><div class="phone"><img src="img/savvy-sw-book.webp" width="402" height="874" alt="Swiped right: booking Doolally through the cheapest app" loading="lazy"></div><figcaption><b>Swipe right</b>Book through the cheapest app.</figcaption></figure><figure><div class="phone"><img src="img/savvy-sw-skip.webp" width="402" height="874" alt="Skipped, with undo in the Dynamic Island" loading="lazy"></div><figcaption><b>Swipe left</b>Skipped. Undo sits in the Dynamic Island.</figcaption></figure><figure><div class="phone"><img src="img/savvy-sw-detail.webp" width="402" height="874" alt="Swiped up: the full profile with best price and popular dishes" loading="lazy"></div><figcaption><b>Swipe up</b>Best price tonight, then popular dishes.</figcaption></figure><figure><div class="phone"><img src="img/savvy-sw-end.webp" width="402" height="874" alt="That's everyone nearby: widen the radius or change filters" loading="lazy"></div><figcaption><b>End of the deck</b>Widen the radius, review skipped places, or change filters.</figcaption></figure></div>
+    <div class="five"><figure><div class="phone"><img src="img/savvy-swipe.webp" width="402" height="874" alt="Discover: a restaurant card to swipe" loading="lazy"></div><figcaption><b>Discover.</b>One place at a time, best price on the card.</figcaption></figure><figure><div class="phone"><img src="img/savvy-sw-book.webp" width="402" height="874" alt="Swiped right: booking Doolally through the cheapest app" loading="lazy"></div><figcaption><b>Swipe right.</b>Book through the cheapest app.</figcaption></figure><figure><div class="phone"><img src="img/savvy-sw-skip.webp" width="402" height="874" alt="Skipped, with undo in the Dynamic Island" loading="lazy"></div><figcaption><b>Swipe left.</b>Skipped. Undo sits in the Dynamic Island.</figcaption></figure><figure><div class="phone"><img src="img/savvy-sw-detail.webp" width="402" height="874" alt="Swiped up: the full profile with best price and popular dishes" loading="lazy"></div><figcaption><b>Swipe up.</b>Best price tonight, then popular dishes.</figcaption></figure><figure><div class="phone"><img src="img/savvy-sw-end.webp" width="402" height="874" alt="That's everyone nearby: widen the radius or change filters" loading="lazy"></div><figcaption><b>End of the deck.</b>Widen the radius, review skipped places, or change filters.</figcaption></figure></div>
   </div>
 </section>
 
@@ -461,7 +472,7 @@
 <section aria-labelledby="t-next" data-nav="Next|Test plan">
   <div class="wrap">
     <div class="head split">
-      <div><span class="eyebrow">Status and next step</span><h2 id="t-next">I haven't tested it yet.<br>This is how I will.</h2></div>
+      <div><span class="eyebrow">Status and next step</span><h2 id="t-next">I haven't tested it yet,<br>so here is my plan.</h2></div>
       <p class="sub">The design follows from research, but nobody has used it yet. The ₹550 on these screens is a made-up example from the prototype.</p>
     </div>
     <div class="plan">
@@ -481,7 +492,7 @@
       </div>
       <div class="rv">
         <h3>The hard constraint</h3>
-        <p class="dim" style="margin-top:16px">None of the apps offer an offer-data API, and hand-offs into them can be restricted. A real SAVVY needs a data source and a way to mark offers that have gone stale.</p>
+        <p class="dim" style="margin-top:16px">The prototype uses sample prices. A live version would need data from Swiggy, Zomato, District and Eazy Diner, which they don't share. None of the apps offer an offer-data API, and hand-offs into them can be restricted. A real SAVVY needs a data source and a way to mark offers that have gone stale.</p>
       </div>
       <div class="slot2" data-draft style="grid-column:1/-1"><b>Add: your reflection in 2 or 3 lines.</b> What surprised you, one assumption you no longer trust, one decision you'd reconsider.</div>
     </div>
@@ -501,10 +512,10 @@
 <dialog class="lb" id="lb" aria-label="Image viewer">
   <div class="lb-in"><div class="lb-bar"><span id="lbCap"></span><button type="button" id="lbClose">Close</button></div><div class="lb-scroll"><img id="lbImg" alt=""></div></div>
 </dialog>
-<script src="content.js"></script>
-<script src="vendor/lenis.min.js"></script>
-<script src="case-widgets.js"></script>
-<script src="case.js"></script>
-<script src="nav.js"></script>
+<script src="content.js" defer></script>
+<script src="vendor/lenis.min.js" defer></script>
+<script src="case-widgets.js" defer></script>
+<script src="case.js" defer></script>
+<script src="nav.js" defer></script>
 </body>
 </html>

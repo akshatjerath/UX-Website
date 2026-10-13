@@ -19,21 +19,6 @@
   /* ---------- smooth scroll ---------- */
   if (!RM && window.Lenis) window.lenis = new Lenis({autoRaf: true, lerp: .085, anchors: {offset: -20}});
 
-  /* ---------- day / night: follows the device until the visitor picks ---------- */
-  const tBtn = document.getElementById("themeBtn"), lightMq = matchMedia("(prefers-color-scheme: light)");
-  const mode = () => root.dataset.theme || (lightMq.matches ? "light" : "dark");
-  const paint = () => { tBtn.dataset.mode = mode(); tBtn.setAttribute("aria-label", mode() === "dark" ? "Switch to day mode" : "Switch to night mode"); };
-  lightMq.addEventListener?.("change", paint); paint();
-  tBtn.onclick = () => {
-    const next = mode() === "dark" ? "light" : "dark";
-    const apply = () => { root.dataset.theme = next; paint(); try { localStorage.setItem("aj-theme", next); } catch (e) {} };
-    if (RM || !document.startViewTransition) return apply();
-    const r = tBtn.getBoundingClientRect(), x = r.left + r.width / 2, y = r.top + r.height / 2;
-    const end = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
-    document.startViewTransition(apply).ready.then(() => root.animate({clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${end}px at ${x}px ${y}px)`]},
-      {duration: 450, easing: "cubic-bezier(.65,.05,.25,1)", pseudoElement: "::view-transition-new(root)"}));
-  };
-
   /* ---------- Tech Text: one letter at a time turns into a dashed outline inside a selection box, in a loop.
      Point at the name to inspect a letter yourself; the loop picks up again when you leave. ---------- */
   document.querySelectorAll("[data-tech-text]").forEach(svg => {
@@ -56,7 +41,6 @@
       svg.style.width = Math.min((b.width + 12) * k, svg.parentNode.clientWidth) + "px";
       ext = spans.map((_, i) => { try { return t.getExtentOfChar(i); } catch (e) { return null; } });
     };
-    const toSvg = (cx, cy) => { const m = svg.getScreenCTM(); if (!m) return null; const q = new DOMPoint(cx, cy).matrixTransform(m.inverse()); return {x: q.x, y: q.y}; };
     const frame = () => {
       raf = 0; let best = -1, bv = 0;
       ext.forEach((e, i) => {
@@ -81,10 +65,9 @@
       } else { sel.style.opacity = 0; first = true; }
       if (cur.some((c, i) => Math.abs(c - tgt[i]) > .005)) raf = requestAnimationFrame(frame);
     };
-    const kick = () => { if (!raf) raf = requestAnimationFrame(frame); };
     const ready = () => layout(); // static name: no loop, no pointer effect
     (document.fonts ? document.fonts.ready : Promise.resolve()).then(ready);
-    new ResizeObserver(layout).observe(svg.parentNode);
+    new ResizeObserver(() => requestAnimationFrame(layout)).observe(svg.parentNode);
   });
 
 
@@ -94,7 +77,7 @@
     const ITEMS = ["savvy-n-answer", "g50-sausage-roll-720", "savvy-n-tonight", "ankur-live-observe", W("sv", "SAVVY"), "g50-flagship-720", "savvy-n-kept", W("cd", "Who holds the clock?"),
       "greggs-merch-real", "savvy-n-checking", "ankur-live-target", W("cd", "Grow below, keep above."), "g50-packaging-720", "savvy-and-n-answer", "ankur-live-class", "savvy-d-answer",
       "g50-drone-720", "savvy-n-bill", W("ank", "Ankur"), "greggs-report-cover", "savvy-n-lock", "ankur-live-aid", W("sv", "You keep ₹550"), "g50-store-shrunk-720"];
-    const tile = (x, k) => typeof x === "string" ? `<div class="gm-t"><img src="img/${x}.webp" alt="" loading="lazy" decoding="async"></div>` : `<div class="gm-t w ${x.c}">${x.w}</div>`;
+    const tile = (x, k) => typeof x === "string" ? `<div class="gm-t"><img src="img/${x}.webp" alt="" width="402" height="560" loading="lazy" decoding="async"></div>` : `<div class="gm-t w ${x.c}">${x.w}</div>`;
     const ROWS = 4, ANG = -12, GAP = 16, SPEED = 22;
     let rows = [], off = [], period = 0, raf = 0, last = 0, vis = true, ptr = {x: 0, y: 0}, par = {x: 0, y: 0};
     const build = () => {
@@ -125,11 +108,16 @@
 
   /* ---------- project panels stack as you scroll: the one being covered shrinks back and dims ---------- */
   const pjs = [...document.querySelectorAll(".pj")];
-  const stackFx = () => pjs.forEach((p, i) => {
-    const next = pjs[i + 1], inner = p.firstElementChild;
-    if (!next || RM) return;
+  // Scroll work is split in two: stackRead/tlRead only measure, stackWrite/tlWrite only change styles,
+  // and onScroll runs every read before any write, so the browser lays the page out once per frame.
+  const stackRead = () => RM ? [] : pjs.map((p, i) => {
+    const next = pjs[i + 1]; if (!next) return null;
     const a = p.getBoundingClientRect(), b = next.getBoundingClientRect();
-    const k = clamp(1 - (b.top - a.top) / a.height, 0, 1); // 0 = next panel still below, 1 = fully on top
+    return clamp(1 - (b.top - a.top) / a.height, 0, 1); // 0 = next panel still below, 1 = fully on top
+  });
+  const stackWrite = ks => ks.forEach((k, i) => {
+    if (k === null) return;
+    const inner = pjs[i].firstElementChild;
     inner.style.setProperty("--s", (1 - k * .06).toFixed(4));
     inner.style.setProperty("--b", (1 - k * .35).toFixed(3));
   });
@@ -146,8 +134,8 @@
     if (!snake) return;
     tl.insertAdjacentHTML("afterbegin", '<svg class="tl-svg" aria-hidden="true"><path class="tl-base"/><path class="tl-draw"/></svg>');
     const svg = tl.firstChild, box = tl.getBoundingClientRect();
-    svg.setAttribute("width", box.width); svg.setAttribute("height", box.height);
     const pts = tli.map(li => { const r = li.querySelector(".tl-dot").getBoundingClientRect(); return [r.left - box.left + r.width / 2, r.top - box.top + r.height / 2]; });
+    svg.setAttribute("width", box.width); svg.setAttribute("height", box.height); // measured first, written after
     let d = `M${pts[0][0]} ${pts[0][1]}`;
     for (let k = 1; k < pts.length; k++){
       const [x0, y0] = pts[k - 1], [x1, y1] = pts[k];
@@ -160,16 +148,22 @@
     tlLen = tlDraw.getTotalLength(); tlDraw.style.strokeDasharray = tlLen;
     tlFx();
   };
-  const tlFx = () => {
-    if (!tl) return;
+  const tlRead = () => {
+    if (!tl) return null;
     const r = tl.getBoundingClientRect(), mark = innerHeight * .7;
     const k = RM ? 1 : clamp((mark - r.top) / r.height, 0, 1);
-    if (snake && tlDraw){ tlDraw.style.strokeDashoffset = tlLen * (1 - k); tli.forEach((li, i) => li.classList.toggle("on", RM || k >= i / tli.length)); }
-    else { const on = tli.map(li => RM || li.getBoundingClientRect().top + 10 < mark); // read all before writing: avoids forced reflow
-      tl.style.setProperty("--tp", k.toFixed(4)); tli.forEach((li, i) => li.classList.toggle("on", on[i])); }
+    const on = snake && tlDraw ? tli.map((_, i) => RM || k >= i / tli.length) : tli.map(li => RM || li.getBoundingClientRect().top + 10 < mark);
+    return {k, on};
   };
-  if (tl){ tli.forEach(li => li.insertAdjacentHTML("afterbegin", '<span class="tl-dot" aria-hidden="true"></span>')); new ResizeObserver(tlLayout).observe(tl); }
-  let sq = 0; const onScroll = () => { if (!sq) sq = requestAnimationFrame(() => { sq = 0; stackFx(); tlFx(); }); };
+  const tlWrite = st => {
+    if (!st) return;
+    if (snake && tlDraw) tlDraw.style.strokeDashoffset = tlLen * (1 - st.k);
+    else tl.style.setProperty("--tp", st.k.toFixed(4));
+    tli.forEach((li, i) => li.classList.toggle("on", st.on[i]));
+  };
+  const tlFx = () => tlWrite(tlRead());
+  if (tl){ tli.forEach(li => li.insertAdjacentHTML("afterbegin", '<span class="tl-dot" aria-hidden="true"></span>')); new ResizeObserver(() => requestAnimationFrame(tlLayout)).observe(tl); }
+  let sq = 0; const onScroll = () => { if (!sq) sq = requestAnimationFrame(() => { sq = 0; const sr = stackRead(), tr = tlRead(); stackWrite(sr); tlWrite(tr); }); };
   addEventListener("scroll", onScroll, {passive: true}); addEventListener("resize", onScroll); onScroll();
 
 

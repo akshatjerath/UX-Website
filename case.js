@@ -45,6 +45,16 @@
     btns.forEach((b, i) => b.addEventListener("click", () => pick(i)));
     // No auto-tour (it would run past 5 s): the ring draws once in CSS, then step 1 is selected and the visitor explores.
     pick(0); ring.classList.remove("focus");
+    // Steps on every 3 s while on screen. Hover, focus or a tap stops it; none at all with reduced motion.
+    if (!reduce){
+      let cur = 0, timer = 0, held = false, seen = false, done = false;
+      const tick = () => { clearTimeout(timer); if (seen && !held && !done) timer = setTimeout(() => { cur = (cur + 1) % btns.length; pick(cur); tick(); }, 3000); };
+      btns.forEach((b, i) => b.addEventListener("click", () => { cur = i; }));
+      lp.addEventListener("mouseenter", () => { held = true; tick(); }); lp.addEventListener("mouseleave", () => { held = false; tick(); });
+      lp.addEventListener("focusin", () => { held = true; tick(); }); lp.addEventListener("focusout", () => { held = false; tick(); });
+      lp.addEventListener("pointerdown", () => { done = true; tick(); });
+      new IntersectionObserver(es => { seen = es[0].isIntersecting; tick(); }, {threshold: .4}).observe(lp);
+    }
   });
 
 
@@ -229,7 +239,7 @@
   const ORDER = [["savvy.html", "SAVVY"], ["ankur.html", "Ankur"], ["greggs.html", "Greggs 2050"], ["critical-design.html", "Critical Design"]];
   const here = ORDER.findIndex(([f]) => location.pathname.endsWith("/" + f) || location.pathname.endsWith(f));
   if (here >= 0){
-    const HOME = ["index.html", "Home"], prev = ORDER[here - 1] || HOME, next = ORDER[here + 1] || HOME; // the ends lead home, no wrap-around
+    const HOME = ["index.html", "Home"], prev = ORDER[here - 1] || HOME, next = ORDER[here + 1] || ["index.html#about", "About"]; // the ends lead home, no wrap-around
     document.body.insertAdjacentHTML("beforeend", `<nav class="pn" aria-label="Other projects">
       <a class="pn-a prev" href="${prev[0]}"><span aria-hidden="true">←</span><span><small>Previous</small>${prev[1]}</span></a>
       <span class="pn-count" aria-hidden="true">${String(here + 1).padStart(2, "0")} / 04</span>

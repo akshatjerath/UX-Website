@@ -91,8 +91,9 @@
     const pane = el.querySelector(".rs-pane"), tabs = [...el.querySelectorAll('[role="tab"]')], ink = el.querySelector(".rs-ink");
     const open = n => {
       tabs.forEach((t, k) => { t.setAttribute("aria-selected", String(k === n)); t.tabIndex = k === n ? 0 : -1; });
-      ink.style.width = tabs[n].offsetWidth + "px"; ink.style.transform = `translateX(${tabs[n].offsetLeft}px)`;
-      tabs[n].parentNode.scrollTo({left: tabs[n].offsetLeft - 24, behavior: RM ? "auto" : "smooth"}); // keep the open tab in view on phones
+      const tw = tabs[n].offsetWidth, tl = tabs[n].offsetLeft; // read first, then write
+      ink.style.width = tw + "px"; ink.style.transform = `translateX(${tl}px)`;
+      tabs[n].parentNode.scrollTo({left: tl - 24, behavior: RM ? "auto" : "smooth"}); // keep the open tab in view on phones
       pane.setAttribute("aria-labelledby", tabs[n].id);
       VIEWS[keys[n]][1](pane); build(pane);
     };
@@ -107,17 +108,18 @@
   /* ---------- iterations: a snake roadmap, left to right then back, drawn as you scroll ---------- */
   document.querySelectorAll("[data-snake]").forEach(el => {
     el.innerHTML = `<svg class="sn-path" aria-hidden="true"><path class="sn-base"/><path class="sn-draw"/></svg>
-      <ol class="sn-list">${ITER.map((s, k) => `<li class="sn-i" style="--i:${k}">
+      <ol class="sn-list">${ITER.map((s, k) => `<li class="sn-i${s.imgs ? " wide" : ""}" style="--i:${k}">
         <span class="sn-dot" aria-hidden="true">${k + 1}</span>
-        <button type="button" class="zoom sn-ph" data-lb="img/${s.img}.webp" data-cap="${E(s.v + " · " + s.t)}"><span class="phone"><img src="img/${s.img}.webp" alt="SAVVY ${E(s.v)}: ${E(s.t)}" width="640" height="1390" loading="lazy"></span></button>
+        ${s.imgs ? `<div class="sn-multi">${s.imgs.map((n, j) => `<button type="button" class="zoom sn-ph" data-lb="img/${n}.webp" data-cap="${E(s.v + " · " + s.t + " · screen " + (j + 1))}"><span class="phone"><img src="img/${n}.webp" alt="SAVVY ${E(s.v)}, screen ${j + 1} of ${s.imgs.length}: ${E(s.alts[j])}" width="402" height="874" loading="lazy"></span></button>`).join("")}</div>` :
+        `<button type="button" class="zoom sn-ph" data-lb="img/${s.img}.webp" data-cap="${E(s.v + " · " + s.t)}"><span class="phone"><img src="img/${s.img}.webp" alt="SAVVY ${E(s.v)}: ${E(s.t)}" width="640" height="1390" loading="lazy"></span></button>`}
         <div class="sn-cap"><span class="v">${E(s.v)}</span><b>${E(s.t)}</b><p>${E(s.d)}</p>
         ${s.sw ? `<div class="sw">${s.sw.map(c => `<i style="background:${c}" title="${c}"></i>`).join("")}</div><small>${E(s.f)}</small>` : `<small>${E(s.na || "")}</small>`}</div></li>`).join("")}</ol>`;
     const svg = el.querySelector("svg"), base = el.querySelector(".sn-base"), draw = el.querySelector(".sn-draw"), dots = [...el.querySelectorAll(".sn-dot")], items = [...el.querySelectorAll(".sn-i")];
     let len = 1;
     const layout = () => {
       const box = el.getBoundingClientRect();
-      svg.setAttribute("width", box.width); svg.setAttribute("height", box.height); svg.setAttribute("viewBox", `0 0 ${box.width} ${box.height}`);
       const pts = dots.map(d => { const r = d.getBoundingClientRect(); return [r.left - box.left + r.width / 2, r.top - box.top + r.height / 2]; });
+      svg.setAttribute("width", box.width); svg.setAttribute("height", box.height); svg.setAttribute("viewBox", `0 0 ${box.width} ${box.height}`);
       let d = `M${pts[0][0]} ${pts[0][1]}`;
       for (let k = 1; k < pts.length; k++){
         const [x0, y0] = pts[k - 1], [x1, y1] = pts[k];

@@ -4,16 +4,49 @@
       two colour layers sweep in, then the links rise one by one. Edit its links here.
    Both rebuilt by hand without GSAP (React Bits is MIT + Commons Clause). */
 (() => {
+  /* PDFs and links to other sites open in a new tab, with a hidden note for screen readers. Page and #anchor links stay in the same tab.
+     Runs on load, and again whenever a script adds or changes a link (the CV link gets its address from home.js). */
+  const newTab = () => document.querySelectorAll("a[href]").forEach(a => {
+    let u; try { u = new URL(a.getAttribute("href"), location.href); } catch (e) { return; }
+    const web = u.protocol === "http:" || u.protocol === "https:";
+    if (!(a.target === "_blank" || /\.pdf$/i.test(u.pathname) || (web && u.origin !== location.origin))) return; /* anything that opens a new tab gets the note */
+    if (a.target !== "_blank") a.target = "_blank";
+    const rel = new Set((a.rel || "").split(/\s+/).filter(Boolean)); rel.add("noopener"); a.rel = [...rel].join(" ");
+    if (!a.querySelector(".nt")) a.insertAdjacentHTML("beforeend", '<span class="sr nt"> (opens in new tab)</span>');
+  });
+  let nq = 0; const queue = () => { if (!nq) nq = requestAnimationFrame(() => { nq = 0; newTab(); }); };
+  newTab();
+  new MutationObserver(queue).observe(document.body, {childList: true, subtree: true, attributes: true, attributeFilter: ["href"]});
+
+  const root = document.documentElement, RM = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  /* day / night: follows the device until the visitor picks. Same button on every page. */
+  const tBtn = document.getElementById("themeBtn"), lightMq = matchMedia("(prefers-color-scheme: light)");
+  const mode = () => root.dataset.theme || (lightMq.matches ? "light" : "dark");
+  const paint = () => { tBtn.dataset.mode = mode(); tBtn.setAttribute("aria-label", mode() === "dark" ? "Switch to day mode" : "Switch to night mode"); };
+  lightMq.addEventListener?.("change", paint); paint();
+  tBtn.onclick = () => {
+    const next = mode() === "dark" ? "light" : "dark";
+    const apply = () => { root.dataset.theme = next; paint(); try { localStorage.setItem("aj-theme", next); } catch (e) {} };
+    if (RM || !document.startViewTransition) return apply();
+    const r = tBtn.getBoundingClientRect(), x = r.left + r.width / 2, y = r.top + r.height / 2;
+    const end = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+    document.startViewTransition(apply).ready.then(() => root.animate({clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${end}px at ${x}px ${y}px)`]},
+      {duration: 450, easing: "cubic-bezier(.65,.05,.25,1)", pseudoElement: "::view-transition-new(root)"}));
+  };
+
   const tnav = document.querySelector(".island nav");
   if (tnav){
     document.body.insertAdjacentHTML("beforeend", '<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="goo"><feGaussianBlur in="SourceGraphic" stdDeviation="5" result="b"/><feColorMatrix in="b" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -9" result="g"/><feComposite in="SourceGraphic" in2="g" operator="atop"/></filter></svg>');
     tnav.insertAdjacentHTML("afterbegin", '<span class="goo" aria-hidden="true"><i></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i></span>');
     const [pill, ...drops] = tnav.querySelectorAll(".goo i"), links = () => [...tnav.querySelectorAll("a:not([hidden])")];
-    let rest = links()[0];
+    let rest = null; // no link is "active" until a section of this page is in view
     const moveTo = (a, burst) => {
+      tnav.querySelector(".goo").style.opacity = a ? 1 : 0;
+      if (!a) { links().forEach(x => x.classList.remove(here)); return; }
+      const aw = a.offsetWidth, al = a.offsetLeft; // read first, then write
       links().forEach(x => x.classList.toggle("here", x === a));
-      pill.style.width = a.offsetWidth + "px"; pill.style.transform = `translateX(${a.offsetLeft}px)`;
-      const cx = a.offsetLeft + a.offsetWidth / 2 - 7;
+      pill.style.width = aw + "px"; pill.style.transform = `translateX(${al}px)`;
+      const cx = al + aw / 2 - 7;
       drops.forEach((d, i) => {
         d.style.transitionDelay = (burst ? 0 : 40 + i * 45) + "ms";
         const dx = burst ? (i % 2 ? 1 : -1) * (18 + i * 9) : (i - 1.5) * 6, dy = burst ? (i < 2 ? -1 : 1) * (14 + i * 3) : 0;

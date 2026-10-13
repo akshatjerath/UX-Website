@@ -10,7 +10,7 @@
 @font-face{font-family:"Bricolage Fallback";src:local("Arial Bold"),local("Arial-BoldMT");font-weight:600 900;size-adjust:91.8%;ascent-override:101.3%;descent-override:29.4%;line-gap-override:0%}
 :root{
   --bg:#0C0E11; --surface:#14171C; --panel:#1A1E24; --ink:#EEF1F5; --muted:#9AA3AE; --line:#4A525D; --hair:#262B32;
-  --accent:#25CA7F; --accent-ink:#04140B; --accent-soft:#0F2A1D;
+  --accent:#25CA7F; --accent-ink:#04140B; --accent-soft:#0F2A1D; --hero-ink:#F2F3EF;
   --band:#EEF1F5; --band-ink:#0C0E11;
   --draft:#F2B451; --draft-soft:#2E2412; --bad:#FF7A6E; --rule:rgba(238,241,245,.07); --dec:#F2C94C; --dec-soft:#2B2511;
   --savvy-bg:#131411; --ankur-bg:#E3E0F6; --greggs-bg:#00558F; --greggs-hi:#FDC72F; --cd-bg:#2F3D2B; --cd-hi:#E6EDD8;
@@ -23,11 +23,11 @@
 }
 @media (prefers-color-scheme: light){:root:not([data-theme="dark"]){
   --bg:#F1F2F4; --surface:#FFFFFF; --panel:#E7EAEE; --ink:#11141A; --muted:#58606B; --line:#8A929C; --hair:#D6DBE1;
-  --accent:#0F7A48; --accent-ink:#FFFFFF; --accent-soft:#D6F2E3; --band:#11141A; --band-ink:#F1F2F4;
+  --accent:#0F7A48; --accent-ink:#FFFFFF; --accent-soft:#D6F2E3; --hero-ink:#11141A; --band:#11141A; --band-ink:#F1F2F4;
   --draft:#7A4A00; --draft-soft:#FBEFD8; --bad:#B23A34; --rule:rgba(17,20,26,.08); --dec:#9A7100; --dec-soft:#FFF3C4; color-scheme:light}}
 :root[data-theme="light"]{
   --bg:#F1F2F4; --surface:#FFFFFF; --panel:#E7EAEE; --ink:#11141A; --muted:#58606B; --line:#8A929C; --hair:#D6DBE1;
-  --accent:#0F7A48; --accent-ink:#FFFFFF; --accent-soft:#D6F2E3; --band:#11141A; --band-ink:#F1F2F4;
+  --accent:#0F7A48; --accent-ink:#FFFFFF; --accent-soft:#D6F2E3; --hero-ink:#11141A; --band:#11141A; --band-ink:#F1F2F4;
   --draft:#7A4A00; --draft-soft:#FBEFD8; --bad:#B23A34; --rule:rgba(17,20,26,.08); --dec:#9A7100; --dec-soft:#FFF3C4; color-scheme:light}
 
 *{box-sizing:border-box}
@@ -47,7 +47,7 @@ button{font:inherit;color:inherit}
 h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.04;letter-spacing:-.02em;text-wrap:balance;margin:0}
 p{margin:0}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:999px;background:var(--accent);color:var(--accent-ink);text-decoration:none;font-weight:600;border:1px solid var(--accent);cursor:pointer;transition:transform .2s var(--ease-out)}
-.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+
 .btn:active{transform:scale(.97)}
 .lnk{color:var(--accent);font-weight:600;text-decoration:none}
 .lnk:hover{text-decoration:underline}
@@ -57,15 +57,15 @@ p{margin:0}
   box-shadow:0 8px 30px rgba(0,0,0,.25),inset 0 0 0 1px rgba(255,255,255,.1);max-width:calc(100vw - 24px)}
 .island a{text-decoration:none}
 .island .who{display:flex;align-items:center;gap:8px;padding-right:6px}
-.island .av{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:#F2F3EF;color:#05070A;font:700 12px/1 var(--display)}
+.island .av{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:transparent;border:1px solid #F2F3EF;color:#F2F3EF;font:700 12px/1 var(--display)}
 .island .nm{font:600 14px/1 var(--body);white-space:nowrap;overflow:hidden;max-width:120px;transition:max-width .4s var(--ease),opacity .3s}
 .island .st{display:flex;align-items:center;gap:7px;font:500 11px/1 var(--mono);letter-spacing:.03em;color:#B9BDB6;white-space:nowrap;max-width:0;opacity:0;overflow:hidden;transition:max-width .4s var(--ease),opacity .3s}
 .island .st i,.open i{width:7px;height:7px;border-radius:50%;background:#5BE38A;box-shadow:0 0 0 3px rgba(91,227,138,.18);flex:none}
 .island:hover .st,.island:focus-within .st{max-width:220px;opacity:1}
 .island nav{display:flex;gap:2px}
-.island nav a{white-space:nowrap;font:500 14px/1 var(--body);padding:9px 12px;border-radius:999px;color:#D9DCD5;transition:background .2s,color .2s}
-.island nav a:hover{background:#20242A;color:#fff}
-.island nav a.cv{background:#F2F3EF;color:#05070A}
+.island nav a{white-space:nowrap;font:500 14px/1 var(--body);padding:9px 12px;border-radius:999px;color:#F2F3EF;transition:background .2s,color .2s}
+.island nav a:hover{color:#05070A}
+
 .island.compact .nm{max-width:0;opacity:0}
 .island.compact .who{padding-right:0}
 .theme{width:36px;height:36px;border-radius:50%;border:0;background:#20242A;color:#F2F3EF;display:grid;place-items:center;cursor:pointer;flex:none;transition:transform .4s var(--ease-out)}
@@ -95,7 +95,7 @@ dialog.lb::backdrop{background:rgba(5,7,10,.88)}
 
 /* ===== staggered menu (nav.js): phones only ===== */
 .island,.smenu{--display:"Bricolage Grotesque","Arial Narrow",system-ui,sans-serif} /* same on every page, whatever a case study's own font */
-.sm-tog{display:none;align-items:center;gap:10px;height:36px;padding:0 14px 0 16px;border:0;border-radius:999px;background:#F2F3EF;color:#05070A;font:600 14px/1 var(--body);cursor:pointer}
+.sm-tog{display:none;align-items:center;gap:10px;height:36px;padding:0 14px 0 16px;border:1px solid #F2F3EF;border-radius:999px;background:transparent;color:#F2F3EF;font:600 14px/1 var(--body);cursor:pointer}
 .sm-tw{display:block;height:1em;overflow:hidden}.sm-tw span{display:block;line-height:1;transition:transform .45s var(--ease)}
 .sm-on .sm-tw span{transform:translateY(-100%)}
 .sm-plus{position:relative;width:12px;height:12px;transition:transform .45s var(--ease)}
@@ -127,3 +127,11 @@ dialog.lb::backdrop{background:rgba(5,7,10,.88)}
 @media (prefers-reduced-motion:reduce){.sm-layer,.sm-it span,.sm-scrim,.sm-soc,.sm-tw span,.sm-plus{transition:none!important}}
 /* Lenis smooth scroll (vendor/lenis.min.js) */
 html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}.lenis.lenis-stopped{overflow:clip}.lenis [data-lenis-prevent]{overscroll-behavior:contain}
+
+/* soft fade between pages (CSS only; browsers without View Transitions just navigate normally) */
+@view-transition{navigation:auto}
+@keyframes vt-out{to{opacity:0}}
+@keyframes vt-in{from{opacity:0}}
+::view-transition-old(root){animation:vt-out 250ms ease both}
+::view-transition-new(root){animation:vt-in 250ms ease both}
+@media (prefers-reduced-motion:reduce){@view-transition{navigation:none}::view-transition-old(root),::view-transition-new(root){animation:none}}
