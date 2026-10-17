@@ -1,11 +1,12 @@
 # UX Website
 
-Akshat Jerath's UX/UI portfolio: a home page and one page per case study (SAVVY, Ankur, Greggs 2050, Critical Design). Static HTML, CSS and JS. No build step, no npm, nothing to install.
+Akshat Jerath's UX/UI portfolio: a home page and four case studies (SAVVY, Ankur, Greggs 2050, Critical Design), with separate iOS and Android design pages for SAVVY. Static HTML, CSS and JS. No build step, no npm, nothing to install.
 
 | File | What's in it | Edit it when |
 | --- | --- | --- |
 | `index.html` | Home: hero, the four project panels, About (profile card, timeline, tools, skills), Contact | You change home text, the timeline, tools or skills |
 | `savvy.html`, `ankur.html`, `greggs.html`, `critical-design.html` | One case study each. Each `<section data-nav="Group\|Label">` becomes an entry in the side nav | You change a case study |
+| `savvy-ios.html`, `savvy-android.html` | SAVVY platform choices, screens and UI concepts; both link back to `savvy.html` | You change a platform design |
 | `content.js` | Your details (`ME`), and the data behind the diagrams: flows (`FL`), empathy maps, site map, access rules, iterations (`ITER`), the answer spotlight (`SPOT`), Ankur's competitors (`ANKUR_CM`) | You change your email/LinkedIn/CV, or a diagram |
 | `base.css` | Shared: colours, fonts, island nav, phone menu, footer | You change the site-wide look |
 | `home.css` / `home.js` | Home page styles and motion | Rarely |

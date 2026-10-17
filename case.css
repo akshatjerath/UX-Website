@@ -1312,8 +1312,6 @@ body.csp.ank{--mx:calc(var(--gut) - 10px);background:linear-gradient(90deg,trans
 .cs-savvy .savvy-platform-intro{padding-top:110px}
 .cs-savvy .savvy-platform-intro h1{font-size:clamp(36px,5.4vw,72px)}
 .cs-savvy .savvy-platform-intro .platform-links{margin-top:0;margin-bottom:36px}
-.cs-savvy .savvy-platform-intro .hero-meta{flex-wrap:wrap}
-.cs-savvy .savvy-summary .scene{min-height:280px}
+.cs-savvy .savvy-summary .scene{min-height:280px;gap:12px;align-content:center}
 .cs-savvy .savvy-summary .frag{position:static}
-.cs-savvy .savvy-summary .scene{gap:12px;align-content:center}
-.cs-savvy #t-fb ~ .show:not(:has(.stage2)){grid-template-columns:minmax(0,1fr)}
+.cs-savvy section[aria-labelledby="t-paper"]{overflow-x:clip}
