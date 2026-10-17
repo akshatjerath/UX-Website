@@ -1302,3 +1302,18 @@ body.csp.ank{--mx:calc(var(--gut) - 10px);background:linear-gradient(90deg,trans
 
 /* Greggs: the wheel is allowed past its column, but never makes the page scroll sideways */
 .grg main{overflow-x:clip}
+
+/* SAVVY platform navigation: existing colours and buttons, with 44px targets. */
+.cs-savvy .platform-links{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-block:20px}
+.cs-savvy .platform-links a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;min-width:44px}
+.cs-savvy .platform-pills{gap:8px;margin:0}
+.cs-savvy .platform-pills a{padding:6px 12px;border:1px solid var(--w-line);border-radius:999px;text-decoration:none}
+.cs-savvy .platform-cards a{padding:20px 28px}
+.cs-savvy .savvy-platform-intro{padding-top:110px}
+.cs-savvy .savvy-platform-intro h1{font-size:clamp(36px,5.4vw,72px)}
+.cs-savvy .savvy-platform-intro .platform-links{margin-top:0;margin-bottom:36px}
+.cs-savvy .savvy-platform-intro .hero-meta{flex-wrap:wrap}
+.cs-savvy .savvy-summary .scene{min-height:280px}
+.cs-savvy .savvy-summary .frag{position:static}
+.cs-savvy .savvy-summary .scene{gap:12px;align-content:center}
+.cs-savvy #t-fb ~ .show:not(:has(.stage2)){grid-template-columns:minmax(0,1fr)}
