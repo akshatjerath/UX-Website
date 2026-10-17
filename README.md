@@ -1,4 +1,3 @@
-# UX Website
 
 Akshat Jerath's UX/UI portfolio: a home page and four case studies (SAVVY, Ankur, Greggs 2050, Critical Design), with separate iOS and Android design pages for SAVVY. Static HTML, CSS and JS. No build step, no npm, nothing to install.
 
