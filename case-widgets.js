@@ -107,12 +107,13 @@
 
   /* ---------- iterations: a snake roadmap, left to right then back, drawn as you scroll ---------- */
   document.querySelectorAll("[data-snake]").forEach(el => {
+    const iterations = ITER.filter(s => el.dataset.snake === "android" ? s.v === "M3" : el.dataset.snake === "shared" ? s.v !== "M3" : true);
     el.innerHTML = `<svg class="sn-path" aria-hidden="true"><path class="sn-base"/><path class="sn-draw"/></svg>
-      <ol class="sn-list">${ITER.map((s, k) => `<li class="sn-i${s.imgs ? " wide" : ""}" style="--i:${k}">
+      <ol class="sn-list">${iterations.map((s, k) => `<li class="sn-i${s.imgs ? " wide" : ""}" style="--i:${k}">
         <span class="sn-dot" aria-hidden="true">${k + 1}</span>
         ${s.imgs ? `<div class="sn-multi">${s.imgs.map((n, j) => `<button type="button" class="zoom sn-ph" data-lb="img/${n}.webp" data-cap="${E(s.v + " · " + s.t + " · screen " + (j + 1))}"><span class="phone"><img src="img/${n}.webp" alt="SAVVY ${E(s.v)}, screen ${j + 1} of ${s.imgs.length}: ${E(s.alts[j])}" width="402" height="874" loading="lazy"></span></button>`).join("")}</div>` :
         `<button type="button" class="zoom sn-ph" data-lb="img/${s.img}.webp" data-cap="${E(s.v + " · " + s.t)}"><span class="phone"><img src="img/${s.img}.webp" alt="SAVVY ${E(s.v)}: ${E(s.t)}" width="640" height="1390" loading="lazy"></span></button>`}
-        <div class="sn-cap"><span class="v">${E(s.v)}</span><b>${E(s.t)}</b><p>${E(s.d)}</p>
+        <div class="sn-cap"><span class="v">${E(s.v)}</span><b>${E(s.t)}</b><p>${E(s.d)}</p><small>Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</small>
         ${s.sw ? `<div class="sw">${s.sw.map(c => `<i style="background:${c}" title="${c}"></i>`).join("")}</div><small>${E(s.f)}</small>` : `<small>${E(s.na || "")}</small>`}</div></li>`).join("")}</ol>`;
     const svg = el.querySelector("svg"), base = el.querySelector(".sn-base"), draw = el.querySelector(".sn-draw"), dots = [...el.querySelectorAll(".sn-dot")], items = [...el.querySelectorAll(".sn-i")];
     let len = 1;

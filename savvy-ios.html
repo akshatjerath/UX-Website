@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SAVVY on iOS | Akshat Jerath</title>
+<meta name="description" content="SAVVY on iOS: night and day design choices, screens, micro-interactions and Dynamic Island UI concepts using sample data; not usability tested.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Ccircle cx=%2732%27 cy=%2732%27 r=%2730%27 fill=%27%230C0E11%27 stroke=%27%2325CA7F%27 stroke-width=%274%27/%3E%3Ctext x=%2732%27 y=%2741%27 font-family=%27Arial%27 font-weight=%27700%27 font-size=%2724%27 fill=%27%2325CA7F%27 text-anchor=%27middle%27%3EAJ%3C/text%3E%3C/svg%3E">
+<meta name="theme-color" content="#0B0B0A">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SAVVY on iOS">
+<meta property="og:description" content="SAVVY on iOS: night and day design choices, screens, micro-interactions and Dynamic Island UI concepts using sample data; not usability tested.">
+<meta property="og:image" content="https://akshatjerath.github.io/UX-Website/img/mock-tilt.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="assets/fonts/bricolage-grotesque-latin-standard-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="base.css">
+<link rel="stylesheet" href="case.css">
+</head>
+<body class="csp cs-savvy">
+<a class="skip" href="#main">Skip to the case study</a>
+
+<!-- Icons used on this page -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-person" viewBox="0 0 24 24"><circle cx="12" cy="7.5" r="4" fill="currentColor"/><path d="M4 21c0-4.4 3.6-7.5 8-7.5s8 3.1 8 7.5z" fill="currentColor"/></symbol>
+  <symbol id="i-coin" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7.5v9M9.5 9.5h4a1.6 1.6 0 0 1 0 3.2h-3a1.6 1.6 0 0 0 0 3.2h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-card" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 10.5h18" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-q" viewBox="0 0 24 24"><path d="M9 9.2a3 3 0 1 1 4.2 2.8c-.8.4-1.2 1-1.2 1.9v.6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><circle cx="12" cy="18" r="1.3" fill="currentColor"/></symbol>
+  <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5a7 7 0 0 0-14 0C5 14.8 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9.5" r="2.4" fill="currentColor"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M4 11l8-6.5 8 6.5V20H4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+  <symbol id="i-tag" viewBox="0 0 24 24"><path d="M3.5 12.5V4h8.5l8.5 8.5-8 8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="8" cy="8.5" r="1.6" fill="currentColor"/></symbol>
+  <symbol id="i-plate" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="i-rupee" viewBox="0 0 24 24"><path d="M7 5h10M7 9h10M9 5c5 0 5 8 0 8H7l7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M5 20c.6-3.6 3.4-6 7-6s6.4 2.4 7 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15zM10 20.5h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7.5V12l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-start" viewBox="0 0 24 24"><path d="M8 5l11 7-11 7z" fill="currentColor"/></symbol>
+  <symbol id="i-store" viewBox="0 0 24 24"><path d="M4 9.5L5.5 4h13L20 9.5M4 9.5h16M4 9.5c0 1.7 1.3 2.5 2.7 2.5S9.3 11.2 9.3 9.5c0 1.7 1.3 2.5 2.7 2.5s2.7-.8 2.7-2.5c0 1.7 1.3 2.5 2.6 2.5S20 11.2 20 9.5M5.5 12v8h13v-8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+</svg>
+
+<header class="island" id="island">
+  <a class="who" href="index.html" aria-label="Akshat Jerath, home"><span class="av" aria-hidden="true">AJ</span></a>
+  <nav aria-label="Main"><a href="index.html#work"><span aria-hidden="true">← </span>Work</a><a href="index.html#about">About</a><a class="cv" href="assets/Akshat_Jerath_CV.pdf">CV</a><a href="index.html#contact">Contact</a></nav>
+  <button type="button" class="theme" id="themeBtn" aria-label="Switch to day mode"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><g class="sun" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g><path class="moon" fill="currentColor" d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7z"/></svg></button>
+</header>
+
+<main id="main">
+<section class="savvy-platform-intro" aria-labelledby="t-hero"><div class="wrap"><nav class="platform-links" aria-label="SAVVY pages"><a class="btn" href="savvy.html">← Back to SAVVY case study</a><a class="btn" href="savvy-android.html">SAVVY on Android</a></nav><span class="eyebrow">iOS · Platform design</span><h1 id="t-hero">SAVVY on iOS</h1><p class="sub">This page covers the iOS design choices, night and day screens, feedback states and motion concepts.</p><dl class="hero-meta"><div><dt>Platform</dt><dd>iOS</dd></div><div><dt>Status</dt><dd>Interactive concept, sample data, not usability tested</dd></div></dl><p class="note">Illustrative prototype calculation, not a live verified price</p></div></section>
+<section aria-labelledby="t-principles" data-nav="Principles|iOS"><div class="wrap"><div class="head"><h2 id="t-principles">Platform principles</h2></div><p>The iOS screens use night and day themes while keeping the price first, then what you keep, then the maths.</p><p class="note">UI type: Inter. The price is always the biggest thing on the screen.</p></div></section>
+
+<section aria-labelledby="t-decisions" data-nav="Decisions|Reasons"><div class="wrap"><div class="head"><h2 id="t-decisions">Key decisions and reasons</h2></div><p>Teal replaces lime and a serif carries the price. The order stays the same: the price first, then what you keep, then the maths.</p><ol><li>SAVVY answer screen, night theme: best price tonight ₹1,450 on EazyDiner, you keep ₹550</li><li>One price first: the cash you pay tonight.</li><li>What you keep, compared with just paying the bill.</li><li>Coins sit on their own line and never change the order.</li><li>One tap hands you to the cheapest app. SAVVY never pays.</li></ol></div></section>
+
+<section aria-labelledby="t-preview" data-nav="Screens|Previews"><div class="wrap"><div class="head"><h2 id="t-preview">iOS night previews</h2></div><div class="trio2"><figure><div class="phone"><img src="img/savvy-n-tonight.webp" width="402" height="874" loading="lazy" alt="SAVVY on iOS, night theme: the Tonight screen, starting from a restaurant near you"></div><figcaption>The iOS night preview puts the restaurant and the answer first. Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure><figure><div class="phone"><img src="img/savvy-n-answer.webp" width="402" height="874" alt="SAVVY answer screen: best price tonight ₹1,450 on EazyDiner with your HSBC card. You keep ₹550." fetchpriority="high"></div><figcaption>The iOS night preview puts the restaurant and the answer first. Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure><figure>      <div class="phone"><img src="img/savvy-n-answer.webp" width="402" height="874" alt="" loading="lazy"></div><figcaption>The answer replaces a list of competing discounts. Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure></div></div></section>
+
+<section aria-labelledby="t-ios" data-nav="Design|iOS">
+  <div class="wrap">
+    <div class="head split">
+      <div><span class="eyebrow">Final design · iOS, night</span><h2 id="t-ios">Choosing a place and typing the bill.</h2></div>
+      <p class="sub">From tonight's places to one answer in four screens.</p>
+    </div>
+    <div class="quad4">
+      <figure><div class="phone"><img src="img/savvy-n-tonight.webp" width="402" height="874" alt="Tonight: Doolally Taproom, 0.8 km, on 3 apps. Last time you kept ₹400." loading="lazy"></div><figcaption><b>Tonight.</b>Places near you first, and what you kept here last time. Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure>
+      <figure><div class="phone"><img src="img/savvy-n-bookpay.webp" width="402" height="874" alt="Doolally Taproom: What are you doing? Book a table, or Pay the bill." loading="lazy"></div><figcaption><b>Book or pay.</b>One question splits the two moments people lose money in. Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure>
+      <figure><div class="phone"><img src="img/savvy-n-bill.webp" width="402" height="874" alt="What's the bill? ₹2,000, 2 people, HSBC card, Find my best price." loading="lazy"></div><figcaption><b>Type the bill once.</b>People and your card on the same screen. No forms. Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure>
+      <figure><div class="phone"><img src="img/savvy-n-checking.webp" width="402" height="874" alt="Checking 3 apps: Swiggy Dineout found 20% off, District found 15% off, EazyDiner checking your HSBC offer." loading="lazy"></div><figcaption><b>Checking 3 apps.</b>The wait shows its work, one app at a time. Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="glow" style="padding-top:0;--gx:30%" aria-labelledby="t-ans" data-nav="Design|The answer">
+  <div class="wrap">
+    <h2 id="t-ans" class="sr">The answer screen</h2>
+    <div data-spot></div><p class="note">Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</p>
+  </div>
+</section>
+
+<section class="band" aria-labelledby="t-day" data-nav="Design|Day theme">
+  <div class="wrap">
+    <div class="head split">
+      <div><span class="eyebrow">Final design · iOS, day</span><h2 id="t-day">The same answer in daylight.</h2></div>
+      <p class="sub">Teal replaces lime and a serif carries the price. The order stays the same: the price first, then what you keep, then the maths.</p>
+    </div>
+    <div class="trio2">
+      <figure><div class="phone"><img src="img/savvy-d-home.webp" width="402" height="874" alt="Day theme: Good evening Akshat, Tonight, Doolally Taproom." loading="lazy"></div><figcaption><b>Tonight.</b> Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure>
+      <figure><div class="phone"><img src="img/savvy-d-answer.webp" width="402" height="874" alt="Day theme answer: ₹1,450 on EazyDiner with your HSBC card, you keep ₹550." loading="lazy"></div><figcaption><b>The answer.</b> Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure>
+      <figure><div class="phone"><img src="img/savvy-d-savings.webp" width="402" height="874" alt="Day theme: Your savings, ₹3,970 saved in September, verified." loading="lazy"></div><figcaption><b>Your savings.</b> Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0" aria-labelledby="t-after" data-nav="Design|After the tap">
+  <div class="wrap">
+    <div class="head split">
+      <div><span class="eyebrow">After the tap</span><h2 id="t-after">Handing off, then checking the price.</h2></div>
+      <p class="sub">The part most comparison tools skip: did the price you were promised actually hold?</p>
+    </div>
+    <p class="note">Dynamic Island and lock-screen prompts are UI concepts, not working system features.</p><div class="quad4">
+      <figure><div class="phone"><img src="img/savvy-n-island.webp" width="402" height="874" alt="Hand-off: your slip rides in the Dynamic Island while you pay in EazyDiner: enter bill ₹2,000, pay with HSBC, then check ₹1,450." loading="lazy"></div><figcaption><b>Hand-off.</b>Your slip rides in the Dynamic Island while you pay in the partner app. Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure>
+      <figure><div class="phone"><img src="img/savvy-n-lock.webp" width="402" height="874" alt="Lock screen: Did the deal hold at Doolally? Yes ₹1,450, or No, different." loading="lazy"></div><figcaption><b>Did it hold?</b>One tap after the meal. Offers that fail drop in rank for everyone. Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure>
+      <figure><div class="phone"><img src="img/savvy-n-kept.webp" width="402" height="874" alt="Kept: ₹3,970 in September, every rupee verified, week by week, ₹1,030 to a free SAVVY+ week." loading="lazy"></div><figcaption><b>Kept.</b>Only verified savings count, week by week. Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure>
+      <figure><div class="phone"><img src="img/savvy-n-booktime.webp" width="402" height="874" alt="Booking ahead: When are you going? Each time shows its best deal. 8:00 is 30% off on EazyDiner." loading="lazy"></div><figcaption><b>Booking ahead.</b>Every time slot shows its best deal before you pick it. Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="t-fb" data-nav="Design|System feedback">
+  <div class="wrap">
+    <div class="head split">
+      <div><span class="eyebrow">System feedback</span><h2 id="t-fb">What the app shows while it works.</h2></div>
+      <p class="sub">Every state tells you what SAVVY is doing and what it isn't: nothing is booked or paid, and a deal that didn't hold never counts.</p>
+    </div>
+<p class="note">Dynamic Island and lock-screen prompts are UI concepts, not working system features.</p>
+    <div class="show">
+      <div class="stage2">
+        <div class="phone tilt-l"><img src="img/savvy-n-checking.webp" width="402" height="874" alt="Checking 3 apps, 2 of 3 done. We read each app's offers for this bill. Nothing is booked or paid." loading="lazy"></div>
+        <div class="phone tilt-r"><img src="img/savvy-n-sheet.webp" width="402" height="874" alt="How ₹1,450 is made: food bill ₹2,000, HSBC card 30% instant minus ₹600, cover charge plus ₹50. The fine print: minimum bill, a monthly cap, pay inside EazyDiner." loading="lazy"></div>
+      </div>
+      <div class="callouts">
+        <div class="callout"><b>Loading that explains itself</b><p>The ring counts the apps, each row ticks off, and the Dynamic Island shows &quot;2 of 3&quot;. Nothing is booked or paid.</p></div>
+        <div class="callout"><b>How ₹1,450 is made</b><p>Every line of the maths, including the cover charge most apps show late.</p></div>
+        <div class="callout"><b>The fine print, in plain words</b><p>A minimum bill, a monthly cap with how much is left, and a warning that paying at the counter loses the discount.</p></div>
+      </div>
+    </div>
+<p class="note">Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</p>
+  </div>
+</section>
+
+<section class="glow" style="padding-top:0" aria-labelledby="t-mo" data-nav="Design|Motion">
+  <div class="wrap">
+    <div class="head split">
+      <div><span class="eyebrow">Motion · made in Jitter</span><h2 id="t-mo">Motion while you wait.</h2></div>
+      <p class="sub">Motion shows the work SAVVY does while you wait. The clips loop while they're on screen; pause any of them.</p>
+    </div>
+    <div class="clips">
+      <figure class="clip rv"><div class="phone"><video poster="img/jitter-bill-poster.webp" muted loop playsinline preload="metadata" aria-label="Typing the bill amount on a keypad, then Find my best price"><source src="img/jitter-bill.webm" type="video/webm"><source src="img/jitter-bill.mp4" type="video/mp4"></video></div><button type="button" data-play>▶ Play</button><figcaption>Type the bill Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure>
+      <figure class="clip rv"><div class="phone"><video poster="img/jitter-checking-poster.webp" muted loop playsinline preload="metadata" aria-label="Checking 3 apps, each one ticking off as its offer is found"><source src="img/jitter-checking.webm" type="video/webm"><source src="img/jitter-checking.mp4" type="video/mp4"></video></div><button type="button" data-play>▶ Play</button><figcaption>Checking 3 apps Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure>
+      <figure class="clip rv"><div class="phone"><video poster="img/jitter-answer-poster.webp" muted loop playsinline preload="metadata" aria-label="The answer screen building up, with cash kept per app"><source src="img/jitter-answer.webm" type="video/webm"><source src="img/jitter-answer.mp4" type="video/mp4"></video></div><button type="button" data-play>▶ Play</button><figcaption>The answer arrives Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="band" aria-labelledby="t-ex" data-nav="Design|Experiment">
+  <div class="wrap">
+    <div class="head split">
+      <div><span class="eyebrow">An experiment</span><h2 id="t-ex">Swiping through restaurants.</h2></div>
+      <p class="sub">Right to book, left to skip, up for the full profile. It stays out of the main flow until it's tested.</p>
+    </div>
+    <p class="note">Dynamic Island and lock-screen prompts are UI concepts, not working system features.</p><div class="five"><figure><div class="phone"><img src="img/savvy-swipe.webp" width="402" height="874" alt="Discover: a restaurant card to swipe" loading="lazy"></div><figcaption><b>Discover.</b>One place at a time, best price on the card. Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure><figure><div class="phone"><img src="img/savvy-sw-book.webp" width="402" height="874" alt="Swiped right: booking Doolally through the cheapest app" loading="lazy"></div><figcaption><b>Swipe right.</b>Book through the cheapest app. Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure><figure><div class="phone"><img src="img/savvy-sw-skip.webp" width="402" height="874" alt="Skipped, with undo in the Dynamic Island" loading="lazy"></div><figcaption><b>Swipe left.</b>Skipped. Undo sits in the Dynamic Island. Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure><figure><div class="phone"><img src="img/savvy-sw-detail.webp" width="402" height="874" alt="Swiped up: the full profile with best price and popular dishes" loading="lazy"></div><figcaption><b>Swipe up.</b>Best price tonight, then popular dishes. Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure><figure><div class="phone"><img src="img/savvy-sw-end.webp" width="402" height="874" alt="That's everyone nearby: widen the radius or change filters" loading="lazy"></div><figcaption><b>End of the deck.</b>Widen the radius, review skipped places, or change filters. Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure></div>
+  </div>
+</section>
+
+<section aria-labelledby="t-limits" data-nav="Limits|Concept status"><div class="wrap"><div class="head"><h2 id="t-limits">Platform limits</h2></div><p>Dynamic Island and lock-screen prompts are UI concepts, not working system features.</p><p class="note">Interactive concept, sample data, not usability tested</p><a class="lnk" href="savvy.html#t-next">Read the shared test plan and data constraints.</a></div></section>
+<section aria-labelledby="t-links"><div class="wrap"><div class="head"><h2 id="t-links">Explore SAVVY</h2></div><nav class="platform-links" aria-label="SAVVY pages"><a class="btn" href="savvy.html">← Back to SAVVY case study</a><a class="btn" href="savvy-android.html">SAVVY on Android</a></nav></div></section>
+<section style="padding-top:0" aria-label="Next case study">
+  <div class="wrap">
+    <a class="next" href="ankur.html"><span><span class="eyebrow">Next case study</span><span class="nm">Ankur</span></span><span class="arr" aria-hidden="true">→</span></a>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><span>© 2026 Akshat Jerath</span><span class="mono">Mumbai, India</span></div></footer>
+
+<dialog class="lb" id="lb" aria-label="Image viewer">
+  <div class="lb-in"><div class="lb-bar"><span id="lbCap"></span><button type="button" id="lbClose">Close</button></div><div class="lb-scroll"><img id="lbImg" alt=""></div></div>
+</dialog>
+<script src="content.js" defer></script>
+<script src="vendor/lenis.min.js" defer></script>
+<script src="case-widgets.js" defer></script>
+<script src="case.js" defer></script>
+<script src="nav.js" defer></script>
+</body>
+</html>
