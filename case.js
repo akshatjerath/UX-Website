@@ -230,7 +230,8 @@
 
   // Corners: previous and next project, always one click away.
   const ORDER = [["savvy.html", "SAVVY"], ["ankur.html", "Ankur"], ["greggs.html", "Greggs 2050"], ["critical-design.html", "Critical Design"]];
-  const here = ORDER.findIndex(([f]) => location.pathname.endsWith("/" + f) || location.pathname.endsWith(f));
+  const page = location.pathname.split("/").pop().replace(/^savvy-(ios|android)\.html$/, "savvy.html");
+  const here = ORDER.findIndex(([f]) => page === f);
   if (here >= 0){
     const HOME = ["index.html", "Home"], prev = ORDER[here - 1] || HOME, next = ORDER[here + 1] || ["index.html#about", "About"]; // the ends lead home, no wrap-around
     document.body.insertAdjacentHTML("beforeend", `<nav class="pn" aria-label="Other projects">

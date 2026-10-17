@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SAVVY on Android | Akshat Jerath</title>
+<meta name="description" content="SAVVY on Android: Material 3 design choices, night and day screens and a Live Update chip UI concept using sample data; not usability tested.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Ccircle cx=%2732%27 cy=%2732%27 r=%2730%27 fill=%27%230C0E11%27 stroke=%27%2325CA7F%27 stroke-width=%274%27/%3E%3Ctext x=%2732%27 y=%2741%27 font-family=%27Arial%27 font-weight=%27700%27 font-size=%2724%27 fill=%27%2325CA7F%27 text-anchor=%27middle%27%3EAJ%3C/text%3E%3C/svg%3E">
+<meta name="theme-color" content="#0B0B0A">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SAVVY on Android">
+<meta property="og:description" content="SAVVY on Android: Material 3 design choices, night and day screens and a Live Update chip UI concept using sample data; not usability tested.">
+<meta property="og:image" content="https://akshatjerath.github.io/UX-Website/img/mock-tilt.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="assets/fonts/bricolage-grotesque-latin-standard-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="base.css">
+<link rel="stylesheet" href="case.css">
+</head>
+<body class="csp cs-savvy">
+<a class="skip" href="#main">Skip to the case study</a>
+
+<!-- Icons used on this page -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-person" viewBox="0 0 24 24"><circle cx="12" cy="7.5" r="4" fill="currentColor"/><path d="M4 21c0-4.4 3.6-7.5 8-7.5s8 3.1 8 7.5z" fill="currentColor"/></symbol>
+  <symbol id="i-coin" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7.5v9M9.5 9.5h4a1.6 1.6 0 0 1 0 3.2h-3a1.6 1.6 0 0 0 0 3.2h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-card" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 10.5h18" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-q" viewBox="0 0 24 24"><path d="M9 9.2a3 3 0 1 1 4.2 2.8c-.8.4-1.2 1-1.2 1.9v.6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><circle cx="12" cy="18" r="1.3" fill="currentColor"/></symbol>
+  <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5a7 7 0 0 0-14 0C5 14.8 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9.5" r="2.4" fill="currentColor"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M4 11l8-6.5 8 6.5V20H4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+  <symbol id="i-tag" viewBox="0 0 24 24"><path d="M3.5 12.5V4h8.5l8.5 8.5-8 8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="8" cy="8.5" r="1.6" fill="currentColor"/></symbol>
+  <symbol id="i-plate" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="i-rupee" viewBox="0 0 24 24"><path d="M7 5h10M7 9h10M9 5c5 0 5 8 0 8H7l7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M5 20c.6-3.6 3.4-6 7-6s6.4 2.4 7 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15zM10 20.5h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7.5V12l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-start" viewBox="0 0 24 24"><path d="M8 5l11 7-11 7z" fill="currentColor"/></symbol>
+  <symbol id="i-store" viewBox="0 0 24 24"><path d="M4 9.5L5.5 4h13L20 9.5M4 9.5h16M4 9.5c0 1.7 1.3 2.5 2.7 2.5S9.3 11.2 9.3 9.5c0 1.7 1.3 2.5 2.7 2.5s2.7-.8 2.7-2.5c0 1.7 1.3 2.5 2.6 2.5S20 11.2 20 9.5M5.5 12v8h13v-8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+</svg>
+
+<header class="island" id="island">
+  <a class="who" href="index.html" aria-label="Akshat Jerath, home"><span class="av" aria-hidden="true">AJ</span></a>
+  <nav aria-label="Main"><a href="index.html#work"><span aria-hidden="true">← </span>Work</a><a href="index.html#about">About</a><a class="cv" href="assets/Akshat_Jerath_CV.pdf">CV</a><a href="index.html#contact">Contact</a></nav>
+  <button type="button" class="theme" id="themeBtn" aria-label="Switch to day mode"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><g class="sun" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g><path class="moon" fill="currentColor" d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7z"/></svg></button>
+</header>
+
+<main id="main">
+<section class="savvy-platform-intro" aria-labelledby="t-hero"><div class="wrap"><nav class="platform-links" aria-label="SAVVY pages"><a class="btn" href="savvy.html">← Back to SAVVY case study</a><a class="btn" href="savvy-ios.html">SAVVY on iOS</a></nav><span class="eyebrow">Android · Platform design</span><h1 id="t-hero">SAVVY on Android</h1><p class="sub">This page covers the Android Material 3 choices, night and day screens and Live Update chip concept.</p><dl class="hero-meta"><div><dt>Platform</dt><dd>Android</dd></div><div><dt>Status</dt><dd>Interactive concept, sample data, not usability tested</dd></div></dl><p class="note">Illustrative prototype calculation, not a live verified price</p></div></section>
+<section aria-labelledby="t-principles" data-nav="Principles|Material 3"><div class="wrap"><div class="head"><h2 id="t-principles">Platform principles</h2></div><p>Android gets its own patterns. I used Material 3 components and a sticker for what you keep, and a Live Update chip takes the place of the Dynamic Island.</p><p class="note">The Live Update chip is a UI concept, not a working system feature.</p></div></section>
+
+<section aria-labelledby="t-decisions" data-nav="Decisions|Reasons"><div class="wrap"><div class="head"><h2 id="t-decisions">Key decisions and reasons</h2></div><div class="snake" data-snake="android"></div><p class="note">Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</p></div></section>
+
+<section aria-labelledby="t-preview" data-nav="Screens|Preview"><div class="wrap"><div class="head"><h2 id="t-preview">Android night preview</h2></div><div class="trio2"><figure><div class="phone and"><img src="img/savvy-and-n-answer.webp" width="412" height="917" loading="lazy" alt="The same answer screen on Android, in Material 3"></div><figcaption>The Android preview presents the same answer in Material 3. Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure></div></div></section>
+
+<section aria-labelledby="t-and" data-nav="Design|Android">
+  <div class="wrap">
+    <div class="head split">
+      <div><span class="eyebrow">Final design · Android</span><h2 id="t-and">The same answer in Material 3.</h2></div>
+      
+    </div>
+    <div class="quad4">
+      <figure><div class="phone and"><img src="img/savvy-and-n-tonight.webp" width="412" height="917" alt="Android night: Tonight, Doolally Taproom, last time ₹400 kept." loading="lazy"></div><figcaption><b>Tonight.</b>Search first, then tonight's places. Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure>
+      <figure><div class="phone and"><img src="img/savvy-and-n-answer.webp" width="412" height="917" alt="Android night answer: ₹1,450 on EazyDiner, a You keep ₹550 sticker, cash you keep by app." loading="lazy"></div><figcaption><b>The answer.</b>The price, then a sticker for what you keep. Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure>
+      <figure><div class="phone and"><img src="img/savvy-and-d-answer.webp" width="412" height="917" alt="Android day answer: ₹1,450 in a serif, teal You keep ₹550 sticker." loading="lazy"></div><figcaption><b>Day theme.</b>The same order in daylight. Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="t-mo" data-nav="Interactions|Hand-off"><div class="wrap"><div class="head"><h2 id="t-mo">Live Update chip</h2></div><p class="note">The Live Update chip is a UI concept, not a working system feature.</p><div class="trio2">      <figure><div class="phone and"><img src="img/savvy-and-n-handoff.webp" width="412" height="917" alt="Android hand-off: a Live Update notification, pay ₹1,450 on EazyDiner, copy ₹2,000, open EazyDiner." loading="lazy"></div><figcaption><b>Live Update.</b>The slip stays in the status bar while you pay. Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure></div></div></section>
+
+<section aria-labelledby="t-limits" data-nav="Limits|Concept status"><div class="wrap"><div class="head"><h2 id="t-limits">Platform limits</h2></div><p>The Live Update chip is a UI concept, not a working system feature.</p><p class="note">Interactive concept, sample data, not usability tested</p><a class="lnk" href="savvy.html#t-next">Read the shared test plan and data constraints.</a></div></section>
+<section aria-labelledby="t-links"><div class="wrap"><div class="head"><h2 id="t-links">Explore SAVVY</h2></div><nav class="platform-links" aria-label="SAVVY pages"><a class="btn" href="savvy.html">← Back to SAVVY case study</a><a class="btn" href="savvy-ios.html">SAVVY on iOS</a></nav></div></section>
+<section style="padding-top:0" aria-label="Next case study">
+  <div class="wrap">
+    <a class="next" href="ankur.html"><span><span class="eyebrow">Next case study</span><span class="nm">Ankur</span></span><span class="arr" aria-hidden="true">→</span></a>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><span>© 2026 Akshat Jerath</span><span class="mono">Mumbai, India</span></div></footer>
+
+<dialog class="lb" id="lb" aria-label="Image viewer">
+  <div class="lb-in"><div class="lb-bar"><span id="lbCap"></span><button type="button" id="lbClose">Close</button></div><div class="lb-scroll"><img id="lbImg" alt=""></div></div>
+</dialog>
+<script src="content.js" defer></script>
+<script src="vendor/lenis.min.js" defer></script>
+<script src="case-widgets.js" defer></script>
+<script src="case.js" defer></script>
+<script src="nav.js" defer></script>
+</body>
+</html>

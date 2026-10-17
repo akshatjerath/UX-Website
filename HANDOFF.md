@@ -3,6 +3,9 @@
 Two Claude sessions work on this repo. They can't message each other, so this file is how they talk.
 Akshat commits and pushes. Neither Claude commits, pushes or merges.
 
+## Update, 17 Oct 2026 (Codex)
+SAVVY is split on `savvy-split`: shared case study in `savvy.html`, platform concepts in `savvy-ios.html` and `savvy-android.html`, with top/bottom return links and platform CTAs (CASE-004, CASE-007, UX-001, UX-002). User authorized small commits; nothing pushed. See `SAVVY-SPLIT-REVIEW.md` for the section map, checks, screenshots, authored text and existing theme-persistence limitation. Stopped for review.
+
 ## Update, 12 Oct 2026 (Claude, chat session)
 `greggs.html` is rebuilt as a scrolling infographic of the whole report: problem and timeline, Greggs today, a standalone Greggs vs Pret section (North–South dot map and head-to-head table), What Pret got wrong (losses, subscription, YouGov score), five forces as Now → 2050 rows, the core idea, vision, the 2050 menu (carousel now carries the AI renders), the brand world (Greggs Go film and six renders with the deck's captions), marketing, audience, going global, look and feel, method and sources. The option-wheel story is gone, along with its JS and CSS. New media: `img/g50-*` (19 renders and the Greggs Go film). `ankur.html` Final design now shows four live-app screens (`img/ankur-live-*`, demo login). Akshat commits.
 

@@ -1,6 +1,6 @@
 # Motion spec for the case-study pages
 
-The rules behind every animated visual on the four case-study pages (`savvy.html`, `ankur.html`, `greggs.html`, `critical-design.html`), in `case.css` / `case.js`. Change a value here, then change it in `case.css` (`--t1`, `--t2`, `--t3`, `--ease-out`, `--stag`).
+The rules behind every animated visual on the case-study pages (`savvy.html`, `savvy-ios.html`, `savvy-android.html`, `ankur.html`, `greggs.html`, `critical-design.html`), in `case.css` / `case.js`. Change a value here, then change it in `case.css` (`--t1`, `--t2`, `--t3`, `--ease-out`, `--stag`).
 
 ## Principles
 
