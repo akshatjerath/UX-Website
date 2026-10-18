@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SAVVY, a UX case study by Akshat Jerath</title>
-<meta name="description" content="SAVVY UX case study: Mumbai diner research, comparison flows, shared design system and illustrative price logic, with separate iOS and Android concepts.">
+<meta name="description" content="SAVVY shows what a Mumbai meal will really cost across Swiggy Dineout, District and EazyDiner, then hands you to the cheapest app. Solo UX case study, Jun to Oct 2026.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Ccircle cx=%2732%27 cy=%2732%27 r=%2730%27 fill=%27%230C0E11%27 stroke=%27%2325CA7F%27 stroke-width=%274%27/%3E%3Ctext x=%2732%27 y=%2741%27 font-family=%27Arial%27 font-weight=%27700%27 font-size=%2724%27 fill=%27%2325CA7F%27 text-anchor=%27middle%27%3EAJ%3C/text%3E%3C/svg%3E">
 <meta name="theme-color" content="#0B0B0A">
 <meta property="og:type" content="article">
@@ -41,14 +41,21 @@
 
 <header class="island" id="island">
   <a class="who" href="index.html" aria-label="Akshat Jerath, home"><span class="av" aria-hidden="true">AJ</span></a>
-  <nav aria-label="Main"><a href="index.html#work"><span aria-hidden="true">← </span>Work</a><a href="index.html#about">About</a><a class="cv" href="assets/Akshat_Jerath_CV.pdf">CV</a><a href="index.html#contact">Contact</a></nav>
+  <nav aria-label="Main"><a href="index.html#work"><span aria-hidden="true">← </span>Work</a><a href="index.html#about">About</a><a class="cv" href="assets/Akshat_Jerath_CV.pdf" target="_blank" rel="noopener">View CV</a><a href="index.html#contact">Contact</a></nav>
   <button type="button" class="theme" id="themeBtn" aria-label="Switch to day mode"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><g class="sun" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g><path class="moon" fill="currentColor" d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7z"/></svg></button>
 </header>
 
 <main id="main">
-<section class="cs-hero" aria-labelledby="t-hero">
-  <div class="wrap">
 
+<!-- 1. HERO: the product on the left, the name and the question on the right -->
+<section class="cs-hero" aria-labelledby="t-hero">
+  <div class="wrap hero2">
+    <div class="stage" data-tilt>
+      <div class="phone p1"><img src="img/savvy-n-tonight.webp" width="402" height="874" loading="lazy" alt="SAVVY on iOS, night theme: the Tonight screen, starting from a restaurant near you"></div>
+      <div class="phone p2"><img src="img/savvy-n-answer.webp" width="402" height="874" alt="SAVVY answer screen: best price tonight ₹1,450 on EazyDiner with your HSBC card. You keep ₹550." fetchpriority="high"></div>
+      <div class="phone and p3"><img src="img/savvy-and-n-answer.webp" width="412" height="917" loading="lazy" alt="The same answer screen on Android, in Material 3"></div>
+      <div class="floor" aria-hidden="true"></div>
+    </div>
     <div class="intro">
       <svg class="wordmark" data-stroke-text="SAVVY" aria-hidden="true"></svg>
       <h1 id="t-hero"><span class="sr">SAVVY: </span>What will dinner really cost? One honest answer, across every dine-out app.</h1>
@@ -57,6 +64,7 @@
   </div>
 </section>
 
+<!-- 2. OVERVIEW -->
 <section aria-labelledby="t-ov" data-nav="Intro|Overview">
   <div class="wrap">
     <span class="eyebrow">Project overview</span>
@@ -76,19 +84,19 @@
       <div class="fact"><span>Role</span><b>End-to-end product and UX</b></div>
       <div class="fact"><span>Team</span><b>Solo</b></div>
       <div class="fact"><span>Timeline</span><b>Jun to Oct 2026</b></div>
-      <div class="fact"><span>Platform</span><div class="platform-links platform-pills"><a href="savvy-ios.html" aria-label="SAVVY on iOS">iOS</a><a href="savvy-android.html" aria-label="SAVVY on Android">Android</a></div></div>
-      <div class="fact status"><span>Status</span><b>Interactive concept, sample data, not usability tested</b></div>
+      <div class="fact"><span>Platform</span><div class="platform-links platform-pills"><a href="savvy-ios.html" aria-label="SAVVY on iOS" data-magnet>iOS</a><a href="savvy-android.html" aria-label="SAVVY on Android" data-magnet>Android</a></div></div>
+      <div class="fact status"><span>Status</span><b>Concept. Not tested with users yet</b></div>
     </div>
   </div>
 </section>
 
+<!-- 2b. CONCEPT FILM: the moment SAVVY is for -->
 <section style="padding-top:0" aria-labelledby="t-vid" data-nav="Intro|The film">
   <div class="wrap film">
     <div class="film-v rv">
       <video autoplay muted loop playsinline controls preload="metadata" poster="img/savvy-film-poster.webp" aria-label="Concept film, seen from above: four friends finish dinner, the bill arrives, and one of them holds up SAVVY showing ₹1,450 as the best price.">
         <source src="img/savvy-film.webm" type="video/webm"><source src="img/savvy-film.mp4" type="video/mp4">
       </video>
-<p class="note">Illustrative prototype calculation, not a live verified price</p>
     </div>
     <div class="film-t">
       <span class="eyebrow">The moment it's for</span>
@@ -99,8 +107,9 @@
   </div>
 </section>
 
+<!-- 3. CONCEPT SHOT: the answer, with the pieces it replaces floating around it -->
 <section class="glow" style="--gx:70%;--gy:50%" aria-labelledby="t-concept" data-nav="Intro|The idea">
-  <div class="wrap concept savvy-summary">
+  <div class="wrap concept">
     <div>
       <span class="eyebrow">The idea</span>
       <h2 id="t-concept" class="big">A single answer<br>instead of a list.</h2>
@@ -108,7 +117,7 @@
       <p class="note">Numbers on this page's screens are a prototype example: a ₹2,000 bill for two at Doolally Taproom.</p>
     </div>
     <div class="scene" aria-hidden="true">
-
+      <div class="phone"><img src="img/savvy-n-answer.webp" width="402" height="874" alt="" loading="lazy"></div>
       <div class="frag win f1"><span class="ic"><svg width="18" height="18"><use href="#i-check"/></svg></span><div>EazyDiner · ₹550 kept<small>Cash, tonight</small></div></div>
       <div class="frag coin f2"><span class="ic"><svg width="18" height="18"><use href="#i-coin"/></svg></span><div>Swiggy Dineout · ₹350<small>+₹120 in coins, later</small></div></div>
       <div class="frag f3"><span class="ic"><svg width="18" height="18"><use href="#i-card"/></svg></span><div>HSBC ••4417<small>The card that unlocks it</small></div></div>
@@ -117,6 +126,7 @@
   </div>
 </section>
 
+<!-- 4. PROBLEM / SOLUTION -->
 <section aria-labelledby="t-ps" data-nav="Intro|Problem">
   <div class="wrap">
     <div class="head"><span class="eyebrow">Problem and solution</span><h2 id="t-ps">The discount you see<br>hides the price you pay.</h2></div>
@@ -150,6 +160,7 @@
   </div>
 </section>
 
+<!-- 5. PROCESS (light band) -->
 <section class="band" aria-labelledby="t-proc" data-nav="Research|Process">
   <div class="wrap">
     <div class="head split">
@@ -172,6 +183,7 @@
   </div>
 </section>
 
+<!-- 6. RESEARCH AT A GLANCE (light band, infographics) -->
 <section class="band" style="padding-top:0" aria-labelledby="t-res" data-nav="Research|Findings">
   <div class="wrap">
     <div class="head split">
@@ -210,6 +222,7 @@
   </div>
 </section>
 
+<!-- 7. HEARD → BUILT (insight track) -->
 <section aria-labelledby="t-ins" data-nav="Research|Rules">
   <div class="wrap">
     <div class="head split">
@@ -225,28 +238,55 @@
   </div>
 </section>
 
+<!-- 8. DINER TYPES (light band, quadrant) -->
 <section class="band" aria-labelledby="t-types" data-nav="Research|Diner types">
   <div class="wrap">
     <div class="head split">
       <div><span class="eyebrow">Who it's for</span><h2 id="t-types">Three diner types.</h2></div>
-      <p class="sub">The interviews split on two things: whether someone carries a credit card, and how much effort they put into finding a deal.</p>
+      <p class="sub">The interviews split on two things: whether someone carries a credit card, and how much effort they put into finding a deal. Here they are, each with a line from their interview.</p>
     </div>
-    <div class="types">
-      <div class="quad rv" data-stagger=":scope > .pin" role="img" aria-label="A two-by-two map. Across: effort spent finding a deal, low to high. Up: carries a credit card. Passive Card Holder sits at has a card, low effort. Reluctant Comparer sits at no card, high effort. Just-Pay Pragmatist sits at no card, low effort.">
-        <span class="ax t">Has a credit card</span><span class="ax b">No card of their own</span><span class="ax l">Low effort</span><span class="ax r">High effort</span>
-        <div class="pin c" style="left:32%;top:28%"><span class="av">PC</span><b>Passive Card Holder</b></div>
-        <div class="pin a" style="left:72%;top:72%"><span class="av">RC</span><b>Reluctant Comparer</b></div>
-        <div class="pin" style="left:28%;top:72%"><span class="av">JP</span><b>Just-Pay Pragmatist</b></div>
-      </div>
-      <div class="persona">
-        <div class="pc a rv"><span class="av">RC</span><h3>Reluctant Comparer</h3><p>No credit card, but puts in the effort to find a deal.</p><q>I find it very stupid and a scam… it feels like I've been misdirected.</q><span class="ids">R01 · R03 · R10 · R13</span></div>
-        <div class="pc c rv"><span class="av">PC</span><h3>Passive Card Holder</h3><p>Has cards, but thinks about them late, at checkout.</p><q>All the money still leaves my own pocket, so what was the benefit of the discount?</q><span class="ids">R02 · R04 · R09 · R11 · R12</span></div>
-        <div class="pc rv"><span class="av">JP</span><h3>Just-Pay Pragmatist</h3><p>Low effort. Someone else usually picks the place.</p><q>If I have no option, I will pay the bill.</q><span class="ids">R05 · R06 · R08</span></div>
-      </div>
+    <div class="idwall">
+      <article class="idc idc-rc">
+        <span class="clip" aria-hidden="true"></span>
+        <div class="in">
+          <header><span>SAVVY · Diner ID</span><span>No. 01</span></header>
+          <div class="ph"><span aria-hidden="true">RC</span><img src="img/persona-rc.webp" alt="" loading="lazy" onerror="this.remove()"></div>
+          <h3>Reluctant Comparer</h3>
+          <p class="role">No credit card, but puts in the effort to find a deal.</p>
+          <dl><div><dt>Credit card</dt><dd>No card of their own</dd></div><div><dt>Deal effort</dt><dd>High</dd></div></dl>
+          <q>I find it very stupid and a scam… it feels like I've been misdirected.</q>
+          <footer><span>Interviews</span><span>R01 · R03 · R10 · R13</span></footer>
+        </div>
+      </article>
+      <article class="idc idc-pc">
+        <span class="clip" aria-hidden="true"></span>
+        <div class="in">
+          <header><span>SAVVY · Diner ID</span><span>No. 02</span></header>
+          <div class="ph"><span aria-hidden="true">PC</span><img src="img/persona-pc.webp" alt="" loading="lazy" onerror="this.remove()"></div>
+          <h3>Passive Card Holder</h3>
+          <p class="role">Has cards, but thinks about them late, at checkout.</p>
+          <dl><div><dt>Credit card</dt><dd>Has a credit card</dd></div><div><dt>Deal effort</dt><dd>Low</dd></div></dl>
+          <q>All the money still leaves my own pocket, so what was the benefit of the discount?</q>
+          <footer><span>Interviews</span><span>R02 · R04 · R09 · R11 · R12</span></footer>
+        </div>
+      </article>
+      <article class="idc idc-jp">
+        <span class="clip" aria-hidden="true"></span>
+        <div class="in">
+          <header><span>SAVVY · Diner ID</span><span>No. 03</span></header>
+          <div class="ph"><span aria-hidden="true">JP</span><img src="img/persona-jp.webp" alt="" loading="lazy" onerror="this.remove()"></div>
+          <h3>Just-Pay Pragmatist</h3>
+          <p class="role">Low effort. Someone else usually picks the place.</p>
+          <dl><div><dt>Credit card</dt><dd>No card of their own</dd></div><div><dt>Deal effort</dt><dd>Low</dd></div></dl>
+          <q>If I have no option, I will pay the bill.</q>
+          <footer><span>Interviews</span><span>R05 · R06 · R08</span></footer>
+        </div>
+      </article>
     </div>
   </div>
 </section>
 
+<!-- 9. RESEARCH ARTEFACTS: one filter bar, every flow and map -->
 <section aria-labelledby="t-flow" data-nav="Structure|Flows and maps">
   <div class="wrap">
     <div class="head split">
@@ -256,7 +296,8 @@
     <div class="research" data-research="savvy-user savvy-task1 savvy-task2 savvy-task3 savvy-map savvy-emp savvy-access"></div>
     <h3 class="cs-h">Card sort</h3>
     <p class="cs-p">I sorted every feature idea into eight groups. This became the site map.</p>
-    <div class="cs rv" data-stagger>
+    <div class="marq cs-marq" role="region" aria-label="Card sort, eight groups. Hover to pause." tabindex="0"><div class="marq-track">
+      <div class="marq-set">
       <div class="cs-col" style="--c:#D4FF3F"><h4><i aria-hidden="true"></i>Onboarding<span class="cs-n">7 items</span></h4><ul><li>Personal information</li><li>Add or connect apps</li><li>Which cards to save</li><li>Location</li><li>Privacy</li><li>Permissions</li><li>Log in / sign up</li></ul></div>
       <div class="cs-col" style="--c:#FFB547"><h4><i aria-hidden="true"></i>User profile<span class="cs-n">8 items</span></h4><ul><li>Saved credit cards</li><li>Membership</li><li>Favourites</li><li>Recent bookings</li><li>Monthly savings</li><li>Settings</li><li>Notification settings</li><li>Connected apps</li></ul></div>
       <div class="cs-col" style="--c:#FF6B5A"><h4><i aria-hidden="true"></i>Deals<span class="cs-n">8 items</span></h4><ul><li>No bait offers</li><li>Nearby deals</li><li>Restaurant-specific deals</li><li>Members-only deals</li><li>Walk-in offers</li><li>Pre-booking deals</li><li>Weekend vs weekday deals</li><li>Card-specific deals</li></ul></div>
@@ -265,25 +306,39 @@
       <div class="cs-col" style="--c:#7FB8B0"><h4><i aria-hidden="true"></i>Booking<span class="cs-n">8 items</span></h4><ul><li>Time slots</li><li>Number of guests</li><li>Modify booking</li><li>Cancel booking</li><li>Current location</li><li>Pre-booking confirmation</li><li>Slot availability / sold out</li><li>Book through each app</li></ul></div>
       <div class="cs-col" style="--c:#F5F2EA"><h4><i aria-hidden="true"></i>Payment<span class="cs-n">8 items</span></h4><ul><li>Members-only offers</li><li>Credit card offers</li><li>Debit card offers</li><li>UPI cashback</li><li>Cash</li><li>Wallet balance</li><li>Bank discounts</li><li>Scratch cards</li></ul></div>
       <div class="cs-col" style="--c:#0C7C6D"><h4><i aria-hidden="true"></i>Checkout<span class="cs-n">8 items</span></h4><ul><li>Payment confirmation</li><li>Rating</li><li>Receipt</li><li>Savings summary</li><li>Cashback and reward tracking</li><li>Post-meal feedback</li><li>Suggestions</li><li>Booking confirmation</li></ul></div>
-    </div>
+      </div>
+      <div class="marq-set" aria-hidden="true">
+      <div class="cs-col" style="--c:#D4FF3F"><h4><i aria-hidden="true"></i>Onboarding<span class="cs-n">7 items</span></h4><ul><li>Personal information</li><li>Add or connect apps</li><li>Which cards to save</li><li>Location</li><li>Privacy</li><li>Permissions</li><li>Log in / sign up</li></ul></div>
+      <div class="cs-col" style="--c:#FFB547"><h4><i aria-hidden="true"></i>User profile<span class="cs-n">8 items</span></h4><ul><li>Saved credit cards</li><li>Membership</li><li>Favourites</li><li>Recent bookings</li><li>Monthly savings</li><li>Settings</li><li>Notification settings</li><li>Connected apps</li></ul></div>
+      <div class="cs-col" style="--c:#FF6B5A"><h4><i aria-hidden="true"></i>Deals<span class="cs-n">8 items</span></h4><ul><li>No bait offers</li><li>Nearby deals</li><li>Restaurant-specific deals</li><li>Members-only deals</li><li>Walk-in offers</li><li>Pre-booking deals</li><li>Weekend vs weekday deals</li><li>Card-specific deals</li></ul></div>
+      <div class="cs-col" style="--c:#6C5CE7"><h4><i aria-hidden="true"></i>Comparison<span class="cs-n">5 items</span></h4><ul><li>Side-by-side deal comparison</li><li>Best platform deal</li><li>Redirect to the chosen app</li><li>No hidden charges, only the final price</li><li>Book and pay in one place</li></ul></div>
+      <div class="cs-col" style="--c:#12B76A"><h4><i aria-hidden="true"></i>Savings<span class="cs-n">7 items</span></h4><ul><li>Instant discount</li><li>Cashback</li><li>App coins</li><li>Minimum bill amount</li><li>Cover charges</li><li>Hidden fees</li><li>Members-only coupon codes</li></ul></div>
+      <div class="cs-col" style="--c:#7FB8B0"><h4><i aria-hidden="true"></i>Booking<span class="cs-n">8 items</span></h4><ul><li>Time slots</li><li>Number of guests</li><li>Modify booking</li><li>Cancel booking</li><li>Current location</li><li>Pre-booking confirmation</li><li>Slot availability / sold out</li><li>Book through each app</li></ul></div>
+      <div class="cs-col" style="--c:#F5F2EA"><h4><i aria-hidden="true"></i>Payment<span class="cs-n">8 items</span></h4><ul><li>Members-only offers</li><li>Credit card offers</li><li>Debit card offers</li><li>UPI cashback</li><li>Cash</li><li>Wallet balance</li><li>Bank discounts</li><li>Scratch cards</li></ul></div>
+      <div class="cs-col" style="--c:#0C7C6D"><h4><i aria-hidden="true"></i>Checkout<span class="cs-n">8 items</span></h4><ul><li>Payment confirmation</li><li>Rating</li><li>Receipt</li><li>Savings summary</li><li>Cashback and reward tracking</li><li>Post-meal feedback</li><li>Suggestions</li><li>Booking confirmation</li></ul></div>
+      </div>
+    </div></div>
   </div>
 </section>
 
+<!-- 11. OPTIONS DROPPED -->
 <section aria-labelledby="t-dk" data-nav="Structure|Trade-offs">
   <div class="wrap">
     <div class="head split">
       <div><span class="eyebrow">Trade-offs</span><h2 id="t-dk">What I tried first,<br>and why it lost.</h2></div>
-      <p class="sub">SAVVY can't book or pay for you, and the big apps have no reason to help a comparison tool. Those limits shaped every choice below.</p>
+      <p class="sub">SAVVY can't book or pay for you, and the big apps won't help a comparison tool. Those two limits decided all four.</p>
     </div>
-    <div class="dk">
-      <div class="pair rv"><div class="no"><small>✕ Dropped</small><b>Rank restaurants by biggest discount</b><p>It pushes people to the loudest offer, and people pick the place first anyway.</p></div><div class="yes"><small>✓ Kept</small><b>Start from the restaurant</b><p>Search a place, then see its real price on every app.</p></div></div>
-      <div class="pair rv"><div class="no"><small>✕ Dropped</small><b>Book and Pay as two tabs</b><p>The walk-in &quot;pay&quot; moment is where people lost money. A tab buries it.</p></div><div class="yes"><small>✓ Kept</small><b>One toggle on the restaurant</b><p>Paying at the table is one tap away.</p></div></div>
-      <div class="pair rv"><div class="no"><small>✕ Dropped</small><b>Blend coins into the price</b><p>It hides the thing people distrusted most.</p></div><div class="yes"><small>✓ Kept</small><b>Coins on their own amber line</b><p>Always visible, never used for ranking.</p></div></div>
-      <div class="pair rv"><div class="no"><small>✕ Dropped</small><b>Earn mainly from diners</b><p>The big apps won't help, so it needed a partner who gains from it.</p></div><div class="yes"><small>✓ Kept</small><b>Earn from restaurants</b><p>Bookings and a no-show tool, with &quot;book a table&quot; as a main feature.</p></div></div>
+    <div class="tof">
+      <div class="tof-h" aria-hidden="true"><span>✕ Tried first</span><span>Why it lost</span><span>✓ Kept</span></div>
+      <div class="tof-r rv"><p class="tof-no"><svg width="20" height="20" aria-hidden="true"><use href="#i-tag"/></svg><s>Rank by biggest discount</s></p><p class="tof-why"><span class="tw"><span class="sr">Why it lost: </span>People pick the place first</span></p><p class="tof-yes"><svg width="20" height="20" aria-hidden="true"><use href="#i-store"/></svg><b>Start from the restaurant</b></p></div>
+      <div class="tof-r rv"><p class="tof-no"><svg width="20" height="20" aria-hidden="true"><use href="#i-card"/></svg><s>Book and Pay as two tabs</s></p><p class="tof-why"><span class="tw"><span class="sr">Why it lost: </span>Paying at the table got buried</span></p><p class="tof-yes"><svg width="20" height="20" aria-hidden="true"><use href="#i-plate"/></svg><b>One Book / Pay toggle</b></p></div>
+      <div class="tof-r rv"><p class="tof-no"><svg width="20" height="20" aria-hidden="true"><use href="#i-coin"/></svg><s>Coins blended into the price</s></p><p class="tof-why"><span class="tw"><span class="sr">Why it lost: </span>Coins were the least trusted</span></p><p class="tof-yes"><svg width="20" height="20" aria-hidden="true"><use href="#i-coin"/></svg><b>Coins on their own amber line</b></p></div>
+      <div class="tof-r rv"><p class="tof-no"><svg width="20" height="20" aria-hidden="true"><use href="#i-user"/></svg><s>Earn from diners</s></p><p class="tof-why"><span class="tw"><span class="sr">Why it lost: </span>The big apps won't help</span></p><p class="tof-yes"><svg width="20" height="20" aria-hidden="true"><use href="#i-home"/></svg><b>Earn from restaurants</b></p></div>
     </div>
   </div>
 </section>
 
+<!-- 11b. ON PAPER: sketches and lo-fi before the iterations -->
 <section class="band" aria-labelledby="t-paper" data-nav="Design|On paper">
   <div class="wrap">
     <div class="head split">
@@ -299,32 +354,63 @@
   </div>
 </section>
 
+<!-- 12. ITERATIONS: a snake roadmap, then the design system it arrived at -->
 <section aria-labelledby="t-it" data-nav="Design|Iterations">
   <div class="wrap">
     <div class="head split">
       <div><span class="eyebrow">Iterations</span><h2 id="t-it">Nine versions, from a list to read to one answer.</h2></div>
-      <p class="sub">The same moment in every version: comparing the apps. Follow the road. Click any screen to see it bigger.</p>
+      <p class="sub">The same moment in every version: comparing the apps. Follow the road.</p>
     </div>
-    <div class="snake" data-snake="shared"></div>
+    <div class="snake" data-snake></div>
+    <h3 class="ds-h">The final design system</h3>
+    <div data-system></div>
+    <p class="take">I moved the answer to the top and put the maths underneath it.</p>
+  </div>
+</section>
 
+<!-- 13. STYLE GUIDE -->
+<section class="glow" style="--gx:30%;--gy:50%" aria-labelledby="t-sg" data-nav="Design|Style guide">
+  <div class="wrap sg">
+    <div class="chips" aria-hidden="true">
+      <div class="chip" style="background:#0B0B0A;color:#F5F2EA"><b>Night</b>#0B0B0A</div>
+      <div class="chip" style="background:#D4FF3F;color:#0B0B0A"><b>Action</b>#D4FF3F</div>
+      <div class="chip" style="background:#FFB547;color:#0B0B0A"><b>Coins only</b>#FFB547</div>
+      <div class="chip" style="background:#F5F2EA;color:#0B0B0A"><b>Day</b>#F5F2EA</div>
+    </div>
+    <div>
+      <span class="eyebrow">Style guide</span>
+      <h2 id="t-sg">How the colours work.</h2>
+      <div class="rules">
+        <div><i style="background:#D4FF3F"></i><p><b>Lime is the next step.</b> One lime button per screen.</p></div>
+        <div><i style="background:#FFB547"></i><p><b>Amber means coins.</b> Never used for anything else, so coins can't pass as cash.</p></div>
+        <div><i style="background:#F5F2EA"></i><p><b>Night and day.</b> Food photography stays the background in both.</p></div>
+      </div>
+      <p class="note">UI type: Inter. The price is always the biggest thing on the screen.</p>
+    </div>
   </div>
 </section>
 
 <section class="glow" style="padding-top:0;--gx:30%" aria-labelledby="t-ans" data-nav="Design|The answer">
   <div class="wrap">
     <h2 id="t-ans" class="sr">The answer screen</h2>
-    <ol><li>One price first: the cash you pay tonight.</li><li>What you keep, compared with just paying the bill.</li><li>Coins sit on their own line and never change the order.</li><li>One tap hands you to the cheapest app. SAVVY never pays.</li></ol><p class="note">Illustrative prototype calculation, not a live verified price</p>
+    <div data-spot></div>
   </div>
 </section>
 
+<!-- 16. SYSTEM FEEDBACK -->
 <section aria-labelledby="t-fb" data-nav="Design|System feedback">
   <div class="wrap">
     <div class="head split">
       <div><span class="eyebrow">System feedback</span><h2 id="t-fb">What the app shows while it works.</h2></div>
       <p class="sub">Every state tells you what SAVVY is doing and what it isn't: nothing is booked or paid, and a deal that didn't hold never counts.</p>
     </div>
-    <div class="shared-feedback">
+    <div class="show">
+      <div class="stage2">
+        <div class="phone tilt-l"><img src="img/savvy-n-checking.webp" width="402" height="874" alt="Checking 3 apps, 2 of 3 done. We read each app's offers for this bill. Nothing is booked or paid." loading="lazy"></div>
+        <div class="phone tilt-r"><img src="img/savvy-n-sheet.webp" width="402" height="874" alt="How ₹1,450 is made: food bill ₹2,000, HSBC card 30% instant minus ₹600, cover charge plus ₹50. The fine print: minimum bill, a monthly cap, pay inside EazyDiner." loading="lazy"></div>
+      </div>
       <div class="callouts">
+        <div class="callout"><b>Loading that explains itself</b><p>The ring counts the apps, each row ticks off, and the Dynamic Island shows &quot;2 of 3&quot;. Nothing is booked or paid.</p></div>
         <div class="callout"><b>How ₹1,450 is made</b><p>Every line of the maths, including the cover charge most apps show late.</p></div>
         <div class="callout"><b>The fine print, in plain words</b><p>A minimum bill, a monthly cap with how much is left, and a warning that paying at the counter loses the discount.</p></div>
       </div>
@@ -332,6 +418,7 @@
   </div>
 </section>
 
+<!-- 19. WHAT'S NEXT -->
 <section aria-labelledby="t-next" data-nav="Next|Test plan">
   <div class="wrap">
     <div class="head split">
@@ -362,36 +449,20 @@
   </div>
 </section>
 
-<section class="glow" style="--gx:30%;--gy:50%" aria-labelledby="t-sg" data-nav="Design|Style guide">
-  <div class="wrap"><h3 class="ds-h">The final design system</h3>
-    <div data-system></div>
-    <p class="take">I moved the answer to the top and put the maths underneath it.</p><p class="note">iOS and Android, night and day</p><p class="note">Illustrative prototype calculation, not a live verified price</p></div>
-  <div class="wrap sg">
-    <div class="chips" aria-hidden="true">
-      <div class="chip" style="background:#0B0B0A;color:#F5F2EA"><b>Night</b>#0B0B0A</div>
-      <div class="chip" style="background:#D4FF3F;color:#0B0B0A"><b>Action</b>#D4FF3F</div>
-      <div class="chip" style="background:#FFB547;color:#0B0B0A"><b>Coins only</b>#FFB547</div>
-      <div class="chip" style="background:#F5F2EA;color:#0B0B0A"><b>Day</b>#F5F2EA</div>
-    </div>
-    <div>
-      <span class="eyebrow">Style guide</span>
-      <h2 id="t-sg">How the colours work.</h2>
-      <div class="rules">
-        <div><i style="background:#D4FF3F"></i><p><b>Lime is the next step.</b> One lime button per screen.</p></div>
-        <div><i style="background:#FFB547"></i><p><b>Amber means coins.</b> Never used for anything else, so coins can't pass as cash.</p></div>
-        <div><i style="background:#F5F2EA"></i><p><b>Night and day.</b> Food photography stays the background in both.</p></div>
-      </div>
-      <p class="note">UI type: Inter. The price is always the biggest thing on the screen.</p>
-    </div>
-  </div>
-</section>
-<section aria-labelledby="t-platforms"><div class="wrap"><h2 id="t-platforms">See it on each platform</h2><nav class="platform-links platform-cards" aria-label="Platform designs"><a class="btn" href="savvy-ios.html">SAVVY on iOS</a><a class="btn" href="savvy-android.html">SAVVY on Android</a></nav></div></section>
+<section aria-labelledby="t-platforms"><div class="wrap">
+  <div class="head split"><div><span class="eyebrow">Two platforms</span><h2 id="t-platforms">See it on each platform.</h2></div><p class="sub">Same answer, built twice. Each page has the screens, how they changed version by version, and what's different on that phone.</p></div>
+  <nav class="pcards" aria-label="Platform designs">
+    <a class="pcard" href="savvy-ios.html"><span class="pc-t"><small>iOS</small><b>SAVVY on iOS</b><span>Dynamic Island, lock-screen check, night and day.</span></span><span class="phone pc-ph"><img src="img/savvy-n-answer.webp" width="402" height="874" loading="lazy" alt=""></span><span class="pc-go" data-magnet aria-hidden="true">→</span></a>
+    <a class="pcard" href="savvy-android.html"><span class="pc-t"><small>Android</small><b>SAVVY on Android</b><span>Material 3, a Live Update hand-off, night and day.</span></span><span class="phone and pc-ph"><img src="img/savvy-and-n-answer.webp" width="412" height="917" loading="lazy" alt=""></span><span class="pc-go" data-magnet aria-hidden="true">→</span></a>
+  </nav>
+</div></section>
 
 <section style="padding-top:0" aria-label="Next case study">
   <div class="wrap">
     <a class="next" href="ankur.html"><span><span class="eyebrow">Next case study</span><span class="nm">Ankur</span></span><span class="arr" aria-hidden="true">→</span></a>
   </div>
 </section>
+
 </main>
 
 <footer><div class="wrap"><span>© 2026 Akshat Jerath</span><span class="mono">Mumbai, India</span></div></footer>

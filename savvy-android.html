@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SAVVY on Android | Akshat Jerath</title>
-<meta name="description" content="SAVVY on Android: Material 3 design choices, night and day screens and a Live Update chip UI concept using sample data; not usability tested.">
+<meta name="description" content="SAVVY on Android: Material 3 design choices, night and day screens, Live Update hand-off and swipe concepts using sample data; not usability tested.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Ccircle cx=%2732%27 cy=%2732%27 r=%2730%27 fill=%27%230C0E11%27 stroke=%27%2325CA7F%27 stroke-width=%274%27/%3E%3Ctext x=%2732%27 y=%2741%27 font-family=%27Arial%27 font-weight=%27700%27 font-size=%2724%27 fill=%27%2325CA7F%27 text-anchor=%27middle%27%3EAJ%3C/text%3E%3C/svg%3E">
 <meta name="theme-color" content="#0B0B0A">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SAVVY on Android">
-<meta property="og:description" content="SAVVY on Android: Material 3 design choices, night and day screens and a Live Update chip UI concept using sample data; not usability tested.">
+<meta property="og:description" content="SAVVY on Android: Material 3 design choices, night and day screens, Live Update hand-off and swipe concepts using sample data; not usability tested.">
 <meta property="og:image" content="https://akshatjerath.github.io/UX-Website/img/mock-tilt.webp">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="assets/fonts/bricolage-grotesque-latin-standard-normal.woff2" as="font" type="font/woff2" crossorigin>
@@ -41,36 +41,114 @@
 
 <header class="island" id="island">
   <a class="who" href="index.html" aria-label="Akshat Jerath, home"><span class="av" aria-hidden="true">AJ</span></a>
-  <nav aria-label="Main"><a href="index.html#work"><span aria-hidden="true">← </span>Work</a><a href="index.html#about">About</a><a class="cv" href="assets/Akshat_Jerath_CV.pdf">CV</a><a href="index.html#contact">Contact</a></nav>
+  <nav aria-label="Main"><a href="index.html#work"><span aria-hidden="true">← </span>Work</a><a href="index.html#about">About</a><a class="cv" href="assets/Akshat_Jerath_CV.pdf" target="_blank" rel="noopener">View CV</a><a href="index.html#contact">Contact</a></nav>
   <button type="button" class="theme" id="themeBtn" aria-label="Switch to day mode"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><g class="sun" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g><path class="moon" fill="currentColor" d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7z"/></svg></button>
 </header>
 
 <main id="main">
-<section class="savvy-platform-intro" aria-labelledby="t-hero"><div class="wrap"><nav class="platform-links" aria-label="SAVVY pages"><a class="btn" href="savvy.html">← Back to SAVVY case study</a><a class="btn" href="savvy-ios.html">SAVVY on iOS</a></nav><span class="eyebrow">Android · Platform design</span><h1 id="t-hero">SAVVY on Android</h1><p class="sub">This page covers the Android Material 3 choices, night and day screens and Live Update chip concept.</p><dl class="hero-meta"><div><dt>Platform</dt><dd>Android</dd></div><div><dt>Status</dt><dd>Interactive concept, sample data, not usability tested</dd></div></dl><p class="note">Illustrative prototype calculation, not a live verified price</p></div></section>
-<section aria-labelledby="t-principles" data-nav="Principles|Material 3"><div class="wrap"><div class="head"><h2 id="t-principles">Platform principles</h2></div><p>Android gets its own patterns. I used Material 3 components and a sticker for what you keep, and a Live Update chip takes the place of the Dynamic Island.</p><p class="note">The Live Update chip is a UI concept, not a working system feature.</p></div></section>
+<section class="savvy-platform-intro" aria-labelledby="t-hero"><div class="wrap pi-grid"><div><nav class="platform-links platform-pills" aria-label="SAVVY pages"><a href="savvy.html" data-magnet>← Back to SAVVY case study</a><a href="savvy-ios.html" data-magnet>SAVVY on iOS</a></nav><span class="eyebrow">Android · Platform design</span><h1 id="t-hero">SAVVY on Android</h1><p class="sub">The Android version: Material 3 screens, night and day, and a Live Update for the hand-off.</p><dl class="hero-meta"><div><dt>Platform</dt><dd>Android, Material 3</dd></div><div><dt>Status</dt><dd>Interactive concept, sample data, not usability tested</dd></div></dl><p class="note">Illustrative prototype calculation, not a live verified price</p></div><figure class="pi-mock"><img src="img/savvy-mock-03.webp" width="1600" height="1200" alt="SAVVY on Android, night theme: three phones showing Tonight, the answer with a You keep ₹550 sticker, and the Live Update hand-off." fetchpriority="high"></figure></div></section>
+<section aria-labelledby="t-principles" data-nav="Principles|Material 3"><div class="wrap"><div class="head"><h2 id="t-principles">Platform principles</h2></div><p>Same flow and same order as iOS: the price first, then what you keep, then the maths. Android gets its own patterns. I used Material 3 components and a sticker for what you keep, and a Live Update chip takes the place of the Dynamic Island.</p><p class="note">UI type: Inter. The price is always the biggest thing on the screen.</p></div></section>
 
-<section aria-labelledby="t-decisions" data-nav="Decisions|Reasons"><div class="wrap"><div class="head"><h2 id="t-decisions">Key decisions and reasons</h2></div><div class="snake" data-snake="android"></div><p class="note">Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</p></div></section>
+<section aria-labelledby="t-decisions" data-nav="Decisions|Reasons"><div class="wrap"><div class="head"><h2 id="t-decisions">Key decisions and reasons</h2></div><p>Material 3 does the heavy lifting, so the screens feel like they belong on the phone. The order never changes: the price first, then what you keep, then the maths.</p><ol><li>One price first: the cash you pay tonight.</li><li>What you keep sits on a sticker, compared with just paying the bill.</li><li>Coins sit on their own line and never change the order.</li><li>The hand-off is a Live Update, so the slip stays in the status bar while you pay. SAVVY never pays.</li></ol></div></section>
 
-<section aria-labelledby="t-preview" data-nav="Screens|Preview"><div class="wrap"><div class="head"><h2 id="t-preview">Android night preview</h2></div><div class="trio2"><figure><div class="phone and"><img src="img/savvy-and-n-answer.webp" width="412" height="917" loading="lazy" alt="The same answer screen on Android, in Material 3"></div><figcaption>The Android preview presents the same answer in Material 3. Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure></div></div></section>
+<section class="band" aria-labelledby="t-dev" data-nav="Decisions|How it got here">
+  <div class="wrap">
+    <div class="head split">
+      <div><span class="eyebrow">Android, version by version</span><h2 id="t-dev">How the Android screen got here.</h2></div>
+      <p class="sub">The same moment every time: comparing the apps for one bill. Four passes, from a plain Material 3 list to one answer.</p>
+    </div>
+    <ol class="devline" style="--n:4">
+      <li><span class="v">01</span><div class="phone and"><img src="img/savvy-and-dev1.webp" width="412" height="917" loading="lazy" alt="Android first pass: three outlined cards for EazyDiner, Swiggy Dineout and District, each showing what you pay now."></div><div><b>First Material 3 pass</b><p>Each app as an outlined card, ranked by what you pay now.</p></div></li>
+      <li><span class="v">02</span><div class="phone and"><img src="img/savvy-and-dev2.webp" width="412" height="917" loading="lazy" alt="Android second pass: the cheapest app as a filled teal card, with a Continue on EazyDiner button pinned at the bottom."></div><div><b>A winner you can see</b><p>The cheapest app gets a filled card. The button stays pinned at the bottom.</p></div></li>
+      <li><span class="v">03</span><div class="phone and"><img src="img/savvy-and-n-answer.webp" width="412" height="917" loading="lazy" alt="Android night answer: ₹1,450 on EazyDiner with a You keep ₹550 sticker."></div><div><b>One answer, night</b><p>The list turns into one price, and a sticker for what you keep.</p></div></li>
+      <li><span class="v">Final</span><div class="phone and"><img src="img/savvy-and-d-answer.webp" width="412" height="917" loading="lazy" alt="Android day answer: ₹1,450 in a serif with a teal You keep ₹550 sticker."></div><div><b>And in daylight</b><p>A serif carries the price, teal takes over from lime.</p></div></li>
+    </ol>
+  </div>
+</section>
 
 <section aria-labelledby="t-and" data-nav="Design|Android">
   <div class="wrap">
     <div class="head split">
-      <div><span class="eyebrow">Final design · Android</span><h2 id="t-and">The same answer in Material 3.</h2></div>
-      
+      <div><span class="eyebrow">Final design · Android, night</span><h2 id="t-and">Choosing a place and typing the bill.</h2></div>
+      <p class="sub">From tonight's places to one answer in four screens.</p>
     </div>
     <div class="quad4">
-      <figure><div class="phone and"><img src="img/savvy-and-n-tonight.webp" width="412" height="917" alt="Android night: Tonight, Doolally Taproom, last time ₹400 kept." loading="lazy"></div><figcaption><b>Tonight.</b>Search first, then tonight's places. Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure>
-      <figure><div class="phone and"><img src="img/savvy-and-n-answer.webp" width="412" height="917" alt="Android night answer: ₹1,450 on EazyDiner, a You keep ₹550 sticker, cash you keep by app." loading="lazy"></div><figcaption><b>The answer.</b>The price, then a sticker for what you keep. Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure>
-      <figure><div class="phone and"><img src="img/savvy-and-d-answer.webp" width="412" height="917" alt="Android day answer: ₹1,450 in a serif, teal You keep ₹550 sticker." loading="lazy"></div><figcaption><b>Day theme.</b>The same order in daylight. Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure>
+      <figure><div class="phone and"><img src="img/savvy-and-n-tonight.webp" width="412" height="917" alt="Android night: Tonight, Doolally Taproom, last time ₹400 kept." loading="lazy"></div><figcaption><b>Tonight.</b>Search first, then tonight's places.</figcaption></figure>
+      <figure><div class="phone and"><img src="img/savvy-and-n-bookpay.webp" width="412" height="917" alt="Android night: Doolally Taproom. What are you doing? Book a table, or Pay the bill." loading="lazy"></div><figcaption><b>Book or pay.</b>One question splits the two moments people lose money in.</figcaption></figure>
+      <figure><div class="phone and"><img src="img/savvy-and-n-bill.webp" width="412" height="917" alt="Android night: What's the bill? ₹2,000, 2 people, HSBC card, Find my best price, with a number pad." loading="lazy"></div><figcaption><b>Type the bill once.</b>People and your card on the same screen. No forms.</figcaption></figure>
+      <figure><div class="phone and"><img src="img/savvy-and-n-checking.webp" width="412" height="917" alt="Android night: Checking 3 apps. Swiggy Dineout and District found, EazyDiner checking your HSBC offer." loading="lazy"></div><figcaption><b>Checking 3 apps.</b>A Material shape morphs while each app ticks off.</figcaption></figure>
     </div>
   </div>
 </section>
 
-<section aria-labelledby="t-mo" data-nav="Interactions|Hand-off"><div class="wrap"><div class="head"><h2 id="t-mo">Live Update chip</h2></div><p class="note">The Live Update chip is a UI concept, not a working system feature.</p><div class="trio2">      <figure><div class="phone and"><img src="img/savvy-and-n-handoff.webp" width="412" height="917" alt="Android hand-off: a Live Update notification, pay ₹1,450 on EazyDiner, copy ₹2,000, open EazyDiner." loading="lazy"></div><figcaption><b>Live Update.</b>The slip stays in the status bar while you pay. Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure></div></div></section>
+<section class="glow" style="padding-top:0;--gx:30%" aria-labelledby="t-ans" data-nav="Design|The answer">
+  <div class="wrap">
+    <h2 id="t-ans" class="sr">The answer screen</h2>
+    <div class="show">
+      <div class="stage2">
+        <div class="phone and tilt-l"><img src="img/savvy-and-n-answer.webp" width="412" height="917" alt="Android night answer: ₹1,450 on EazyDiner, a You keep ₹550 sticker, cash you keep by app." loading="lazy"></div>
+        <div class="phone and tilt-r"><img src="img/savvy-and-n-sheet.webp" width="412" height="917" alt="Android night bottom sheet: How ₹1,450 is made. Food bill ₹2,000, HSBC card minus ₹600, cover charge plus ₹50, then the fine print." loading="lazy"></div>
+      </div>
+      <div class="callouts">
+        <div class="callout"><b>One price first</b><p>The cash you pay tonight.</p></div>
+        <div class="callout"><b>What you keep, as a sticker</b><p>Compared with just paying the bill.</p></div>
+        <div class="callout"><b>The maths in a bottom sheet</b><p>Pull it up when you want it. Coins sit on their own line and never change the order.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<section aria-labelledby="t-limits" data-nav="Limits|Concept status"><div class="wrap"><div class="head"><h2 id="t-limits">Platform limits</h2></div><p>The Live Update chip is a UI concept, not a working system feature.</p><p class="note">Interactive concept, sample data, not usability tested</p><a class="lnk" href="savvy.html#t-next">Read the shared test plan and data constraints.</a></div></section>
-<section aria-labelledby="t-links"><div class="wrap"><div class="head"><h2 id="t-links">Explore SAVVY</h2></div><nav class="platform-links" aria-label="SAVVY pages"><a class="btn" href="savvy.html">← Back to SAVVY case study</a><a class="btn" href="savvy-ios.html">SAVVY on iOS</a></nav></div></section>
+<section class="band" aria-labelledby="t-day" data-nav="Design|Day theme">
+  <div class="wrap">
+    <div class="head split">
+      <div><span class="eyebrow">Final design · Android, day</span><h2 id="t-day">The same answer in daylight.</h2></div>
+      <p class="sub">Teal replaces lime and a serif carries the price. The order stays the same: the price first, then what you keep, then the maths.</p>
+    </div>
+    <div class="trio2">
+      <figure><div class="phone and"><img src="img/savvy-and-d-home.webp" width="412" height="917" alt="Android day: Good evening Akshat, Tonight, Doolally Taproom, last time ₹400 kept." loading="lazy"></div><figcaption><b>Tonight.</b> Places near you first.</figcaption></figure>
+      <figure><div class="phone and"><img src="img/savvy-and-d-answer.webp" width="412" height="917" alt="Android day answer: ₹1,450 in a serif, teal You keep ₹550 sticker." loading="lazy"></div><figcaption><b>The answer.</b> The price first, then what you keep, then the maths.</figcaption></figure>
+      <figure><div class="phone and"><img src="img/savvy-and-d-savings.webp" width="412" height="917" alt="Android day: Your savings, ₹3,970 saved in September, verified, week by week." loading="lazy"></div><figcaption><b>Your savings.</b> Only verified savings count, week by week.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="t-after" data-nav="Design|After the tap">
+  <div class="wrap">
+    <div class="head split">
+      <div><span class="eyebrow">After the tap</span><h2 id="t-after">Handing off, then checking the price.</h2></div>
+      <p class="sub">The part most comparison tools skip: did the price you were promised actually hold?</p>
+    </div>
+    <p class="note">The Live Update and the lock-screen check are UI concepts, not working system features.</p>
+    <div class="quad4">
+      <figure><div class="phone and"><img src="img/savvy-and-n-handoff.webp" width="412" height="917" alt="Android hand-off: a Live Update notification, pay ₹1,450 on EazyDiner, copy ₹2,000, open EazyDiner." loading="lazy"></div><figcaption><b>Live Update.</b>The slip stays in the status bar while you pay.</figcaption></figure>
+      <figure><div class="phone and"><img src="img/savvy-and-n-lock.webp" width="412" height="917" alt="Android lock screen: Did the deal hold at Doolally? Yes ₹1,450, or No, different." loading="lazy"></div><figcaption><b>Did it hold?</b>One tap from the lock screen. Offers that fail drop in rank for everyone.</figcaption></figure>
+      <figure><div class="phone and"><img src="img/savvy-and-d-booktime.webp" width="412" height="917" alt="Android day: Booking at Doolally. When are you going? 8:00 is 30% off on EazyDiner." loading="lazy"></div><figcaption><b>Booking ahead.</b>Every time slot shows its best deal before you pick it.</figcaption></figure>
+      <figure><div class="phone and"><img src="img/savvy-and-d-sheet.webp" width="412" height="917" alt="Android day bottom sheet: How ₹1,450 is made, with the fine print." loading="lazy"></div><figcaption><b>The fine print.</b>Minimum bill, the monthly cap, and what loses the discount.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="band" aria-labelledby="t-ex" data-nav="Design|Experiment">
+  <div class="wrap">
+    <div class="head split">
+      <div><span class="eyebrow">An experiment</span><h2 id="t-ex">Swiping through restaurants, on Android.</h2></div>
+      <p class="sub">Right to book, left to skip, up for the full profile. Same idea as iOS, and it stays out of the main flow until it's tested.</p>
+    </div>
+    <div class="trio2">
+      <figure><div class="phone and"><img src="img/savvy-and-n-swipe.webp" width="412" height="917" alt="Android night: a restaurant card to swipe, Doolally Taproom, Keep ₹550 here tonight." loading="lazy"></div><figcaption><b>Discover, night.</b> One place at a time, the saving on the card.</figcaption></figure>
+      <figure><div class="phone and"><img src="img/savvy-and-d-swipe.webp" width="412" height="917" alt="Android day: the same swipe card in the day theme." loading="lazy"></div><figcaption><b>Discover, day.</b> The same card in daylight.</figcaption></figure>
+      <figure><div class="phone and"><img src="img/savvy-and-n-profile.webp" width="412" height="917" alt="Android profile: Akshat J., ₹3,970 kept with SAVVY, 14 kept, 62 skipped, 9 visited, cards and apps on file." loading="lazy"></div><figcaption><b>You.</b> What you've kept, your taste, and the cards and apps on file.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="t-limits" data-nav="Limits|Concept status"><div class="wrap"><div class="head"><h2 id="t-limits">Platform limits</h2></div><p>The Live Update chip is a UI concept, not a working system feature.</p>
+  <a class="pcard pcard-sm" href="savvy.html#t-next"><span class="pc-t"><small>Next step</small><b>The test plan</b><span>What I'll test first, and the data problem a live SAVVY has to solve.</span></span><span class="pc-go" data-magnet aria-hidden="true">→</span></a>
+</div></section>
+<section aria-labelledby="t-links"><div class="wrap"><div class="head"><h2 id="t-links">Explore SAVVY</h2></div><nav class="pcards" aria-label="SAVVY pages">
+  <a class="pcard" href="savvy.html"><span class="pc-t"><small>Case study</small><b>Back to SAVVY</b><span>Research, flows, iterations and the test plan.</span></span><span class="pc-go" data-magnet aria-hidden="true">←</span></a>
+  <a class="pcard" href="savvy-ios.html"><span class="pc-t"><small>iOS</small><b>SAVVY on iOS</b><span>Dynamic Island, lock-screen check, night and day.</span></span><span class="phone pc-ph"><img src="img/savvy-n-answer.webp" width="402" height="874" loading="lazy" alt=""></span><span class="pc-go" data-magnet aria-hidden="true">→</span></a>
+</nav></div></section>
 <section style="padding-top:0" aria-label="Next case study">
   <div class="wrap">
     <a class="next" href="ankur.html"><span><span class="eyebrow">Next case study</span><span class="nm">Ankur</span></span><span class="arr" aria-hidden="true">→</span></a>

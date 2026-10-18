@@ -190,6 +190,24 @@
     hero.addEventListener("pointerleave", () => ph.forEach(p => p.style.transform = ""));
   }
 
+  // ID badges and platform cards lean toward the pointer; small buttons get pulled a little. Desktop pointers only.
+  if (!reduce && matchMedia("(hover: hover) and (pointer: fine)").matches){
+    document.querySelectorAll(".idc, .pcard").forEach(c => {
+      const k = c.classList.contains("idc") ? 12 : 6;
+      c.addEventListener("pointermove", e => {
+        const r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+        c.style.setProperty("--mx", x * 100 + "%"); c.style.setProperty("--my", y * 100 + "%");
+        c.style.setProperty("--ry", (x - .5) * k + "deg"); c.style.setProperty("--rx", (.5 - y) * k * .7 + "deg");
+      });
+      c.addEventListener("pointerleave", () => ["--rx", "--ry"].forEach(p => c.style.removeProperty(p)));
+    });
+    document.querySelectorAll("[data-magnet]").forEach(m => {
+      const area = m.closest(".pcard") || m;
+      area.addEventListener("pointermove", e => { const r = m.getBoundingClientRect(); const c = v => Math.max(-14, Math.min(14, v * .2)); m.style.translate = `${c(e.clientX - r.left - r.width / 2)}px ${c(e.clientY - r.top - r.height / 2)}px`; });
+      area.addEventListener("pointerleave", () => m.style.translate = "");
+    });
+  }
+
   // Clips: muted loops that play only while on screen. The button pauses them (WCAG 2.2.2).
   document.querySelectorAll("[data-play]").forEach(btn => {
     const v = btn.closest("figure").querySelector("video");

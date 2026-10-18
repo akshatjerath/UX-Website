@@ -41,17 +41,35 @@
 
 <header class="island" id="island">
   <a class="who" href="index.html" aria-label="Akshat Jerath, home"><span class="av" aria-hidden="true">AJ</span></a>
-  <nav aria-label="Main"><a href="index.html#work"><span aria-hidden="true">← </span>Work</a><a href="index.html#about">About</a><a class="cv" href="assets/Akshat_Jerath_CV.pdf">CV</a><a href="index.html#contact">Contact</a></nav>
+  <nav aria-label="Main"><a href="index.html#work"><span aria-hidden="true">← </span>Work</a><a href="index.html#about">About</a><a class="cv" href="assets/Akshat_Jerath_CV.pdf" target="_blank" rel="noopener">View CV</a><a href="index.html#contact">Contact</a></nav>
   <button type="button" class="theme" id="themeBtn" aria-label="Switch to day mode"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><g class="sun" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g><path class="moon" fill="currentColor" d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7z"/></svg></button>
 </header>
 
 <main id="main">
-<section class="savvy-platform-intro" aria-labelledby="t-hero"><div class="wrap"><nav class="platform-links" aria-label="SAVVY pages"><a class="btn" href="savvy.html">← Back to SAVVY case study</a><a class="btn" href="savvy-android.html">SAVVY on Android</a></nav><span class="eyebrow">iOS · Platform design</span><h1 id="t-hero">SAVVY on iOS</h1><p class="sub">This page covers the iOS design choices, night and day screens, feedback states and motion concepts.</p><dl class="hero-meta"><div><dt>Platform</dt><dd>iOS</dd></div><div><dt>Status</dt><dd>Interactive concept, sample data, not usability tested</dd></div></dl><p class="note">Illustrative prototype calculation, not a live verified price</p></div></section>
+<section class="savvy-platform-intro" aria-labelledby="t-hero"><div class="wrap pi-grid"><div><nav class="platform-links platform-pills" aria-label="SAVVY pages"><a href="savvy.html" data-magnet>← Back to SAVVY case study</a><a href="savvy-android.html" data-magnet>SAVVY on Android</a></nav><span class="eyebrow">iOS · Platform design</span><h1 id="t-hero">SAVVY on iOS</h1><p class="sub">The iOS version: night and day screens, the Dynamic Island hand-off, and a few extra screens.</p><dl class="hero-meta"><div><dt>Platform</dt><dd>iOS</dd></div><div><dt>Status</dt><dd>Interactive concept, sample data, not usability tested</dd></div></dl><p class="note">Illustrative prototype calculation, not a live verified price</p></div><figure class="pi-mock"><img src="img/savvy-mock-01.webp" width="1600" height="1200" alt="SAVVY on iOS, night theme: three iPhones angled in a stack showing Tonight, the answer and the bill." fetchpriority="high"></figure></div></section>
 <section aria-labelledby="t-principles" data-nav="Principles|iOS"><div class="wrap"><div class="head"><h2 id="t-principles">Platform principles</h2></div><p>The iOS screens use night and day themes while keeping the price first, then what you keep, then the maths.</p><p class="note">UI type: Inter. The price is always the biggest thing on the screen.</p></div></section>
 
 <section aria-labelledby="t-decisions" data-nav="Decisions|Reasons"><div class="wrap"><div class="head"><h2 id="t-decisions">Key decisions and reasons</h2></div><p>Teal replaces lime and a serif carries the price. The order stays the same: the price first, then what you keep, then the maths.</p><ol><li>One price first: the cash you pay tonight.</li><li>What you keep, compared with just paying the bill.</li><li>Coins sit on their own line and never change the order.</li><li>One tap hands you to the cheapest app. SAVVY never pays.</li></ol></div></section>
 
-<section aria-labelledby="t-preview" data-nav="Screens|Previews"><div class="wrap"><div class="head"><h2 id="t-preview">iOS night previews</h2></div><div class="trio2"><figure><div class="phone"><img src="img/savvy-n-tonight.webp" width="402" height="874" loading="lazy" alt="SAVVY on iOS, night theme: the Tonight screen, starting from a restaurant near you"></div><figcaption>The iOS night preview puts the restaurant and the answer first. Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure><figure><div class="phone"><img src="img/savvy-n-answer.webp" width="402" height="874" alt="SAVVY answer screen: best price tonight ₹1,450 on EazyDiner with your HSBC card. You keep ₹550." fetchpriority="high"></div><figcaption>The iOS night preview puts the restaurant and the answer first. Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure><figure>      <div class="phone"><img src="img/savvy-n-answer.webp" width="402" height="874" alt="SAVVY answer screen, night theme: best price tonight ₹1,450 on EazyDiner, you keep ₹550" loading="lazy"></div><figcaption>The answer replaces a list of competing discounts. Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure></div></div></section>
+<section class="band" aria-labelledby="t-dev" data-nav="Decisions|How it got here">
+  <div class="wrap">
+    <div class="head split">
+      <div><span class="eyebrow">iOS, version by version</span><h2 id="t-dev">How the iOS screen got here.</h2></div>
+      <p class="sub">The same moment every time: comparing the apps for one bill. Five passes, from a list of apps to one answer.</p>
+    </div>
+    <ol class="devline" style="--n:5">
+      <li><span class="v">01</span><div class="phone"><img src="img/savvy-ios-dev1.webp" width="390" height="844" loading="lazy" alt="iOS early idea test: Compare prices, a Book a table or Pay the bill switch, and four apps listed from cheapest."></div><div><b>Every app in a list</b><p>Four apps, cheapest first, with a Book or Pay switch on top.</p></div></li>
+      <li><span class="v">02</span><div class="phone"><img src="img/savvy-ios-dev2.webp" width="390" height="844" loading="lazy" alt="iOS grey wireframe: Best for ₹2,000 walk-in, with Swiggy on top at about ₹1,800 and District below."></div><div><b>Back to grey</b><p>A rough wireframe to test the walk-in case. The best option sits on top.</p></div></li>
+      <li><span class="v">03</span><div class="phone"><img src="img/savvy-ios-dev3.webp" width="390" height="844" loading="lazy" alt="iOS hi-fi pass: Swiggy Dineout opened up to show your bill, HDFC card, pay at the table ₹1,800, and coins later."></div><div><b>Open the maths</b><p>One app opens up: bill, card, what you pay at the table, coins later.</p></div></li>
+      <li><span class="v">04</span><div class="phone"><img src="img/savvy-ios-dev4.webp" width="412" height="917" loading="lazy" alt="iOS later pass: Best price tonight, three cards ranked by you pay now, EazyDiner ₹1,600 on top."></div><div><b>Ranked by cash</b><p>Three cards ranked by what you pay now. Coins get their own line.</p></div></li>
+      <li><span class="v">Final</span><div class="phone"><img src="img/savvy-d-answer.webp" width="402" height="874" loading="lazy" alt="iOS final answer, day theme: ₹1,450 on EazyDiner with your HSBC card, you keep ₹550."></div><div><b>One answer</b><p>One price at the top, then what you keep, then the maths.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section aria-labelledby="t-preview" data-nav="Screens|Mockups"><div class="wrap"><div class="head split"><div><span class="eyebrow">Mockups</span><h2 id="t-preview">Night and day, side by side.</h2></div><p class="sub">The final iOS screens laid out the way I'd hand them over.</p></div>
+  <div class="mock-pair"><figure><img src="img/savvy-mock-07.webp" width="1600" height="1200" loading="lazy" alt="Grid of SAVVY iOS night screens: book or pay, what's the bill, the answer, the Dynamic Island slip and the lock screen."><figcaption>Night: from book or pay to the lock-screen check.</figcaption></figure><figure><img src="img/savvy-mock-02.webp" width="1600" height="1200" loading="lazy" alt="Three SAVVY iOS day screens: Tonight, the answer at ₹1,450, and the hand-off."><figcaption>Day: teal and a serif price, same order.</figcaption></figure></div>
+</div></section>
 
 <section aria-labelledby="t-ios" data-nav="Design|iOS">
   <div class="wrap">
@@ -60,18 +78,11 @@
       <p class="sub">From tonight's places to one answer in four screens.</p>
     </div>
     <div class="quad4">
-      <figure><div class="phone"><img src="img/savvy-n-tonight.webp" width="402" height="874" alt="Tonight: Doolally Taproom, 0.8 km, on 3 apps. Last time you kept ₹400." loading="lazy"></div><figcaption><b>Tonight.</b>Places near you first, and what you kept here last time. Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure>
-      <figure><div class="phone"><img src="img/savvy-n-bookpay.webp" width="402" height="874" alt="Doolally Taproom: What are you doing? Book a table, or Pay the bill." loading="lazy"></div><figcaption><b>Book or pay.</b>One question splits the two moments people lose money in. Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure>
-      <figure><div class="phone"><img src="img/savvy-n-bill.webp" width="402" height="874" alt="What's the bill? ₹2,000, 2 people, HSBC card, Find my best price." loading="lazy"></div><figcaption><b>Type the bill once.</b>People and your card on the same screen. No forms. Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure>
-      <figure><div class="phone"><img src="img/savvy-n-checking.webp" width="402" height="874" alt="Checking 3 apps: Swiggy Dineout found 20% off, District found 15% off, EazyDiner checking your HSBC offer." loading="lazy"></div><figcaption><b>Checking 3 apps.</b>The wait shows its work, one app at a time. Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure>
+      <figure><div class="phone"><img src="img/savvy-n-tonight.webp" width="402" height="874" alt="Tonight: Doolally Taproom, 0.8 km, on 3 apps. Last time you kept ₹400." loading="lazy"></div><figcaption><b>Tonight.</b>Places near you first, and what you kept here last time.</figcaption></figure>
+      <figure><div class="phone"><img src="img/savvy-n-bookpay.webp" width="402" height="874" alt="Doolally Taproom: What are you doing? Book a table, or Pay the bill." loading="lazy"></div><figcaption><b>Book or pay.</b>One question splits the two moments people lose money in.</figcaption></figure>
+      <figure><div class="phone"><img src="img/savvy-n-bill.webp" width="402" height="874" alt="What's the bill? ₹2,000, 2 people, HSBC card, Find my best price." loading="lazy"></div><figcaption><b>Type the bill once.</b>People and your card on the same screen. No forms.</figcaption></figure>
+      <figure><div class="phone"><img src="img/savvy-n-checking.webp" width="402" height="874" alt="Checking 3 apps: Swiggy Dineout found 20% off, District found 15% off, EazyDiner checking your HSBC offer." loading="lazy"></div><figcaption><b>Checking 3 apps.</b>The wait shows its work, one app at a time.</figcaption></figure>
     </div>
-  </div>
-</section>
-
-<section class="glow" style="padding-top:0;--gx:30%" aria-labelledby="t-ans" data-nav="Design|The answer">
-  <div class="wrap">
-    <h2 id="t-ans" class="sr">The answer screen</h2>
-    <div data-spot></div><p class="note">Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</p>
   </div>
 </section>
 
@@ -82,60 +93,38 @@
       <p class="sub">Teal replaces lime and a serif carries the price. The order stays the same: the price first, then what you keep, then the maths.</p>
     </div>
     <div class="trio2">
-      <figure><div class="phone"><img src="img/savvy-d-home.webp" width="402" height="874" alt="Day theme: Good evening Akshat, Tonight, Doolally Taproom." loading="lazy"></div><figcaption><b>Tonight.</b> Places near you first. Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure>
-      <figure><div class="phone"><img src="img/savvy-d-answer.webp" width="402" height="874" alt="Day theme answer: ₹1,450 on EazyDiner with your HSBC card, you keep ₹550." loading="lazy"></div><figcaption><b>The answer.</b> The price first, then what you keep, then the maths. Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure>
-      <figure><div class="phone"><img src="img/savvy-d-savings.webp" width="402" height="874" alt="Day theme: Your savings, ₹3,970 saved in September, verified." loading="lazy"></div><figcaption><b>Your savings.</b> Only verified savings count, week by week. Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure>
+      <figure><div class="phone"><img src="img/savvy-d-home.webp" width="402" height="874" alt="Day theme: Good evening Akshat, Tonight, Doolally Taproom." loading="lazy"></div><figcaption><b>Tonight.</b> Places near you first.</figcaption></figure>
+      <figure><div class="phone"><img src="img/savvy-d-answer.webp" width="402" height="874" alt="Day theme answer: ₹1,450 on EazyDiner with your HSBC card, you keep ₹550." loading="lazy"></div><figcaption><b>The answer.</b> The price first, then what you keep, then the maths.</figcaption></figure>
+      <figure><div class="phone"><img src="img/savvy-d-savings.webp" width="402" height="874" alt="Day theme: Your savings, ₹3,970 saved in September, verified." loading="lazy"></div><figcaption><b>Your savings.</b> Only verified savings count, week by week.</figcaption></figure>
     </div>
   </div>
 </section>
 
-<section style="padding-top:0" aria-labelledby="t-after" data-nav="Design|After the tap">
+<section aria-labelledby="t-after" data-nav="Design|After the tap">
   <div class="wrap">
     <div class="head split">
       <div><span class="eyebrow">After the tap</span><h2 id="t-after">Handing off, then checking the price.</h2></div>
       <p class="sub">The part most comparison tools skip: did the price you were promised actually hold?</p>
     </div>
     <p class="note">Dynamic Island and lock-screen prompts are UI concepts, not working system features.</p><div class="quad4">
-      <figure><div class="phone"><img src="img/savvy-n-island.webp" width="402" height="874" alt="Hand-off: your slip rides in the Dynamic Island while you pay in EazyDiner: enter bill ₹2,000, pay with HSBC, then check ₹1,450." loading="lazy"></div><figcaption><b>Hand-off.</b>Your slip rides in the Dynamic Island while you pay in the partner app. Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure>
-      <figure><div class="phone"><img src="img/savvy-n-lock.webp" width="402" height="874" alt="Lock screen: Did the deal hold at Doolally? Yes ₹1,450, or No, different." loading="lazy"></div><figcaption><b>Did it hold?</b>One tap after the meal. Offers that fail drop in rank for everyone. Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure>
-      <figure><div class="phone"><img src="img/savvy-n-kept.webp" width="402" height="874" alt="Kept: ₹3,970 in September, every rupee verified, week by week, ₹1,030 to a free SAVVY+ week." loading="lazy"></div><figcaption><b>Kept.</b>Only verified savings count, week by week. Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure>
-      <figure><div class="phone"><img src="img/savvy-n-booktime.webp" width="402" height="874" alt="Booking ahead: When are you going? Each time shows its best deal. 8:00 is 30% off on EazyDiner." loading="lazy"></div><figcaption><b>Booking ahead.</b>Every time slot shows its best deal before you pick it. Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure>
+      <figure><div class="phone"><img src="img/savvy-n-island.webp" width="402" height="874" alt="Hand-off: your slip rides in the Dynamic Island while you pay in EazyDiner: enter bill ₹2,000, pay with HSBC, then check ₹1,450." loading="lazy"></div><figcaption><b>Hand-off.</b>Your slip rides in the Dynamic Island while you pay in the partner app.</figcaption></figure>
+      <figure><div class="phone"><img src="img/savvy-n-lock.webp" width="402" height="874" alt="Lock screen: Did the deal hold at Doolally? Yes ₹1,450, or No, different." loading="lazy"></div><figcaption><b>Did it hold?</b>One tap after the meal. Offers that fail drop in rank for everyone.</figcaption></figure>
+      <figure><div class="phone"><img src="img/savvy-n-kept.webp" width="402" height="874" alt="Kept: ₹3,970 in September, every rupee verified, week by week, ₹1,030 to a free SAVVY+ week." loading="lazy"></div><figcaption><b>Kept.</b>Only verified savings count, week by week.</figcaption></figure>
+      <figure><div class="phone"><img src="img/savvy-n-booktime.webp" width="402" height="874" alt="Booking ahead: When are you going? Each time shows its best deal. 8:00 is 30% off on EazyDiner." loading="lazy"></div><figcaption><b>Booking ahead.</b>Every time slot shows its best deal before you pick it.</figcaption></figure>
     </div>
   </div>
 </section>
 
-<section aria-labelledby="t-fb" data-nav="Design|System feedback">
+<section class="glow" style="--gx:70%" aria-labelledby="t-more" data-nav="Design|Variations">
   <div class="wrap">
     <div class="head split">
-      <div><span class="eyebrow">System feedback</span><h2 id="t-fb">What the app shows while it works.</h2></div>
-      <p class="sub">Every state tells you what SAVVY is doing and what it isn't: nothing is booked or paid, and a deal that didn't hold never counts.</p>
+      <div><span class="eyebrow">Variations</span><h2 id="t-more">Things I tried on the side.</h2></div>
+      <p class="sub">Not in the main flow yet. A walk-in result with a chart, the full maths on one page, and a profile that counts what you kept.</p>
     </div>
-<p class="note">Dynamic Island and lock-screen prompts are UI concepts, not working system features.</p>
-    <div class="show">
-      <div class="stage2">
-        <div class="phone tilt-l"><img src="img/savvy-n-checking.webp" width="402" height="874" alt="Checking 3 apps, 2 of 3 done. We read each app's offers for this bill. Nothing is booked or paid." loading="lazy"></div>
-        <div class="phone tilt-r"><img src="img/savvy-n-sheet.webp" width="402" height="874" alt="How ₹1,450 is made: food bill ₹2,000, HSBC card 30% instant minus ₹600, cover charge plus ₹50. The fine print: minimum bill, a monthly cap, pay inside EazyDiner." loading="lazy"></div>
-      </div>
-      <div class="callouts">
-        <div class="callout"><b>Loading that explains itself</b><p>The ring counts the apps, each row ticks off, and the Dynamic Island shows &quot;2 of 3&quot;. Nothing is booked or paid.</p></div>
-        <div class="callout"><b>How ₹1,450 is made</b><p>Every line of the maths, including the cover charge most apps show late.</p></div>
-        <div class="callout"><b>The fine print, in plain words</b><p>A minimum bill, a monthly cap with how much is left, and a warning that paying at the counter loses the discount.</p></div>
-      </div>
-    </div>
-<p class="note">Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</p>
-  </div>
-</section>
-
-<section class="glow" style="padding-top:0" aria-labelledby="t-mo" data-nav="Design|Motion">
-  <div class="wrap">
-    <div class="head split">
-      <div><span class="eyebrow">Motion · made in Jitter</span><h2 id="t-mo">Motion while you wait.</h2></div>
-      <p class="sub">Motion shows the work SAVVY does while you wait. The clips loop while they're on screen; pause any of them.</p>
-    </div>
-    <div class="clips">
-      <figure class="clip rv"><div class="phone"><video poster="img/jitter-bill-poster.webp" muted loop playsinline preload="metadata" aria-label="Typing the bill amount on a keypad, then Find my best price"><source src="img/jitter-bill.webm" type="video/webm"><source src="img/jitter-bill.mp4" type="video/mp4"></video></div><button type="button" data-play>▶ Play</button><figcaption>Type the bill. People and your card on the same screen. Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure>
-      <figure class="clip rv"><div class="phone"><video poster="img/jitter-checking-poster.webp" muted loop playsinline preload="metadata" aria-label="Checking 3 apps, each one ticking off as its offer is found"><source src="img/jitter-checking.webm" type="video/webm"><source src="img/jitter-checking.mp4" type="video/mp4"></video></div><button type="button" data-play>▶ Play</button><figcaption>Checking 3 apps. The wait shows its work, one app at a time. Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure>
-      <figure class="clip rv"><div class="phone"><video poster="img/jitter-answer-poster.webp" muted loop playsinline preload="metadata" aria-label="The answer screen building up, with cash kept per app"><source src="img/jitter-answer.webm" type="video/webm"><source src="img/jitter-answer.mp4" type="video/mp4"></video></div><button type="button" data-play>▶ Play</button><figcaption>The answer arrives. The price first, then what you keep, then the maths. Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure>
+    <div class="trio2">
+      <figure><div class="phone"><img src="img/savvy-n-drop.webp" width="402" height="874" alt="iOS: At the table. Best cash price right now ₹1,650 on EazyDiner, you keep ₹350, with a chart of how each app gets to its price." loading="lazy"></div><figcaption><b>At the table.</b> Booking ahead or at the table. The chart shows how each app gets to its price.</figcaption></figure>
+      <figure><div class="phone"><img src="img/savvy-n-maths.webp" width="402" height="874" alt="iOS: How ₹1,650 is made. Food bill, HSBC card 20% instant, cover charge, GST, then the fine print and the other two apps." loading="lazy"></div><figcaption><b>The maths, line by line.</b> Bill, card, cover and GST, then the fine print.</figcaption></figure>
+      <figure><div class="phone"><img src="img/savvy-n-profile.webp" width="402" height="874" alt="iOS profile: Akshat J., ₹3,970 kept with SAVVY, 14 kept, 62 skipped, 9 visited, cards and apps on file." loading="lazy"></div><figcaption><b>You.</b> What you've kept, your taste, and the cards and apps on file.</figcaption></figure>
     </div>
   </div>
 </section>
@@ -146,12 +135,17 @@
       <div><span class="eyebrow">An experiment</span><h2 id="t-ex">Swiping through restaurants.</h2></div>
       <p class="sub">Right to book, left to skip, up for the full profile. It stays out of the main flow until it's tested.</p>
     </div>
-    <p class="note">Dynamic Island and lock-screen prompts are UI concepts, not working system features.</p><div class="five"><figure><div class="phone"><img src="img/savvy-swipe.webp" width="402" height="874" alt="Discover: a restaurant card to swipe" loading="lazy"></div><figcaption><b>Discover.</b>One place at a time, best price on the card. Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure><figure><div class="phone"><img src="img/savvy-sw-book.webp" width="402" height="874" alt="Swiped right: booking Doolally through the cheapest app" loading="lazy"></div><figcaption><b>Swipe right.</b>Book through the cheapest app. Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure><figure><div class="phone"><img src="img/savvy-sw-skip.webp" width="402" height="874" alt="Skipped, with undo in the Dynamic Island" loading="lazy"></div><figcaption><b>Swipe left.</b>Skipped. Undo sits in the Dynamic Island. Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure><figure><div class="phone"><img src="img/savvy-sw-detail.webp" width="402" height="874" alt="Swiped up: the full profile with best price and popular dishes" loading="lazy"></div><figcaption><b>Swipe up.</b>Best price tonight, then popular dishes. Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure><figure><div class="phone"><img src="img/savvy-sw-end.webp" width="402" height="874" alt="That's everyone nearby: widen the radius or change filters" loading="lazy"></div><figcaption><b>End of the deck.</b>Widen the radius, review skipped places, or change filters. Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure></div>
+    <p class="note">Dynamic Island and lock-screen prompts are UI concepts, not working system features.</p><div class="five"><figure><div class="phone"><img src="img/savvy-swipe.webp" width="402" height="874" alt="Discover: a restaurant card to swipe" loading="lazy"></div><figcaption><b>Discover.</b>One place at a time, best price on the card.</figcaption></figure><figure><div class="phone"><img src="img/savvy-sw-book.webp" width="402" height="874" alt="Swiped right: booking Doolally through the cheapest app" loading="lazy"></div><figcaption><b>Swipe right.</b>Book through the cheapest app.</figcaption></figure><figure><div class="phone"><img src="img/savvy-sw-skip.webp" width="402" height="874" alt="Skipped, with undo in the Dynamic Island" loading="lazy"></div><figcaption><b>Swipe left.</b>Skipped. Undo sits in the Dynamic Island.</figcaption></figure><figure><div class="phone"><img src="img/savvy-sw-detail.webp" width="402" height="874" alt="Swiped up: the full profile with best price and popular dishes" loading="lazy"></div><figcaption><b>Swipe up.</b>Best price tonight, then popular dishes.</figcaption></figure><figure><div class="phone"><img src="img/savvy-sw-end.webp" width="402" height="874" alt="That's everyone nearby: widen the radius or change filters" loading="lazy"></div><figcaption><b>End of the deck.</b>Widen the radius, review skipped places, or change filters.</figcaption></figure></div>
   </div>
 </section>
 
-<section aria-labelledby="t-limits" data-nav="Limits|Concept status"><div class="wrap"><div class="head"><h2 id="t-limits">Platform limits</h2></div><p>Dynamic Island and lock-screen prompts are UI concepts, not working system features.</p><p class="note">Interactive concept, sample data, not usability tested</p><a class="lnk" href="savvy.html#t-next">Read the shared test plan and data constraints.</a></div></section>
-<section aria-labelledby="t-links"><div class="wrap"><div class="head"><h2 id="t-links">Explore SAVVY</h2></div><nav class="platform-links" aria-label="SAVVY pages"><a class="btn" href="savvy.html">← Back to SAVVY case study</a><a class="btn" href="savvy-android.html">SAVVY on Android</a></nav></div></section>
+<section aria-labelledby="t-limits" data-nav="Limits|Concept status"><div class="wrap"><div class="head"><h2 id="t-limits">Platform limits</h2></div><p>Dynamic Island and lock-screen prompts are UI concepts, not working system features.</p>
+  <a class="pcard pcard-sm" href="savvy.html#t-next"><span class="pc-t"><small>Next step</small><b>The test plan</b><span>What I'll test first, and the data problem a live SAVVY has to solve.</span></span><span class="pc-go" data-magnet aria-hidden="true">→</span></a>
+</div></section>
+<section aria-labelledby="t-links"><div class="wrap"><div class="head"><h2 id="t-links">Explore SAVVY</h2></div><nav class="pcards" aria-label="SAVVY pages">
+  <a class="pcard" href="savvy.html"><span class="pc-t"><small>Case study</small><b>Back to SAVVY</b><span>Research, flows, iterations and the test plan.</span></span><span class="pc-go" data-magnet aria-hidden="true">←</span></a>
+  <a class="pcard" href="savvy-android.html"><span class="pc-t"><small>Android</small><b>SAVVY on Android</b><span>Material 3, a Live Update hand-off, night and day.</span></span><span class="phone and pc-ph"><img src="img/savvy-and-n-answer.webp" width="412" height="917" loading="lazy" alt=""></span><span class="pc-go" data-magnet aria-hidden="true">→</span></a>
+</nav></div></section>
 <section style="padding-top:0" aria-label="Next case study">
   <div class="wrap">
     <a class="next" href="ankur.html"><span><span class="eyebrow">Next case study</span><span class="nm">Ankur</span></span><span class="arr" aria-hidden="true">→</span></a>
