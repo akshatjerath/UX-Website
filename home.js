@@ -1,11 +1,31 @@
 /* Home page code. Data (ME, P) comes from content.js; the phone menu from nav.js.
    The animated pieces are hand-written, vanilla versions of React Bits components (MIT + Commons Clause):
-   the name (static), Grid Motion (hero background),
+   the name (static), the hero background is my own Agent mesh (not a React Bits piece),
    Profile Card, Logo Loop, Folder Float and Star Border (CSS only, in home.css). */
 (() => {
   const RM = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const root = document.documentElement;
   const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+
+  /* ---------- role line: typed out letter by letter (React Bits "Text Type") ---------- */
+  const roleEl = document.querySelector(".role");
+  if (roleEl) {
+    const full = roleEl.textContent.trim();
+    const typed = document.createElement("span");
+    const caret = document.createElement("span");
+    caret.className = "caret"; caret.setAttribute("aria-hidden", "true");
+    roleEl.textContent = "";
+    roleEl.append(typed, caret);
+    if (RM) typed.textContent = full;
+    else {
+      let i = 0;
+      const step = () => {
+        typed.textContent = full.slice(0, ++i);
+        if (i < full.length) setTimeout(step, 70 + Math.random() * 60);
+      };
+      setTimeout(step, 600);
+    }
+  }
 
   /* ---------- your details: links and the CV buttons appear once they're filled in content.js ---------- */
   document.querySelectorAll("[data-me]").forEach(a => {
@@ -24,7 +44,7 @@
   document.querySelectorAll("[data-tech-text]").forEach(svg => {
     const NS = "http://www.w3.org/2000/svg", word = svg.dataset.techText, FS = 200;
     const t = document.createElementNS(NS, "text");
-    t.setAttribute("font-size", FS); t.setAttribute("letter-spacing", -0.045 * FS); t.setAttribute("y", FS);
+    t.setAttribute("font-size", FS); t.setAttribute("letter-spacing", -0.02 * FS); t.setAttribute("y", FS);
     const spans = [...word].map(ch => { const s = document.createElementNS(NS, "tspan"); s.textContent = ch; t.appendChild(s); return s; });
     const sel = document.createElementNS(NS, "g"); sel.setAttribute("class", "sel"); sel.style.opacity = 0;
     sel.innerHTML = `<rect class="box"/><rect class="h"/><rect class="h"/><rect class="h"/><rect class="h"/><text></text>`;
@@ -71,39 +91,110 @@
   });
 
 
-  /* ---------- Grid Motion: tilted rows of project screens drift sideways; a soft spotlight follows the pointer ---------- */
-  document.querySelectorAll("[data-grid-motion]").forEach(el => {
-    const W = (c, t) => ({w: t, c});
-    const ITEMS = ["savvy-n-answer", "g50-sausage-roll-720", "savvy-n-tonight", "ankur-live-observe", W("sv", "SAVVY"), "g50-flagship-720", "savvy-n-kept", W("cd", "Who holds the clock?"),
-      "greggs-merch-real", "savvy-n-checking", "ankur-live-target", W("cd", "Grow below, keep above."), "g50-packaging-720", "savvy-and-n-answer", "ankur-live-class", "savvy-d-answer",
-      "g50-drone-720", "savvy-n-bill", W("ank", "Ankur"), "greggs-report-cover", "savvy-n-lock", "ankur-live-aid", W("sv", "You keep ₹550"), "g50-store-shrunk-720"];
-    const tile = (x, k) => typeof x === "string" ? `<div class="gm-t"><img src="img/${x}.webp" alt="" width="402" height="560" loading="lazy" decoding="async"></div>` : `<div class="gm-t w ${x.c}">${x.w}</div>`;
-    const ROWS = 4, ANG = -12, GAP = 16, SPEED = 22;
-    let rows = [], off = [], period = 0, raf = 0, last = 0, vis = true, ptr = {x: 0, y: 0}, par = {x: 0, y: 0};
-    const build = () => {
-      const w = el.clientWidth, h = el.clientHeight, a = Math.abs(ANG * Math.PI / 180);
-      const ph = (w * Math.sin(a) + h * Math.cos(a)) * 1.15, pw = (w * Math.cos(a) + h * Math.sin(a)) * 1.15;
-      const th = (ph - GAP * (ROWS - 1)) / ROWS, tw = th * .72, per = Math.ceil(pw / (tw + GAP)) + 1;
-      period = per * (tw + GAP);
-      el.innerHTML = `<div class="gm-plane" style="width:${pw}px;height:${ph}px;margin:${-ph / 2}px 0 0 ${-pw / 2}px;transform:rotate(${ANG}deg);--gap:${GAP}px;--tw:${tw}px;--th:${th}px">${
-        Array.from({length: ROWS}, (_, r) => { const row = Array.from({length: per}, (_, k) => ITEMS[(r * 5 + k) % ITEMS.length]); return `<div class="gm-row" style="top:${r * (th + GAP)}px">${row.concat(row, row).map(tile).join("")}</div>`; }).join("")}</div>`;
-      rows = [...el.querySelectorAll(".gm-row")]; off = rows.map((_, r) => -period * (.3 + r * .17));
-      paint(); requestAnimationFrame(() => el.classList.add("on"));
+  /* ---------- Agent mesh: the hero background. A wide network of neurons. A task is handed from stage to stage of how I work
+     (interview, synthesis, flow, prototype, test), reaches DECIDE (me, the human in the loop), then is handed back the same way.
+     Every hand-off fires the neuron it lands on, which fires its neighbours in a cascade that fades.
+     The pointer stimulates the neurons it passes; a click sets off a burst. Reduced motion gets one still frame. ---------- */
+  document.querySelectorAll("[data-agent-mesh]").forEach(cv => {
+    const hero = cv.parentElement, ctx = cv.getContext("2d");
+    const HUBS = { // positions as a share of the hero, kept clear of the name, the lede and the buttons
+      wide: [["INTERVIEW", .61, .11], ["SYNTHESIS", .74, .31], ["FLOW", .9, .13], ["PROTOTYPE", .93, .56], ["TEST", .88, .87], ["DECIDE", .75, .84]],
+      narrow: [["INTERVIEW", .08, .1], ["SYNTHESIS", .42, .16], ["FLOW", .84, .08], ["PROTOTYPE", .88, .22], ["TEST", .56, .27], ["DECIDE", .14, .25]]
     };
-    const paint = () => rows.forEach((row, r) => { const x = ((off[r] % period) - period) % period + par.x * (1 + r * .3); row.style.transform = `translate3d(${x}px,${par.y}px,0)`; });
-    const loop = now => {
-      raf = 0; const dt = Math.min(.05, (now - last) / 1000 || 0); last = now;
-      rows.forEach((_, r) => off[r] += SPEED * (r % 2 ? -1 : 1) * (1 + r * .12) * dt);
-      par.x += (ptr.x * -30 - par.x) * .06; par.y += (ptr.y * -14 - par.y) * .06;
-      paint(); if (vis && !RM) raf = requestAnimationFrame(loop);
+    const SEQ = [0, 1, 2, 3, 4, 5, 4, 3, 2, 1]; // forward through the process, then handed back
+    let W = 0, H = 0, dpr = 1, lay = "", nodes = [], edges = [], hubs = [], pulses = [], tok = null, seqI = 0, ambient = 0;
+    let raf = 0, last = 0, vis = true, ptr = null, col = {}, font = "";
+    const rng = s => () => (s = (s * 1664525 + 1013904223) >>> 0) / 4294967296; // seeded, so a resize rebuilds the same network
+    const rgba = a => `rgba(${col.rgb},${a})`;
+    const ink = () => {
+      const c = getComputedStyle(root), hex = c.getPropertyValue("--accent").trim().slice(1);
+      col = {rgb: [0, 2, 4].map(i => parseInt(hex.slice(i, i + 2), 16)).join(","), a: c.getPropertyValue("--accent").trim(), m: c.getPropertyValue("--muted").trim()};
+      font = `500 ${W < 700 ? 9 : 10}px ${c.getPropertyValue("--mono")}`;
     };
-    addEventListener("pointermove", e => {
-      const r = el.getBoundingClientRect(); ptr.x = (e.clientX - r.left) / r.width - .5; ptr.y = (e.clientY - r.top) / r.height - .5;
-      el.style.setProperty("--px", e.clientX - r.left + "px"); el.style.setProperty("--py", e.clientY - r.top + "px");
-    }, {passive: true});
-    new IntersectionObserver(es => { vis = es[0].isIntersecting && !document.hidden; if (vis && !raf && !RM) { last = performance.now(); raf = requestAnimationFrame(loop); } }).observe(el);
-    document.addEventListener("visibilitychange", () => { vis = !document.hidden; if (vis && !raf && !RM) { last = performance.now(); raf = requestAnimationFrame(loop); } });
-    let rt; new ResizeObserver(() => { clearTimeout(rt); rt = setTimeout(build, 120); }).observe(el);
+    const build = () => { // layout in shares of the hero (0..1), so a height-only resize just rescales it
+      const nar = W < 700, r = rng(nar ? 7 : 11), N = nar ? 34 : 96, box = nar ? [.03, .05, .97, .29] : [.02, .06, .985, .96];
+      const ar = W / H, minD = Math.sqrt((box[2] - box[0]) * (box[3] - box[1]) * ar / N) * .74;
+      nodes = HUBS[nar ? "narrow" : "wide"].map(h => ({u: h[1], v: h[2], hub: h[0]}));
+      for (let k = 0; k < 5000 && nodes.length < N + 6; k++) {
+        const u = box[0] + r() * (box[2] - box[0]), v = box[1] + r() * (box[3] - box[1]);
+        if (nodes.every(o => Math.hypot((o.u - u) * ar, o.v - v) > minD)) nodes.push({u, v, hub: null});
+      }
+      nodes.forEach(o => Object.assign(o, {adj: [], fire: 0, ref: 0, ring: 0}));
+      edges = []; const seen = new Set(), d = (a, b) => Math.hypot((a.u - b.u) * ar, a.v - b.v);
+      const link = (i, j) => { const k = i < j ? i + "-" + j : j + "-" + i; if (i === j || seen.has(k)) return; seen.add(k); const e = {a: i, b: j, glow: 0}; edges.push(e); nodes[i].adj.push({n: j, e}); nodes[j].adj.push({n: i, e}); };
+      nodes.forEach((o, i) => nodes.map((p, j) => [d(o, p), j]).sort((x, y) => x[0] - y[0]).slice(1, 4).forEach(v => link(i, v[1])));
+      for (;;) { // join any island to its nearest reached neuron, so every hand-off has a path
+        const got = new Set([0]), q = [0]; while (q.length) nodes[q.pop()].adj.forEach(o => { if (!got.has(o.n)) { got.add(o.n); q.push(o.n); } });
+        if (got.size === nodes.length) break;
+        const out = nodes.findIndex((_, i) => !got.has(i)); let b = 0, bd = 1e9; got.forEach(i => { const v = d(nodes[i], nodes[out]); if (v < bd) { bd = v; b = i; } }); link(out, b);
+      }
+      hubs = [0, 1, 2, 3, 4, 5]; pulses = []; seqI = 0; next();
+    };
+    const place = () => nodes.forEach(o => { o.x = o.u * W; o.y = o.v * H; });
+    const path = (a, b) => { const prev = new Map([[a, -1]]), q = [a]; while (q.length) { const u = q.shift(); if (u === b) break; for (const o of nodes[u].adj) if (!prev.has(o.n)) { prev.set(o.n, u); q.push(o.n); } } const p = []; for (let u = b; u !== -1; u = prev.get(u)) p.unshift(u); return p; };
+    const next = () => { tok = {path: path(hubs[SEQ[seqI % SEQ.length]], hubs[SEQ[(seqI + 1) % SEQ.length]]), pi: 0, t: 0, dwell: 0}; };
+    const fire = (n, en, from) => {
+      const o = nodes[n]; if (o.ref > 0) return; o.fire = 1; o.ref = .38;
+      if (en > .14) for (const nb of o.adj) if (nb.n !== from && pulses.length < 220 && Math.random() < Math.min(.9, .4 + en * .35)) pulses.push({a: n, b: nb.n, e: nb.e, t: 0, sp: 170 + Math.random() * 80, en: en * .62});
+    };
+    const len = e => Math.hypot(nodes[e.a].x - nodes[e.b].x, nodes[e.a].y - nodes[e.b].y) || 1;
+    const step = dt => {
+      ambient -= dt; if (ambient <= 0) { ambient = .3 + Math.random() * .5; fire(Math.floor(Math.random() * nodes.length), .75); }
+      if (tok.dwell > 0) { if ((tok.dwell -= dt) <= 0) { seqI++; next(); } }
+      else {
+        const a = tok.path[tok.pi], b = tok.path[tok.pi + 1], e = nodes[a].adj.find(o => o.n === b).e;
+        tok.t += dt * 300 / len(e); e.glow = 1;
+        if (tok.t >= 1) { tok.pi++; tok.t = 0; fire(b, 1.3, a); if (tok.pi >= tok.path.length - 1) { nodes[b].ring = 1; tok.dwell = .55; } }
+      }
+      for (const p of pulses) { p.t += dt * p.sp / len(p.e); if (p.en > p.e.glow) p.e.glow = p.en; if (p.t >= 1) { p.done = 1; fire(p.b, p.en, p.a); } }
+      pulses = pulses.filter(p => !p.done);
+      if (ptr) nodes.forEach((o, i) => { if (Math.abs(o.x - ptr.x) < 60 && Math.hypot(o.x - ptr.x, o.y - ptr.y) < 60) fire(i, .95); });
+      for (const o of nodes) { o.fire = Math.max(0, o.fire - dt * 1.7); o.ref -= dt; o.ring = Math.max(0, o.ring - dt * .8); }
+      for (const e of edges) e.glow = Math.max(0, e.glow - dt * 1.4);
+    };
+    const draw = () => {
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
+      ctx.lineWidth = 1; ctx.strokeStyle = rgba(.14); ctx.beginPath(); // every resting synapse in one stroke
+      for (const e of edges) { const A = nodes[e.a], B = nodes[e.b]; ctx.moveTo(A.x, A.y); ctx.lineTo(B.x, B.y); }
+      ctx.stroke();
+      for (const e of edges) if (e.glow > .03) { const A = nodes[e.a], B = nodes[e.b]; ctx.strokeStyle = rgba(e.glow * .7); ctx.beginPath(); ctx.moveTo(A.x, A.y); ctx.lineTo(B.x, B.y); ctx.stroke(); }
+      ctx.lineWidth = 2; ctx.lineCap = "round";
+      for (const p of pulses) { const A = nodes[p.a], B = nodes[p.b], t0 = Math.max(0, p.t - .14); ctx.strokeStyle = rgba(Math.min(1, .35 + p.en)); ctx.beginPath(); ctx.moveTo(A.x + (B.x - A.x) * t0, A.y + (B.y - A.y) * t0); ctx.lineTo(A.x + (B.x - A.x) * p.t, A.y + (B.y - A.y) * p.t); ctx.stroke(); }
+      ctx.fillStyle = rgba(.42); ctx.beginPath(); // every resting neuron in one fill
+      for (const o of nodes) if (!o.hub && o.fire < .04) { ctx.moveTo(o.x + 2.2, o.y); ctx.arc(o.x, o.y, 2.2, 0, 7); }
+      ctx.fill();
+      ctx.font = font; ctx.textBaseline = "middle"; if ("letterSpacing" in ctx) ctx.letterSpacing = ".06em";
+      for (const o of nodes) {
+        if (o.fire >= .04) { ctx.fillStyle = rgba(o.fire * .2); ctx.beginPath(); ctx.arc(o.x, o.y, 8 + o.fire * 16, 0, 7); ctx.fill(); ctx.fillStyle = rgba(.4 + o.fire * .6); ctx.beginPath(); ctx.arc(o.x, o.y, (o.hub ? 5.5 : 2.2) + o.fire * 3, 0, 7); ctx.fill(); }
+        if (!o.hub) continue;
+        if (o.fire < .04) { ctx.fillStyle = rgba(.55); ctx.beginPath(); ctx.arc(o.x, o.y, 5.5, 0, 7); ctx.fill(); }
+        ctx.strokeStyle = rgba(.5 + o.fire * .5); ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(o.x, o.y, 11 + o.ring * 16, 0, 7); ctx.stroke();
+        ctx.fillStyle = o.fire > .25 || o.hub === "DECIDE" ? col.a : col.m; const lw = ctx.measureText(o.hub).width; ctx.fillText(o.hub, o.x + 18 + lw > W - 8 ? o.x - 18 - lw : o.x + 18, o.y); // flip the label left at the right edge
+      }
+      if (tok.dwell <= 0) { const A = nodes[tok.path[tok.pi]], B = nodes[tok.path[tok.pi + 1]], x = A.x + (B.x - A.x) * tok.t, y = A.y + (B.y - A.y) * tok.t; ctx.fillStyle = rgba(.25); ctx.beginPath(); ctx.arc(x, y, 12, 0, 7); ctx.fill(); ctx.fillStyle = col.a; ctx.beginPath(); ctx.arc(x, y, 5, 0, 7); ctx.fill(); }
+    };
+    const size = () => {
+      const w = cv.clientWidth, h = cv.clientHeight; if (!w || !h || (w === W && h === H)) return;
+      const nl = w < 700 ? "narrow" : "wide"; W = w; H = h; dpr = Math.min(2, devicePixelRatio || 1); cv.width = W * dpr; cv.height = H * dpr;
+      ink(); if (nl !== lay) { lay = nl; build(); } place(); draw();
+    };
+    const loop = now => { raf = 0; if (tok) { step(Math.min(.05, (now - last) / 1000 || 0)); draw(); } last = now; if (vis) raf = requestAnimationFrame(loop); };
+    const go = () => { if (vis && !raf && !RM) { last = performance.now(); raf = requestAnimationFrame(loop); } };
+    const at = e => { const r = cv.getBoundingClientRect(); return {x: e.clientX - r.left, y: e.clientY - r.top}; };
+    hero.addEventListener("pointermove", e => { if (vis && !RM) ptr = at(e); }, {passive: true});
+    hero.addEventListener("pointerleave", () => ptr = null);
+    hero.addEventListener("pointerdown", e => {
+      if (RM || e.target.closest("a,button")) return;
+      const p = at(e); let b = 0, bd = 1e9; nodes.forEach((o, i) => { const v = Math.hypot(o.x - p.x, o.y - p.y); if (v < bd) { bd = v; b = i; } });
+      nodes[b].ref = 0; fire(b, 2);
+    });
+    new IntersectionObserver(es => { vis = es[0].isIntersecting && !document.hidden; go(); }).observe(cv);
+    document.addEventListener("visibilitychange", () => { vis = !document.hidden; go(); });
+    const re = () => { ink(); draw(); };
+    new MutationObserver(re).observe(root, {attributes: true, attributeFilter: ["data-theme"]}); // only the theme toggle, not scroll classes
+    matchMedia("(prefers-color-scheme: dark)").addEventListener("change", re);
+    let rt; new ResizeObserver(() => { clearTimeout(rt); rt = setTimeout(size, 120); }).observe(cv);
+    size(); go();
   });
 
   /* ---------- project panels stack as you scroll: the one being covered shrinks back and dims ---------- */

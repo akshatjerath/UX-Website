@@ -100,3 +100,12 @@ With "reduce motion" switched on, every visual shows its finished state straight
 | Home · name (round 7b) | Fully static now: no loop, no pointer outline. |
 | "See the work" (round 7b) | Light removed; no button has a running light. |
 | Greggs · rings (round 7b) | No mouse, drag, keyboard or text-selection input; they only step on their own while on screen. |
+
+## Round 8 (21 Oct 2026)
+
+| Piece | What changed |
+|---|---|
+| Home · hero background | The project-screen wall is replaced by the Agent mesh (home.js). It moves continuously on purpose: the brief was a hero that does not look dead. It pauses off screen and in a hidden tab, and reduced motion gets one still frame. Recorded here as a deliberate exception to "nothing loops by itself". |
+| SAVVY · platform buttons | Solid accent buttons. One light sweep crosses each after the page loads, once. |
+| Type | Hubot Sans, Schibsted Grotesk and Martian Mono replace Bricolage Grotesque. |
+

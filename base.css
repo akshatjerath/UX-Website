@@ -1,22 +1,27 @@
 /* Shared base for every page: tokens, type, island nav, phone menu, footer, image viewer.
    The home page adds home.css; the case studies add case.css. */
 [data-draft]{display:none} .draft [data-draft]{display:revert} /* hidden by default so removing draft notes on the live site causes no layout shift */
-/* One typeface for the whole site: Bricolage Grotesque (OFL, self-hosted from Fontsource). Its optical-size axis makes it work for headings and body text alike. */
-@font-face{font-family:"Bricolage Grotesque";src:url(assets/fonts/bricolage-grotesque-latin-standard-normal.woff2) format("woff2");font-weight:200 800;font-stretch:75% 100%;font-display:swap}
-@font-face{font-family:"Bricolage Grotesque";src:url(assets/fonts/bricolage-grotesque-latin-ext-standard-normal.woff2) format("woff2");font-weight:200 800;font-stretch:75% 100%;font-display:swap;unicode-range:U+20A0-20C0} /* the rupee sign */
-/* Arial sized to match Bricolage while the webfont loads, so text does not reflow when it swaps in (cuts layout shift).
-   Numbers measured from the font files: body widths at 400, heading widths at 700. */
-@font-face{font-family:"Bricolage Fallback";src:local("Arial"),local("ArialMT");font-weight:100 599;size-adjust:106%;ascent-override:87.7%;descent-override:25.5%;line-gap-override:0%}
-@font-face{font-family:"Bricolage Fallback";src:local("Arial Bold"),local("Arial-BoldMT");font-weight:600 900;size-adjust:91.8%;ascent-override:101.3%;descent-override:29.4%;line-gap-override:0%}
+/* Three faces, all OFL and self-hosted from Fontsource. Hubot Sans (GitHub) for display, pinned at 78% width (a condensed cut, made with fontTools) so big headlines fit.
+   Schibsted Grotesk, a newspaper grotesk, for text. Martian Mono sets the small labels. */
+@font-face{font-family:"Hubot Sans";src:url(assets/fonts/hubot-sans-latin-standard-normal.woff2) format("woff2");font-weight:200 900;font-display:swap}
+@font-face{font-family:"Hubot Sans";src:url(assets/fonts/hubot-sans-latin-ext-standard-normal.woff2) format("woff2");font-weight:200 900;font-display:swap;unicode-range:U+20A0-20C0} /* the rupee sign */
+@font-face{font-family:"Schibsted Grotesk";src:url(assets/fonts/schibsted-grotesk-latin-wght-normal.woff2) format("woff2");font-weight:400 900;font-display:swap}
+@font-face{font-family:"Schibsted Grotesk";src:url(assets/fonts/schibsted-grotesk-latin-ext-wght-normal.woff2) format("woff2");font-weight:400 900;font-display:swap;unicode-range:U+20A0-20C0}
+@font-face{font-family:"Martian Mono";src:url(assets/fonts/martian-mono-latin-standard-normal.woff2) format("woff2");font-weight:100 800;font-stretch:75% 112.5%;font-display:swap}
+/* Arial sized to match each face while the webfonts load, so text does not reflow when they swap in (cuts layout shift).
+   Numbers measured from the font files against Arial's metrics: Schibsted at 400 and 700, the condensed Hubot at 800. */
+@font-face{font-family:"Schibsted Fallback";src:local("Arial"),local("ArialMT");font-weight:100 599;size-adjust:104.6%;ascent-override:93.3%;descent-override:24.6%;line-gap-override:0%}
+@font-face{font-family:"Schibsted Fallback";src:local("Arial Bold"),local("Arial-BoldMT");font-weight:600 900;size-adjust:102.6%;ascent-override:95.2%;descent-override:25.1%;line-gap-override:0%}
+@font-face{font-family:"Hubot Fallback";src:local("Arial Bold"),local("Arial-BoldMT");font-weight:100 900;size-adjust:81.6%;ascent-override:133.5%;descent-override:39.2%;line-gap-override:0%}
 :root{
   --bg:#0C0E11; --surface:#14171C; --panel:#1A1E24; --ink:#EEF1F5; --muted:#9AA3AE; --line:#4A525D; --hair:#262B32;
   --accent:#25CA7F; --accent-ink:#04140B; --accent-soft:#0F2A1D; --hero-ink:#F2F3EF;
   --band:#EEF1F5; --band-ink:#0C0E11;
   --draft:#F2B451; --draft-soft:#2E2412; --bad:#FF7A6E; --rule:rgba(238,241,245,.07); --dec:#F2C94C; --dec-soft:#2B2511;
   --savvy-bg:#131411; --ankur-bg:#E3E0F6; --greggs-bg:#00558F; --greggs-hi:#FDC72F; --cd-bg:#2F3D2B; --cd-hi:#E6EDD8;
-  --display:"Bricolage Grotesque","Bricolage Fallback","Arial Narrow",system-ui,sans-serif;
-  --body:var(--display);
-  --mono:var(--display); /* labels use the same family, with tabular figures */
+  --display:"Hubot Sans","Hubot Fallback",system-ui,sans-serif;
+  --body:"Schibsted Grotesk","Schibsted Fallback",system-ui,sans-serif;
+  --mono:"Martian Mono",ui-monospace,Menlo,Consolas,monospace;
   --ease:cubic-bezier(.65,.05,.25,1); --ease-out:cubic-bezier(.22,1,.36,1);
   --maxw:1280px; --gut:clamp(16px,4vw,48px); --r:22px;
   color-scheme:dark;
@@ -44,7 +49,7 @@ button{font:inherit;color:inherit}
 .skip{position:absolute;left:-999px;top:8px;z-index:99;background:var(--ink);color:var(--bg);padding:8px 12px;border-radius:8px}
 .skip:focus{left:16px}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.04;letter-spacing:-.02em;text-wrap:balance;margin:0}
+h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.04;letter-spacing:-0.01em;text-wrap:balance;margin:0}
 p{margin:0}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:999px;background:var(--accent);color:var(--accent-ink);text-decoration:none;font-weight:600;border:1px solid var(--accent);cursor:pointer;transition:transform .2s var(--ease-out)}
 
@@ -94,7 +99,7 @@ dialog.lb::backdrop{background:rgba(5,7,10,.88)}
 @media (prefers-reduced-motion:reduce){.goo i{transition:none}.goo i.d{display:none}}
 
 /* ===== staggered menu (nav.js): phones only ===== */
-.island,.smenu{--display:"Bricolage Grotesque","Arial Narrow",system-ui,sans-serif} /* same on every page, whatever a case study's own font */
+.island,.smenu{--display:"Hubot Sans","Hubot Fallback",system-ui,sans-serif} /* same on every page, whatever a case study's own font */
 .sm-tog{display:none;align-items:center;gap:10px;height:36px;padding:0 14px 0 16px;border:1px solid #F2F3EF;border-radius:999px;background:transparent;color:#F2F3EF;font:600 14px/1 var(--body);cursor:pointer}
 .sm-tw{display:block;height:1em;overflow:hidden}.sm-tw span{display:block;line-height:1;transition:transform .45s var(--ease)}
 .sm-on .sm-tw span{transform:translateY(-100%)}
@@ -114,7 +119,7 @@ dialog.lb::backdrop{background:rgba(5,7,10,.88)}
 .smenu.open .sm-layer{transform:none}
 .sm-panel{display:flex;flex-direction:column;justify-content:space-between;padding:96px 28px 32px;background:var(--bg);color:var(--ink);overflow-y:auto}
 .sm-panel ol{list-style:none;margin:0;padding:0;display:grid;gap:6px}
-.sm-it a{display:block;overflow:hidden;text-decoration:none;font:800 clamp(34px,10vw,48px)/1.08 var(--display);letter-spacing:-.03em}
+.sm-it a{display:block;overflow:hidden;text-decoration:none;font:800 clamp(34px,10vw,48px)/1.08 var(--display);letter-spacing:-0.015em}
 .sm-it span{display:flex;align-items:baseline;gap:12px;transform:translateY(110%) rotate(5deg);transform-origin:left bottom;transition:transform .6s var(--ease-out),color .2s}
 .sm-it small{font:500 12px/1 var(--mono);color:var(--accent);min-width:20px}
 .smenu.open .sm-it span{transform:none;transition-delay:calc(.3s + var(--i) * 60ms)}
