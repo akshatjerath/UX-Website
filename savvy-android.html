@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en" class="no-js">
 <head>
+<script>try{var t=localStorage.getItem("aj-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SAVVY on Android | Akshat Jerath</title>
@@ -12,8 +13,8 @@
 <meta property="og:description" content="SAVVY on Android: Material 3 design choices, night and day screens, Live Update hand-off and swipe concepts using sample data; not usability tested.">
 <meta property="og:image" content="https://akshatjerath.github.io/UX-Website/img/mock-tilt.webp">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="preload" href="assets/fonts/hubot-sans-latin-standard-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/schibsted-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/barlow-semi-condensed-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/barlow-semi-condensed-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="base.css">
 <link rel="stylesheet" href="case.css">
 </head>
@@ -67,12 +68,15 @@
   </div>
 </section>
 
+<section class="showcase-sec" aria-label="Android screens, tilted grid"><div class="wrap"><figure class="showcase"><img src="img/savvy-and-showcase-a.webp" srcset="img/savvy-and-showcase-a-800.webp 800w, img/savvy-and-showcase-a.webp 1600w" sizes="(min-width:1328px) 1280px, 92vw" width="1600" height="1200" alt="Android screens in a tilted grid" decoding="async" loading="lazy"><figcaption>Night screens from the SAVVY Android app in a tilted grid. The Live Update chip is a UI concept, not a working system feature. Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure></div></section>
+
 <section aria-labelledby="t-and" data-nav="Design|Android">
   <div class="wrap">
     <div class="head split">
       <div><span class="eyebrow">Final design · Android, night</span><h2 id="t-and">Choosing a place and typing the bill.</h2></div>
       <p class="sub">From tonight's places to one answer in four screens.</p>
     </div>
+    
     <div class="quad4">
       <figure><div class="phone and"><img src="img/savvy-and-n-tonight.webp" width="412" height="917" alt="Android night: Tonight, Doolally Taproom, last time ₹400 kept." loading="lazy"></div><figcaption><b>Tonight.</b>Search first, then tonight's places.</figcaption></figure>
       <figure><div class="phone and"><img src="img/savvy-and-n-bookpay.webp" width="412" height="917" alt="Android night: Doolally Taproom. What are you doing? Book a table, or Pay the bill." loading="lazy"></div><figcaption><b>Book or pay.</b>One question splits the two moments people lose money in.</figcaption></figure>
@@ -85,15 +89,10 @@
 <section class="glow" style="padding-top:0;--gx:30%" aria-labelledby="t-ans" data-nav="Design|The answer">
   <div class="wrap">
     <h2 id="t-ans" class="sr">The answer screen</h2>
-    <div class="show">
+    <div class="show show-solo">
       <div class="stage2">
         <div class="phone and tilt-l"><img src="img/savvy-and-n-answer.webp" width="412" height="917" alt="Android night answer: ₹1,450 on EazyDiner, a You keep ₹550 sticker, cash you keep by app." loading="lazy"></div>
         <div class="phone and tilt-r"><img src="img/savvy-and-n-sheet.webp" width="412" height="917" alt="Android night bottom sheet: How ₹1,450 is made. Food bill ₹2,000, HSBC card minus ₹600, cover charge plus ₹50, then the fine print." loading="lazy"></div>
-      </div>
-      <div class="callouts">
-        <div class="callout"><b>One price first</b><p>The cash you pay tonight.</p></div>
-        <div class="callout"><b>What you keep, as a sticker</b><p>Compared with just paying the bill.</p></div>
-        <div class="callout"><b>The maths in a bottom sheet</b><p>Pull it up when you want it. Coins sit on their own line and never change the order.</p></div>
       </div>
     </div>
   </div>
@@ -139,9 +138,14 @@
       <figure><div class="phone and"><img src="img/savvy-and-n-swipe.webp" width="412" height="917" alt="Android night: a restaurant card to swipe, Doolally Taproom, Keep ₹550 here tonight." loading="lazy"></div><figcaption><b>Discover, night.</b> One place at a time, the saving on the card.</figcaption></figure>
       <figure><div class="phone and"><img src="img/savvy-and-d-swipe.webp" width="412" height="917" alt="Android day: the same swipe card in the day theme." loading="lazy"></div><figcaption><b>Discover, day.</b> The same card in daylight.</figcaption></figure>
       <figure><div class="phone and"><img src="img/savvy-and-n-profile.webp" width="412" height="917" alt="Android profile: Akshat J., ₹3,970 kept with SAVVY, 14 kept, 62 skipped, 9 visited, cards and apps on file." loading="lazy"></div><figcaption><b>You.</b> What you've kept, your taste, and the cards and apps on file.</figcaption></figure>
+      <figure data-draft><div class="phone and todo"><img data-src="img/savvy-and-n-skip.webp" width="412" height="917" alt="Android night, swiping left on a restaurant, with three quick reasons to skip: too far, too pricey, been here." loading="lazy"></div><figcaption><b>Skip, with a reason.</b> One tap tells SAVVY why, so the next card fits better.</figcaption><p class="note">Add: export img/savvy-and-n-skip.webp from Figma.</p></figure>
+      <figure data-draft><div class="phone and todo"><img data-src="img/savvy-and-n-match.webp" width="412" height="917" alt="Android night, a booked moment after swiping right: the saving, the app it hands off to and the time slot." loading="lazy"></div><figcaption><b>Swiped right.</b> The saving and the hand-off on one screen.</figcaption><p class="note">Add: export img/savvy-and-n-match.webp from Figma.</p></figure>
+      <figure data-draft><div class="phone and todo"><img data-src="img/savvy-and-widget.webp" width="412" height="917" alt="Android home screen with a SAVVY widget showing tonight's best price at a saved restaurant." loading="lazy"></div><figcaption><b>A home screen widget.</b> Tonight's best price without opening the app.</figcaption><p class="note">Add: export img/savvy-and-widget.webp from Figma.</p></figure>
     </div>
   </div>
 </section>
+
+<section class="showcase-sec" aria-label="Android screens, isometric layout"><div class="wrap"><figure class="showcase"><img src="img/savvy-and-showcase-b.webp" srcset="img/savvy-and-showcase-b-800.webp 800w, img/savvy-and-showcase-b.webp 1600w" sizes="(min-width:1328px) 1280px, 92vw" width="1600" height="1200" alt="Android screens in an isometric layout" decoding="async" loading="lazy"><figcaption>The same Android screens in an isometric layout. The Live Update chip is a UI concept, not a working system feature. Interactive concept, sample data, not usability tested. Illustrative prototype calculation, not a live verified price.</figcaption></figure></div></section>
 
 <section aria-labelledby="t-limits" data-nav="Limits|Concept status"><div class="wrap"><div class="head"><h2 id="t-limits">Platform limits</h2></div><p>The Live Update chip is a UI concept, not a working system feature.</p>
   <a class="pcard pcard-sm" href="savvy.html#t-next"><span class="pc-t"><small>Next step</small><b>The test plan</b><span>What I'll test first, and the data problem a live SAVVY has to solve.</span></span><span class="pc-go" data-magnet aria-hidden="true">→</span></a>

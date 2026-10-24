@@ -49,7 +49,7 @@ const EMP = [
   Feels:[["\"Frustrating\": switching between apps.","R08"],["Annoyed and frustrated by coins instead of money off.","R05"]]}}
 ];
 
-/* ----- SAVVY site map. [screen code, label, flag]: flag 1 = state or edge case, 2 = SAVVY+, 3 = menu link with no screen. ----- */
+/* ----- SAVVY site map. [screen code (not shown), label, flag]: flag 1 = state or edge case, 2 = SAVVY+, 3 = menu link with no screen. ----- */
 const SITEMAP = [
  ["Onboarding","First run only",[["01","Splash"],["02","Sign up: name, mobile number, OTP"],["03","Preferences: apps, memberships, cards (optional)"]]],
  ["Home tab","",[["04","List: search and filters (Near me · On 2+ apps · Cover-free)"],["04b","Map with price pins"],["04c","No results",1]]],
@@ -60,7 +60,7 @@ const SITEMAP = [
  ["After the visit","Push prompt",[["11","Verify: did the deal hold? Feeds Saving"]]]
 ];
 
-/* ----- SAVVY access rules, grouped. Each item is [what, screen codes]. ----- */
+/* ----- SAVVY access roles, grouped. Each item is [what, screen codes]. ----- */
 const ACCESS = [
  {t:"Every diner", sub:"Free and SAVVY+", c:"all", items:[["Create an account; add apps, memberships, cards (optional)","02 · 03"],["Search, list, map; browse Deals","04 · 05"],["Compare apps: Book (% per app) or Pay (ranked by cash now)","06 · 07 · 08"],["Hand-off to the partner app with a code","10"],["Verify the deal; savings ledger","11 · 12"]]},
  {t:"SAVVY+ only", sub:"Or during a free week", c:"plus", items:[["AI savings assistant: which card wins any bill","14"],["Offers remaining on each card","14"],["Is my Swiggy One or Prime paying off?","12b"],["Leave-by and traffic reminder","14"]]},

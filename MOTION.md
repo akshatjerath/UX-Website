@@ -50,7 +50,7 @@ With "reduce motion" switched on, every visual shows its finished state straight
 | Top nav | A pill flows to the link you hover, with small goo drops trailing it; they burst on click. | After React Bits' Gooey Nav, done with an SVG goo filter instead of WebGL |
 | SAVVY · iceberg | Tied to the scroll position: the iceberg rises, the waterline drifts, the "50% off" chip pops, then the four hidden costs drop in and their icons spin into place. Scroll back up and it reverses. | CSS scroll-driven animation (Chrome, Edge; other browsers show the finished state) |
 | SAVVY · iterations | A snake road: left to right, then back. The lime line draws along it as you scroll and each version lights up as the line reaches it. | `case-widgets.js` (scroll listener + SVG stroke) |
-| SAVVY · flows and maps | A tab bar switches between user flow, three task flows, site map, empathy maps and access rules. Each flow builds block by block, then its end block pulses. | After Swishy's "System" template; `case-widgets.js` |
+| SAVVY · flows and maps | A tab bar switches between IA, user flow, three task flows and access roles. Each flow builds block by block, then its end block pulses. | After Swishy's "System" template; `case-widgets.js` |
 | SAVVY · answer screen | A spotlight moves over each part of the answer screen every 3.8 s while the list on the right says why. Hover or tab to a line to hold it. | `case-widgets.js` |
 | Screen grids | Phones (with their captions) drift at two speeds as you scroll. | CSS scroll-driven animation |
 | Prev / next | Pills in the bottom corners go to the previous and next case study, with a 01 / 04 counter. | `case.js` |
@@ -62,6 +62,7 @@ With "reduce motion" switched on, every visual shows its finished state straight
 | Home · name | One letter at a time turns into a dashed outline inside a selection box, then the next, in a loop. Pointing at the name takes over; the loop resumes when you leave. Pauses off screen. | After React Bits' Tech Text, in `home.js` |
 | Home · line under the name | Types an ending, waits, deletes it, types the next. | After Text Type, `home.js` |
 | Home · project panels | Each project is a full-height panel that sticks; the next one slides over it while the one underneath shrinks back 6% and dims. | `home.js` (scroll), `home.css` |
+| Home · skills | One card, four columns. Each column is a Pixel Card: pixels fade in from the centre once, spread from the centre on hover or focus, and clear on leave. Headings and chips rise in once. | After React Bits' Pixel Card, `pixel-card.js` and `home.js` |
 | Home · timeline | The line draws down as you scroll; each entry's dot pops and its title brightens when the line reaches it. Entries waiting below stay readable (muted, not faded). | `home.js` |
 | Buttons (See the work, Email, LinkedIn, CV) | A light with a short tail runs round the edge. | After Star Border; CSS `offset-path`, sparks added by `home.js` |
 | Top nav, every page | The pill flows to the link you point at; drops burst on click. On the home page it rests on the section you're reading. | After Gooey Nav, `nav.js` |
@@ -107,5 +108,5 @@ With "reduce motion" switched on, every visual shows its finished state straight
 |---|---|
 | Home · hero background | The project-screen wall is replaced by the Agent mesh (home.js). It moves continuously on purpose: the brief was a hero that does not look dead. It pauses off screen and in a hidden tab, and reduced motion gets one still frame. Recorded here as a deliberate exception to "nothing loops by itself". |
 | SAVVY · platform buttons | Solid accent buttons. One light sweep crosses each after the page loads, once. |
-| Type | Hubot Sans, Schibsted Grotesk and Martian Mono replace Bricolage Grotesque. |
+| Type | Barlow Semi Condensed alone replaces Bricolage Grotesque (and, later, Hubot Sans, Schibsted Grotesk and Martian Mono). |
 

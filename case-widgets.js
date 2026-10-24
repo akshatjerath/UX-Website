@@ -1,4 +1,4 @@
-/* Case-study widgets, built from the data in content.js (FL, EMP, SITEMAP, ACCESS, ABAC, ITER, SPOT, ANKUR_CM; Ankur's stakeholders and SWOT live below).
+/* Case-study widgets, built from the data in content.js (FL, SITEMAP, ACCESS, ABAC, ITER, SPOT, ANKUR_CM; Ankur's stakeholders and SWOT live below).
    Load order on a case page: content.js, vendor/lenis.min.js, case-widgets.js, case.js.
    Every widget works with motion switched off; motion only adds the build-up. */
 (() => {
@@ -30,24 +30,10 @@
 
   /* ---------- site map: each section opens into a trunk with a branch per screen ---------- */
   const sitemap = () => `<div class="smap2">${SITEMAP.map(([t, sub, items], g) => `<div class="sm-g" style="--i:${g}"><b>${E(t)}</b>${sub ? `<span>${E(sub)}</span>` : ""}
-    <ul>${items.map(([c, l, f]) => `<li class="${["", "st", "plus", "menu"][f || 0]}">${c ? `<code>${c}</code>` : ""}${E(l)}</li>`).join("")}</ul></div>`).join("")}</div>
+    <ul>${items.map(([, l, f]) => `<li class="${["", "st", "plus", "menu"][f || 0]}">${E(l)}</li>`).join("")}</ul></div>`).join("")}</div>
     <div class="sd-key"><span><i class="kk-step"></i>Screen</span><span><i class="kk-dead"></i>State or edge case</span><span><i class="kk-plus"></i>SAVVY+ content</span></div>`;
 
-  /* ---------- empathy maps: pick a diner type, four quadrants of their notes ---------- */
-  function empathy(pane){
-    pane.innerHTML = `<div class="emp2-pick" role="group" aria-label="Diner type">${EMP.map((e, j) => `<button type="button" data-j="${j}">${E(e.name)}</button>`).join("")}</div><div class="emp2"></div>`;
-    const bs = [...pane.querySelectorAll(".emp2-pick button")], box = pane.querySelector(".emp2");
-    const go = j => {
-      const e = EMP[j];
-      bs.forEach((b, n) => b.setAttribute("aria-pressed", String(n === j)));
-      box.innerHTML = `<p class="emp2-who"><b>${E(e.name)}</b> ${E(e.who)}. <span>From ${e.src}</span></p>
-        <div class="emp2-q">${Object.entries(e.q).map(([h, list], q) => `<div style="--i:${q}"><h4>${h}</h4><ul>${list.map(([t, r]) => `<li>${E(t)} <small>${r}</small></li>`).join("")}</ul></div>`).join("")}</div>`;
-      build(box);
-    };
-    bs.forEach((b, j) => b.onclick = () => go(j)); go(0);
-  }
-
-  const access = () => `<div class="acc2">${ACCESS.map((g, n) => `<div class="acc2-g ${g.c}" style="--i:${n}"><b>${E(g.t)}</b><span>${E(g.sub)}</span><ul>${g.items.map(([t, s]) => `<li>${E(t)}<code>${s}</code></li>`).join("")}</ul></div>`).join("")}</div>
+  const access = () => `<div class="acc2">${ACCESS.map((g, n) => `<div class="acc2-g ${g.c}" style="--i:${n}"><b>${E(g.t)}</b><span>${E(g.sub)}</span><ul>${g.items.map(([t]) => `<li>${E(t)}</li>`).join("")}</ul></div>`).join("")}</div>
     <ul class="acc2-rules">${ABAC.map(a => `<li>${E(a)}</li>`).join("")}</ul>`;
 
   /* ---------- Ankur: competitor table, stakeholder grid and SWOT (text from CONTEXT.ankur in content.js) ---------- */
@@ -76,9 +62,8 @@
     "savvy-task1": ["Task: book ahead", p => p.innerHTML = diagram(FL.task1)],
     "savvy-task2": ["Task: pay at the table", p => p.innerHTML = diagram(FL.task2)],
     "savvy-task3": ["Task: pick the card", p => p.innerHTML = diagram(FL.task3)],
-    "savvy-map": ["Site map", p => p.innerHTML = sitemap()],
-    "savvy-emp": ["Empathy maps", empathy],
-    "savvy-access": ["Access rules", p => p.innerHTML = access()],
+    "savvy-map": ["IA", p => p.innerHTML = sitemap()],
+    "savvy-access": ["Access roles", p => p.innerHTML = access()],
     "ankur-task": ["Task flow", p => p.innerHTML = diagram(FL.ankur)],
     "ankur-comp": ["Competitors", p => p.innerHTML = `<div class="mx-wrap">${mx()}</div>`],
     "ankur-stake": ["Stakeholders", p => p.innerHTML = stake()],
@@ -178,6 +163,20 @@
         <div class="ds2-bar"><i class="c"></i><i class="k"></i></div><small>Same order, built for bright light</small></div>
       <div class="ds2-type"><p><b class="t1">Inter Black</b><span>The price. One number, biggest on the screen.</span></p><p><b class="t2">Inter Semi Bold and Regular</b><span>Names, labels and body text.</span></p><p><b class="t3">IBM PLEX MONO · ₹120 LATER</b><span>Money details and small labels in the day theme.</span></p></div>
     </div>`;
+  });
+
+  /* ---------- SAVVY insight track: the rule reveal (hover, focus or tap) ---------- */
+  document.querySelectorAll("[data-ins]").forEach(track => {
+    track.querySelectorAll(".ins").forEach(row => {
+      const b = row.querySelector(".rule"), on = {};
+      const sync = () => { row.classList.toggle("hov", !!on.hov); row.classList.toggle("foc", !!on.foc); row.classList.toggle("pin", !!on.pin);
+        b.setAttribute("aria-expanded", String(!!(on.hov || on.foc || on.pin))); };
+      row.addEventListener("pointerenter", e => { if (e.pointerType === "mouse") { on.hov = 1; sync(); } });
+      row.addEventListener("pointerleave", () => { on.hov = 0; sync(); });
+      row.addEventListener("focusin", e => { if (e.target.matches(":focus-visible")) { on.foc = 1; sync(); } });
+      row.addEventListener("focusout", () => { on.foc = 0; sync(); });
+      b.addEventListener("click", () => { on.pin = on.pin ? 0 : 1; if (!on.pin) on.hov = on.foc = 0; sync(); });
+    });
   });
 
   document.querySelectorAll("[data-ankur-mx]").forEach(el => el.innerHTML = mx());

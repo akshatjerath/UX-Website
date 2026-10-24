@@ -1,27 +1,33 @@
 /* Shared base for every page: tokens, type, island nav, phone menu, footer, image viewer.
    The home page adds home.css; the case studies add case.css. */
 [data-draft]{display:none} .draft [data-draft]{display:revert} /* hidden by default so removing draft notes on the live site causes no layout shift */
-/* Three faces, all OFL and self-hosted from Fontsource. Hubot Sans (GitHub) for display, pinned at 78% width (a condensed cut, made with fontTools) so big headlines fit.
-   Schibsted Grotesk, a newspaper grotesk, for text. Martian Mono sets the small labels. */
-@font-face{font-family:"Hubot Sans";src:url(assets/fonts/hubot-sans-latin-standard-normal.woff2) format("woff2");font-weight:200 900;font-display:swap}
-@font-face{font-family:"Hubot Sans";src:url(assets/fonts/hubot-sans-latin-ext-standard-normal.woff2) format("woff2");font-weight:200 900;font-display:swap;unicode-range:U+20A0-20C0} /* the rupee sign */
-@font-face{font-family:"Schibsted Grotesk";src:url(assets/fonts/schibsted-grotesk-latin-wght-normal.woff2) format("woff2");font-weight:400 900;font-display:swap}
-@font-face{font-family:"Schibsted Grotesk";src:url(assets/fonts/schibsted-grotesk-latin-ext-wght-normal.woff2) format("woff2");font-weight:400 900;font-display:swap;unicode-range:U+20A0-20C0}
-@font-face{font-family:"Martian Mono";src:url(assets/fonts/martian-mono-latin-standard-normal.woff2) format("woff2");font-weight:100 800;font-stretch:75% 112.5%;font-display:swap}
-/* Arial sized to match each face while the webfonts load, so text does not reflow when they swap in (cuts layout shift).
-   Numbers measured from the font files against Arial's metrics: Schibsted at 400 and 700, the condensed Hubot at 800. */
-@font-face{font-family:"Schibsted Fallback";src:local("Arial"),local("ArialMT");font-weight:100 599;size-adjust:104.6%;ascent-override:93.3%;descent-override:24.6%;line-gap-override:0%}
-@font-face{font-family:"Schibsted Fallback";src:local("Arial Bold"),local("Arial-BoldMT");font-weight:600 900;size-adjust:102.6%;ascent-override:95.2%;descent-override:25.1%;line-gap-override:0%}
-@font-face{font-family:"Hubot Fallback";src:local("Arial Bold"),local("Arial-BoldMT");font-weight:100 900;size-adjust:81.6%;ascent-override:133.5%;descent-override:39.2%;line-gap-override:0%}
+/* One family, self-hosted OFL from Fontsource: Barlow Semi Condensed for everything (Bahnschrift, then the system sans-serif, as fallback). Numbers are tabular so counters and prices do not jump. */
+@font-face{font-family:"Barlow Semi Condensed";src:url(assets/fonts/barlow-semi-condensed-latin-400-normal.woff2) format("woff2");font-weight:100 449;font-style:normal;font-display:swap}
+@font-face{font-family:"Barlow Semi Condensed";src:url(assets/fonts/barlow-semi-condensed-latin-500-normal.woff2) format("woff2");font-weight:450 549;font-style:normal;font-display:swap}
+@font-face{font-family:"Barlow Semi Condensed";src:url(assets/fonts/barlow-semi-condensed-latin-600-normal.woff2) format("woff2");font-weight:550 679;font-style:normal;font-display:swap}
+@font-face{font-family:"Barlow Semi Condensed";src:url(assets/fonts/barlow-semi-condensed-latin-700-normal.woff2) format("woff2");font-weight:680 769;font-style:normal;font-display:swap}
+@font-face{font-family:"Barlow Semi Condensed";src:url(assets/fonts/barlow-semi-condensed-latin-800-normal.woff2) format("woff2");font-weight:770 849;font-style:normal;font-display:swap}
+@font-face{font-family:"Barlow Semi Condensed";src:url(assets/fonts/barlow-semi-condensed-latin-900-normal.woff2) format("woff2");font-weight:850 900;font-style:normal;font-display:swap}
+@font-face{font-family:"Barlow Semi Condensed";src:url(assets/fonts/barlow-semi-condensed-latin-400-italic.woff2) format("woff2");font-weight:100 899;font-style:italic;font-display:swap}
+/* the rupee sign: latin-ext file for each weight, same ranges as above so each range stays one font group */
+@font-face{font-family:"Barlow Semi Condensed";src:url(assets/fonts/barlow-semi-condensed-latin-ext-400-normal.woff2) format("woff2");font-weight:100 449;font-style:normal;font-display:swap;unicode-range:U+20A0-20C0}
+@font-face{font-family:"Barlow Semi Condensed";src:url(assets/fonts/barlow-semi-condensed-latin-ext-500-normal.woff2) format("woff2");font-weight:450 549;font-style:normal;font-display:swap;unicode-range:U+20A0-20C0}
+@font-face{font-family:"Barlow Semi Condensed";src:url(assets/fonts/barlow-semi-condensed-latin-ext-600-normal.woff2) format("woff2");font-weight:550 679;font-style:normal;font-display:swap;unicode-range:U+20A0-20C0}
+@font-face{font-family:"Barlow Semi Condensed";src:url(assets/fonts/barlow-semi-condensed-latin-ext-700-normal.woff2) format("woff2");font-weight:680 769;font-style:normal;font-display:swap;unicode-range:U+20A0-20C0}
+@font-face{font-family:"Barlow Semi Condensed";src:url(assets/fonts/barlow-semi-condensed-latin-ext-800-normal.woff2) format("woff2");font-weight:770 849;font-style:normal;font-display:swap;unicode-range:U+20A0-20C0}
+@font-face{font-family:"Barlow Semi Condensed";src:url(assets/fonts/barlow-semi-condensed-latin-ext-900-normal.woff2) format("woff2");font-weight:850 900;font-style:normal;font-display:swap;unicode-range:U+20A0-20C0}
+/* Arial sized to match Barlow while the webfont loads, so text does not reflow when it swaps in (measured against the font files). */
+@font-face{font-family:"Barlow Fallback";src:local("Arial"),local("ArialMT");font-weight:100 599;size-adjust:81.5%;ascent-override:122.7%;descent-override:24.5%;line-gap-override:0%}
+@font-face{font-family:"Barlow Fallback";src:local("Arial Bold"),local("Arial-BoldMT");font-weight:600 900;size-adjust:83%;ascent-override:120.5%;descent-override:24.1%;line-gap-override:0%}
 :root{
   --bg:#0C0E11; --surface:#14171C; --panel:#1A1E24; --ink:#EEF1F5; --muted:#9AA3AE; --line:#4A525D; --hair:#262B32;
   --accent:#25CA7F; --accent-ink:#04140B; --accent-soft:#0F2A1D; --hero-ink:#F2F3EF;
   --band:#EEF1F5; --band-ink:#0C0E11;
   --draft:#F2B451; --draft-soft:#2E2412; --bad:#FF7A6E; --rule:rgba(238,241,245,.07); --dec:#F2C94C; --dec-soft:#2B2511;
   --savvy-bg:#131411; --ankur-bg:#E3E0F6; --greggs-bg:#00558F; --greggs-hi:#FDC72F; --cd-bg:#2F3D2B; --cd-hi:#E6EDD8;
-  --display:"Hubot Sans","Hubot Fallback",system-ui,sans-serif;
-  --body:"Schibsted Grotesk","Schibsted Fallback",system-ui,sans-serif;
-  --mono:"Martian Mono",ui-monospace,Menlo,Consolas,monospace;
+  --display:"Barlow Semi Condensed","Barlow Fallback","Bahnschrift",system-ui,sans-serif;
+  --body:"Barlow Semi Condensed","Barlow Fallback","Bahnschrift",system-ui,sans-serif;
+  --mono:"Barlow Semi Condensed","Barlow Fallback","Bahnschrift",system-ui,sans-serif; /* small labels use Barlow with tabular numerals (body rule below) */
   --ease:cubic-bezier(.65,.05,.25,1); --ease-out:cubic-bezier(.22,1,.36,1);
   --maxw:1280px; --gut:clamp(16px,4vw,48px); --r:22px;
   color-scheme:dark;
@@ -35,16 +41,18 @@
   --accent:#0F7A48; --accent-ink:#FFFFFF; --accent-soft:#D6F2E3; --hero-ink:#11141A; --band:#11141A; --band-ink:#F1F2F4;
   --draft:#7A4A00; --draft-soft:#FBEFD8; --bad:#B23A34; --rule:rgba(17,20,26,.08); --dec:#9A7100; --dec-soft:#FFF3C4; color-scheme:light}
 
+/* one scrollbar for the whole page: set on the root only, never on bands or sections */
+html{scrollbar-width:thin;scrollbar-color:var(--muted) var(--bg)}
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{font-variant-numeric:tabular-nums;background:var(--bg);color:var(--ink);font:400 19px/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit}
 img{display:block;max-width:100%;height:auto}
 button{font:inherit;color:inherit}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
 .wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gut)}
-.mono{font:500 12px/1.4 var(--mono);letter-spacing:.05em;text-transform:uppercase}
+.mono{font:500 14px/1.4 var(--mono);letter-spacing:.05em;text-transform:uppercase}
 .dim{color:var(--muted)}
 .skip{position:absolute;left:-999px;top:8px;z-index:99;background:var(--ink);color:var(--bg);padding:8px 12px;border-radius:8px}
 .skip:focus{left:16px}
@@ -62,13 +70,13 @@ p{margin:0}
   box-shadow:0 8px 30px rgba(0,0,0,.25),inset 0 0 0 1px rgba(255,255,255,.1);max-width:calc(100vw - 24px)}
 .island a{text-decoration:none}
 .island .who{display:flex;align-items:center;gap:8px;padding-right:6px}
-.island .av{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:transparent;border:1px solid #F2F3EF;color:#F2F3EF;font:700 12px/1 var(--display)}
-.island .nm{font:600 14px/1 var(--body);white-space:nowrap;overflow:hidden;max-width:120px;transition:max-width .4s var(--ease),opacity .3s}
-.island .st{display:flex;align-items:center;gap:7px;font:500 11px/1 var(--mono);letter-spacing:.03em;color:#B9BDB6;white-space:nowrap;max-width:0;opacity:0;overflow:hidden;transition:max-width .4s var(--ease),opacity .3s}
+.island .av{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:transparent;border:1px solid #F2F3EF;color:#F2F3EF;font:700 14px/1 var(--display)}
+.island .nm{font:600 16px/1 var(--body);white-space:nowrap;overflow:hidden;max-width:120px;transition:max-width .4s var(--ease),opacity .3s}
+.island .st{display:flex;align-items:center;gap:7px;font:500 13px/1 var(--mono);letter-spacing:.03em;color:#B9BDB6;white-space:nowrap;max-width:0;opacity:0;overflow:hidden;transition:max-width .4s var(--ease),opacity .3s}
 .island .st i,.open i{width:7px;height:7px;border-radius:50%;background:#5BE38A;box-shadow:0 0 0 3px rgba(91,227,138,.18);flex:none}
 .island:hover .st,.island:focus-within .st{max-width:220px;opacity:1}
 .island nav{display:flex;gap:2px}
-.island nav a{white-space:nowrap;font:500 14px/1 var(--body);padding:9px 12px;border-radius:999px;color:#F2F3EF;transition:background .2s,color .2s}
+.island nav a{white-space:nowrap;font:500 16px/1 var(--body);padding:9px 12px;border-radius:999px;color:#F2F3EF;transition:background .2s,color .2s}
 .island nav a:hover{color:#05070A}
 
 .island.compact .nm{max-width:0;opacity:0}
@@ -78,7 +86,7 @@ p{margin:0}
 .theme .moon{display:none}
 .theme[data-mode="dark"] .moon{display:inline}
 .theme[data-mode="dark"] .sun{display:none}
-footer{border-top:1px solid var(--hair);padding-block:24px;color:var(--muted);font-size:14px}
+footer{border-top:1px solid var(--hair);padding-block:24px;color:var(--muted);font-size:16px}
 footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 dialog.lb{border:0;padding:0;background:transparent;max-width:min(96vw,1400px);max-height:92vh;color:#fff}
 dialog.lb::backdrop{background:rgba(5,7,10,.88)}
@@ -99,8 +107,8 @@ dialog.lb::backdrop{background:rgba(5,7,10,.88)}
 @media (prefers-reduced-motion:reduce){.goo i{transition:none}.goo i.d{display:none}}
 
 /* ===== staggered menu (nav.js): phones only ===== */
-.island,.smenu{--display:"Hubot Sans","Hubot Fallback",system-ui,sans-serif} /* same on every page, whatever a case study's own font */
-.sm-tog{display:none;align-items:center;gap:10px;height:36px;padding:0 14px 0 16px;border:1px solid #F2F3EF;border-radius:999px;background:transparent;color:#F2F3EF;font:600 14px/1 var(--body);cursor:pointer}
+.island,.smenu{--display:"Barlow Semi Condensed","Barlow Fallback","Bahnschrift",system-ui,sans-serif} /* same on every page, whatever a case study's own font */
+.sm-tog{display:none;align-items:center;gap:10px;height:36px;padding:0 14px 0 16px;border:1px solid #F2F3EF;border-radius:999px;background:transparent;color:#F2F3EF;font:600 16px/1 var(--body);cursor:pointer}
 .sm-tw{display:block;height:1em;overflow:hidden}.sm-tw span{display:block;line-height:1;transition:transform .45s var(--ease)}
 .sm-on .sm-tw span{transform:translateY(-100%)}
 .sm-plus{position:relative;width:12px;height:12px;transition:transform .45s var(--ease)}
@@ -121,12 +129,12 @@ dialog.lb::backdrop{background:rgba(5,7,10,.88)}
 .sm-panel ol{list-style:none;margin:0;padding:0;display:grid;gap:6px}
 .sm-it a{display:block;overflow:hidden;text-decoration:none;font:800 clamp(34px,10vw,48px)/1.08 var(--display);letter-spacing:-0.015em}
 .sm-it span{display:flex;align-items:baseline;gap:12px;transform:translateY(110%) rotate(5deg);transform-origin:left bottom;transition:transform .6s var(--ease-out),color .2s}
-.sm-it small{font:500 12px/1 var(--mono);color:var(--accent);min-width:20px}
+.sm-it small{font:500 14px/1 var(--mono);color:var(--accent);min-width:20px}
 .smenu.open .sm-it span{transform:none;transition-delay:calc(.3s + var(--i) * 60ms)}
 .sm-it a:hover span,.sm-it a[aria-current] span{color:var(--accent)}
 .sm-soc{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:baseline;margin-top:40px;opacity:0;transition:opacity .4s}
 .smenu.open .sm-soc{opacity:1;transition-delay:.7s}
-.sm-soc p{width:100%;font:500 12px/1 var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.sm-soc p{width:100%;font:500 14px/1 var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
 .sm-soc a{font-weight:600;text-decoration:none;color:var(--ink)}
 @media (max-width:720px){.island .nm,.island nav,.island .st{display:none}.sm-tog{display:inline-flex}}
 @media (prefers-reduced-motion:reduce){.sm-layer,.sm-it span,.sm-scrim,.sm-soc,.sm-tw span,.sm-plus{transition:none!important}}

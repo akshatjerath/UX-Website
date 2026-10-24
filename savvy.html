@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en" class="no-js">
 <head>
+<script>try{var t=localStorage.getItem("aj-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SAVVY, a UX case study by Akshat Jerath</title>
@@ -12,8 +13,8 @@
 <meta property="og:description" content="Solo UX case study by Akshat Jerath. 13 interviews, a 10-restaurant audit, iOS and Android, night and day.">
 <meta property="og:image" content="https://akshatjerath.github.io/UX-Website/img/mock-tilt.webp">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="preload" href="assets/fonts/hubot-sans-latin-standard-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/schibsted-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/barlow-semi-condensed-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/barlow-semi-condensed-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="base.css">
 <link rel="stylesheet" href="case.css">
 </head>
@@ -175,7 +176,7 @@
     <div class="proc rv" data-stagger>
       <div class="st"><span class="dot">01</span><b>Research</b><span>13 interviews, 2 surveys, a 10-restaurant audit</span></div>
       <div class="st"><span class="dot">02</span><b>Synthesis</b><span>3 diner types</span></div>
-      <div class="st"><span class="dot">03</span><b>Structure</b><span>Flows, site map, access rules</span></div>
+      <div class="st"><span class="dot">03</span><b>Structure</b><span>Flows, IA, access roles</span></div>
       <div class="st"><span class="dot">04</span><b>v1 to v4</b><span>Lo-fi, idea test, audit wireframes</span></div>
       <div class="st"><span class="dot">05</span><b>v5 hi-fi</b><span>17 screens, then critique</span></div>
       <div class="st"><span class="dot">06</span><b>v6 to v7</b><span>One system, Android in M3</span></div>
@@ -230,11 +231,17 @@
       <div><span class="eyebrow">From research to rules</span><h2 id="t-ins">What diners told me,<br>and the rules I took from it.</h2></div>
       <p class="sub">Each rule traces back to what people said or did.</p>
     </div>
-    <div class="track rv" data-stagger>
-      <div class="ins"><div class="heard"><small>Heard</small><b>Coins aren't cash.</b><q>I find it very stupid and a scam.</q></div><span class="n">1</span><div class="did"><small>So I</small><b>Rank by the cash you pay tonight.</b><p>Coins get their own amber line and never decide the order.</p></div></div>
-      <div class="ins"><div class="heard"><small>Heard</small><b>The place comes first.</b><p class="dim" style="margin-top:8px">A craving, family, friends or a reel picks the restaurant. Deals come after.</p></div><span class="n">2</span><div class="did"><small>So I</small><b>Start from the restaurant.</b><p>Home is a restaurant search. Deals is a second tab.</p></div></div>
-      <div class="ins"><div class="heard"><small>Heard</small><b>It falls apart at the bill.</b><q>If I have no option, I will pay the bill.</q></div><span class="n">3</span><div class="did"><small>So I</small><b>Put Book and Pay on one toggle.</b><p>At the table: one bill in, one answer out.</p></div></div>
-      <div class="ins"><div class="heard"><small>Heard</small><b>Cards don't fit everyone.</b><p class="dim" style="margin-top:8px">Several people pay by UPI, cash or a parent's card.</p></div><span class="n">4</span><div class="did"><small>So I</small><b>Let cards inform, never gate.</b><p>No card? The &quot;No card&quot; price is the answer.</p></div></div>
+    <div class="track" data-ins>
+      <div class="track-h" aria-hidden="true"><span class="th th-l">What I heard</span>
+        <svg class="hs" viewBox="0 0 260 130" aria-hidden="true" focusable="false"><g>
+          <g class="hs-r"><rect class="cuff" x="232" y="14" width="28" height="86"/><path class="skin" d="M232 26 L172 24 Q146 26 128 44 Q118 54 130 58 Q150 54 166 70 L184 88 L200 98 L232 98 Z"/><g class="skin"><rect x="66" y="92" width="30" height="15" rx="7.5" transform="rotate(48 81 100)"/><rect x="78" y="102" width="30" height="15" rx="7.5" transform="rotate(48 93 110)"/><rect x="90" y="111" width="30" height="15" rx="7.5" transform="rotate(48 105 119)"/></g></g>
+          <g class="hs-l"><rect class="cuff" x="0" y="14" width="28" height="86"/><path class="skin" d="M28 26 L88 38 Q104 42 114 50 L168 82 Q178 92 168 98 Q160 102 154 96 Q152 106 142 106 Q136 110 130 102 Q124 110 114 104 L98 98 L28 98 Z"/></g>
+        </g></svg>
+        <span class="th th-r">The rule I took from it</span></div>
+      <div class="ins" style="--i:0"><div class="heard"><small>Heard</small><b>Coins aren't cash.</b><q>I find it very stupid and a scam.</q></div><span class="n"><i>1</i></span><div class="did"><small>So I</small><button type="button" class="rule" aria-expanded="false" aria-controls="why1"><b>Rank by the cash you pay tonight.</b></button><div class="more" id="why1"><div><p>Coins get their own amber line and never decide the order.</p></div></div></div></div>
+      <div class="ins" style="--i:1"><div class="heard"><small>Heard</small><b>The place comes first.</b><p>A craving, family, friends or a reel picks the place.</p></div><span class="n"><i>2</i></span><div class="did"><small>So I</small><button type="button" class="rule" aria-expanded="false" aria-controls="why2"><b>Start from the restaurant.</b></button><div class="more" id="why2"><div><p>Home is a restaurant search. Deals is a second tab.</p></div></div></div></div>
+      <div class="ins" style="--i:2"><div class="heard"><small>Heard</small><b>It falls apart at the bill.</b><q>If I have no option, I will pay the bill.</q></div><span class="n"><i>3</i></span><div class="did"><small>So I</small><button type="button" class="rule" aria-expanded="false" aria-controls="why3"><b>Put Book and Pay on one toggle.</b></button><div class="more" id="why3"><div><p>At the table: one bill in, one answer out.</p></div></div></div></div>
+      <div class="ins" style="--i:3"><div class="heard"><small>Heard</small><b>Cards don't fit everyone.</b><p>Several people pay by UPI, cash or a parent's card.</p></div><span class="n"><i>4</i></span><div class="did"><small>So I</small><button type="button" class="rule" aria-expanded="false" aria-controls="why4"><b>Let cards inform, never gate.</b></button><div class="more" id="why4"><div><p>No card? The &quot;No card&quot; price is the answer.</p></div></div></div></div>
     </div>
   </div>
 </section>
@@ -251,36 +258,36 @@
         <span class="clip" aria-hidden="true"></span>
         <div class="in">
           <header><span>SAVVY · Diner ID</span><span>No. 01</span></header>
-          <div class="ph"><span aria-hidden="true">RC</span><img src="img/persona-rc.webp" alt="" loading="lazy" onerror="this.remove()"></div>
+          <div class="ph"><span aria-hidden="true">RC</span></div>
           <h3>Reluctant Comparer</h3>
           <p class="role">No credit card, but puts in the effort to find a deal.</p>
           <dl><div><dt>Credit card</dt><dd>No card of their own</dd></div><div><dt>Deal effort</dt><dd>High</dd></div></dl>
-          <q>I find it very stupid and a scam… it feels like I've been misdirected.</q>
-          <footer><span>Interviews</span><span>R01 · R03 · R10 · R13</span></footer>
+          <q>it feels like I've been misdirected.</q>
+          <div class="idq4"><div class="idq"><h4>Says</h4><p>“I find it very stupid and a scam.”</p><small>R01</small></div><div class="idq"><h4>Thinks</h4><p>Deal hunting is smart “as long as it does not consume you.”</p><small>R01</small></div><div class="idq"><h4>Does</h4><p>Compares apps side by side, or asks a sister to.</p><small>R03</small></div><div class="idq"><h4>Feels</h4><p>A missed offer is “very regretful and annoying.”</p><small>R03</small></div></div>
         </div>
       </article>
       <article class="idc idc-pc">
         <span class="clip" aria-hidden="true"></span>
         <div class="in">
           <header><span>SAVVY · Diner ID</span><span>No. 02</span></header>
-          <div class="ph"><span aria-hidden="true">PC</span><img src="img/persona-pc.webp" alt="" loading="lazy" onerror="this.remove()"></div>
+          <div class="ph"><span aria-hidden="true">PC</span></div>
           <h3>Passive Card Holder</h3>
           <p class="role">Has cards, but thinks about them late, at checkout.</p>
           <dl><div><dt>Credit card</dt><dd>Has a credit card</dd></div><div><dt>Deal effort</dt><dd>Low</dd></div></dl>
           <q>All the money still leaves my own pocket, so what was the benefit of the discount?</q>
-          <footer><span>Interviews</span><span>R02 · R04 · R09 · R11 · R12</span></footer>
+          <div class="idq4"><div class="idq"><h4>Says</h4><p>“I'd rather prefer it being in my own wallet.”</p><small>R02</small></div><div class="idq"><h4>Thinks</h4><p>“If I don't check all, I'll end up paying more.”</p><small>R11</small></div><div class="idq"><h4>Does</h4><p>Uses whichever card pops up at checkout.</p><small>R11</small></div><div class="idq"><h4>Feels</h4><p>A missed card discount “did hurt my wallet.”</p><small>R02</small></div></div>
         </div>
       </article>
       <article class="idc idc-jp">
         <span class="clip" aria-hidden="true"></span>
         <div class="in">
           <header><span>SAVVY · Diner ID</span><span>No. 03</span></header>
-          <div class="ph"><span aria-hidden="true">JP</span><img src="img/persona-jp.webp" alt="" loading="lazy" onerror="this.remove()"></div>
+          <div class="ph"><span aria-hidden="true">JP</span></div>
           <h3>Just-Pay Pragmatist</h3>
           <p class="role">Low effort. Someone else usually picks the place.</p>
           <dl><div><dt>Credit card</dt><dd>No card of their own</dd></div><div><dt>Deal effort</dt><dd>Low</dd></div></dl>
           <q>If I have no option, I will pay the bill.</q>
-          <footer><span>Interviews</span><span>R05 · R06 · R08</span></footer>
+          <div class="idq4"><div class="idq"><h4>Says</h4><p>“I just see menu card and order the food.”</p><small>R06</small></div><div class="idq"><h4>Thinks</h4><p>“I don't mind whatever I get, I will be happy.”</p><small>R06</small></div><div class="idq"><h4>Does</h4><p>“One of the family members picks” the restaurant.</p><small>R05</small></div><div class="idq"><h4>Feels</h4><p>Switching between apps is “frustrating.”</p><small>R08</small></div></div>
         </div>
       </article>
     </div>
@@ -292,9 +299,9 @@
   <div class="wrap">
     <div class="head split">
       <div><span class="eyebrow">Flows, maps and rules</span><h2 id="t-flow">From craving<br>to cheapest app.</h2></div>
-      <p class="sub">Rebuilt from my FigJam board. Switch between the user flow, the three task flows, the site map, the empathy maps and the access rules. Each one builds as you open it.</p>
+      <p class="sub">Rebuilt from my FigJam board. Switch between the user flow, the three task flows, the IA and the access roles. Each one builds as you open it.</p>
     </div>
-    <div class="research" data-research="savvy-user savvy-task1 savvy-task2 savvy-task3 savvy-map savvy-emp savvy-access"></div>
+    <div class="research" data-research="savvy-user savvy-task1 savvy-task2 savvy-task3 savvy-map savvy-access"></div>
     <h3 class="cs-h">Card sort</h3>
     <p class="cs-p">I sorted every feature idea into eight groups. This became the site map.</p>
     <div class="marq cs-marq" role="region" aria-label="Card sort, eight groups. Hover to pause." tabindex="0"><div class="marq-track">
@@ -395,27 +402,6 @@
   <div class="wrap">
     <h2 id="t-ans" class="sr">The answer screen</h2>
     <div data-spot></div>
-  </div>
-</section>
-
-<!-- 16. SYSTEM FEEDBACK -->
-<section aria-labelledby="t-fb" data-nav="Design|System feedback">
-  <div class="wrap">
-    <div class="head split">
-      <div><span class="eyebrow">System feedback</span><h2 id="t-fb">What the app shows while it works.</h2></div>
-      <p class="sub">Every state tells you what SAVVY is doing and what it isn't: nothing is booked or paid, and a deal that didn't hold never counts.</p>
-    </div>
-    <div class="show">
-      <div class="stage2">
-        <div class="phone tilt-l"><img src="img/savvy-n-checking.webp" width="402" height="874" alt="Checking 3 apps, 2 of 3 done. We read each app's offers for this bill. Nothing is booked or paid." loading="lazy"></div>
-        <div class="phone tilt-r"><img src="img/savvy-n-sheet.webp" width="402" height="874" alt="How ₹1,450 is made: food bill ₹2,000, HSBC card 30% instant minus ₹600, cover charge plus ₹50. The fine print: minimum bill, a monthly cap, pay inside EazyDiner." loading="lazy"></div>
-      </div>
-      <div class="callouts">
-        <div class="callout"><b>Loading that explains itself</b><p>The ring counts the apps, each row ticks off, and the Dynamic Island shows &quot;2 of 3&quot;. Nothing is booked or paid.</p></div>
-        <div class="callout"><b>How ₹1,450 is made</b><p>Every line of the maths, including the cover charge most apps show late.</p></div>
-        <div class="callout"><b>The fine print, in plain words</b><p>A minimum bill, a monthly cap with how much is left, and a warning that paying at the counter loses the discount.</p></div>
-      </div>
-    </div>
   </div>
 </section>
 

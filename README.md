@@ -3,10 +3,10 @@ Akshat Jerath's UX/UI portfolio: a home page and four case studies (SAVVY, Ankur
 
 | File | What's in it | Edit it when |
 | --- | --- | --- |
-| `index.html` | Home: hero, the four project panels, About (profile card, timeline, tools, skills), Contact | You change home text, the timeline, tools or skills |
+| `index.html` | Home: hero, the four project panels, About (profile card, timeline, software, skills), Contact | You change home text, the timeline, software or skills |
 | `savvy.html`, `ankur.html`, `greggs.html`, `critical-design.html` | One case study each. Each `<section data-nav="Group\|Label">` becomes an entry in the side nav | You change a case study |
 | `savvy-ios.html`, `savvy-android.html` | SAVVY platform choices, screens and UI concepts; both link back to `savvy.html` | You change a platform design |
-| `content.js` | Your details (`ME`), and the data behind the diagrams: flows (`FL`), empathy maps, site map, access rules, iterations (`ITER`), the answer spotlight (`SPOT`), Ankur's competitors (`ANKUR_CM`) | You change your email/LinkedIn/CV, or a diagram |
+| `content.js` | Your details (`ME`), and the data behind the diagrams: flows (`FL`), empathy maps (research notes), IA site map, access roles, iterations (`ITER`), the answer spotlight (`SPOT`), Ankur's competitors (`ANKUR_CM`) | You change your email/LinkedIn/CV, or a diagram |
 | `base.css` | Shared: colours, fonts, island nav, phone menu, footer | You change the site-wide look |
 | `home.css` / `home.js` | Home page styles and motion | Rarely |
 | `case.css` / `case.js` / `case-widgets.js` | Case-study styles, motion, side nav, prev/next, and the widgets built from `content.js` | Rarely |
@@ -42,7 +42,7 @@ Anything still missing shows as a dashed "Add:" note on your own computer and in
 ## What is in it
 
 - Dark first, with a light theme on the home page. The toggle remembers the choice. Each case study has its own colours (Ankur uses the live app's cream and green).
-- Three self-hosted OFL faces: Hubot Sans (display, a condensed cut pinned at 78% width), Schibsted Grotesk (text) and Martian Mono (small labels). Small extra files only carry the rupee sign.
-- Home: letters of your name turn into dashed outlines one by one, the line under it types, the Agent mesh fills the hero (a network of neurons handing a task through interview, synthesis, flow, prototype, test and decide, then back; the pointer stimulates it and a click sets off a burst), project panels stack as you scroll, the profile card tilts, the timeline draws itself, tools scroll past in their own colours, skills float out of folders, and the main buttons have a light running round the edge. All written by hand after React Bits components (MIT + Commons Clause: fine for a portfolio, not for reselling the code). Tool logos come from Iconify/simple-icons, svg-logos and Lobe Icons.
+- One self-hosted OFL family, Barlow Semi Condensed, for display, text and small labels (Bahnschrift, then the system sans-serif, as fallback). Small extra files only carry the rupee sign.
+- Home: letters of your name turn into dashed outlines one by one, the line under it types, the Agent mesh fills the hero (a network of neurons handing a task through interview, synthesis, flow, prototype, test and decide, then back; the pointer stimulates it and a click sets off a burst), project panels stack as you scroll, the profile card tilts, the timeline draws itself, the software list (Figma, Miro, MS Office, AI Tools, Framer, GitHub, Jira, Perforce, Unreal Engine, CAD, Google Forms) scrolls past in its own colours, skills sit in one four-column card where each column is a Pixel Card (pixels spread from the centre on hover), and the main buttons have a light running round the edge. All written by hand after React Bits components (MIT + Commons Clause: fine for a portfolio, not for reselling the code). Tool logos come from Iconify/simple-icons, svg-logos and Lobe Icons.
 - Case studies: side nav from 1200px wide, prev/next in the corners, a phone menu below 720px, diagrams built from data, scroll-linked motion. Details in `MOTION.md`.
 - Respects `prefers-reduced-motion`: everything shows its finished state.
