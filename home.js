@@ -1,7 +1,7 @@
 /* Home page code. Data (ME, P) comes from content.js; the phone menu from nav.js.
    The animated pieces are hand-written, vanilla versions of React Bits components (MIT + Commons Clause):
    the name (static), the hero background is my own Agent mesh (not a React Bits piece),
-   Profile Card, Logo Loop, the Skills highlight card and Star Border (CSS only, in home.css). */
+   Profile Card, Logo Loop, Folder Float and Star Border (CSS only, in home.css). */
 (() => {
   const RM = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const root = document.documentElement;
@@ -258,15 +258,33 @@
   });
 
   task(() => {
-    /* ---------- Skills: each column is a Pixel Card; headings and chips also rise in once ---------- */
-    const sk = document.querySelector("[data-skills]");
-    if (sk) {
-      if (window.PixelCard) sk.querySelectorAll(".col").forEach((col, i) => PixelCard(col, {gap: 6, pixelSize: 2, speed: 35, shape: "square", origin: "center", revealDuration: 600, spotlight: .5, glow: .5, opacity: .35, fade: .7, trigger: "hover", clickPulse: true, intro: true, introDelay: i * 120}));
-      if (!RM) {
-        sk.classList.add("arm");
-        new IntersectionObserver((es, o) => { if (es[0].isIntersecting) { o.disconnect(); sk.classList.add("in"); } }, {threshold: .3}).observe(sk);
-      }
-    }
+    /* ---------- Folder Float (Skills): hover, keyboard focus or tap opens a folder and its notes spring out.
+       On touch and with reduced motion every folder starts open, so the skills show with no interaction. ---------- */
+    const folds = [...document.querySelectorAll(".fold")];
+    const always = matchMedia("(hover: none), (prefers-reduced-motion: reduce)");
+    const set = (f, o) => { f.classList.toggle("open", o); f.querySelector(".f-btn").setAttribute("aria-expanded", String(o)); };
+    folds.forEach(f => {
+      const notes = [...f.querySelectorAll(".f-notes li")], b = f.querySelector(".f-btn");
+      let pt = ""; // last pointer type: a tap also focuses the button on some phones, so only mouse and keyboard focus may open it
+      notes.forEach((li, i) => {
+        const side = i % 2 ? 1 : -1; // one note per row, nudged left and right like loose paper
+        li.style.setProperty("--x", side * (10 + (i % 3) * 6) + "px");
+        li.style.setProperty("--k", notes.length - 1 - i);
+        li.style.setProperty("--r", side * (1.5 + (i % 3)) + "deg");
+      });
+      b.addEventListener("pointerdown", e => { pt = e.pointerType; });
+      b.addEventListener("keydown", () => { pt = ""; });
+      f.addEventListener("pointerenter", e => { if (!always.matches && e.pointerType === "mouse") set(f, true); });
+      // the pointer leaving closes the folder only when keyboard focus is not inside it
+      f.addEventListener("pointerleave", e => { if (!always.matches && e.pointerType === "mouse" && !f.querySelector(":focus-visible")) set(f, false); });
+      b.addEventListener("focus", () => { if (!always.matches && pt !== "touch" && pt !== "pen" && b.matches(":focus-visible")) set(f, true); });
+      b.addEventListener("blur", () => { if (!always.matches) set(f, false); }); // tabbing to the next folder closes this one
+      b.addEventListener("click", () => { if (!always.matches && pt !== "mouse") set(f, !f.classList.contains("open")); });
+    });
+    // a tap anywhere else closes a folder opened by touch
+    document.addEventListener("pointerdown", e => { if (!always.matches && e.pointerType !== "mouse") folds.forEach(f => { if (!f.contains(e.target)) set(f, false); }); });
+    const sync = () => folds.forEach(f => set(f, always.matches));
+    always.addEventListener("change", sync); if (always.matches) sync();
   });
 
   requestAnimationFrame(() => setTimeout(runTasks, 0));

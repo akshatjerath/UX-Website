@@ -79,7 +79,7 @@
   m.className = "smenu"; m.id = "smenu"; m.inert = true;
   m.innerHTML = `<div class="sm-scrim"></div><div class="sm-layer l1"></div><div class="sm-layer l2"></div>
     <nav class="sm-layer sm-panel" aria-label="Menu"><ol>${PAGES.map(([t, h], i) => `<li class="sm-it" style="--i:${i}"><a href="${href(h)}"${h === here ? ' aria-current="page"' : ""}><span><small>${String(i + 1).padStart(2, "0")}</small>${t}</span></a></li>`).join("")}</ol>
-    <div class="sm-soc"><p>Say hello</p>${SOCIAL.map(([t, h]) => `<a href="${h}"${h.startsWith("http") ? ' target="_blank" rel="noopener"' : ""}>${t}</a>`).join("")}</div></nav>`;
+    <div class="sm-soc"><p>Say hello</p>${SOCIAL.map(([t, h]) => `<a href="${h}"${h.startsWith("http") ? ' target="_blank" rel="noopener noreferrer"' : ""}>${t}</a>`).join("")}</div></nav>`;
   document.body.appendChild(m);
 
   const set = open => {

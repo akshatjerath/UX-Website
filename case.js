@@ -30,7 +30,7 @@
     items.forEach(e => io.observe(e));
   }
 
-  // Ankur loop: steps 1 to 6 by themselves, every 3 s while on screen, and the text beside the ring follows. No clicks. Reduced motion: step 1 only.
+  // Ankur loop: steps 1 to 6 by themselves, every 3 s while on screen, and the text beside the ring follows. The six steps are buttons: pick one and the loop carries on from there. Reduced motion: no auto-advance.
   document.querySelectorAll("[data-lp]").forEach(lp => {
     const ring = lp.querySelector(".lp-ring"), arcs = lp.querySelectorAll(".arc"), btns = [...lp.querySelectorAll("[data-step]")];
     const n = lp.querySelector(".lp-c .n"), who = lp.querySelector(".lp-c .who"), title = lp.querySelector(".lp-side h3"), desc = lp.querySelector(".lp-side .desc");
@@ -43,11 +43,11 @@
       who.textContent = b.dataset.who; who.classList.toggle("a", b.dataset.who.startsWith("Ankur"));
     };
     pick(0); ring.classList.remove("focus");
-    if (!reduce){
-      let cur = 0, timer = 0, seen = false;
-      const tick = () => { clearTimeout(timer); if (seen) timer = setTimeout(() => { cur = (cur + 1) % btns.length; pick(cur); tick(); }, 3000); };
-      new IntersectionObserver(es => { seen = es[0].isIntersecting; tick(); }, {threshold: .4}).observe(lp);
-    }
+    let cur = 0, timer = 0, seen = false;
+    const tick = () => { clearTimeout(timer); if (seen && !reduce) timer = setTimeout(() => { cur = (cur + 1) % btns.length; pick(cur); tick(); }, 3000); };
+    // the six steps are buttons: click or Enter picks a step, and the loop carries on from there
+    btns.forEach((b, i) => b.addEventListener("click", () => { cur = i; pick(i); tick(); }));
+    if (!reduce) new IntersectionObserver(es => { seen = es[0].isIntersecting; tick(); }, {threshold: .4}).observe(lp);
   });
 
 
@@ -150,8 +150,13 @@
     }
   }
 
-  // No autoplaying video for people who asked for less motion.
-  if (reduce) document.querySelectorAll("video[autoplay]").forEach(v => { v.removeAttribute("autoplay"); v.pause(); });
+  // Heavy video: nothing downloads until it scrolls into view, and it only autoplays on larger screens without data saver or reduced motion.
+  // Otherwise the poster stays and the play control still works.
+  const light = reduce || matchMedia("(max-width: 699px)").matches || !!(navigator.connection && navigator.connection.saveData);
+  document.querySelectorAll("video[autoplay]").forEach(v => { if (reduce){ v.removeAttribute("autoplay"); v.pause(); } });
+  if (!light) document.querySelectorAll("video[data-lazy]").forEach(v => {
+    new IntersectionObserver((es, o) => { if (es[0].isIntersecting){ o.disconnect(); v.play().catch(() => {}); } }, {rootMargin: "150px"}).observe(v);
+  });
 
   // Stroke Text (after React Bits' Stroke Text): each letter's outline draws in, one after another, then the fill wipes across.
   // Point at it to play it again.
@@ -211,7 +216,7 @@
   // Clips: muted loops that play only while on screen. The button pauses them (WCAG 2.2.2).
   document.querySelectorAll("[data-play]").forEach(btn => {
     const v = btn.closest("figure").querySelector("video");
-    let userPaused = reduce;
+    let userPaused = light; // light: reduced motion, a phone or data saver, so the poster stays until Play is pressed
     const paint = () => { btn.textContent = v.paused ? "▶ Play" : "❚❚ Pause"; btn.setAttribute("aria-pressed", String(!v.paused)); };
     btn.addEventListener("click", () => { if (v.paused){ userPaused = false; v.play(); } else { userPaused = true; v.pause(); } });
     v.addEventListener("play", paint); v.addEventListener("pause", paint); paint();
@@ -257,6 +262,19 @@
       <span class="pn-count" aria-hidden="true">${String(here + 1).padStart(2, "0")} / 04</span>
       <a class="pn-a next" href="${next[0]}"><span><small>Next</small>${next[1]}</span><span aria-hidden="true">→</span></a></nav>`);
   }
+
+  // Enlarge a diagram: the inline SVG is copied into a scrollable dialog so small labels can be read.
+  document.querySelectorAll("[data-enlarge]").forEach(b => b.addEventListener("click", () => {
+    const src = document.querySelector(b.dataset.enlarge); if (!src) return;
+    const d = document.createElement("dialog"); d.className = "lb"; d.setAttribute("aria-label", "Enlarged diagram");
+    d.innerHTML = '<div class="lb-in"><div class="lb-scroll"></div><div class="lb-bar"><span>Scroll to pan</span><button type="button">Close</button></div></div>';
+    const c = src.cloneNode(true); c.removeAttribute("class"); c.style.cssText = "display:block;width:1100px;max-width:none;height:auto;background:var(--w-bg)";
+    d.querySelector(".lb-scroll").appendChild(c);
+    d.querySelector("button").addEventListener("click", () => d.close());
+    d.addEventListener("click", e => { if (e.target === d) d.close(); });
+    d.addEventListener("close", () => { b.focus(); d.remove(); });
+    document.body.appendChild(d); d.showModal();
+  }));
 
   // Image viewer for the iteration strip.
   const lb = document.getElementById("lb");

@@ -1,2 +1,7 @@
 # Editor and OS files
 .DS_Store
+
+# Local tool state (agents, memory, keys)
+.agentic-qe/
+.claude-flow/
+.swarm/
