@@ -220,3 +220,15 @@
   .lnk{display:inline-flex;align-items:center;min-height:44px}
   .pc-bar a{display:inline-flex;align-items:center;min-height:44px}
 }
+
+/* experience, education, certifications: plain lists, newest first */
+.tl-static li{translate:none}.tl-static li b{opacity:1}.tl-static::after{transform:none}.tl-static li::after{opacity:1}
+.tl-h2{margin-top:clamp(40px,5vw,64px)}
+.tl-b{margin:4px 0 0;padding-left:1.1em;color:var(--muted);max-width:56ch;display:grid;gap:4px}
+.cred{margin-top:clamp(14px,2vh,22px);font-size:clamp(15px,1.25vw,19px);line-height:1.4;color:var(--muted)}
+.mail{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:18px 0 0;font-size:17px}
+footer .mail{margin:0}
+.copy{min-height:36px;padding:4px 14px;border-radius:999px;border:1.5px solid var(--line);background:none;color:var(--ink);font:600 15px/1 var(--body);cursor:pointer}
+.copy:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.playground{padding-bottom:clamp(40px,6vw,80px)}.playground .sub-h{margin-top:0}
+.pg-note{color:var(--muted);margin:-8px 0 22px}

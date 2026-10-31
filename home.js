@@ -33,6 +33,18 @@
     if (!v) { a.hidden = true; return; }
     a.href = k === "email" ? "mailto:" + v : v; a.hidden = false;
   });
+  document.querySelectorAll("[data-mail]").forEach(m => {
+    if (!ME.email) return;
+    m.hidden = false; m.querySelector("a").textContent = ME.email;
+    const btn = m.querySelector(".copy"), st = m.querySelector("[role=status]");
+    btn.addEventListener("click", async () => {
+      let ok = true;
+      try { await navigator.clipboard.writeText(ME.email); } catch (e) { ok = false; }
+      st.textContent = ok ? "Email copied" : "Copy failed. Select the address and copy it.";
+      btn.textContent = ok ? "Copied" : "Copy email";
+      setTimeout(() => { btn.textContent = "Copy email"; st.textContent = ""; }, 2000);
+    });
+  });
   if (!DRAFT) document.querySelectorAll("[data-draft]").forEach(e => e.remove());
   else document.documentElement.classList.add("draft");
 
@@ -189,7 +201,8 @@
 
     /* ---------- timeline: a snake road, oldest first. Left to right, then back, two stops a row (after SAVVY's iteration road).
        The line draws as you scroll and each stop lights up when the line reaches it. Narrow screens keep a straight line down. ---------- */
-    const tl = document.querySelector("[data-timeline]"), tli = tl ? [...tl.children] : [];
+    const tls = [...document.querySelectorAll("[data-timeline]")].map(tl => {
+    const tli = [...tl.children];
     let snake = false, tlLen = 1, tlDraw = null;
     const tlLayout = () => {
       if (!tl) return;
@@ -227,8 +240,10 @@
       tli.forEach((li, i) => li.classList.toggle("on", st.on[i]));
     };
     const tlFx = () => tlWrite(tlRead());
-    if (tl){ tli.forEach(li => li.insertAdjacentHTML("afterbegin", '<span class="tl-dot" aria-hidden="true"></span>')); new ResizeObserver(() => requestAnimationFrame(tlLayout)).observe(tl); }
-    let sq = 0; const onScroll = () => { if (!sq) sq = requestAnimationFrame(() => { sq = 0; const sr = stackRead(), tr = tlRead(); stackWrite(sr); tlWrite(tr); }); };
+    tli.forEach(li => li.insertAdjacentHTML("afterbegin", '<span class="tl-dot" aria-hidden="true"></span>')); new ResizeObserver(() => requestAnimationFrame(tlLayout)).observe(tl);
+    return {read: tlRead, write: tlWrite};
+    });
+    let sq = 0; const onScroll = () => { if (!sq) sq = requestAnimationFrame(() => { sq = 0; const sr = stackRead(), trs = tls.map(t => t.read()); stackWrite(sr); tls.forEach((t, i) => t.write(trs[i])); }); };
     addEventListener("scroll", onScroll, {passive: true}); addEventListener("resize", onScroll); onScroll();
 
 
